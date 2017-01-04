@@ -1,0 +1,11 @@
+xrays/
+*.sqlite3
+/xrays_uwsgi.ini.save
+/xrays_uwsgi.ini
+/xrays_nginx.conf
+/uwsgi_params
+/manage.py
+/db.sqlite3
+/._uwsgi_params
+/._.DS_Store
+/.DS_Store
