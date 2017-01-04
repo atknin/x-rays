@@ -1,0 +1,260 @@
+{% extends "general/index.html" %}
+  {% block title %}
+  <title>Поляризуемость &#967; </title>
+  {% load static %}
+  
+    <script src="{% static "graph/plotly/plotly-latest.min.js"%}" ></script>
+    <script src="{% static "bootstrap/js/tooltip.js"%}"></script>
+    <script src="{% static "bootstrap/js/popover.js"%}"></script>
+
+
+
+    <style type="text/css">
+      .loader { 
+          background-image: url('http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_8.gif');
+          background-repeat: no-repeat;
+          background-position: 50% 50%; 
+          background-size: 20px 80%;
+          color: transparent;
+          background-color: transparent;
+
+      }
+      .check_danger{
+        background-color: #d9534f; 
+
+      }
+
+
+    </style>
+  {% endblock %}
+{% block logo %} 
+   <a href="/"> HOME</a>
+{% endblock %}
+{% block content %}
+  <div class="row" style="height: 500px">    
+
+    <div class="col-md-3" style=" overflow:auto; border-color: #eee; border-width: 1px; height: 250px">   
+      <table class="table table-hover" id = "inputgroup_check_choose_crystal_parent">
+       {% for crystal in crystals %}
+          <tr>
+            <td ><input type="radio" name="crystal" id = "{{crystal.id}}" value="{{crystal.id}}"></td>
+            <td >
+            <label for = "{{crystal.id}}">{{crystal.name}} </label>
+
+              <a data-toggle="tooltip" data-placement="bottom" title="{{crystal.short_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{crystal.crystal_system}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;=&nbsp;{{crystal.a}}&nbsp;&#8491;; b&nbsp;=&nbsp;{{crystal.a}}&nbsp;&#8491;; c&nbsp;=&nbsp;{{crystal.a}}&nbsp;&#8491;; &#945;&nbsp;=&nbsp;{{crystal.alfa|floatformat:0}}&nbsp;&deg;; &beta;&nbsp;=&nbsp;{{crystal.beta|floatformat:0}}&nbsp;&deg;; &#947;&nbsp;=&nbsp;{{crystal.gamma|floatformat:0}}&nbsp;&deg;;" >
+                <span class="badge image">?</span>
+              </a>
+            </td>
+            
+          </tr>
+        {% endfor %}
+      </table>
+
+    </div>
+
+
+
+     <div class="col-md-4 " > <!-- Вторая колонка -->
+
+        <div class="row"> <!-- Индексы МИЛЛЕРА -->
+
+          <div class="col-md-6">
+            <div class="row">
+              <div class="input-group " id = "inputgroup_check_h_index" >
+                <span class="input-group-addon" id="sizing-addon1"><small>Miller Indices</small></span>
+                <input type="text"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index" aria-describedby="basic-addon3">
+              </div>
+            </div>
+            <div class="row" style="margin-top: 12px">
+              <select class="form-control" id ='lab_source' size="6" onChange="document.getElementById('wavelength').value = this.value; document.getElementById('energy_val').value = (12398/this.value).toFixed(4);">
+              {%for source in lab_source%}
+                <option value="{{source.wavelength}}"><small>{{source.name}}-{{source.wavelength|floatformat:3}} &#8491;</small></option>
+              {% endfor %}
+              </select>  
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6" id = "inputgroup_check_k_index">
+                <input type="text" style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index" aria-describedby="basic-addon3">
+              </div>
+
+              <div class="col-md-6" id = "inputgroup_check_l_index">
+                <input type="text" style="text-align: center;" value="0" placeholder="l"  class="form-control" id="l_index" aria-describedby="basic-addon3">
+              </div>
+            </div>
+
+            <div class="row">
+              <dir class="col-md-12">
+                <div class="input-group" id = "inputgroup_check_wave">
+                  <input type="text" class="form-control" id ="wavelength"  placeholder="wavelength" \
+                  onChange="document.getElementById('energy_val').value = (12398/this.value).toFixed(4);document.getElementById('lab_source').value = 0;">
+                  <span class="input-group-addon">&#8491;</span>
+                </div> 
+                <div class="input-group" id = "inputgroup_check_energy" style="margin-top: 5px;">
+                  <input type="text" id='energy_val' class="form-control" placeholder="energy" \ 
+                  onChange="document.getElementById('wavelength').value = (12398/this.value).toFixed(4);document.getElementById('lab_source').value = 0;">
+                  <span class="input-group-addon">eV</span>
+                </div>
+                <div class="input-group" style="margin-top: 10px;">
+                   
+                  <div class="input-group-btn">
+                    <button type="button" id="compute" class="btn btn-default" style="width: 100%;">Compute...</button>
+                  </div>
+                  <span class="input-group-addon " id="loader_addon" style="background-color: transparent;"></span>
+                </div>
+              </dir>
+              
+            </div>
+          </div>
+
+       </div><!-- / Индексы МИЛЛЕРА -->
+
+       <div class="row" style="margin-right: 2px">
+            <textarea class="form-control" rows="13" id = "output_data"></textarea>
+
+        </div>
+     </div><!-- / Вторая колонка -->
+
+     <div class="col-md-5">
+      <div class="row" id="myDiv""><!-- Plotly chart will be drawn inside this DIV --></div>
+     </div>
+  </div>
+
+<!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
+<script type="text/javascript">
+ $(function() {
+    $("#compute").click(function() {
+      $("#loader_addon").addClass("loader"); //анимациая загрузки
+
+      var hkl_valid_array = ['-9' ,'-8' ,'-7' ,'-6' ,'-5' ,'-4' ,'-3' ,'-2' ,'-1', '0','1' ,'2' ,'3' ,'4' ,'5' ,'6' ,'7' ,'8' ,'9' ]
+      var flag = false
+
+      if (!$.isNumeric($('#wavelength').val())){ // проверка, длина волны это число или нет, если нет то покрасить красным input
+        $("#inputgroup_check_wave").addClass("has-error");
+        $("#inputgroup_check_energy").addClass("has-error");
+        flag = true;   
+        $("#loader_addon").removeClass("loader");    
+      }
+      if ($.inArray($('#h_index').val(), hkl_valid_array) == -1){
+         $("#inputgroup_check_h_index").addClass("has-error");
+        flag = true;
+        $("#loader_addon").removeClass("loader");
+      }
+      if ($.inArray($('#k_index').val(), hkl_valid_array) == -1){
+         $("#inputgroup_check_k_index").addClass("has-error");
+        flag = true;
+        $("#loader_addon").removeClass("loader");
+      }
+      if ($.inArray($('#l_index').val(), hkl_valid_array) == -1){
+         $("#inputgroup_check_l_index").addClass("has-error");
+        flag = true;
+        $("#loader_addon").removeClass("loader");
+      }
+      if (!$('input[name=crystal]').is(':checked')){
+         $("#inputgroup_check_choose_crystal_parent").addClass("check_danger");
+        flag = true;
+        $("#loader_addon").removeClass("loader");
+      }
+      if ($('#h_index').val() == 0 &&  $('#k_index').val() == 0 &&  $('#l_index').val()==0){
+        flag = true;
+        $("#inputgroup_check_k_index").addClass("has-error");
+        $("#inputgroup_check_h_index").addClass("has-error");
+        $("#inputgroup_check_l_index").addClass("has-error");
+        alert(' h=k=l=0 !!!');
+        $("#loader_addon").removeClass("loader");
+      }
+
+      if (flag != true) { 
+        $.ajaxSetup({data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+
+        var compute_dict = {};
+        compute_dict["wavelength"] = $('#wavelength').val();
+        compute_dict["h"] = $('#h_index').val();
+        compute_dict["k"] = $('#k_index').val();
+        compute_dict["l"] = $('#l_index').val();
+        compute_dict["crystal_id"] = $('input[name=crystal]').filter(':checked').val()
+
+
+        $.post("compute/", compute_dict ,function(data) {
+          
+          var text_out = 'Угол Брегга = '+ data.bragg + '\n' + 
+          'X0 = (' +data.X0_real+ ' + i'+data.X0_imag+')E-7' + 
+          '\n' + 'Xh = (' + data.Xh_real+ ' + i'+data.Xh_imag+')E-7' + '\n' + 
+          'Полуширина: ' + data.delta + '\n' +
+          'межпл-ое,  d = ' + data.dprmtr + '\n' +
+          'Глубина экстинкции: ' + data.extintion+ ' мкм';
+
+          $('#output_data').val(text_out);
+            var trace1 = {
+              x: data.x_darwin, 
+              y: data.y_darwin, 
+              type: 'scatter'
+            };
+            var data = [trace1];
+
+            var layout = {
+              title: 'Darwin curve for perfect crystals',
+              xaxis: {
+                title: 'deviation from the Bragg angle',
+                titlefont: {
+                  family: 'Courier New, monospace',
+                  size: 18,
+                  color: '#7f7f7f'
+                }
+              },
+              yaxis: {
+                title: '|R|',
+                titlefont: {
+                  family: 'Courier New, monospace',
+                  size: 18,
+                  color: '#7f7f7f'
+                }
+              }
+            };
+            Plotly.newPlot('myDiv', data, layout);
+
+          $("#loader_addon").removeClass("loader");//убрать анимациая загрузки
+        });
+
+      };
+      
+    });
+    // как только мы прикаснемся к одному из .. окон удалится класс окрасски
+      $("#inputgroup_check_wave, #inputgroup_check_energy, #lab_source").click(function(){
+          $("#inputgroup_check_energy").removeClass("has-error");
+          $("#inputgroup_check_wave").removeClass("has-error");
+      });
+
+      $("#h_index").click(function(){
+          $("#inputgroup_check_h_index").removeClass("has-error");
+
+      });
+      $("#k_index").click(function(){
+          $("#inputgroup_check_k_index").removeClass("has-error");
+          
+      });
+      $("#l_index").click(function(){
+          $("#inputgroup_check_l_index").removeClass("has-error");
+          
+      });
+      $("#inputgroup_check_choose_crystal_parent").click(function(){
+         $("#inputgroup_check_choose_crystal_parent").removeClass("check_danger");
+
+     
+      });
+      // \ как только мы прикаснемся к одному из .. окон удалится класс окрасски
+
+      $(document).ready(function(){ // подсказка при наведении
+          $('[data-toggle="tooltip"]').tooltip();   
+      }); 
+
+  });
+
+</script>
+
+
+{% endblock %}

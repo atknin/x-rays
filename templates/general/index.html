@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"> <!-- НЕ ЗАБЫТЬ УБРАТЬ -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="atknin_mindibekov">
+
+    <link rel="icon" href="{% static "icon/icon.png" %}">
+
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap/css/jumbotron-narrow.css" %}" rel="stylesheet">
+    <link href="{% static "bootstrap/css/own1.css" %}" rel="stylesheet">
+    <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
+
+
+    
+
+    
+
+
+
+   
+
+
+
+    {% block title%}
+    <title>X-RAYS</title>
+    {% endblock %}
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <!-- <li role="presentation" class="active"><a href="#">Home</a></li> -->
+            <!-- <li role="presentation"><a href="/about/">Об авторах</a></li> -->
+            <!-- <li role="presentation"><a href="#">Contact</a></li> -->
+          </ul>
+        </nav>
+
+        <h3 class="text-muted">
+          {% block logo %} 
+            X-Rays.world
+          {% endblock %}
+        </h3>
+      </div>
+
+
+      <div class="row marketing" style="height: 500px;"><!-- основное тело -->
+         {% block content %}
+
+          <div class="col-lg-3"><!-- слева минюшка -->
+            <ul class="nav nav-pills nav-stacked">
+
+              <li role="presentation" style="background: #D5D5D5;">
+              <a href="/polarizability/" style="color: #555; ">
+                <h4 class="list-group-item-heading">Поляризумость   &#967; <sub>0,h</sub>  </h4> <br> 
+                <p class="list-group-item-text"> #атомный фактор #структурный фактор #температурный 
+                фактор #собственная кривая отражения</p></a></li>
+
+              <li role="presentation" style="background: #D5D5D5;">
+              <a href="/diffraction/" style="color: #555; "><h4>Дифракция </h4> <br> 
+              #собери свою схему дифракции</a></li>
+
+            </ul>
+          </div><!-- / слева минюшка -->
+
+
+           <div class="col-lg-9">
+          </div>
+        {% endblock %}
+      </div><!-- / основное тело -->
+
+
+
+
+      <footer class="footer" align = center>
+        <p>&copy; 2016 ФНИЦ "Кристаллография и фотоника РАН", РМАиСИ 
+        <br> 
+        <a href="/about/">об авторах</a> | <a href="/updates/">обновления</a> | <a href="#">обратная связь</a>
+         
+        <br>
+        данный сайт разработан при поддержке РФФИ (проект №16-32-60045 мол_а_дк)</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+  </body>
+</html>
