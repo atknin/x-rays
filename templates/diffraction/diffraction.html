@@ -748,6 +748,9 @@
   diffraction_compute['status'] = 'from front'
   $(function() {
     $("#compute_button").click(function() {
+      $.ajaxSetup({data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        }})
       $.post("compute/", diffraction_compute ,function(data) {
         console.log(data.status)
       });
