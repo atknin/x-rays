@@ -38,7 +38,7 @@ def compute(request):
 	message['instrument'] = 'diffraction'
 	if request.is_ajax():
 		message['status'] = "ok"
-		sender.send_msg("Atknin", message)
+		sender.send_msg("Atknin", str(message))
 	else:
 		message['status'] = "error"
 	return JsonResponse(message)
