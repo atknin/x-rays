@@ -12,6 +12,14 @@ import sys, math, cmath, os, re#, scipy # re - для работы с регул
 from django.http import JsonResponse
 import numpy as np
 import time
+#------для телеграма------------
+from pytg import Telegram
+tg = Telegram(
+	telegram="/home/atknin/tg/bin/telegram-cli",
+	pubkey_file="/home/atknin/tg/tg-server.pub")
+receiver = tg.receiver
+sender = tg.sender
+#------для телеграма------------
 
 
 def diffraction(request):
@@ -22,10 +30,15 @@ def diffraction(request):
 	return render(
 	 	request, 'diffraction/diffraction.html', args
 	 	)
+
+
+
 def compute(request):
 	message = {}
+	message['instrument'] = 'diffraction'
 	if request.is_ajax():
 		message['status'] = "ok"
+		sender.send_msg("Atknin", message)
 	else:
 		message['status'] = "error"
 	return JsonResponse(message)
