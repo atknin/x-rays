@@ -5,4 +5,5 @@ from diffraction import views
 
 urlpatterns = [
 	url(r'^$', views.diffraction),
+    url(r'^compute/', views.compute), 
 ]

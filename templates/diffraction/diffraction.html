@@ -740,11 +740,18 @@
       $("#l_index3").click(function(){
           $("#inputgroup_check_l_index3").removeClass("has-error"); 
       });
-
-      
  // \ как только мы прикаснемся к одному из .. окон удалится класс окрасски
-
-
+  });
+</script>
+<script type="text/javascript">
+  diffraction_compute = {}
+  diffraction_compute['status'] = 'from front'
+  $(function() {
+    $("#compute_button").click(function() {
+      $.post("compute/", diffraction_compute ,function(data) {
+        console.log(data.status)
+      });
+    });
   });
 
 </script>

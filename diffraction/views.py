@@ -14,3 +14,10 @@ def diffraction(request):
 	return render(
 	 	request, 'diffraction/diffraction.html', args
 	 	)
+def compute(request):
+	message = {}
+	if request.is_ajax():
+		message['status'] = "ok"
+	else:
+		message['status'] = "error"
+	return JsonResponse(message)
