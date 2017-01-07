@@ -133,7 +133,7 @@
       var  data = new Blob([window.y_download], {type: 'text/plain'});
       var textFile = null;
       textFile = window.URL.createObjectURL(data);
-      window.open(textFile,"_self")
+      window.open(textFile, 'Download');
     });
 
     $("#compute").click(function() {
