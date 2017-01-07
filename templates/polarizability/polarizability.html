@@ -196,9 +196,9 @@
           };
 
 
-          var  data = new Blob([data.for_downloading], {type: 'text/plain'});
+          var  data_download = new Blob([data.for_downloading], {type: 'text/plain'});
           var textFile = null;
-          textFile = window.URL.createObjectURL(data);
+          textFile = window.URL.createObjectURL(data_download);
           $("#get_data").attr('href',textFile);
 
 
