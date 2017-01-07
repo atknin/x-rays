@@ -130,7 +130,7 @@
  $(function() {
     
     $("#get_data").click(function() {
-      var  data = new Blob([window.y_download], {type: 'text/plain'});
+      var  data = new Blob([window.for_downloading], {type: 'text/plain'});
       var textFile = null;
       textFile = window.URL.createObjectURL(data);
       window.open(textFile, 'Download');
@@ -203,8 +203,7 @@
             text_out+= 'График не отображается: |R|<0.3'+ '\n'
           };
 
-          window.x_download = data.x_whole;
-          window.y_download = data.y_whole;
+          window.for_downloading = data.for_downloading;
 
 
 
