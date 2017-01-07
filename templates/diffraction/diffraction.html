@@ -747,14 +747,40 @@
 
   $(function() {
     $("#compute_button").click(function() {
+      // щелли и расстояния до источника
+      // источник - распределение по длине волны
+      // источник распределение по углу - полуширина гаусса
+      //область построения ? диапазон по углу и длине волны в графике
+      // область свертки, наверное прочитать а строить все на клиенте
+      // шаг по длине волны и по углу
+      // шаг сдвижки
+      // X0, - для всех кристаллов
+      // Xh - для всех кристаллов
+      // колличество кристаллов
+      // колличество щелей
+      // углы брегга для всех кристаллов
+      // тип сканирования
+
+
       var flag = false
-      console.log('total_elements: ',num_elem);
-      console.log('total_crystals: ',num_elem_crystal);
-      console.log('total_slits: ',num_elem_slit);
+      diffraction_compute['total_elements'] = num_elem-1;
+      diffraction_compute['total_crystals'] = num_elem_crystal-1;
+      diffraction_compute['total_slits'] = num_elem_slit-1;
+
+  // проверка на вшивость
+      // кристаллы
+      for (var i = 1; i < num_elem_crystal; i++) {
+          $('#x0_'+i).val()
+          $('#xh_'+i).val()
+      }
+      // щели
+      for (var i = 1; i < num_elem_crystal; i++) {
+          
+      }
 
 
 
-      // проверка на вшивость
+
 
 
 
