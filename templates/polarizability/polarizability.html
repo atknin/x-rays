@@ -128,8 +128,6 @@
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
  $(function() {
-    
-
     $("#compute").click(function() {
       $("#loader_addon").addClass("loader"); //анимациая загрузки
 
@@ -198,7 +196,7 @@
           };
 
 
-          var  data = new Blob([window.data.for_downloading], {type: 'text/plain'});
+          var  data = new Blob([data.for_downloading], {type: 'text/plain'});
           var textFile = null;
           textFile = window.URL.createObjectURL(data);
           $("#get_data").href = textFile;
