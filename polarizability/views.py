@@ -230,7 +230,7 @@ def compute(request):
 			
 			R=(2*eps-X0)/Xh/C
 			epslist.append(abs(R)*abs(R))
-			for_downloading+= (i/100-50)+'   '+abs(R)*abs(R) + '\n'
+			for_downloading+= str(i/100-50)+'   '+str(abs(R)*abs(R)) + '\n'
 
 			if (abs(R)*abs(R)) > 0.3 and schet==0: schet = i 
 			if (abs(R)*abs(R)) < 0.3 and schet > 0 and schet1 == 0: schet1 = i
