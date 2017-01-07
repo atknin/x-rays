@@ -1,0 +1,56 @@
+input1   [x1]    [y1] 
+input2   [x2]    [y2] 
+input3   [x3]    [y3] 
+
+
+
+
+______MATRICA_____
+
+element11	element12	element13
+element12 	element22	element23
+element13	element23	element33
+
+
+
+rasstoyanie12 = Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
+Math.pow((x2-x1),2)
+
+console.log('x',$(#).val);
+
+
+<input id = x1 value = 'sdasd'>
+
+x = $("#x1").val();
+y = $("#y1").val();
+
+
+
+<script>
+	var a = 10;
+
+	funct1{
+		//do smth
+	};
+
+	funct2{
+		//do smth
+		window.x + 3
+	};
+
+	funct3{
+		var window.x = 10;
+	};
+
+
+
+</script>
+
+
+
+
+
+___________________
+|				   |
+|				   |
+|__________________|

@@ -129,14 +129,6 @@
 <script type="text/javascript">
  $(function() {
     
-    $("#get_data").click(function() {
-      var  data = new Blob([window.for_downloading], {type: 'text/plain'});
-      var textFile = null;
-      textFile = window.URL.createObjectURL(data);
-      $(this).href = textFile;
-      $(this).click();
-      
-    });
 
     $("#compute").click(function() {
       $("#loader_addon").addClass("loader"); //анимациая загрузки
@@ -205,8 +197,11 @@
             text_out+= 'График не отображается: |R|<0.3'+ '\n'
           };
 
-          window.for_downloading = data.for_downloading;
 
+          var  data = new Blob([window.data.for_downloading], {type: 'text/plain'});
+          var textFile = null;
+          textFile = window.URL.createObjectURL(data);
+          $("#get_data").href = textFile;
 
 
           $('#output_data').val(text_out);
