@@ -381,7 +381,6 @@
 
     var width = document.getElementById('konva').offsetWidth;
     var height = document.getElementById('konva').offsetHeight;
-    console.log(width,height)
 
 
     var stage = new Konva.Stage({
@@ -449,7 +448,6 @@
         var centerY = draw_dict[i][2]-amplitude*0.9 -20;
 
         var anim = new Konva.Animation(function(frame) {
-            // console.log(Math.sin(frame.time * 2 * Math.PI / period));
             var x_cur = 0.5*amplitude * Math.sin(frame.time * 2 * Math.PI / period) + centerX
             var y_cur = -amplitude * Math.sin(frame.time * 2 * Math.PI / period) + centerY
             particles.setX(x_cur);
@@ -746,14 +744,26 @@
 <script type="text/javascript">
   diffraction_compute = {}
   diffraction_compute['status'] = 'from front'
+
   $(function() {
     $("#compute_button").click(function() {
-      $.ajaxSetup({data: {
-        csrfmiddlewaretoken: '{{ csrf_token }}'
-        }})
-      $.post("compute/", diffraction_compute ,function(data) {
-        console.log(data.status)
-      });
+      var flag = false
+      console.log('total_elements: ',num_elem);
+      console.log('total_crystals: ',num_elem_crystal);
+      console.log('total_slits: ',num_elem_slit);
+
+
+
+      // проверка на вшивость
+
+
+
+      // $.ajaxSetup({data: {
+      //   csrfmiddlewaretoken: '{{ csrf_token }}'
+      //   }})
+      // $.post("compute/", diffraction_compute ,function(data) {
+      //   console.log(data.status)
+      // });
     });
   });
 
