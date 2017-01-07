@@ -131,9 +131,7 @@
     
     $("#get_data").click(function() {
       var  data = new Blob([window.y_download], {type: 'text/plain'});
-      if (textFile !== null) {
-        window.URL.revokeObjectURL(textFile);
-      }
+      var textFile = null;
       textFile = window.URL.createObjectURL(data);
       $(this).src = textFile;
     });
