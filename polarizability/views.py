@@ -216,6 +216,7 @@ def compute(request):
 		schet1=0
 		epslist = []
 		max_pow_R = 0
+		x_whole = []
 		for i in range(0,10000):
 			dTeta = (i/100-50)*math.pi/180/3600
 
@@ -228,6 +229,7 @@ def compute(request):
 			
 			R=(2*eps-X0)/Xh/C
 			epslist.append(abs(R)*abs(R))
+			x_whole.append(i/100-50)
 
 			if (abs(R)*abs(R)) > 0.3 and schet==0: schet = i 
 			if (abs(R)*abs(R)) < 0.3 and schet > 0 and schet1 == 0: schet1 = i
@@ -250,7 +252,8 @@ def compute(request):
 		message['maximum'] = str(round(max_pow_R,4))
 		message['x_darwin'] = x
 		message['y_darwin'] = y
-
+		message['x_whole'] = x_whole
+		message['y_whole'] = epslist
 
 		
 

@@ -118,6 +118,9 @@
      </div><!-- / Вторая колонка -->
 
      <div class="col-md-5">
+      <div class="row" style="margin-left: 20px; margin-top: 10px;">
+        <button type="button" id = 'get_data' download="data.txt" class="btn btn-default btn-xs" style="display: none">get data.txt</button>
+      </div>
       <div class="row" id="myDiv""><!-- Plotly chart will be drawn inside this DIV --></div>
      </div>
   </div>
@@ -125,6 +128,16 @@
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
  $(function() {
+    
+    $("#get_data").click(function() {
+      var  = new Blob([window.y_download], {type: 'text/plain'});
+      if (textFile !== null) {
+        window.URL.revokeObjectURL(textFile);
+      }
+      textFile = window.URL.createObjectURL(data);
+      $(this).src = textFile;
+    });
+
     $("#compute").click(function() {
       $("#loader_addon").addClass("loader"); //анимациая загрузки
 
@@ -192,6 +205,11 @@
             text_out+= 'График не отображается: |R|<0.3'+ '\n'
           };
 
+          window.x_download = data.x_whole;
+          window.y_download = data.y_whole;
+
+
+
           $('#output_data').val(text_out);
             var trace1 = {
               x: data.x_darwin, 
@@ -223,11 +241,14 @@
             Plotly.newPlot('myDiv', data, layout);
 
           $("#loader_addon").removeClass("loader");//убрать анимациая загрузки
+          $("#get_data").show();//покажем кнопку для выгрузки
+          
         });
 
       };
       
     });
+
     // как только мы прикаснемся к одному из .. окон удалится класс окрасски
       $("#inputgroup_check_wave, #inputgroup_check_energy, #lab_source").click(function(){
           $("#inputgroup_check_energy").removeClass("has-error");
