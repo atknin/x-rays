@@ -215,7 +215,7 @@ def compute(request):
 		schet=0
 		schet1=0
 		epslist = []
-		
+		max_pow_R = 0
 		for i in range(0,10000):
 			dTeta = (i/100-50)*math.pi/180/3600
 
@@ -231,6 +231,8 @@ def compute(request):
 
 			if (abs(R)*abs(R)) > 0.3 and schet==0: schet = i 
 			if (abs(R)*abs(R)) < 0.3 and schet > 0 and schet1 == 0: schet1 = i
+			if max_pow_R<(abs(R)*abs(R)):
+				max_pow_R = (abs(R)*abs(R))
 
 		otstup = 150 # для того чтобы обрезать диапазон вывода графика
 		y = epslist[schet-otstup:schet1+otstup:1]	
@@ -245,6 +247,7 @@ def compute(request):
 		message['delta'] = str(round(delta,4))
 		message['dprmtr'] = str(round(dprmtr, 4))
 		message['extintion'] = str(round(Ld*1e-3, 3))
+		message['maximum'] = str(round(max_pow_R,4))
 		message['x_darwin'] = x
 		message['y_darwin'] = y
 

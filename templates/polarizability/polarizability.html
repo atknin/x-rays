@@ -186,7 +186,12 @@
           '\n' + 'Xh = (' + data.Xh_real+ ' + i'+data.Xh_imag+')E-7' + '\n' + 
           'Полуширина: ' + data.delta + '\n' +
           'межпл-ое,  d = ' + data.dprmtr + '\n' +
-          'Глубина экстинкции: ' + data.extintion+ ' мкм';
+          'Глубина экстинкции: ' + data.extintion+ ' мкм' + '\n'+
+          'Максимальный коэффициент отражения ' + data.maximum;
+
+          if (data.maximum<0.3) {
+            text_out+= 'график не отображается: (R*R<0.3) - маленьнкий коэффициент отражения'
+          };
 
           $('#output_data').val(text_out);
             var trace1 = {
@@ -194,7 +199,7 @@
               y: data.y_darwin, 
               type: 'scatter'
             };
-            console.log(data.y_darwin)
+
             var data = [trace1];
 
             var layout = {
