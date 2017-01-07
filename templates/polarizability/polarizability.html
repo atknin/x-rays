@@ -119,7 +119,7 @@
 
      <div class="col-md-5">
       <div class="row" style="margin-left: 20px; margin-top: 10px;">
-        <a id = 'get_data' download="data.txt" style="display: none">get data.txt</a>
+        <a id ="get_data" download="data.txt" style="display: none">get data.txt</a>
       </div>
       <div class="row" id="myDiv""><!-- Plotly chart will be drawn inside this DIV --></div>
      </div>
@@ -199,7 +199,7 @@
           var  data = new Blob([data.for_downloading], {type: 'text/plain'});
           var textFile = null;
           textFile = window.URL.createObjectURL(data);
-          $("#get_data").href = textFile;
+          $("#get_data").attr('href',textFile);
 
 
           $('#output_data').val(text_out);
