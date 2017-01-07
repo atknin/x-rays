@@ -130,7 +130,7 @@
  $(function() {
     
     $("#get_data").click(function() {
-      var  = new Blob([window.y_download], {type: 'text/plain'});
+      var  data = new Blob([window.y_download], {type: 'text/plain'});
       if (textFile !== null) {
         window.URL.revokeObjectURL(textFile);
       }
