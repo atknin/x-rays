@@ -133,7 +133,9 @@
       var  data = new Blob([window.for_downloading], {type: 'text/plain'});
       var textFile = null;
       textFile = window.URL.createObjectURL(data);
-      window.open(textFile, 'Download');
+      $(this).href = textFile;
+      $(this).click();
+      window.URL.revokeObjectURL(textFile);
     });
 
     $("#compute").click(function() {
