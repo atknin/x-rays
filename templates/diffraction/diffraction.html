@@ -4,6 +4,8 @@
   {% load static %}
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="{% static "konva/konva.min.js"%}" ></script>
+  <script src="{% static "fabric/fabric.min.js"%}" ></script>
+
 
 
   <link href="{% static "diffraction/css.css" %}" rel="stylesheet">
@@ -112,9 +114,9 @@
       <div class="row" id="konva" style="height: 300px;"></div>
       <div class="row" style="margin-top: 30px;">
         <canvas width=800 height=300 id="container" style=" margin: 50px;"></canvas>
-        <img src="img/detector.png" id="detector" style="display: none;">
-        <img src="img/source.png" id="source" style="display: none;">
-        <img src="img/sample.png" id="sample" style="display: none;">
+        <img src="{% static 'diffraction/img/detector.png' %}" id="detector" style="display: none;">
+        <img src="{% static 'diffraction/img/source.png' %}" id="source" style="display: none;">
+        <img src="{% static 'diffraction/img/sample.png' %}" id="sample" style="display: none;">
       </div>
 
       
