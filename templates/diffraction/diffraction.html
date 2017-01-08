@@ -108,7 +108,17 @@
         <!-- <div class="row" style="margin-top:10px;"><a id = "add_detector"><span class="badge image">Детектор</span></a> </div> -->
       </div>        
     </div>
-    <div class="col-md-10" id="konva" style="height: 300px;"></div>
+    <div class="col-md-10">
+      <div class="row" id="konva" style="height: 300px;"></div>
+      <div class="row" style="margin-top: 30px;">
+        <canvas width=800 height=300 id="container" style=" margin: 50px;"></canvas>
+        <img src="img/detector.png" id="detector" style="display: none;">
+        <img src="img/source.png" id="source" style="display: none;">
+        <img src="img/sample.png" id="sample" style="display: none;">
+      </div>
+
+      
+    </div>
 
   </div> <!-- /ДОСКА -->
   
@@ -792,6 +802,222 @@
       // });
     });
   });
+
+</script>
+<script>
+    var num_sample = 0;
+    var sample = {};
+
+    var canvas = new fabric.Canvas('container');
+    canvas.setBackgroundImage('img/background.png', canvas.renderAll.bind(canvas));
+
+
+    var crystal1 = new fabric.Rect({
+      width: 30,
+      height: 30,
+      left: 550,
+      top: 110,
+      stroke: '#aaf',
+      strokeWidth: 1,
+      fill: '#FAFAFA',
+      selectable: false,
+      name: 'на это место можно установить кристалл'
+    });
+    crystal1.scale(0.5)
+    canvas.add(crystal1);
+
+    var crystal2 = new fabric.Rect({
+      width: 30,
+      height: 30,
+      left: 430,
+      top: 150,
+      stroke: '#aaf',
+      strokeWidth: 1,
+      fill: '#FAFAFA',
+      selectable: false,
+      name: 'на это место можно установить кристалл'
+    });
+    crystal2.scale(0.5)
+    canvas.add(crystal2);
+
+    var crystal3 = new fabric.Rect({
+      width: 30,
+      height: 30,
+      left: 310,
+      top: 110,
+      stroke: '#aaf',
+      strokeWidth: 1,
+      fill: '#FAFAFA',
+      selectable: false,
+      name: 'на это место можно установить кристалл'
+
+    });
+    crystal3.scale(0.5);
+    canvas.add(crystal3);
+
+    var slit1 = new fabric.Rect({
+      width: 20,
+      height: 20,
+      left: 277,
+      top: 113,
+      stroke: '#95C3B3',
+      strokeWidth: 1,
+      fill: '#FAFAFA',
+      selectable: false,
+      angle: 90,
+      name: 'на это место можно установить щель'
+    });
+    slit1.scale(0.5)
+    canvas.add(slit1);
+
+    var slit1 = new fabric.Rect({
+      width: 20,
+      height: 20,
+      left: 500,
+      top: 130,
+      stroke: '#95C3B3',
+      strokeWidth: 1,
+      fill: '#FAFAFA',
+      selectable: false,
+      angle: 90,
+      name: 'на это место можно установить щель'
+    });
+    slit1.scale(0.5)
+    canvas.add(slit1);
+
+
+
+
+//--------- добавить источник --------------
+    
+    var source = new fabric.Image(document.getElementById('source'), {
+      left: 650,
+      top: 100,
+      // angle: 30,
+      opacity: 0.85,
+      shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+      selectable: false,
+      name: 'источник, нажмите для настройки'
+
+    });
+    source.scale(0.5);
+    canvas.add(source);
+
+// --------- добавть детектор ---------------
+    var detector = new fabric.Image(document.getElementById('detector'), {
+      left: 200,
+      top: 110,
+      // angle: 30,
+      width: 100,
+      height: 30,
+      opacity: 0.85,
+      shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+      selectable: false,
+      name: 'детектор, нажмите для настройки'
+
+    });
+    detector.scale(0.5);
+    canvas.add(detector);
+
+// --------------добавить образец ---------------
+    sample[''+num_sample] = new fabric.Image(document.getElementById('sample'), {
+      left: 45,
+      top: 30,
+      // angle: 30,
+      width: 100,
+      height: 30,
+      opacity: 0.85,
+      shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+      name: 'образец, перетащите для установки'
+    });
+    sample[''+num_sample].scale(0.5);
+    sample[''+num_sample].hasControls = sample[''+num_sample].hasBorders = false;
+    sample[''+num_sample].on('selected', function() {
+      // canvas.add(sample[''+num_sample]);
+    });
+
+    canvas.add(sample[''+num_sample]);
+
+
+
+
+
+
+// ---------при перетаскивании добавить на панель------
+    canvas.on({
+      'object:moving': onChange,
+      'object:scaling': onChange,
+      'object:rotating': onChange,
+    });
+
+    function onChange(options) {
+
+      options.target.setCoords();
+      canvas.forEachObject(function(obj) {
+        if (obj === options.target) return;
+        obj.setOpacity(options.target.intersectsWithObject(obj) ? 0.5 : 1);
+      });
+    }
+
+
+// -когда мышь сверху сделать объект больше, вывести название
+    var oText;
+    canvas.on('mouse:over', function(options) {
+      if (options.target) {var text_info;
+        // console.log('an object was clicked! ', options.target.name);
+        options.target.scale(0.7);
+        // ------надпись информации-------------
+        var text = ''+options.target.name;
+
+        oText = new fabric.IText(text, {
+          left: 4,
+          top: 1,
+          fontFamily: 'Bree Serif',
+          fontSize: 10,
+          cache: false
+        });
+        canvas.add(oText);
+
+        canvas.renderAll();
+
+      }
+    });
+
+    canvas.on('mouse:out', function(options) {
+      if (options.target) {
+        options.target.scale(0.5);
+        canvas.remove(oText);
+        canvas.renderAll();
+      }
+    });
+
+
+
+
+    // rect.set({ left: 20, top: 50 });
+    // canvas.renderAll();
+
+//   canvas.on({
+//     'mouse:down': function(e) {
+//       if (e.target) {
+//         e.target.opacity = 0.5;
+//         canvas.renderAll();
+//       }
+//     },
+//     'mouse:up': function(e) {
+//       if (e.target) {
+//         e.target.opacity = 1;
+//         canvas.renderAll();
+//       }
+//     },
+//     'object:moved': function(e) {
+//       e.target.opacity = 0.5;
+//     },
+//     'object:modified': function(e) {
+//       e.target.opacity = 1;
+//     }
+//   });
+  // this.__canvases.push(canvas);
 
 </script>
 {% endblock %}
