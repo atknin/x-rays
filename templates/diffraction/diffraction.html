@@ -25,7 +25,10 @@
       background: #FAFAFA; /* Цвет фона */
       min-height: 300px;
     }
-
+    .settings{
+      margin-left: 20px;
+      margin-top: 30px;
+    }
  
     
     .radius {
@@ -66,7 +69,7 @@
               <span class="sr-only">Error:</span>
             </div>
   </div><!-- /ошибка -->
-  <div class="row"> 
+  <div class="row" style="background-color: #f2f2f2;"> 
     <div class="col-md-7" style="min-height: 350px;"> <!-- ДОСКА -->
       <canvas width=800 height=300 id="fabric" style=" margin-left: 5px; border: 1px dashed #777; border-radius: 18px;"></canvas>
       <div style="display: none;">
@@ -82,7 +85,7 @@
 
     <div class="col-md-4" > <!-- НАСТРОЙКИ -->
     <!-- ИСТОЧНИК -->
-      <div class="row board" id="source_settings" style="margin-left: 10px;">  
+      <div class="row settings" id="source_settings" style="margin-left: 10px;">  
       <span class="label label-primary">Параметры источника</span>
         <div class="form-group">
           <label>Анод:</label>
@@ -111,7 +114,7 @@
     <!-- / ИСТОЧНИК -->
 
     <!-- ЩЕЛЬ 1 -->
-      <div class="row board" id="slit1_settings" style="margin-left: 10px;">
+      <div class="row settings" id="slit1_settings" style="margin-left: 10px;">
         <span class="label label-primary">Параметры щели №1</span>
         <div class="form-group">
           <label>расстояние до источника</label>
@@ -131,7 +134,7 @@
     <!-- / ЩЕЛЬ 1 -->
 
     <!-- ЩЕЛЬ 2 -->
-      <div class="row board" id="slit2_settings" style="margin-left: 10px; ">
+      <div class="row settings" id="slit2_settings" style="margin-left: 10px; ">
         <span class="label label-primary">Параметры щели №2</span>
         <div class="form-group">
           <label>расстояние до источника</label>
@@ -151,7 +154,7 @@
       <!-- /ЩЕЛЬ 2 -->
 
   <!-- кристалл1 -->
-      <div class="row board" id="crystal1_settings" name = "1" style="margin-left: 10px" > 
+      <div class="row settings" id="crystal1_settings" name = "1" style="margin-left: 10px" > 
         <div style="margin-bottom: 20px"><span class="label label-primary">Параметры кристалла №1</span></div>
 
             <div class="col-md-4">
@@ -208,7 +211,7 @@
   <!-- / кристалл1 -->
 
   <!-- кристалл2 -->
-      <div class="row board" id="crystal2_settings" name = "2" style="margin-left: 10px" > 
+      <div class="row settings" id="crystal2_settings" name = "2" style="margin-left: 10px" > 
         <div style="margin-bottom: 20px"><span class="label label-primary">Параметры кристалла №2</span></div>
 
             <div class="col-md-4">
@@ -266,7 +269,7 @@
 
 
   <!-- кристалл3 -->
-      <div class="row board" id="crystal3_settings" name = "3" style="margin-left: 10px" > 
+      <div class="row settings" id="crystal3_settings" name = "3" style="margin-left: 10px" > 
           <div style="margin-bottom: 20px"><span class="label label-primary">Параметры кристалла №3</span></div>
         
             <div class="col-md-4">
@@ -323,7 +326,7 @@
   <!-- / кристалл3 -->
 
   <!-- настроить детектор -->
-      <div class="row board" id="detector_settings" style="margin-left: 10px;">
+      <div class="row settings" id="detector_settings" style="margin-left: 10px;">
         <div style="margin-bottom: 20px"><span class="label label-primary">Параметры детектора</span></div>
         отсутсвуют
       </div>
