@@ -18,31 +18,19 @@
       color: transparent;
       background-color: transparent;
     }
-    .panel{
-      margin-left: 20px;
-      border: 1px dashed #777; /* Параметры границы */
-      border-radius: 18px;
-      background: #FAFAFA; /* Цвет фона */
-      min-height: 300px;
-    }
+    
     .settings{
-      margin-left: 20px;
+      margin-left: 30px;
       margin-top: 30px;
     }
  
-    
-    .radius {
-      background: #f0f0f0; /* Цвет фона */
-      border: 1px dashed black; /* Параметры рамки */
-      margin-top: 100px; /* Отступ снизу */
-      height: 200px;
-      border-radius: 8px;
-      margin-right: 4px;
-    }
 
     #fabric{
         background-color: white;
         margin-top: 30px;
+        margin-left: 5px;
+        border: 1px dashed #777;
+        border-radius: 18px;
     }
 
   </style>
@@ -65,7 +53,7 @@
   </div><!-- /ошибка -->
   <div class="row" style="background-color: #FAFAFA; height: 360px;"> 
     <div class="col-md-7"> <!-- ДОСКА -->
-      <canvas width=800 height=300 id="fabric" style=" margin-left: 5px; border: 1px dashed #777; border-radius: 18px;"></canvas>
+      <canvas width=800 height=300 id="fabric"></canvas>
       <div style="display: none;">
         <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
         <img src="{% static 'diffraction/img/source.png' %}" id="source">
