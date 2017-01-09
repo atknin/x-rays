@@ -683,6 +683,7 @@
             options.target.selectable = false;
             options.target.lockMovementX = true;
             options.target.lockMovementY = true;
+            options.target.name = 'щель, нажмите для выбора параметров';
             options.target.class = 'slit1_settings';
             obj.class += 'ed'
             if(num_slit<2) addSlit();
@@ -698,6 +699,7 @@
             options.target.selectable = false;
             options.target.lockMovementX = true;
             options.target.lockMovementY = true;
+            options.target.name = 'щель, нажмите для выбора параметров';
             options.target.class = 'slit2_settings';
 
 
@@ -750,6 +752,7 @@
             options.target.angle = 180;
             obj.class += 'ed'
             options.target.class = 'crystal2_settings';
+            options.target.name = 'кристалл, нажмите для выбора параметров';
             if(num_sample<3) addSample();
             result_scheme['sample2'][0] = true;
 
@@ -771,6 +774,7 @@
             options.target.lockMovementX = true;
             options.target.lockMovementY = true;
             obj.class += 'ed';
+            options.target.name = 'кристалл, нажмите для выбора параметров';
             options.target.class = 'crystal3_settings';
 
             if(num_sample<3) addSample();
