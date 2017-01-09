@@ -806,22 +806,36 @@
 </script>
 <script>
     var num_sample = 0;
+    var num_slit = 0;
     var sample = {};
+    var slit = {};
+    var result_scheme = {
+      'source':['true'],
+      'sample1':['false'],
+      'slit1':['false'],
+      'sample2':['false'],
+      'slit2':['false'],
+      'sample3':['false'],
+      'detector':['true']
+    };
 
-    var canvas = new fabric.Canvas('fabric');
-    canvas.setBackgroundImage("{% static 'diffraction/img/background.png' %}", canvas.renderAll.bind(canvas));
+
+
+    var canvas = new fabric.Canvas('container');
+    canvas.setBackgroundImage('img/background.png', canvas.renderAll.bind(canvas));
 
 
     var crystal1 = new fabric.Rect({
       width: 30,
       height: 30,
-      left: 550,
-      top: 110,
+      left: 570,
+      top: 135,
       stroke: '#aaf',
       strokeWidth: 1,
       fill: '#FAFAFA',
       selectable: false,
-      name: 'на это место можно установить кристалл'
+      name: 'на это место можно установить кристалл',
+      class: 'place_sample1'
     });
     crystal1.scale(0.5)
     canvas.add(crystal1);
@@ -829,13 +843,14 @@
     var crystal2 = new fabric.Rect({
       width: 30,
       height: 30,
-      left: 430,
-      top: 150,
+      left: 464,
+      top: 135,
       stroke: '#aaf',
       strokeWidth: 1,
       fill: '#FAFAFA',
       selectable: false,
-      name: 'на это место можно установить кристалл'
+      name: 'на это место можно установить кристалл',
+      class: 'place_sample2'
     });
     crystal2.scale(0.5)
     canvas.add(crystal2);
@@ -843,13 +858,14 @@
     var crystal3 = new fabric.Rect({
       width: 30,
       height: 30,
-      left: 310,
-      top: 110,
+      left: 350,
+      top: 135,
       stroke: '#aaf',
       strokeWidth: 1,
       fill: '#FAFAFA',
       selectable: false,
-      name: 'на это место можно установить кристалл'
+      name: 'на это место можно установить кристалл',
+      class: 'place_sample3'
 
     });
     crystal3.scale(0.5);
@@ -858,32 +874,34 @@
     var slit1 = new fabric.Rect({
       width: 20,
       height: 20,
-      left: 277,
-      top: 113,
+      left: 540,
+      top: 138,
       stroke: '#95C3B3',
       strokeWidth: 1,
       fill: '#FAFAFA',
       selectable: false,
       angle: 90,
-      name: 'на это место можно установить щель'
+      name: 'на это место можно установить щель',
+      class: 'place_slit1'
     });
     slit1.scale(0.5)
     canvas.add(slit1);
 
-    var slit1 = new fabric.Rect({
+    var slit2 = new fabric.Rect({
       width: 20,
       height: 20,
-      left: 500,
-      top: 130,
+      left: 413,
+      top: 138,
       stroke: '#95C3B3',
       strokeWidth: 1,
       fill: '#FAFAFA',
       selectable: false,
       angle: 90,
-      name: 'на это место можно установить щель'
+      name: 'на это место можно установить щель',
+      class: 'place_slit2'
     });
-    slit1.scale(0.5)
-    canvas.add(slit1);
+    slit2.scale(0.5)
+    canvas.add(slit2);
 
 
 
@@ -892,12 +910,13 @@
     
     var source = new fabric.Image(document.getElementById('source'), {
       left: 650,
-      top: 100,
+      top: 125,
       // angle: 30,
       opacity: 0.85,
       shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
       selectable: false,
-      name: 'источник, нажмите для настройки'
+      name: 'источник, нажмите для настройки',
+      class: 'source_settings'
 
     });
     source.scale(0.5);
@@ -905,40 +924,62 @@
 
 // --------- добавть детектор ---------------
     var detector = new fabric.Image(document.getElementById('detector'), {
-      left: 200,
-      top: 110,
+      left: 250,
+      top: 135,
       // angle: 30,
       width: 100,
       height: 30,
       opacity: 0.85,
       shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
       selectable: false,
-      name: 'детектор, нажмите для настройки'
+      name: 'детектор, нажмите для настройки',
+      class: 'detector_settings'
 
     });
     detector.scale(0.5);
     canvas.add(detector);
 
 // --------------добавить образец ---------------
-    sample[''+num_sample] = new fabric.Image(document.getElementById('sample'), {
-      left: 45,
-      top: 30,
-      // angle: 30,
-      width: 100,
-      height: 30,
-      opacity: 0.85,
-      shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
-      name: 'образец, перетащите для установки'
-    });
-    sample[''+num_sample].scale(0.5);
-    sample[''+num_sample].hasControls = sample[''+num_sample].hasBorders = false;
-    sample[''+num_sample].on('selected', function() {
-      // canvas.add(sample[''+num_sample]);
-    });
+    function addSample(){
+      sample[''+num_sample] = new fabric.Image(document.getElementById('sample'), {
+        left: 45,
+        top: 50,
+        // angle: 30,
+        opacity: 0.85,
+        shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+        name: 'кристалл, перетащите для установки',
+        class: 'sample'
+      });
+      sample[''+num_sample].scale(0.5);
+      sample[''+num_sample].hasControls = sample[''+num_sample].hasBorders = false;
+      canvas.add(sample[''+num_sample]);
+      num_sample++;
+    };
+    addSample();
 
-    canvas.add(sample[''+num_sample]);
+    
 
-
+// --------------добавить щель ---------------
+    function addSlit(){
+      slit[''+num_slit] = new fabric.Image(document.getElementById('slit'), {
+        left: 60,
+        top: 100,
+        // angle: 30,
+        opacity: 0.85,
+        shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+        name: 'щель, перетащите для установки',
+        class: 'slit'
+      });
+      slit[''+num_slit].scale(0.3);
+      slit[''+num_slit].hasControls = slit[''+num_slit].hasBorders = false;
+      slit[''+num_slit].on('selected', function() {
+        console.log('pushed');
+      });
+      canvas.add(slit[''+num_slit]);
+      num_slit++;
+    };
+    addSlit();
+      
 
 
 
@@ -946,8 +987,9 @@
 // ---------при перетаскивании добавить на панель------
     canvas.on({
       'object:moving': onChange,
-      'object:scaling': onChange,
-      'object:rotating': onChange,
+      // 'object:scaling': onChange,
+      // 'object:rotating': onChange,
+
     });
 
     function onChange(options) {
@@ -955,7 +997,121 @@
       options.target.setCoords();
       canvas.forEachObject(function(obj) {
         if (obj === options.target) return;
-        obj.setOpacity(options.target.intersectsWithObject(obj) ? 0.5 : 1);
+        
+        if(options.target.intersectsWithObject(obj)){
+          var aa = options.target.intersectsWithObject(obj);
+          // console.log('ok');
+          if (options.target.class == 'slit' && 
+                          obj.class =='place_slit1') {
+            options.target.top = obj.top - options.target.height/10;
+            options.target.left = obj.left - options.target.width/2;
+            obj.setOpacity(0);
+            options.target.selectable = false;
+            options.target.lockMovementX = true;
+            options.target.lockMovementY = true;
+            options.target.class = 'slit1_settings';
+            obj.class += 'ed'
+            if(num_slit<2) addSlit();
+            result_scheme['slit1'][0] = true;
+
+          };
+
+           if (options.target.class == 'slit' && 
+                          obj.class =='place_slit2') {
+            options.target.top = obj.top - options.target.height/10;
+            options.target.left = obj.left - options.target.width/2;
+            obj.setOpacity(0);
+            options.target.selectable = false;
+            options.target.lockMovementX = true;
+            options.target.lockMovementY = true;
+            options.target.class = 'slit2_settings';
+
+            obj.class += 'ed'
+            if(num_slit<2) addSlit();
+            result_scheme['slit2'][0] = true;
+
+          };
+
+          if (options.target.class == 'sample' && 
+                          obj.class =='place_sample1') {
+            options.target.top = obj.top+20;
+            options.target.left = obj.left - options.target.width/5;
+            obj.left = 1000;
+
+            options.target.selectable = false;
+            options.target.lockMovementX = true;
+            options.target.lockMovementY = true;
+            obj.class += 'ed';
+            options.target.class = 'crystal1_settings';
+            if(num_sample<3) addSample();
+            result_scheme['sample1'][0] = true;
+            options.target.name = 'кристалл, нажмите для выбора параметров';
+            console.log('mounted');
+            $(".sample1").click(function() {
+              console.log('ok1');
+            });
+
+            options.target.on('click', function() {
+              console.log('ok');
+            });
+
+
+            options.target.animate('angle', '-=10'); 
+            options.target.animate('top', '-=10'); 
+
+            source.animate('angle', '-=30'); 
+            source.animate('top', '-=20'); 
+
+          };
+
+          if (options.target.class == 'sample' && 
+                          obj.class =='place_sample2') {
+            options.target.top = obj.top + options.target.height/5;
+            options.target.left = obj.left - options.target.width/5 + options.target.width/2;
+            obj.left = 1000;
+            options.target.selectable = false;
+            options.target.lockMovementX = true;
+            options.target.lockMovementY = true;
+            options.target.angle = 180;
+            obj.class += 'ed'
+            options.target.class = 'crystal2_settings';
+            if(num_sample<3) addSample();
+            result_scheme['sample2'][0] = true;
+
+
+            detector.animate('angle', '-=15'); 
+            detector.animate('top', '+=25'); 
+
+            source.animate('angle', '+=15'); 
+            source.animate('top', '+=10'); 
+
+          };
+
+          if (options.target.class == 'sample' && 
+                          obj.class =='place_sample3') {
+            options.target.top = obj.top+20;
+            options.target.left = obj.left - options.target.width/5;
+            obj.left = 1000;
+            options.target.selectable = false;
+            options.target.lockMovementX = true;
+            options.target.lockMovementY = true;
+            obj.class += 'ed';
+            options.target.class = 'crystal3_settings';
+
+            if(num_sample<3) addSample();
+            result_scheme['sample3'][0] = true;
+
+            options.target.animate('angle', '+=10'); 
+            options.target.animate('top', '-=20'); 
+
+            detector.animate('angle', '+=30'); 
+            detector.animate('top', '-=50'); 
+
+          };
+
+          
+        };
+
       });
     }
 
@@ -964,8 +1120,8 @@
     var oText;
     canvas.on('mouse:over', function(options) {
       if (options.target) {var text_info;
-        // console.log('an object was clicked! ', options.target.name);
-        options.target.scale(0.7);
+        options.target.setOpacity(0.5);
+
         // ------надпись информации-------------
         var text = ''+options.target.name;
 
@@ -985,39 +1141,27 @@
 
     canvas.on('mouse:out', function(options) {
       if (options.target) {
-        options.target.scale(0.5);
+        options.target.setOpacity(1);
         canvas.remove(oText);
         canvas.renderAll();
       }
     });
 
+    canvas.on('mouse:down', function(options) {
+      if (options.target) {
+        $( "#source_settings, #slit1_settings,#slit2_settings, #crystal1_settings,#crystal2_settings,#crystal3_settings, #detector_settings" ).hide();
+        $( "#"+options.target.class).show();
+
+        
+      }
+    });
+
+// --------------------------------
 
 
 
     // rect.set({ left: 20, top: 50 });
     // canvas.renderAll();
-
-//   canvas.on({
-//     'mouse:down': function(e) {
-//       if (e.target) {
-//         e.target.opacity = 0.5;
-//         canvas.renderAll();
-//       }
-//     },
-//     'mouse:up': function(e) {
-//       if (e.target) {
-//         e.target.opacity = 1;
-//         canvas.renderAll();
-//       }
-//     },
-//     'object:moved': function(e) {
-//       e.target.opacity = 0.5;
-//     },
-//     'object:modified': function(e) {
-//       e.target.opacity = 1;
-//     }
-//   });
-  // this.__canvases.push(canvas);
 
 </script>
 {% endblock %}
