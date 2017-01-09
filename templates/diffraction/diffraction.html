@@ -18,14 +18,6 @@
       color: transparent;
       background-color: transparent;
     }
-    .board{
-      margin-left: 10px;
-      border: 1px dashed #777; /* Параметры границы */
-      border-radius: 18px;
-      background: white; /* Цвет фона */
-      min-height: 300px;
-      padding: 10px;
-    }
     .panel{
       margin-left: 20px;
       border: 1px dashed #777; /* Параметры границы */
@@ -33,22 +25,8 @@
       background: #FAFAFA; /* Цвет фона */
       min-height: 300px;
     }
-    .source_class{
-      background: url("{% static "diffraction/source.png" %}") no-repeat bottom right;
-      width: 80px; height: 130px;
-    }
-    .crystal_class{
-      background: url("{% static "diffraction/crystal.png" %}") no-repeat bottom right;
-      width: 80px; height: 130px; 
-    }
-    .border_element{
-      width: 90px; height: 80px; /*border: 1px dashed black;border-radius: 8px;*/
-      margin-right: 10px;
-      margin-top: 10px;
 
-    }
-
-    #SourceHelper { width: 50px; height: 100px; background: url("{% static "diffraction/source.png" %}") no-repeat right bottom;}
+ 
     
     .radius {
       background: #f0f0f0; /* Цвет фона */
@@ -89,8 +67,8 @@
             </div>
   </div><!-- /ошибка -->
   <div class="row"> 
-    <div class="col-md-7 board" > <!-- ДОСКА -->
-      <canvas width=800 height=300 id="fabric" style=" margin: 10px; border: 1px dashed #777;"></canvas>
+    <div class="col-md-7" style="min-height: 350px;"> <!-- ДОСКА -->
+      <canvas width=800 height=300 id="fabric" style=" margin-left: 5px; border: 1px dashed #777; border-radius: 18px;"></canvas>
       <div style="display: none;">
         <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
         <img src="{% static 'diffraction/img/source.png' %}" id="source">
