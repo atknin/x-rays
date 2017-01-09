@@ -385,7 +385,7 @@
         <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
         <img src="{% static 'diffraction/img/source.png' %}" id="source">
         <img src="{% static 'diffraction/img/sample.png' %}" id="sample" >
-        <img src="{% static 'diffraction/img/slit.png' %}" id="sample" >
+        <img src="{% static 'diffraction/img/slit.png' %}" id="slit" >
       </div>
         
   </div>
@@ -976,9 +976,6 @@
       });
       slit[''+num_slit].scale(0.3);
       slit[''+num_slit].hasControls = slit[''+num_slit].hasBorders = false;
-      slit[''+num_slit].on('selected', function() {
-        console.log('pushed');
-      });
       canvas.add(slit[''+num_slit]);
       num_slit++;
     };
