@@ -18,7 +18,7 @@
       color: transparent;
       background-color: transparent;
     }
-    
+
     .settings{
       margin-left: 30px;
       margin-top: 30px;
@@ -38,7 +38,8 @@
   {% endblock %}
 
   {% block logo %} 
-     <a href="/"> HOME</a>
+
+     <a href="/"> <img src="{% static "icon/x_rays_rad.png" %}"" alt="home"> </a>
      <br>
      <small>для корректого отображения рекомендуем использовать браузер chrome, а так же не использовать мобильные телефоны и планшеты</small>
   {% endblock %}
@@ -317,7 +318,7 @@
 
     <div class="row" style="margin-left: 15px;">
       <div class="col-md-7" style=" margin-top: 40px;">
-        <button type="button" class="btn btn-primary" id ="compute_button">compute</button>
+        <button type="button" class="btn btn-primary" id ="compute_button" style="display: none;">compute</button>
       </div>
       <div class="col-md-4"></div>
     </div>
@@ -680,7 +681,7 @@
                           obj.class =='place_slit1') {
             options.target.top = obj.top - options.target.height/10;
             options.target.left = obj.left - options.target.width/2;
-            obj.setOpacity(0);
+            obj.left = 1000;
             options.target.selectable = false;
             options.target.lockMovementX = true;
             options.target.lockMovementY = true;
@@ -695,11 +696,12 @@
                           obj.class =='place_slit2') {
             options.target.top = obj.top - options.target.height/10;
             options.target.left = obj.left - options.target.width/2;
-            obj.setOpacity(0);
+            obj.left = 1000;
             options.target.selectable = false;
             options.target.lockMovementX = true;
             options.target.lockMovementY = true;
             options.target.class = 'slit2_settings';
+
 
             obj.class += 'ed'
             if(num_slit<2) addSlit();
