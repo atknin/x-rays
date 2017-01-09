@@ -821,8 +821,8 @@
 
 
 
-    var canvas = new fabric.Canvas('container');
-    canvas.setBackgroundImage('img/background.png', canvas.renderAll.bind(canvas));
+    var canvas = new fabric.Canvas('fabric');
+    canvas.setBackgroundImage("{% static 'diffraction/img/background.png' %}", canvas.renderAll.bind(canvas));
 
 
     var crystal1 = new fabric.Rect({
