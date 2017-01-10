@@ -41,14 +41,14 @@
     </style>
   {% endblock %}
 {% block logo %} 
-   <a href="/"> HOME</a>
+  <a href="/"> <img height="60px" src="{% static 'icon/x_rays_sign.png' %}" alt="home"> </a>      
 {% endblock %}
 {% block content %}
  
       <div class="row">
         <div class="col-lg-6 ">
           <div class="col-lg-4 ">
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"> 
+            <img src="{% static 'photos/MNV.jpg' %}" width="200" height="200" class="img-responsive" alt="Никита"> 
           </div>
           <div class="col-lg-8">
             <h2>Марченков Никита </h2>
@@ -58,7 +58,7 @@
 
           <div class="col-lg-6">
           <div class="col-lg-4">
-            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"> 
+            <img src="{% static 'photos/AII.jpg' %}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail"> 
           </div>
           <div class="col-lg-8">
             <h2>Аткнин Иван </h2>
