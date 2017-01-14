@@ -1,6 +1,6 @@
 {% extends "general/index.html" %}
   {% block title %}
-<title>Поляризуемость &#967; </title>
+<title>Добавить кристалл &#967; </title>
 {% load static %}
 <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css"></link>
 <link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css">
@@ -27,9 +27,11 @@
                 <div>
                     
                     
-                        <label class="required" for="id_name">Name:</label>
+                        <label class="required" for="id_name">Название:</label>
                         
                             <input class="vTextField" id="id_name" maxlength="80" name="name" type="text" required="">
+                         
+                         <p class="help">Коротка, без пробелов, без спец. символов</p>
                         
                     
                     
@@ -43,14 +45,11 @@
                 <div>
                     
                     
-                        <label for="id_short_name">Short name:</label>
+                        <label for="id_short_name">Химическая формула:</label>
                         
                             <input class="vTextField" id="id_short_name" maxlength="30" name="short_name" type="text">
                         
-                    
-                    
-                        <p class="help">chemical formula</p>
-                    
+                                        
                 </div>
             
         </div>
@@ -61,11 +60,11 @@
                 <div>
                     
                     
-                        <label for="id_crystal_system">Crystal system:</label>
+                        <label for="id_crystal_system">Симметрия кристалла:</label>
                         
                             <input class="vTextField" id="id_crystal_system" maxlength="50" name="crystal_system" type="text">
                         
-                    
+                         <p class="help">Tetragonal, Hexagonal, Trigonal...</p>
                     
                 </div>
             
@@ -77,13 +76,13 @@
                 <div>
                     
                     
-                        <label for="id_a">A:</label>
+                        <label for="id_a">параметр a:</label>
                         
                             <input id="id_a" name="a" step="0.0001" type="number">
                         
                     
                     
-                        <p class="help">in Angstrom unit</p>
+                        <p class="help">в Ангстремах</p>
                     
                 </div>
             
@@ -95,13 +94,13 @@
                 <div>
                     
                     
-                        <label for="id_b">B:</label>
+                        <label for="id_b">параметр b:</label>
                         
                             <input id="id_b" name="b" step="0.0001" type="number">
                         
                     
                     
-                        <p class="help">in Angstrom unit</p>
+                        <p class="help">в Ангстремах</p>
                     
                 </div>
             
@@ -113,13 +112,13 @@
                 <div>
                     
                     
-                        <label for="id_c">C:</label>
+                        <label for="id_c">параметр c:</label>
                         
                             <input id="id_c" name="c" step="0.0001" type="number">
                         
                     
                     
-                        <p class="help">in Angstrom unit</p>
+                        <p class="help">в Ангстремах</p>
                     
                 </div>
             
@@ -131,13 +130,13 @@
                 <div>
                     
                     
-                        <label for="id_alfa">Alfa:</label>
+                        <label for="id_alfa">Угол alfa:</label>
                         
                             <input id="id_alfa" name="alfa" step="0.0001" type="number">
                         
                     
                     
-                        <p class="help">in degrees unit</p>
+                        <p class="help">в градусах</p>
                     
                 </div>
             
@@ -149,13 +148,13 @@
                 <div>
                     
                     
-                        <label for="id_beta">Beta:</label>
+                        <label for="id_beta">Угол Beta:</label>
                         
                             <input id="id_beta" name="beta" step="0.0001" type="number">
                         
                     
+                        <p class="help">в градусах</p>
                     
-                        <p class="help">in degrees unit</p>
                     
                 </div>
             
@@ -167,13 +166,13 @@
                 <div>
                     
                     
-                        <label for="id_gamma">Gamma:</label>
+                        <label for="id_gamma">Угол Gamma:</label>
                         
                             <input id="id_gamma" name="gamma" step="0.0001" type="number">
                         
                     
+                        <p class="help">в градусах</p>
                     
-                        <p class="help">in degrees unit</p>
                     
                 </div>
             
@@ -185,13 +184,13 @@
                 <div>
                     
                     
-                        <label for="id_density">Density:</label>
+                        <label for="id_density">Плотность:</label>
                         
                             <input id="id_density" name="density" step="0.0001" type="number">
                         
                     
                     
-                        <p class="help">in gr/cm^3, example, pSi = 2.33 gr/cm^3</p>
+                        <p class="help">в гр/см^3, например, pSi = 2.33 гр/см^3</p>
                     
                 </div>
             
