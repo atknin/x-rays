@@ -6,4 +6,6 @@ from polarizability import views
 urlpatterns = [
 	url(r'^$', views.polarizability),
     url(r'^compute/', views.compute),
+    url(r'^add_crystal/', views.add_crystal),
+
 ]

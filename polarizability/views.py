@@ -14,6 +14,13 @@ import numpy as np
 import time
 
 # Create your views here.
+
+def add_crystal(request):
+
+	return render(
+	 	request, 'polarizability/add_crystal.html'
+	 	)
+
 def compute(request):
 	message = {}
 	if request.is_ajax():
