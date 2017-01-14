@@ -32,7 +32,7 @@
   <div class="row" style="min-height: 500px">    
 
     <div class="col-md-3" style=" overflow:auto; height: 300px; margin-left: 10px;  border: 1px solid #eee; overflow-y:scroll;">   
-      <table class="table table-hover" id = "inputgroup_check_choose_crystal_parent" style="">
+      <table class="table table-bordered" id = "inputgroup_check_choose_crystal_parent" style="">
        {% for crystal in crystals %}
           <tr>
             <td ><input type="radio" name="crystal" id = "{{crystal.id}}" value="{{crystal.id}}"></td>
