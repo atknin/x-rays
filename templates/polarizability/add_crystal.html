@@ -18,184 +18,75 @@
 
 
   <fieldset class="module aligned ">
-    
-    
-    
-        <div class="form-row field-name">
-            
-            
-                <div>
-                    
-                    
-                        <label class="required" for="id_name">Название:</label>
-                        
-                            <input class="vTextField" id="id_name" maxlength="80" name="name" type="text" required="">
-                         
-                         <p class="help">Коротка, без пробелов, без спец. символов</p>
-                        
-                    
-                    
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-short_name">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_short_name">Химическая формула:</label>
-                        
-                            <input class="vTextField" id="id_short_name" maxlength="30" name="short_name" type="text">
-                        
-                                        
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-crystal_system">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_crystal_system">Симметрия кристалла:</label>
-                        
-                            <input class="vTextField" id="id_crystal_system" maxlength="50" name="crystal_system" type="text">
-                        
-                         <p class="help">Tetragonal, Hexagonal, Trigonal...</p>
-                    
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-a">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_a">параметр a:</label>
-                        
-                            <input id="id_a" name="a" step="0.0001" type="number">
-                        
-                    
-                    
-                        <p class="help">в Ангстремах</p>
-                    
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-b">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_b">параметр b:</label>
-                        
-                            <input id="id_b" name="b" step="0.0001" type="number">
-                        
-                    
-                    
-                        <p class="help">в Ангстремах</p>
-                    
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-c">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_c">параметр c:</label>
-                        
-                            <input id="id_c" name="c" step="0.0001" type="number">
-                        
-                    
-                    
-                        <p class="help">в Ангстремах</p>
-                    
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-alfa">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_alfa">Угол alfa:</label>
-                        
-                            <input id="id_alfa" name="alfa" step="0.0001" type="number">
-                        
-                    
-                    
-                        <p class="help">в градусах</p>
-                    
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-beta">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_beta">Угол Beta:</label>
-                        
-                            <input id="id_beta" name="beta" step="0.0001" type="number">
-                        
-                    
-                        <p class="help">в градусах</p>
-                    
-                    
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-gamma">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_gamma">Угол Gamma:</label>
-                        
-                            <input id="id_gamma" name="gamma" step="0.0001" type="number">
-                        
-                    
-                        <p class="help">в градусах</p>
-                    
-                    
-                </div>
-            
-        </div>
-    
-        <div class="form-row field-density">
-            
-            
-                <div>
-                    
-                    
-                        <label for="id_density">Плотность:</label>
-                        
-                            <input id="id_density" name="density" step="0.0001" type="number">
-                        
-                    
-                    
-                        <p class="help">в гр/см^3, например, pSi = 2.33 гр/см^3</p>
-                    
-                </div>
-            
-        </div>
-    
+  <div class="form-row field-name">
+          <div>
+                  <label class="required" for="id_name">Название:</label>
+                      <input class="vTextField" id="id_name" maxlength="80" name="name" type="text" required="">
+                   <p class="help">Коротко, без пробелов, без спец. символов, на английском</p>
+          </div>
+  </div>
+  <div class="form-row field-short_name">
+          <div>
+                  <label for="id_short_name">Химическая формула:</label>
+                      <input class="vTextField" id="id_short_name" maxlength="30" name="short_name" type="text">
+          </div>
+  </div>
+  <div class="form-row field-crystal_system">
+          <div>
+                  <label for="id_crystal_system">Симметрия кристалла:</label>
+                      <input class="vTextField" id="id_crystal_system" maxlength="50" name="crystal_system" type="text">
+                   <p class="help">Tetragonal, Hexagonal, Trigonal...</p>
+          </div>
+  </div>
+  <div class="form-row field-a">
+          <div>
+                  <label for="id_a">параметр a:</label>
+                      <input id="id_a" name="a" step="0.0001" type="number">
+                  <p class="help">в Ангстремах</p>
+          </div>
+  </div>
+  <div class="form-row field-b">
+          <div>
+                  <label for="id_b">параметр b:</label>
+                      <input id="id_b" name="b" step="0.0001" type="number">
+                  <p class="help">в Ангстремах</p>
+          </div>
+  </div>
+  <div class="form-row field-c">
+          <div>
+                  <label for="id_c">параметр c:</label>
+                      <input id="id_c" name="c" step="0.0001" type="number">
+                  <p class="help">в Ангстремах</p>
+          </div>
+  </div>
+  <div class="form-row field-alfa">
+          <div>
+                  <label for="id_alfa">Угол alfa:</label>
+                      <input id="id_alfa" name="alfa" step="0.0001" type="number">
+                  <p class="help">в градусах</p>
+          </div>
+  </div>
+  <div class="form-row field-beta">
+          <div>
+                  <label for="id_beta">Угол Beta:</label>
+                      <input id="id_beta" name="beta" step="0.0001" type="number">
+                  <p class="help">в градусах</p>
+          </div>
+  </div>
+  <div class="form-row field-gamma">
+          <div>
+                  <label for="id_gamma">Угол Gamma:</label>
+                      <input id="id_gamma" name="gamma" step="0.0001" type="number">
+                  <p class="help">в градусах</p>
+          </div>
+  </div>
+  <div class="form-row field-density">
+          <div>
+                  <label for="id_density">Плотность:</label>
+                      <input id="id_density" name="density" step="0.0001" type="number">
+                  <p class="help">в гр/см^3, например, pSi = 2.33 гр/см^3</p>
+          </div>
+  </div>
 </fieldset>
 
 
