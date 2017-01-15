@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="row"><!--  первая строка -->
+<div class="row"><!--  первая строка -->-
   <div class="col-md-6">
     <fieldset class="module aligned ">
       <div class="form-row field-name">
@@ -28,7 +28,17 @@
       <div class="form-row field-crystal_system">
         <div>
           <label for="id_crystal_system">Симметрия кристалла:</label>
-          <input class="vTextField" id="id_crystal_system" maxlength="50" name="crystal_system" type="text">
+          <select class="vTextField" id="id_crystal_system" name="crystal_system">
+            <option>unknown (it's ok)</option>
+            <option>Triclinic</option>
+            <option>Monoclinic</option>
+            <option>Orthorhombic</option>
+            <option>Tetragonal</option>
+            <option>Hexagonal</option>
+            <option>Trigonal</option>
+            <option>Cubic</option>
+          </select>
+
           <p class="help">Tetragonal, Hexagonal, Trigonal...</p>
         </div>
       </div>
@@ -84,11 +94,11 @@
     </fieldset>
   </div>
   <div class="col-md-6">  
-      <div class="form-group" style="margin-right: 70px;">
+      <div class="form-group check_area_geom" style="margin-right: 70px;">
         <label for="exampleInputEmail1">Геометрия</label>
         <p  style="margin-top: 30px;" class="help-block">N - номер в табл. Минд., x, y, z  - относит. коорд. атома в элементарной ячейке, Ocupp - вероятность нахождения атома в данном месте. Ниже в текстовом поле приведен пример геометрии кристалла Германия, <strong>стереть перед добавлением</strong>. </p>
 <!-- __________________________________________________________ -->
-<textarea class="form-control" rows="10" id = "geometry">
+<textarea class="form-control" rows="10" id = "text_area_geometry">
 32 0 0 0 1
 32 0.5 0.5 0 1
 32 0.5 0 0.5 1
@@ -99,33 +109,141 @@
 32 0.75 0.75 0.75 1</textarea>
 <!-- __________________________________________________________ -->
 
-        <textarea style="margin-top: 20px;"  class="form-control" rows="10" id = "geometry" placeholder="Окно для информации" disabled="true"></textarea>
       </div>
-      <div class="form-group">
+      <div class="form-group" id = 'file_div'>
         <p class="help-block">Вы также можете воспользоваться загрузкой геометрии из текстового файла:</p>
-        <label for="exampleInputFile">Файл</label>
-        <input type="file" id="exampleInputFile" >
+        
+        <div class="input-group">
+          <div class="input-group-btn">
+            <label class="btn btn-default btn-file">
+                <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                <input type="file"  id="geomInputFile" style="display: none;">
+            </label>
+          </div>
+          <input type="text" style="width: 200px;" class="form-control" id = 'file_name' aria-label="...">
+        </div>
       </div>
-      <p class="help-block"></p>
+      <div style="margin-right: 70px;" >
+        <textarea style="margin-top: 20px; width: 100%;" disabled rows="10" id = "info_geometry" placeholder="Окно для вывод информации..."></textarea>
+      </div>
   </div>
 </div><!--  первая строка -->
 <div class="row" style="margin-left: 30px;"><!--  вторая строка -->
   <div class="col-md-2">
     <div class="input-group" style="margin-top: 10px;">             
       <div class="input-group-btn">
-        <button type="button" id="compute" class="btn btn-success" style="width: 100%;">Проверка</button>
+        <button type="button" id="check" class="btn btn-success" style="width: 100%;">Проверка</button>
       </div>
-      <span class="input-group-addon " id="loader_addon" style="background-color: transparent;"></span>
+      <span class="input-group-addon " id="loader_addon_check" style="background-color: transparent;"></span>
     </div>
   </div>
 
-  <div class="col-md-2" style="display: none;">
+  <div class="col-md-2" id = 'btn_save' style="display: none;">
     <div class="input-group" style="margin-top: 10px;">             
       <div class="input-group-btn">
-        <button type="button" id="compute" class="btn btn-success" style="width: 100%;">Сохранить</button>
+        <button type="button" id="save" class="btn btn-success" style="width: 100%;">Сохранить</button>
       </div>
       <span class="input-group-addon " id="loader_addon" style="background-color: transparent;"></span>
     </div>
   </div>
 </div><!--  вторая строка -->
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $( '#geomInputFile' ).on("change", function(){
+      if ( ! window.FileReader ) {
+        return alert( 'Ваш браузер не поддерживает загрузку' );
+      }
+      var $i = $( '#geomInputFile' ), // Put file input ID here
+        input = $i[0]; // Getting the element from jQuery
+      if ( input.files && input.files[0] ) {
+        file = input.files[0]; // The file
+        fr = new FileReader(); // FileReader instance
+        fr.onload = function () {
+          // Do stuff on onload, use fr.result for contents of file
+          $( '#text_area_geometry' ).val(fr.result);
+          document.getElementById("file_name").value = file.name;
+        };
+        fr.readAsText( file );
+        // fr.readAsDataURL( file );
+      } else {
+        // Handle errors here
+        alert( "Файл не выбран или браузер устарел" )
+      }
+    } );
+
+
+    $("#check").click(function(event){
+      var lines = $('#text_area_geometry').val().split('\n');
+      var flag = false;
+      var info = ''; 
+
+      if (lines.length<=1) {
+        flag = true;
+        info +='Недостаточно атомов в элементарной ячейке, добавтье структуру; \n';
+        $('.check_area_geom').addClass("has-error");
+      }
+      else {
+        info +='Атомов в элементарной ячейке: '+lines.length + ';\n';
+      };
+      
+      for(var i = 0;i < lines.length;i++){
+          var s = lines[i];
+          var atom = s.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
+          if (atom.length!=5){
+             info +='У каждого атома (строка) 5 параметров (столбцов), в строке №'+(i+1)+' их '+ atom.length + ';\n';
+             flag = true;
+             $('.check_area_geom').addClass("has-error");
+          };
+          if (!Number.isInteger(parseInt(atom[0])) || parseInt(atom[0]) >92 || parseInt(atom[0]) < 0) {
+            info +='атом №' +(i+1)+' невозможно найти в таблице Менделеева'+'; \n';
+            flag = true;
+            $('.check_area_geom').addClass("has-error");
+          };
+          if (parseFloat(atom[1])<0 || parseFloat(atom[1])>1 || parseFloat(atom[2])<0 || parseFloat(atom[2])>1 || parseFloat(atom[3])<0 || parseFloat(atom[3])>1) {
+            info +='атом №' +(i+1)+'  расположен за пределами элементарной ячейки x||y||z не пренадлежит [0,1]'+'; \n';
+            flag = true;
+            $('.check_area_geom').addClass("has-error");
+          };
+          if (parseFloat(atom[4])<0 || parseFloat(atom[4])>1) {
+            info +='атом №' +(i+1)+'  -  вероятность обнаружить атом в данном месте должна принадлежать [0,1]'+';\n';
+            flag = true;
+            $('.check_area_geom').addClass("has-error");
+          };
+
+      };
+
+
+      $( '#info_geometry' ).val(info);
+      if (!flag) {
+        $('#check_status').remove();
+        $('#loader_addon_check').append('<span id = "check_status" class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>');
+        $('#btn_save').show();
+
+      }
+      else{
+        $('#check_status').remove();
+        $('#loader_addon_check').append('<span id = "check_status" class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>');
+      };
+
+    });
+
+    $(".check_area_geom").click(function(){
+      $(this).removeClass("has-error");
+    });
+    $( "#id_name, #id_short_name, #id_crystal_system, #id_a, #id_b, id_c, #id_alfa, #id_beta, #id_gamma, #id_density, #text_area_geometry" ).change(function() {
+      $('#btn_save').hide();
+    });
+
+
+    //Сохранить
+    $("#save").click(function(){
+      alert('cl');
+    });
+
+
+  });
+</script>
 {% endblock %}
