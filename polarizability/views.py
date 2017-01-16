@@ -20,11 +20,11 @@ def add_crystal(request):
 		message = {}
 		try:
 			name = request.POST['id_name']
-			bot_inform.sent_to_atknin_bot(request.POST['id_crystal_system'], 'v') # проинформируем в telegramm bot
+			bot_inform.sent_to_atknin_bot(request.POST['syngony'], 'v') # проинформируем в telegramm bot
 			if not polarizability_models.crystals.objects.filter(name=name).exists():	
 				new = polarizability_models.crystals.objects.create(name=name)
 				new.short_name = request.POST['id_short_name']
-				new.crystal_system = request.POST['id_crystal_system']
+				new.crystal_system = request.POST['syngony']
 				new.a = float(request.POST['id_a'])
 				new.b = float(request.POST['id_b'])
 				new.c = float(request.POST['id_c'])
