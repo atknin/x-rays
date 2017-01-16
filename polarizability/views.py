@@ -13,6 +13,8 @@ from django.http import JsonResponse
 import numpy as np
 import time
 
+from json import dumps, loads, JSONEncoder, JSONDecoder
+
 # Create your views here.
 
 def add_crystal(request):
@@ -33,9 +35,12 @@ def add_crystal(request):
 				new.gamma = float(request.POST['id_gamma'])
 				new.density = float(request.POST['id_density'])
 				new.save()
-				# for i in request.POST['geom']:
-				# 	a = str(i[0])+str(i[1])+str(i[2])+str(i[3])+str(i[4])
-				bot_inform.sent_to_atknin_bot(str(request.POST['geom']), 'v') 
+				
+				j = dumps(request.POST['geom'], cls=PythonObjectEncoder)
+				geometr = loads(j, object_hook=as_python_object)
+				for i in geometr:
+					a = str(i[0])+str(i[1])+str(i[2])+str(i[3])+str(i[4])
+					bot_inform.sent_to_atknin_bot(a, 'v') 
 
 				message['status'] = "Успешно добавлено в базу"
 			else:
