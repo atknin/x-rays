@@ -33,12 +33,14 @@ def add_crystal(request):
 				new.beta = float(request.POST['id_beta'])
 				new.gamma = float(request.POST['id_gamma'])
 				new.density = float(request.POST['id_density'])
-				# new.save()
+				new.save()
 				
-				
-				# for i in request.POST['geom']:
-				# 	a = str(i[0])+str(i[1])+str(i[2])+str(i[3])+str(i[4])
-				bot_inform.sent_to_atknin_bot(request.POST['id_geom'], 'v') 
+				geom = request.POST['id_geom'].split('//')
+
+				for i in geom:
+					a = i.split
+					a = str(i[0])+str(i[1])+str(i[2])+str(i[3])+str(i[4])
+					bot_inform.sent_to_atknin_bot(, 'v') 
 
 				message['status'] = "Успешно добавлено в базу"
 			else:
