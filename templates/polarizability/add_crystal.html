@@ -309,7 +309,6 @@
 
     //Сохранить
     $("#save").click(function(){
-      console.log(compute_dict['geom']);
       $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
       }});
