@@ -19,8 +19,8 @@ def add_crystal(request):
 	if request.is_ajax():
 		message = {}
 		try:
-			name = request.POST['id_name']
-			bot_inform.sent_to_atknin_bot('23', 'v') # проинформируем в telegramm bot
+			name = str(request.POST['id_name'])
+			# bot_inform.sent_to_atknin_bot('23', 'v') # проинформируем в telegramm bot
 			if not polarizability_models.crystals.objects.objects.filter(name=name):	
 				# polarizability_models.crystals.objects.create()пунь
 				message['status'] = "Успешно добавлено в базу"
