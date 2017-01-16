@@ -16,10 +16,13 @@ import time
 # Create your views here.
 
 def add_crystal(request):
+	if request.is_ajax():
+		bot_inform.sent_to_atknin_bot('density: ' + request.POST['id_density'], 'v') # проинформируем в telegramm bot
 
-	return render(
-	 	request, 'polarizability/add_crystal.html'
-	 	)
+	else:
+		return render(
+		 	request, 'polarizability/add_crystal.html'
+		 	)
 
 def compute(request):
 	message = {}
