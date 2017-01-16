@@ -38,7 +38,7 @@ def add_crystal(request):
 				geom = str(request.POST['id_geom']).split(' // ')
 				for i in geom:
 					a = i.split()
-					bot_inform.sent_to_atknin_bot(str(a), 'v') 
+					bot_inform.sent_to_atknin_bot(i, 'v') 
 
 				message['status'] = "Успешно добавлено в базу"
 			else:
