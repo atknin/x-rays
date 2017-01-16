@@ -179,7 +179,7 @@
 
     var compute_dict = {};
     var info = ''; 
-    
+
     $("#check").click(function(event){
       var lines = $('#text_area_geometry').val().split('\n');
       var flag = false;
@@ -275,6 +275,8 @@
         $('#id_density').addClass("error");
       };
 
+      compute_dict['syngony'] = $( "#id_crystal_system option:selected" ).text();
+
 
 
 
@@ -310,9 +312,9 @@
         csrfmiddlewaretoken: '{{ csrf_token }}'
       }});
       $.post("/polarizability/add_crystal/", compute_dict ,function(data) {
-        
-        info +=data.status
-        $( '#info_geometry' ).val(info);
+        var info_2 = info
+        info_2 +=data.status+'\n'
+        $( '#info_geometry' ).val(info_2);
       });
 
     });

@@ -19,10 +19,24 @@ def add_crystal(request):
 	if request.is_ajax():
 		message = {}
 		try:
-			name = str(request.POST['id_name'])
-			bot_inform.sent_to_atknin_bot(name, 'v') # проинформируем в telegramm bot
+			name = request.POST['id_name']
+			bot_inform.sent_to_atknin_bot(request.POST['id_crystal_system'], 'v') # проинформируем в telegramm bot
 			if not polarizability_models.crystals.objects.filter(name=name).exists():	
-				# polarizability_models.crystals.objects.create()пунь
+				new = polarizability_models.crystals.objects.create(name=name)
+				new.short_name = request.POST['id_short_name']
+				new.crystal_system = request.POST['id_crystal_system']
+				new.a = float(request.POST['id_a'])
+				new.b = float(request.POST['id_b'])
+				new.c = float(request.POST['id_c'])
+				new.alfa = float(request.POST['id_alfa'])
+				new.beta = float(request.POST['id_beta'])
+				new.gamma = float(request.POST['id_gamma'])
+				new.density = float(request.POST['id_density'])
+				new.save()
+				for i in request.POST['geom']:
+					a = str(i[0])+str(i[1])+str(i[2])+str(i[3])+str(i[4])
+					bot_inform.sent_to_atknin_bot(a, 'v') 
+
 				message['status'] = "Успешно добавлено в базу"
 			else:
 				message['status'] = "Такой кристалл уже существует"
