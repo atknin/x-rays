@@ -20,6 +20,7 @@ def add_crystal(request):
 	if request.is_ajax():
 		message = {}
 		try:
+			path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 			name = request.POST['id_name']
 			bot_inform.sent_to_atknin_bot(request.POST['syngony'], 'v') # проинформируем в telegramm bot
 			if not polarizability_models.crystals.objects.filter(name=name).exists():	
