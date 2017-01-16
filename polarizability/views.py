@@ -17,6 +17,7 @@ import time
 
 def add_crystal(request):
 	if request.is_ajax():
+		message = {}
 		try:
 			message['status'] = "ok"
 			
