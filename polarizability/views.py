@@ -17,8 +17,13 @@ import time
 
 def add_crystal(request):
 	if request.is_ajax():
-		bot_inform.sent_to_atknin_bot('density: ' + request.POST['id_density'], 'v') # проинформируем в telegramm bot
+		try:
+			message['status'] = "ok"
+			
+		except Exception as e:
+			message['status'] = e
 
+		return JsonResponse(message)
 	else:
 		return render(
 		 	request, 'polarizability/add_crystal.html'

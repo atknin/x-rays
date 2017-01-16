@@ -5,7 +5,7 @@ from django.db import models
 
 class crystals(models.Model):
 
-	name = models.CharField(max_length=80)
+	name = models.CharField(max_length=80, unique=True)
 	short_name = models.CharField(max_length=30, null=True, blank=True, \
 								  help_text="chemical formula")
 	crystal_system  = models.CharField(max_length=50, null=True, blank=True)

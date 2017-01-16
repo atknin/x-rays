@@ -178,11 +178,11 @@
     } );
 
     var compute_dict = {};
+    var info = ''; 
+    
     $("#check").click(function(event){
       var lines = $('#text_area_geometry').val().split('\n');
       var flag = false;
-      var info = ''; 
-
       if (lines.length<=1) {
         flag = true;
         info +='Недостаточно атомов в элементарной ячейке, добавтье структуру; \n';
@@ -311,6 +311,8 @@
       }});
       $.post("/polarizability/add_crystal/", compute_dict ,function(data) {
         
+        info +=data.status
+        $( '#info_geometry' ).val(info);
       });
 
     });
