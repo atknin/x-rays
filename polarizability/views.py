@@ -39,7 +39,8 @@ def add_crystal(request):
 				geom = str(request.POST['id_geom']).split(' // ')
 				for i in geom:
 					with open(path+"structure/"+name+'.dat', 'w+') as f:
-						f.write(i+'\n')
+						f.write(i)
+						f.write('\n')
 				message['status'] = "Успешно добавлено в базу"
 			else:
 				message['status'] = "Такой кристалл уже существует"
