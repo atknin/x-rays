@@ -40,6 +40,7 @@ def add_crystal(request):
 					file = open(path+"structure/"+name+'.dat', 'w')
 					file.write(str(i))
 					file.write("\n")
+				file.close()
 				message['status'] = "Успешно добавлено в базу"
 			else:
 				message['status'] = "Такой кристалл уже существует"
