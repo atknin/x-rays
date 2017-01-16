@@ -34,10 +34,10 @@ def add_crystal(request):
 				new.gamma = float(request.POST['id_gamma'])
 				new.density = float(request.POST['id_density'])
 				new.save()
-				
+
+				file = open(path+"structure/"+name+'.dat', 'w')
 				geom = str(request.POST['id_geom']).split(' // ')
 				for i in geom:
-					file = open(path+"structure/"+name+'.dat', 'w')
 					file.write(str(i))
 					file.write("\n")
 				file.close()
