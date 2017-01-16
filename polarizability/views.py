@@ -35,8 +35,7 @@ def add_crystal(request):
 				new.density = float(request.POST['id_density'])
 				new.save()
 				
-				geom = request.POST['id_geom'].split('//')
-
+				geom = str(request.POST['id_geom']).split(' // ')
 				for i in geom:
 					a = i.split
 					a = str(i[0])+str(i[1])+str(i[2])+str(i[3])+str(i[4])
