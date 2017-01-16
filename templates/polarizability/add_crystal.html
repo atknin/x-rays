@@ -219,6 +219,7 @@
       }; //endfor
       // проверка левого столбца
       compute_dict['geom'] = geom;
+
       var english = /^[A-Za-z0-9]*$/;
       //проверка названия
       compute_dict['id_name'] = $( "#id_name").val();
@@ -308,6 +309,7 @@
 
     //Сохранить
     $("#save").click(function(){
+      console.log(compute_dict['geom']);
       $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
       }});
