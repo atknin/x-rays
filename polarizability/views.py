@@ -21,7 +21,7 @@ def add_crystal(request):
 		try:
 			name = str(request.POST['id_name'])
 			bot_inform.sent_to_atknin_bot(name, 'v') # проинформируем в telegramm bot
-			if not polarizability_models.crystals.objects.objects.filter(name=name).exists():	
+			if not polarizability_models.crystals.objects.filter(name=name).exists():	
 				# polarizability_models.crystals.objects.create()пунь
 				message['status'] = "Успешно добавлено в базу"
 			else:
