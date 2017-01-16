@@ -19,7 +19,12 @@ def add_crystal(request):
 	if request.is_ajax():
 		message = {}
 		try:
-			message['status'] = "ok"
+			name = request.POST['id_name']
+			if not polarizability_models.crystals.objects.objects.get(name=name):	
+				# polarizability_models.crystals.objects.create()
+				message['status'] = "Успешно добавлено в базу"
+			else:
+				message['status'] = "Такой кристалл уже существует"
 			
 		except Exception as e:
 			message['status'] = e
