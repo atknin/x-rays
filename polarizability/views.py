@@ -119,7 +119,8 @@ def compute(request):
 	
 
 		for i in range(Natom):
-			NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам
+			if len(crystalGeom[i].split()) == 5:
+				NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам
 
 			f0=0# обнуляем коэффициен для следующего атома в ячейке
 			
