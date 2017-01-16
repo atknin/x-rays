@@ -22,7 +22,6 @@ def add_crystal(request):
 		try:
 			path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 			name = request.POST['id_name']
-			bot_inform.sent_to_atknin_bot(request.POST['syngony'], 'v') # проинформируем в telegramm bot
 			if not polarizability_models.crystals.objects.filter(name=name).exists():	
 				new = polarizability_models.crystals.objects.create(name=name)
 				new.short_name = request.POST['id_short_name']
@@ -38,9 +37,9 @@ def add_crystal(request):
 				
 				geom = str(request.POST['id_geom']).split(' // ')
 				for i in geom:
-					with open(path+"structure/"+name+'.dat', 'w+') as f:
-						f.write(i)
-						f.write('\n')
+					with open(path+"structure/"+name+'.dat', 'w') as f:
+						f.write(str(i))
+						f.write("\n")
 				message['status'] = "Успешно добавлено в базу"
 			else:
 				message['status'] = "Такой кристалл уже существует"
