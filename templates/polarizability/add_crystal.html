@@ -191,7 +191,7 @@
       else {
         info +='Атомов в элементарной ячейке: '+lines.length + ';\n';
       };
-      var geom = [];
+      var geom = '';
       for(var i = 0;i < lines.length;i++){
           var s = lines[i];
           var atom = s.split(/(\s+)/).filter( function(e) { return e.trim().length > 0; } );
@@ -215,7 +215,7 @@
             flag = true;
             $('.check_area_geom').addClass("has-error");
           };
-          geom[i] = [parseInt(atom[0]),parseFloat(atom[1]),parseFloat(atom[2]),parseFloat(atom[3]),parseFloat(atom[4])];
+          geom += parseInt(atom[0]) + ' ' + parseFloat(atom[1]) + ' ' + parseFloat(atom[2]) + ' ' + parseFloat(atom[3]) + ' ' + parseFloat(atom[4])+ ' // ';
       }; //endfor
       // проверка левого столбца
       compute_dict['geom'] = geom;
