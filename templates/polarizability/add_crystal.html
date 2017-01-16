@@ -306,7 +306,6 @@
 
     //Сохранить
     $("#save").click(function(){
-      console.log(data['geom']);
       $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
       }});
