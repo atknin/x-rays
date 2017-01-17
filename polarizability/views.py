@@ -326,7 +326,7 @@ def compute(request):
 		message['x_darwin'] = x
 		message['y_darwin'] = y
 		message['for_downloading'] = for_downloading
-		message['fi'] = fi # угол между плоскостью и поверхностью
+		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 
 		
 
