@@ -304,12 +304,12 @@ def compute(request):
 			epslist.append(abs(R)*abs(R))
 			for_downloading+= str(i/100-50)+'   '+str(abs(R)*abs(R)) + '\n'
 
-			if (abs(R)*abs(R)) > 0.05 and schet==0: schet = i 
-			if (abs(R)*abs(R)) < 0.05 and schet > 0 and schet1 == 0: schet1 = i
+			if (abs(R)*abs(R)) > 0.3 and schet==0: schet = i 
+			if (abs(R)*abs(R)) < 0.3 and schet > 0 and schet1 == 0: schet1 = i
 			if max_pow_R<(abs(R)*abs(R)):
 				max_pow_R = (abs(R)*abs(R))
 
-		otstup = 2 # для того чтобы обрезать диапазон вывода графика
+		otstup = 150 # для того чтобы обрезать диапазон вывода графика
 		y = epslist[schet-otstup:schet1+otstup:1]	
 		x = np.linspace((schet-otstup)/100-50,(schet1+otstup)/100-50,len(y)).tolist()
 		
@@ -326,7 +326,7 @@ def compute(request):
 		message['x_darwin'] = x
 		message['y_darwin'] = y
 		message['for_downloading'] = for_downloading
-		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
+		message['fi'] = round(fi) # угол между плоскостью и поверхностью
 
 		
 
