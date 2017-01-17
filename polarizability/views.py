@@ -90,14 +90,21 @@ def compute(request):
 		StructFactor0 = 0
 		SumOcupAtomWeight = 0
 		crystalGeom = open(path+"structure/"+crystal.name+'.dat').readlines() # открыл файл с геометрие элементарной ячейки
-
-
+		
+		V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 		# расчет межплоскостного расстояния ––––––––––––––––––
-		eps = 1 - math.pow(math.cos(alfaprmtr), 2) - math.pow(math.cos(betaprmtr), 2) - math.pow(math.cos(gammaprmtr), 2) + 2*math.pow((math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr)), 2)
-		s1 = (math.pow((hInd*math.sin(alfaprmtr)/aprmtr), 2) + math.pow((kInd*math.sin(betaprmtr)/bprmtr), 2) + math.pow((lInd*math.sin(gammaprmtr)/cprmtr), 2))/math.pow(eps, 2)
-		s2 = 2 * hInd * kInd / aprmtr / bprmtr * (math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr))
-		s3 = 2 * hInd * lInd / aprmtr / cprmtr * (math.cos(alfaprmtr)*math.cos(gammaprmtr)-math.cos(betaprmtr))
-		s4 = 2 * kInd * lInd / bprmtr / cprmtr * (math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr))
+		aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
+		bprmtr_ = cprmtr*aprmtr*math.sin(betaprmtr)/V
+		cprmtr_ = aprmtr*bprmtr*math.sin(gammaprmtr)/V
+
+		COSalfaprmtr_ = (math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr)/(math.sin(betaprmtr)*math.sin(gammaprmtr)) 
+		COSbetaprmtr_ = (math.cos(gammaprmtr)*math.cos(alfaprmtr)-math.cos(betaprmtr)/(math.sin(gammaprmtr)*math.sin(alfaprmtr))
+		COSgammaprmtr_ = (math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr)/(math.sin(alfaprmtr)*math.sin(betaprmtr)) 
+
+		s1 = math.pow( ( hInd * aprmtr_) ,2) + math.pow( ( kInd * bprmtr_) ,2) + math.pow( ( lInd * cprmtr_) ,2)
+		s2 = 2*hInd*kInd*aprmtr_*bprmtr_*COSgammaprmtr_
+		s3 = 2*kInd*lInd*COSalfaprmtr_
+		s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
 		dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
 
 		# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
