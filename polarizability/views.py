@@ -309,7 +309,7 @@ def compute(request):
 			if max_pow_R<(abs(R)*abs(R)):
 				max_pow_R = (abs(R)*abs(R))
 
-		otstup = 10 # для того чтобы обрезать диапазон вывода графика
+		otstup = 150 # для того чтобы обрезать диапазон вывода графика
 		y = epslist[schet-otstup:schet1+otstup:1]	
 		x = np.linspace((schet-otstup)/100-50,(schet1+otstup)/100-50,len(y)).tolist()
 		
