@@ -304,8 +304,8 @@ def compute(request):
 			epslist.append(abs(R)*abs(R))
 			for_downloading+= str(i/100-50)+'   '+str(abs(R)*abs(R)) + '\n'
 
-			if (abs(R)*abs(R)) > 0.03 and schet==0: schet = i 
-			if (abs(R)*abs(R)) < 0.03 and schet > 0 and schet1 == 0: schet1 = i
+			if (abs(R)*abs(R)) > 0.04 and schet==0: schet = i 
+			if (abs(R)*abs(R)) < 0.04 and schet > 0 and schet1 == 0: schet1 = i
 			if max_pow_R<(abs(R)*abs(R)):
 				max_pow_R = (abs(R)*abs(R))
 
