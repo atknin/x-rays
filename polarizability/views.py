@@ -131,7 +131,7 @@ def compute(request):
 		s7_surface = (hInd_surface*lInd+lInd_surface*hInd)*aprmtr_*cprmtr_*COSbetaprmtr_
 		s8_surface = (hInd_surface*kInd+kInd_surface*hInd)*aprmtr_*bprmtr_*COSgammaprmtr_
 		s9_surface = s5_surface+s6_surface+s7_surface+s8_surface
-		fi =  dprmtr_surface * dprmtr * s9_surface
+		fi = math.degrees( math.acos( math.round( dprmtr_surface * dprmtr * s9_surface), 5 ) )
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.cos(math.pi/2-tetaprmtr)
@@ -326,7 +326,7 @@ def compute(request):
 		message['x_darwin'] = x
 		message['y_darwin'] = y
 		message['for_downloading'] = for_downloading
-		message['fi'] = fi # угол между плоскостью и поверхностью
+		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 
 		
 
