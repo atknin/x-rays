@@ -237,7 +237,8 @@
 
         $.post("compute/", compute_dict ,function(data) {
           
-          var text_out = 'Угол Брегга = '+ data.bragg + '\n' + 
+          var text_out = data.status + '\n' + 
+          'Угол Брегга = '+ data.bragg + '\n' + 
           'X0 = (' +data.X0_real+ ' + i'+data.X0_imag+')E-7' + 
           '\n' + 'Xh = (' + data.Xh_real+ ' + i'+data.Xh_imag+')E-7' + '\n' + 
           'Полуширина: ' + data.delta + ' сек \n' +
@@ -248,6 +249,7 @@
           if (data.maximum<0.05) {
             text_out+= 'График не отображается: |R|<0.3'+ '\n'
           };
+
 
 
           var  data_download = new Blob([data.for_downloading], {type: 'text/plain'});
