@@ -171,6 +171,23 @@
         flag = true;   
         $("#loader_addon").removeClass("loader");    
       }
+
+      if ($.inArray($('#h_index_surface').val(), hkl_valid_array) == -1){
+         $("#inputgroup_check_h_index_surface").addClass("has-error");
+        flag = true;
+        $("#loader_addon").removeClass("loader");
+      }
+      if ($.inArray($('#k_index_surface').val(), hkl_valid_array) == -1){
+         $("#inputgroup_check_k_index_surface").addClass("has-error");
+        flag = true;
+        $("#loader_addon").removeClass("loader");
+      }
+      if ($.inArray($('#l_index_surface').val(), hkl_valid_array) == -1){
+         $("#inputgroup_check_l_index_surface").addClass("has-error");
+        flag = true;
+        $("#loader_addon").removeClass("loader");
+      }
+
       if ($.inArray($('#h_index').val(), hkl_valid_array) == -1){
          $("#inputgroup_check_h_index").addClass("has-error");
         flag = true;
@@ -278,6 +295,19 @@
           $("#inputgroup_check_wave").removeClass("has-error");
       });
 
+      $("#h_index_surface").click(function(){
+          $("#inputgroup_check_h_index_surface").removeClass("has-error");
+
+      });
+      $("#k_index_surface").click(function(){
+          $("#inputgroup_check_k_index_surface").removeClass("has-error");
+          
+      });
+      $("#l_index_surface").click(function(){
+          $("#inputgroup_check_l_index_surface").removeClass("has-error");
+          
+      });
+
       $("#h_index").click(function(){
           $("#inputgroup_check_h_index").removeClass("has-error");
 
@@ -290,6 +320,7 @@
           $("#inputgroup_check_l_index").removeClass("has-error");
           
       });
+
       $("#inputgroup_check_choose_crystal_parent").click(function(){
          $("#inputgroup_check_choose_crystal_parent").removeClass("check_danger");
 
