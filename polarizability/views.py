@@ -290,7 +290,7 @@ def compute(request):
 		message['Xh_imag'] = str(round(Xh.imag*math.pow(10,7),4))
 		message['delta'] = str(round(delta,4))
 		message['dprmtr'] = str(round(dprmtr, 4))
-		message['extintion'] = str(round(Ld*1e-3, 3))
+		message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 		message['maximum'] = str(round(max_pow_R,4))
 		message['x_darwin'] = x
 		message['y_darwin'] = y
