@@ -131,7 +131,8 @@ def compute(request):
 		s7_surface = (hInd_surface*lInd+lInd_surface*hInd)*aprmtr_*cprmtr_*COSbetaprmtr_
 		s8_surface = (hInd_surface*kInd+kInd_surface*hInd)*aprmtr_*bprmtr_*COSgammaprmtr_
 		s9_surface = s5_surface+s6_surface+s7_surface+s8_surface
-		fi = math.degrees( math.cos( dprmtr_surface * dprmtr * s9_surface) )
+		fi = math.degrees( math.acos( dprmtr_surface * dprmtr * s9_surface) )
+
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.cos(math.pi/2-tetaprmtr)
 		gamma_h = math.cos(math.pi/2+tetaprmtr)
