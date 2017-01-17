@@ -79,12 +79,18 @@ def compute(request):
 		kInd = int(request.POST['k'], 10) # индекс миллера k
 		lInd = int(request.POST['l'], 10) # индекс миллера l
 
+		hInd_surface = int(request.POST['h_surface'], 10) # индекс миллера h
+		kInd_surface = int(request.POST['k_surface'], 10) # индекс миллера k
+		lInd_surface = int(request.POST['l_surface'], 10) # индекс миллера l
+
+
+
 		alfaprmtr = math.radians(float(crystal.alfa)) # угол альфа решетки в радианах
 		betaprmtr = math.radians(float(crystal.beta)) # угол бета решетки
 		gammaprmtr = math.radians(float(crystal.gamma)) # угол гамма решетки
 
 		C=1 # в случае сигма поляризации, в случае пи()=cos(2*Тета_breg)
-		b=-1 # коэффициент ассиметрии брэговского отражения
+		
 		StructFactorReal = 0
 		StructFactorImag=0 # обнуляем структурный фактор
 		StructFactor0 = 0
@@ -92,6 +98,7 @@ def compute(request):
 		crystalGeom = open(path+"structure/"+crystal.name+'.dat').readlines() # открыл файл с геометрие элементарной ячейки
 		
 		V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
+		
 		# расчет межплоскостного расстояния ––––––––––––––––––
 		aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
 		bprmtr_ = cprmtr*aprmtr*math.sin(betaprmtr)/V
@@ -110,9 +117,25 @@ def compute(request):
 		# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
 		tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
 
+		#-----------Угол между поверхностью и плоскостью---------
+
+		s1_surface = math.pow( ( hInd_surface * aprmtr_) ,2) + math.pow( ( kInd_surface * bprmtr_) ,2) + math.pow( ( lInd_surface * cprmtr_) ,2)
+		s2_surface = 2*hInd_surface*kInd_surface*aprmtr_*bprmtr_*COSgammaprmtr_
+		s3_surface = 2*kInd_surface*lInd_surface*COSalfaprmtr_
+		s4_surface = 2*hInd_surface*lInd_surface*aprmtr_*cprmtr_*COSbetaprmtr_
+		dprmtr_surface = math.sqrt(1/(s1_surface+s2_surface+s3_surface+s4_surface)) # *10^-10
+
+
+		s5_surface = hInd*hInd_surface*math.pow(aprmtr_,2)+kInd*kInd_surface*math.pow(bprmtr_,2)+lInd*lInd_surface*math.pow(cprmtr_,2)
+		s6_surface = (kInd_surface*lInd+lInd_surface*kInd)*bprmtr_*cprmtr_*COSalfaprmtr_
+		s7_surface = (hInd_surface*lInd+lInd_surface*hInd)*aprmtr_*cprmtr_*COSbetaprmtr_
+		s8_surface = (hInd_surface*kInd+kInd_surface*hInd)*aprmtr_*bprmtr_*COSgammaprmtr_
+		s9_surface = s5_surface+s6_surface+s7_surface+s8_surface
+		fi = math.degrees( math.cos( dprmtr_surface * dprmtr * s9_surface) )
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.cos(math.pi/2-tetaprmtr)
 		gamma_h = math.cos(math.pi/2+tetaprmtr)
+		b=-1 # коэффициент ассиметрии брэговского отражения
 		#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
 
 		V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
@@ -302,6 +325,7 @@ def compute(request):
 		message['x_darwin'] = x
 		message['y_darwin'] = y
 		message['for_downloading'] = for_downloading
+		message['fi'] = for_downloading # угол между плоскостью и поверхностью
 
 		
 
