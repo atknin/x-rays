@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from general import models as general_models
 from django.contrib import auth
+from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
