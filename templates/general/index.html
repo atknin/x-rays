@@ -112,7 +112,6 @@
       $("#btn_login").click(function() {
         if ($('#login_id').val() == '' || $('#password_id').val() == ''){
           $('.check_id_login').addClass("error");
-          console.log('error');
           return;
         }
         else{
@@ -120,12 +119,19 @@
           $.ajaxSetup({data: {
             csrfmiddlewaretoken: '{{ csrf_token }}'
           }});
-          console.log('ok');
-          // $.post("compute/", login_dict ,function(data) {
-          // });
+          $.post("/index/", login_dict ,function(data) {
+            if (data.status == 'ok') {
+              location.reload()
+            }
+            else{
+              $('.check_id_login').addClass("error");
+            }
+          });
         }
+      });
 
-        
+      $(".check_id_login").click(function(){
+        $(this).removeClass("error");
       });
     });
 
