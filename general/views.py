@@ -5,7 +5,7 @@ from general import models as general_models
 from django.contrib import auth
 from django.http import JsonResponse
 
-# Create your views here.
+# Create your views here. dsds
 def index(request):
 	if request.is_ajax():
 		message = {}
