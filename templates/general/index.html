@@ -41,7 +41,7 @@
     <div class="container-fluid">
       <div class="header clearfix">
         <nav>
-          <ul class="nav nav-pills pull-right" style="margin-top: 15px;">
+          <ul class="nav nav-pills pull-right" style="margin-top: 15px;" id = 'check_id_login'>
             {% if user.is_authenticated %}
               <span class="label label-default" style="padding-right: 50px; margin-right: 50px;">{{user.username}}</span>
               
@@ -112,7 +112,19 @@
     </div> <!-- /container -->
   <script type="text/javascript">
     $(function() {
+      
+
       $("#btn_login").click(function() {
+        if ($('#login_id').val() == null || $('#password_id').val()==null){
+          $('#check_id_login').addClass("has-error");
+          break;
+        };
+
+        var login_dict = {'login': $('#login_id').val(), 'password': $('#password_id').val() }
+
+        $.ajaxSetup({data: {
+          csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
         console.log('ok')
         // $.post("compute/", login_dict ,function(data) {
               
