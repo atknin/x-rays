@@ -46,12 +46,12 @@
               <span class="label label-default" style="padding-right: 50px; margin-right: 50px;">{{user.username}}</span>
               
             {% else %}
-              <form class="form-inline" id = 'check_id_login'>
-                <div class="form-group">
+              <form class="form-inline">
+                <div class="form-group check_id_login">
                   <label class="sr-only" for="login_id">Логин</label>
                   <input type="email" class="form-control" id="login_id" placeholder="Логин">
                 </div>
-                <div class="form-group">
+                <div class="form-group check_id_login">
                   <label class="sr-only" for="password_id">Пароль</label>
                   <input type="password" class="form-control" id="password_id" placeholder="Пароль">
                 </div>
@@ -116,7 +116,7 @@
 
       $("#btn_login").click(function() {
         if ($('#login_id').val() == null || $('#password_id').val()==null){
-          $('#check_id_login').addClass("has-error");
+          $('.check_id_login').addClass("has-error");
           return;
         };
 
