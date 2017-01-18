@@ -41,12 +41,12 @@
     <div class="container-fluid">
       <div class="header clearfix">
         <nav>
-          <ul class="nav nav-pills pull-right" style="margin-top: 15px;" id = 'check_id_login'>
+          <ul class="nav nav-pills pull-right" style="margin-top: 15px;" >
             {% if user.is_authenticated %}
               <span class="label label-default" style="padding-right: 50px; margin-right: 50px;">{{user.username}}</span>
               
             {% else %}
-              <form class="form-inline">
+              <form class="form-inline" id = 'check_id_login'>
                 <div class="form-group">
                   <label class="sr-only" for="login_id">Логин</label>
                   <input type="email" class="form-control" id="login_id" placeholder="Логин">
