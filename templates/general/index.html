@@ -87,7 +87,7 @@
         <a href="">об авторах</a> | <a href="/updates/">обновления</a> | <a href="#">обратная связь</a>
         <br>
         {% if user.is_authenticated %}
-          {{user.name}}
+          {{user.username}}
         {% else %}
         <a href="">Войти на сайт</a>
         {% endif %}
