@@ -117,7 +117,7 @@
       $("#btn_login").click(function() {
         if ($('#login_id').val() == null || $('#password_id').val()==null){
           $('#check_id_login').addClass("has-error");
-          break;
+          return;
         };
 
         var login_dict = {'login': $('#login_id').val(), 'password': $('#password_id').val() }
