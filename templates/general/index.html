@@ -41,7 +41,7 @@
               <span class="label label-default" style="padding-right: 50px; margin-right: 50px;">{{user.username}}</span>
               
             {% else %}
-              <form class="form-inline">
+              <div class="form-inline">
                 <div class="form-group">
                   <label class="sr-only" for="login_id">Логин</label>
                   <input type="text" class="form-control check_id_login" id="login_id" placeholder="Логин">
@@ -51,7 +51,7 @@
                   <input type="password" class="form-control check_id_login" id="password_id" placeholder="Пароль">
                 </div>
                 <button id = 'btn_login' class="btn btn-default">Войти</button>
-              </form>
+              </div>
             {% endif %}
             
           </ul>
