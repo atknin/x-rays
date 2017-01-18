@@ -119,7 +119,7 @@
           $.ajaxSetup({data: {
             csrfmiddlewaretoken: '{{ csrf_token }}'
           }});
-          $.post("/index/", login_dict ,function(data) {
+          $.post("/", login_dict ,function(data) {
             if (data.status == 'ok') {
               location.reload()
             }
