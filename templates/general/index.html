@@ -88,9 +88,9 @@
         <br>
         {% if user.is_authenticated %}
           {{user.name}}
-        {% elseif %}
+        {% else %}
         <a href="">Войти на сайт</a>
-        {%else%}
+        {%endif%}
         <br>
         Данный сайт разработан при поддержке РФФИ (проект №16-32-60045 мол_а_дк)</p>
 
