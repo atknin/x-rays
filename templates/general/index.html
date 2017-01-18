@@ -110,7 +110,7 @@
       
 
       $("#btn_login").click(function() {
-        if ($('#login_id').val() == null || $('#password_id').val()==null){
+        if ($('#login_id').val() == '' || $('#password_id').val() == ''){
           $('.check_id_login').addClass("error");
           console.log('error');
           return;
