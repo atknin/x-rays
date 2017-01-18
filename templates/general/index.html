@@ -86,7 +86,7 @@
 
 
            <div class="col-lg-9" style="padding: 50px;">
-           Ваши права: {{user.groups.all.0}}
+           Ваши права:  {% for group in user.groups.all %} | group | {%endfor%}
           </div>
         {% endblock %}
       </div><!-- / основное тело -->
