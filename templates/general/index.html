@@ -43,19 +43,19 @@
         <nav>
           <ul class="nav nav-pills pull-right" style="margin-top: 15px;">
             {% if user.is_authenticated %}
-              <span class="label label-default">{{user.username}}</span>
+              <span class="label label-default" style="padding-right: 50px;">{{user.username}}</span>
               
             {% else %}
               <form class="form-inline">
                 <div class="form-group">
-                  <label class="sr-only" for="exampleInputEmail3">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+                  <label class="sr-only" for="login_id">Логин</label>
+                  <input type="email" class="form-control" id="login_id" placeholder="Логин">
                 </div>
                 <div class="form-group">
-                  <label class="sr-only" for="exampleInputPassword3">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+                  <label class="sr-only" for="password_id">Пароль</label>
+                  <input type="password" class="form-control" id="password_id" placeholder="Пароль">
                 </div>
-                <button type="submit" class="btn btn-default">Sign in</button>
+                <button type="submit" class="btn btn-default">Войти</button>
               </form>
             {% endif %}
             
