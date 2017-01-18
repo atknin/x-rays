@@ -43,7 +43,7 @@
         <nav>
           <ul class="nav nav-pills pull-right" style="margin-top: 15px;">
             {% if user.is_authenticated %}
-              <span class="glyphicon glyphicon-user">{{user.username}}</span>
+              <span class="label label-default">{{user.username}}</span>
               
             {% else %}
               <form class="form-inline">
