@@ -34,14 +34,14 @@
       <div class="form-row field-crystal_system">
         <div>
           <select class="form-control" id="id_crystal_system" name="crystal_system">
-            <option>unknown</option>
-            <option>Triclinic</option>
-            <option>Monoclinic</option>
-            <option>Orthorhombic</option>
-            <option>Tetragonal</option>
-            <option>Hexagonal</option>
-            <option>Trigonal</option>
-            <option>Cubic</option>
+            <option>неизвестно</option>
+            <option>Триклинная</option>
+            <option>Моноклинная</option>
+            <option>Ромбическая</option>
+            <option>Тетрагональная</option>
+            <option>Гексагональная</option>
+            <option>Тригональная</option>
+            <option>Кубическая</option>
           </select>
           <p class="help">симметрия кристаллической структуры</p>
         </div>
@@ -152,34 +152,40 @@
   $(document).ready(function(){
     $( "#id_crystal_system" ).change(function() {
       syng = $( "#id_crystal_system option:selected" ).text();
-      if(syng == 'Triclinic' ){
+
+
+
+
+
+
+
+
+      if(syng == 'Триклинная' ){
         var a = 1+1;
       }
-      else if(syng == 'Triclinic'){
+      else if(syng == 'Моноклинная'){
         var a = 1+1;
       }
-      else if(syng == 'Monoclinic'){
+      else if(syng == 'Ромбическая'){
         var a = 1+1;
       }
-      else if(syng == 'Orthorhombic'){
+      else if(syng == 'Тетрагональная'){
         var a = 1+1;
       }
-      else if(syng == 'Tetragonal'){
+      else if(syng == 'Гексагональная'){
         var a = 1+1;
       }
-      else if(syng == 'Hexagonal'){
+      else if(syng == 'Тригональная'){
         var a = 1+1;
       }
-      else if(syng == 'Trigonal'){
-        var a = 1+1;
-      }
-      else if(syng == 'Cubic'){
+      else if(syng == 'Кубическая'){
         $('#id_b,#id_c').prop( "disabled", true );
         $('#id_b').val($('#id_a').val());
         $('#id_c').val($('#id_a').val());
 
         $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
         $('#id_alfa,#id_beta,#id_gamma').val('90');
+
         
       }
       else{
@@ -220,6 +226,7 @@
       var flag = false;
       var english = /^[A-Za-z0-9]*$/;
       info = '';
+      $(".check_area_geom, #id_name, #id_short_name, #id_crystal_system, #id_a, #id_b, #id_c, #id_alfa, #id_beta, #id_gamma, #id_density").removeClass("error");
       if (lines.length<=1) {
         flag = true;
         info +='Недостаточно атомов в элементарной ячейке, добавтье структуру; \n';
