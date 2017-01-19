@@ -12,7 +12,7 @@
         -webkit-appearance: none;
         margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
     }
-    
+
   </style>
 {% endblock %}
 
@@ -48,49 +48,43 @@
       </div>
       <div class="form-row field-a">
         <div>
-            <input id="id_a" name="a" class="form-control" type="number">
-          <p class="help">параметр 'a', единица изм. &#8491; - ангстрем</p>
+            <input id="id_a" name="a" class="form-control" type="number" placeholder="параметр 'a'">
+          <p class="help"> единица изм. &#8491; - ангстрем</p>
         </div>
       </div>
       <div class="form-row field-b">
         <div>
-          <label for="id_b">параметр b:</label>
-          <input id="id_b" name="b" step="0.0001" type="number">
+          <input class="form-control" id="id_b" name="b" type="number" placeholder="параметр 'b'">
           <p class="help">единица изм. &#8491; - ангстрем</p>
         </div>
       </div>
       <div class="form-row field-c">
         <div>
-          <label for="id_c">параметр c:</label>
-          <input id="id_c" name="c" step="0.0001" type="number">
+          <input class="form-control" id="id_c" name="c"  type="number" placeholder="параметр 'c'">
           <p class="help">единица изм. &#8491; - ангстрем</p>
         </div>
       </div>
       <div class="form-row field-alfa">
         <div>
-          <label for="id_alfa">Угол &#945;:</label>
-          <input id="id_alfa" name="alfa" step="0.0001" type="number">
+          <input id="id_alfa" class="form-control" name="alfa" type="number" placeholder="Угол &#945;">
           <p class="help">в градусах</p>
         </div>
       </div>
       <div class="form-row field-beta">
         <div>
-          <label for="id_beta">Угол &beta;:</label>
-          <input id="id_beta" name="beta" step="0.0001" type="number">
+          <input id="id_beta" class="form-control"  name="beta" type="number" placeholder="Угол &beta;">
           <p class="help">в градусах</p>
         </div>
       </div>
       <div class="form-row field-gamma">
         <div>
-          <label for="id_gamma">Угол &#947;:</label>
-          <input id="id_gamma" name="gamma" step="0.0001" type="number">
+          <input id="id_gamma" class="form-control" name="gamma" type="number" placeholder="Угол &#947;">
           <p class="help">в градусах</p>
         </div>
       </div>
       <div class="form-row field-density">
         <div>
-          <label for="id_density">Плотность:</label>
-          <input id="id_density" name="density" step="0.0001" type="number">
+          <input id="id_density" class="form-control" name="density"  type="number" placeholder="Плотность">
           <p class="help">в гр/см<sup>3</sup>, например, pSi = 2.33 гр/см <sup>3</sup></p>
         </div>
       </div>
