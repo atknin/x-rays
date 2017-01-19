@@ -161,19 +161,37 @@
 
 
       if(syng == 'Триклинная' ){
-        var a = 1+1;
+        $('#id_alfa,#id_beta,#id_gamma,#id_b,#id_c').prop( "disabled", false );
       }
       else if(syng == 'Моноклинная'){
-        var a = 1+1;
+        $('#id_beta,#id_b,#id_c').prop( "disabled", false );
+
+        $('#id_alfa,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_gamma').val('90');
+
       }
       else if(syng == 'Ромбическая'){
-        var a = 1+1;
+        $('#id_b,#id_c').prop( "disabled", false );
+        $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_beta,#id_gamma').val('90');
       }
       else if(syng == 'Тетрагональная'){
-        var a = 1+1;
+        $('#id_c').prop( "disabled", false );
+        $('#id_b').prop( "disabled", true );
+        $('#id_b').val($('#id_a').val());
+
+        $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_beta,#id_gamma').val('90');
+
       }
       else if(syng == 'Гексагональная'){
-        var a = 1+1;
+        $('#id_c').prop( "disabled", false );
+        $('#id_b').prop( "disabled", true );
+        $('#id_b').val($('#id_a').val());
+        
+        $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_beta').val('90');
+        $('#id_gamma').val('120');
       }
       else if(syng == 'Тригональная'){
         $('#id_b,#id_c').prop( "disabled", true );
@@ -181,7 +199,6 @@
         $('#id_c').val($('#id_a').val());
 
         $('#id_beta,#id_gamma').prop( "disabled", true );
-        $('#id_alfa').val('');
         $('#id_beta').val($('#id_alfa').val());
         $('#id_gamma').val($('#id_alfa').val());
 
