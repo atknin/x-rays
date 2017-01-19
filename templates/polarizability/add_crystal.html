@@ -190,6 +190,7 @@
     var compute_dict = {};
     var info = ''; 
     var flag = false;
+    var english = /^[A-Za-z0-9]*$/;
 
     $( "#id_name" ).change(function() {
       compute_dict['id_name'] = $( "#id_name").val();
@@ -243,7 +244,7 @@
       // проверка левого столбца
       compute_dict['id_geom'] = geom;
 
-      var english = /^[A-Za-z0-9]*$/;
+      
       //проверка названия
       compute_dict['id_name'] = $( "#id_name").val();
       if (!english.test(compute_dict['id_name']) || !compute_dict['id_name']){
