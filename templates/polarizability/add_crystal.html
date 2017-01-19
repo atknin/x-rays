@@ -176,7 +176,15 @@
         var a = 1+1;
       }
       else if(syng == 'Тригональная'){
-        var a = 1+1;
+        $('#id_b,#id_c').prop( "disabled", true );
+        $('#id_b').val($('#id_a').val());
+        $('#id_c').val($('#id_a').val());
+
+        $('#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_beta').val($('#id_alfa').val());
+        $('#id_gamma').val($('#id_alfa').val());
+
+        $('#id_alfa').prop( "enabled", true );
       }
       else if(syng == 'Кубическая'){
         $('#id_b,#id_c').prop( "disabled", true );
