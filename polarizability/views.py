@@ -12,9 +12,29 @@ import sys, math, cmath, os, re#, scipy # re - для работы с регул
 from django.http import JsonResponse
 import numpy as np
 import time
-
+import os
+# bot_inform.sent_to_atknin_bot('wavelenght: ' + str(wavelength), 'v') # проинформируем в telegramm bot
 
 # Create your views here.
+def delete(request):
+	message = {}
+	if request.is_ajax():
+		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
+		crystal = polarizability_models.crystals.objects.get(pk = request.POST['id'])
+		name = crystal.name
+
+		message['status'] = 'не авторизирован, не удалено'
+		if request.user.is_authenticated():
+			mes = 'Кристалл ' + name + ' успешно удален'
+			bot_inform.sent_to_atknin_bot(mes, 'v')
+			# os.remove(path+"structure/"+crystal.name+'.dat')
+			# crystal.delete()
+			message['status'] = 'удалено'
+
+	else:
+		message['status'] = 'error'
+	return JsonResponse(message)
+
 
 def add_crystal(request):
 	if request.is_ajax():
@@ -170,29 +190,6 @@ def compute(request):
 					cromer_man_file.seek(0) # возвращаем каретку в началао файла
 					abc = re.split(r'   ', line)
 					break
-			#_____________________________________________________________________________________________________________________________
-			# #__считаем f0_raspredelenie  для определения зависимости от sin(teta)/lam_____________________________________________________
-			# sin_by_lam = 0
-			# X_f0_raspredelenie = []
-			# Y_f0_raspredelenie = []
-			# with  open(path+'saved/f0_'+element_name.replace('\n', '')+'.dat', 'w') as out1:
-		# 		while sin_by_lam<=2*math.pi:
-		# 			f0_raspredelenie=0# обнуляем коэффициен для следующего атома в ячейке для построения зависимоти 
-		# 			for k in range(0, 4):
-		# 				f0_raspredelenie += float(abc[k])*math.exp(-float(abc[k+5])*(math.sin(sin_by_lam)/wavelength)**2)# длинна волны в ангстремах
-		# 			f0_raspredelenie=(f0_raspredelenie+float(abc[4]))
-		# 			X_f0_raspredelenie.append(sin_by_lam)
-		# 			Y_f0_raspredelenie.append(f0_raspredelenie)
-		# 			out1.write('%14.8s'  % str(sin_by_lam))
-		# 			out1.write('%14.8s' % str(f0_raspredelenie))
-		# 			out1.write('\n')
-
-		# 			sin_by_lam+=math.pi/100
-
-		# 	# a_element = PolarizabilityClass.plot_for_sin_by_lam(X_f0_raspredelenie,Y_f0_raspredelenie, element_name,a_element)
-		# 	if not element_name in a_element: 
-		# 		ax.plot(X_f0_raspredelenie, Y_f0_raspredelenie,label=element_name.replace('\n', '')+' (N = ' + NXYZocup[0]+')')
-		# 		a_element.add(element_name)
 
 			# __считаем f0________________________________________________________________________________________________________________
 			for k in range(0, 4):
@@ -277,14 +274,6 @@ def compute(request):
 		# Смещение кривой
 		bb=1
 		sdvig = math.degrees(-X0.real*(1+bb)/(2*bb*math.sin(2*tetaprmtr)))*3600
-
-
-		# bot_inform.sent_to_atknin_bot('wavelenght: ' + str(wavelength), 'v') # проинформируем в telegramm bot
-		# bot_inform.sent_to_atknin_bot('crystal: id-' + crystal_id+' name: '+crystal.name, 'v') # проинформируем в telegramm bot
-		# bot_inform.sent_to_atknin_bot('hkl: '+str(hInd)+str(kInd)+str(lInd), 'v') # проинформируем в telegramm bot
-		# bot_inform.sent_to_atknin_bot('path: '+ path, 'v') # проинформируем в telegramm bot
-		# bot_inform.sent_to_atknin_bot('Bragg: '+ str(round(math.degrees(tetaprmtr), 4)), 'v') # проинформируем в telegramm bot
-		# bot_inform.sent_to_atknin_bot('N_atom: '+ str(Natom), 'v') # проинформируем в telegramm bot
 
 # Собственная кривая кристалла -–––––––––––––––––––––––––––––––––––
 		schet=0
