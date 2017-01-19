@@ -162,10 +162,12 @@
 
       if(syng == 'Триклинная' ){
         $('#id_alfa,#id_beta,#id_gamma,#id_b,#id_c').prop( "disabled", false );
+        if($('#id_alfa,#id_beta,#id_gamma').val()=='90') $('#id_alfa,#id_beta,#id_gamma').val('');
       }
       else if(syng == 'Моноклинная'){
-        $('#id_beta,#id_b,#id_c').prop( "disabled", false );
+        if($('#id_beta').val()=='90') $('#id_alfa').val('');
 
+        $('#id_beta,#id_b,#id_c').prop( "disabled", false );
         $('#id_alfa,#id_gamma').prop( "disabled", true );
         $('#id_alfa,#id_gamma').val('90');
 
