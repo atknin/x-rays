@@ -177,6 +177,7 @@
       $('#myModal_forsure').modal('hide');  
       $.post("delete/", delelete ,function(data) {
         alert(data.status);
+        location.reload()
       });
     });
 
