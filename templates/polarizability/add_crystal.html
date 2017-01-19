@@ -39,8 +39,8 @@
             <option>Моноклинная</option>
             <option>Ромбическая</option>
             <option>Тетрагональная</option>
-            <option>Гексагональная</option>
             <option>Тригональная</option>
+            <option>Гексагональная</option>
             <option>Кубическая</option>
           </select>
           <p class="help">симметрия кристаллической структуры</p>
@@ -194,10 +194,10 @@
         $('#id_gamma').val('120');
       }
       else if(syng == 'Тригональная'){
+        if($('#id_alfa').val()=='90') $('#id_alfa').val('');
         $('#id_b,#id_c').prop( "disabled", true );
         $('#id_b').val($('#id_a').val());
         $('#id_c').val($('#id_a').val());
-
         $('#id_beta,#id_gamma').prop( "disabled", true );
         $('#id_beta').val($('#id_alfa').val());
         $('#id_gamma').val($('#id_alfa').val());
