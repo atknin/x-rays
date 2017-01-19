@@ -191,7 +191,18 @@
     var info = ''; 
     var flag = false;
 
-    
+    $( "#id_name" ).change(function() {
+      compute_dict['id_name'] = $( "#id_name").val();
+      if (!english.test(compute_dict['id_name']) || !compute_dict['id_name']){
+        flag = true;
+        $('#id_name').addClass("error");
+      }
+      else{
+        flag = false;
+        $('#id_name').removeClass("error");
+      };  
+    });
+
     $("#check").click(function(event){
       var lines = $('#text_area_geometry').val().split('\n');
       
