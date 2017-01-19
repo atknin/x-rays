@@ -175,8 +175,11 @@
       }
       else if(syng == 'Cubic'){
         $('#id_b,#id_c').prop( "disabled", true );
-        $('#id_b').val($('#id_a').val())
-        $('#id_c').val($('#id_a').val())
+        $('#id_b').val($('#id_a').val());
+        $('#id_c').val($('#id_a').val());
+
+        $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_beta,#id_gamma').val('90');
         
       }
       else{
