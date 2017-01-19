@@ -160,6 +160,17 @@
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
  $(function() {
+    $("#btn_remove_crystal").click(function() {
+      var delelete = $('#btn_remove_crystal').attr('name');
+      console.log(delelete);
+      $.ajaxSetup({data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
+      // $.post("compute/", delelete ,function(data) {
+
+      // });
+    });
+
     $("#compute").click(function() {
       $("#loader_addon").addClass("loader"); //анимациая загрузки
 
