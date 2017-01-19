@@ -161,11 +161,13 @@
         if($('#id_beta').val()=='90') $('#id_alfa').val('');
         $('#id_beta,#id_b,#id_c').prop( "disabled", false );
         $('#id_alfa,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_gamma').removeClass("error");
         $('#id_alfa,#id_gamma').val('90');
       }
       else if(syng == 'Ромбическая'){
         $('#id_b,#id_c').prop( "disabled", false );
         $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_beta,#id_gamma').removeClass("error");
         $('#id_alfa,#id_beta,#id_gamma').val('90');
       }
       else if(syng == 'Тетрагональная'){
@@ -173,31 +175,38 @@
         $('#id_b').prop( "disabled", true );
         $('#id_b').val($('#id_a').val());
         $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_beta,#id_gamma').removeClass("error");
         $('#id_alfa,#id_beta,#id_gamma').val('90');
       }
       else if(syng == 'Гексагональная'){
         $('#id_c').prop( "disabled", false );
-        $('#id_b').prop( "disabled", true );
+        $('#id_b').prop( "disabled", true ); 
+        $('#id_b').removeClass("error");
         $('#id_b').val($('#id_a').val());
         $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_beta,#id_gamma').removeClass("error");
         $('#id_alfa,#id_beta').val('90');
         $('#id_gamma').val('120');
       }
       else if(syng == 'Тригональная'){
         if($('#id_alfa').val()=='90' || $('#id_alfa').val() > 120) $('#id_alfa').val('');
-        $('#id_b,#id_c').prop( "disabled", true );
+        $('#id_b,#id_c').prop( "disabled", true ); 
+        $('#id_b,#id_c').removeClass("error");
         $('#id_b').val($('#id_a').val());
         $('#id_c').val($('#id_a').val());
         $('#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_beta,#id_gamma').removeClass("error");
         $('#id_beta').val($('#id_alfa').val());
         $('#id_gamma').val($('#id_alfa').val());
         $('#id_alfa').prop( "disabled", false );
       }
       else if(syng == 'Кубическая'){
         $('#id_b,#id_c').prop( "disabled", true );
+        $('#id_b,#id_c').removeClass("error");
         $('#id_b').val($('#id_a').val());
         $('#id_c').val($('#id_a').val());
         $('#id_alfa,#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa,#id_beta,#id_gamma').removeClass("error");
         $('#id_alfa,#id_beta,#id_gamma').val('90');
       }
       else{
