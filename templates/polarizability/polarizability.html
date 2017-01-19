@@ -55,7 +55,7 @@
                 <a data-toggle="tooltip" data-placement="right" title="{{crystal.short_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{crystal.crystal_system}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;=&nbsp;{{crystal.a}}&nbsp;&#8491;; b&nbsp;=&nbsp;{{crystal.b}}&nbsp;&#8491;; c&nbsp;=&nbsp;{{crystal.c}}&nbsp;&#8491;; &#945;&nbsp;=&nbsp;{{crystal.alfa|floatformat:0}}&nbsp;&deg;; &beta;&nbsp;=&nbsp;{{crystal.beta|floatformat:0}}&nbsp;&deg;; &#947;&nbsp;=&nbsp;{{crystal.gamma|floatformat:0}}&nbsp;&deg;;" >
                   <span class="label label-info image">info</span>
                 </a>
-                <a id='btn_remove_crystal' name = "{{crystal.id}}" > <span class="label label-danger image">remove</span></a>
+                <a class="btn_remove_crystal" name = "{{crystal.id}}" > <span class="label label-danger image">remove</span></a>
               </td>
             </tr>
           {% endfor %}
@@ -160,8 +160,9 @@
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
  $(function() {
-    $("#btn_remove_crystal").click(function() {
-      var delelete = $('#btn_remove_crystal').attr('name');
+  
+    $(".btn_remove_crystal").click(function() {
+      var delelete = $(this).attr('name');
       console.log(delelete);
       $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
