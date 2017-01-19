@@ -34,7 +34,7 @@
       <div class="form-row field-crystal_system">
         <div>
           <select class="form-control" id="id_crystal_system" name="crystal_system">
-            <option>unknown (it's ok)</option>
+            <option>unknown</option>
             <option>Triclinic</option>
             <option>Monoclinic</option>
             <option>Orthorhombic</option>
@@ -149,6 +149,22 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    // $( "#id_crystal_system" ).change(function() {
+    //   syng = $( "#id_crystal_system option:selected" ).text();
+    //   if(syng == 'Triclinic' ){
+
+    //   };
+    //                         // unknown
+    //                         // Triclinic
+    //                         // Monoclinic
+    //                         // Orthorhombic
+    //                         // Tetragonal
+    //                         // Hexagonal
+    //                         // Trigonal
+    //                         // Cubic
+      
+    // });
+
     $( '#geomInputFile' ).on("change", function(){
       if ( ! window.FileReader ) {
         return alert( 'Ваш браузер не поддерживает загрузку' );
@@ -173,10 +189,12 @@
 
     var compute_dict = {};
     var info = ''; 
+    var flag = false;
 
+    
     $("#check").click(function(event){
       var lines = $('#text_area_geometry').val().split('\n');
-      var flag = false;
+      
       if (lines.length<=1) {
         flag = true;
         info +='Недостаточно атомов в элементарной ячейке, добавтье структуру; \n';
