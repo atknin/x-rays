@@ -15,9 +15,11 @@
     <fieldset class="module aligned ">
       <div class="form-row field-name">
         <div >
-          <label class="required" for="id_name">Название:</label>
-          <input class="vTextField" id="id_name" maxlength="80" name="name" type="text" required="">
-          <p class="help">Коротко, без пробелов, без спец. символов, на английском</p>
+            <div class="form-group">
+              <label for="id_name">Название: </label>
+              <input type="text" class="form-control"  maxlength="80" id="id_name" placeholder="LGT">
+              <p class="help">коротко, без пробелов, без спец. символов, на английском</p>
+            </div>
         </div>
       </div>
       <div class="form-row field-short_name">
