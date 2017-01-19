@@ -181,10 +181,11 @@
         $('#id_c').val($('#id_a').val());
 
         $('#id_beta,#id_gamma').prop( "disabled", true );
+        $('#id_alfa').val('');
         $('#id_beta').val($('#id_alfa').val());
         $('#id_gamma').val($('#id_alfa').val());
 
-        $('#id_alfa').prop( "enabled", true );
+        $('#id_alfa').prop( "disabled", false );
       }
       else if(syng == 'Кубическая'){
         $('#id_b,#id_c').prop( "disabled", true );
