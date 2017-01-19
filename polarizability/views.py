@@ -25,10 +25,8 @@ def delete(request):
 
 		message['status'] = 'не авторизирован, не удалено'
 		if request.user.is_authenticated():
-			mes = 'Кристалл ' + name + ' успешно удален'
-			bot_inform.sent_to_atknin_bot(mes, 'v')
-			# os.remove(path+"structure/"+crystal.name+'.dat')
-			# crystal.delete()
+			os.remove(path+"structure/"+crystal.name+'.dat')
+			crystal.delete()
 			message['status'] = 'удалено'
 
 	else:
