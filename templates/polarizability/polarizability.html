@@ -48,13 +48,14 @@
          {% for crystal in crystals %}
             <tr>
               <td ><input type="radio" name="crystal" id = "{{crystal.id}}" value="{{crystal.id}}"></td>
-              <td >
+              <td>
               <label for = "{{crystal.id}}">{{crystal.name}} </label>
               </td>
               <td>
                 <a data-toggle="tooltip" data-placement="right" title="{{crystal.short_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{crystal.crystal_system}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;=&nbsp;{{crystal.a}}&nbsp;&#8491;; b&nbsp;=&nbsp;{{crystal.b}}&nbsp;&#8491;; c&nbsp;=&nbsp;{{crystal.c}}&nbsp;&#8491;; &#945;&nbsp;=&nbsp;{{crystal.alfa|floatformat:0}}&nbsp;&deg;; &beta;&nbsp;=&nbsp;{{crystal.beta|floatformat:0}}&nbsp;&deg;; &#947;&nbsp;=&nbsp;{{crystal.gamma|floatformat:0}}&nbsp;&deg;;" >
                   <span class="glyphicon glyphicon-question-sign image"></span>
                 </a>
+                <a id='btn_remove_crystal' name = "{{crystal.id}}" > <span class="label label-danger">remove</span></a>
               </td>
             </tr>
           {% endfor %}
