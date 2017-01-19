@@ -8,7 +8,7 @@
     <script src="{% static "bootstrap/js/popover.js"%}"></script>
     <script src="{% static "bootstrap/js/dropdown.js"%}"></script>
     <script src="{% static "bootstrap/js/modal.js"%}"></script>
-    
+
     
 
   
@@ -174,7 +174,7 @@
       $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
       }});
-
+      $('#myModal_forsure').modal('hide');  
       $.post("delete/", delelete ,function(data) {
         alert(data.status);
       });
