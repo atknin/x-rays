@@ -7,6 +7,9 @@
     <script src="{% static "bootstrap/js/tooltip.js"%}"></script>
     <script src="{% static "bootstrap/js/popover.js"%}"></script>
     <script src="{% static "bootstrap/js/dropdown.js"%}"></script>
+    <script src="{% static "bootstrap/js/modal.js"%}"></script>
+    
+    
 
   
 
@@ -179,7 +182,7 @@
 
     $(".btn_remove_crystal").click(function() {
       $('#myModal_forsure').modal('show');
-      $('#myModal_forsure').attr('name',$(this).attr('name'))
+      $('#delete_for_sure').attr('name',$(this).attr('name'))
     });
 
     $("#compute").click(function() {
