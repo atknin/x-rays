@@ -59,8 +59,7 @@
                     {% if "user_admin" == group.name %}
                       <a class="btn_remove_crystal" name = "{{crystal.id}}" > <span class="label label-danger image">remove</span></a>
                     {% endif %}
-                  {%endfor%}
-                  
+                  {%endfor%}      
                 
               </td>
             </tr>
@@ -165,16 +164,22 @@
 
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
+ var flag_delete;
  $(function() {
-
-    $(".btn_remove_crystal").click(function() {
+    $('#delete_for_sure').click(function() {
       var delelete = {'id' :$(this).attr('name')};
       $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
-        }});
+      }});
+
       $.post("delete/", delelete ,function(data) {
-        console.log(data.status)
+        alert(data.status);
       });
+    });
+
+    $(".btn_remove_crystal").click(function() {
+      $('#myModal_forsure').modal('show');
+      $('#myModal_forsure').attr('name',$(this).attr('name'))
     });
 
     $("#compute").click(function() {
@@ -361,6 +366,22 @@
   });
 
 </script>
-
+<div class="modal fade" id="myModal_forsure" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Удаление</h4>
+      </div>
+      <div class="modal-body">
+        Вы уверены, что хотите продолжить и удалить кристалл безвозратно?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+        <button type="button" id ='delete_for_sure' class="btn btn-primary">Удалить</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
