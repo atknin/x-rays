@@ -56,7 +56,7 @@
                   <span class="label label-info image">info</span>
                 </a>
                   {% for group in user.groups.all %}                   
-                    {% if " user_admin" == group %}
+                    {% if "user_admin" == {{group}} %}
                       <a class="btn_remove_crystal" name = "{{crystal.id}}" > <span class="label label-danger image">remove</span></a>
                     {% endif %}
                   {%endfor%}
