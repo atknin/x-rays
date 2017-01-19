@@ -129,7 +129,7 @@
   <div class="col-md-2">
     <div class="input-group" id = "btn_check" style="margin-top: 10px;">             
       <div class="input-group-btn">
-        <button type="button" id="check" class="btn btn-success" style="width: 100%;">Проверка</button>
+        <button type="button" id="check" class="btn btn-info" style="width: 100%;">Проверка</button>
       </div>
       <span class="input-group-addon " id="loader_addon_check" style="background-color: transparent;"></span>
     </div>
@@ -320,6 +320,9 @@
     $( "#id_name, #id_short_name, #id_crystal_system, #id_a, #id_b, #id_c, #id_alfa, #id_beta, #id_gamma, #id_density, #text_area_geometry").change(function() {
       $('#btn_save').hide();
       $('#btn_check').show();
+      $('#check_status').remove();
+      $('#loader_addon_check').append('<span id = "check_status" class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>');
+
     });
 
 
