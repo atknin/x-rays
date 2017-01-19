@@ -222,7 +222,7 @@
         <table class="table table-bordered" id = "inputgroup_check_choose_crystal_parent" style="">
          {% for crystal in crystals %}
             <tr>
-              <td ><input type="radio" name="crystal" class="radio-danger" id = "{{crystal.id}}" value="{{crystal.id}}"></td>
+              <td class="radio radio-danger" ><input type="radio" name="crystal" id = "{{crystal.id}}" value="{{crystal.id}}"></td>
               <td>
               <label for = "{{crystal.id}}">{{crystal.name}} </label>
               </td>
