@@ -92,7 +92,7 @@
           // use result in callback...
           var j = 1
           $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
-          $( '#num_scan_'+j).val(text);
+          $( '#num_scan_'+j).val(e.target.result);
         });
       });
     });
