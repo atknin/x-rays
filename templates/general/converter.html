@@ -39,12 +39,14 @@
 
 <script type="text/javascript">
     var num = 0;
+    var name = {}
     $(document).ready(function(){
       $('#geomInputFile').on('change', function(e){
           for (var i = 0; i < this.files.length; i++) {
-             readFile(this.files[i], function(e) {
-              // use result in callback...
-              ok(e.target,file.name);
+              name['nm'+(i+1)] = this.files[i].name;
+              readFile(this.files[i], function(e) {
+                // use result in callback...
+              ok(e.target);
             });
           };
           
@@ -52,11 +54,11 @@
     });
 
 
-    function ok(text,name){
+    function ok(text){
       num++;
       $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
       $( '#num_scan_'+num).val(text.result);
-      console.log(name.name);
+      console.log(name['nm'+num]);
     };
 
     function readFile(file, onLoadCallback){
