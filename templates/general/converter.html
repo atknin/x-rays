@@ -47,16 +47,16 @@
       if ( input.files && input.files[0] ) {
 
         for (var j = 0; j <  input.files.length; j++) {
-          file = input.files[j];
           fr = new FileReader(); 
+          fr.readAsText( input.files[j]; );
+
           fr.onload = function () {
             $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
             $( '#num_scan_'+j).val(fr.result);
-
-            document.getElementById("file_name").value = file.name;
+            console.log(file.name)
+            // document.getElementById("file_name").value = file.name;
           };
 
-          fr.readAsText( file );
         // fr.readAsDataURL( file );
         }
         
