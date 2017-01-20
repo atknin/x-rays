@@ -66,8 +66,8 @@
       data['body'] = [];
       for (var i = 0; i < new_txt.length; i++) {
         data['body'][i] = parseFloat(new_txt[i].split());
-        // console.log();
       }
+      console.log( data['body']);
       
       $( "#text_for_x_y" ).append( name_aa[num]+"<br><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
       $( '#num_scan_'+num).val(text.result);
