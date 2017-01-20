@@ -269,8 +269,8 @@
             flag = true;
             $('.check_area_geom').addClass("has-error");
           };
-          if (parseFloat(atom[1])<0 || parseFloat(atom[1])>1 || parseFloat(atom[2])<-1 || parseFloat(atom[2])>1 || parseFloat(atom[3])<-1 || parseFloat(atom[3])>1) {
-            info +='атом №' +(i+1)+'  расположен за пределами элементарной ячейки x||y||z не пренадлежит [0,1]'+'; \n';
+          if (parseFloat(atom[1])<-1 || parseFloat(atom[1])>1 || parseFloat(atom[2])<-1 || parseFloat(atom[2])>1 || parseFloat(atom[3])<-1 || parseFloat(atom[3])>1) {
+            info +='атом №' +(i+1)+'  расположен за пределами элементарной ячейки x||y||z не пренадлежит [-1,1]'+'; \n';
             flag = true;
             $('.check_area_geom').addClass("has-error");
           };
