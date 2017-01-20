@@ -56,7 +56,7 @@
               <label for = "{{crystal.id}}">{{crystal.name}} </label>
               </td>
               <td>
-                <a data-toggle="tooltip" data-placement="right" title="{{crystal.short_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{crystal.crystal_system}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;=&nbsp;{{crystal.a}}&nbsp;&#8491;; b&nbsp;=&nbsp;{{crystal.b}}&nbsp;&#8491;; c&nbsp;=&nbsp;{{crystal.c}}&nbsp;&#8491;; &#945;&nbsp;=&nbsp;{{crystal.alfa|floatformat:0}}&nbsp;&deg;; &beta;&nbsp;=&nbsp;{{crystal.beta|floatformat:0}}&nbsp;&deg;; &#947;&nbsp;=&nbsp;{{crystal.gamma|floatformat:0}}&nbsp;&deg;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#961;&nbsp;&nbsp; = &nbsp;&nbsp; {{crystal.density|floatformat:0}}" >
+                <a data-toggle="tooltip" data-placement="right" title="{{crystal.short_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{crystal.crystal_system}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;=&nbsp;{{crystal.a}}&nbsp;&#8491;; b&nbsp;=&nbsp;{{crystal.b}}&nbsp;&#8491;; c&nbsp;=&nbsp;{{crystal.c}}&nbsp;&#8491;; &#945;&nbsp;=&nbsp;{{crystal.alfa|floatformat:0}}&nbsp;&deg;; &beta;&nbsp;=&nbsp;{{crystal.beta|floatformat:0}}&nbsp;&deg;; &#947;&nbsp;=&nbsp;{{crystal.gamma|floatformat:0}}&nbsp;&deg;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#961;&nbsp;&nbsp; = &nbsp;&nbsp; {{crystal.densitys}}" >
                   <span class="label label-info image">info</span>
                 </a>
                   {% for group in user.groups.all %}                   
