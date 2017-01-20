@@ -45,16 +45,16 @@
       var $i = $( '#geomInputFile' ), // Put file input ID here
         input = $i[0]; // Getting the element from jQuery
       if ( input.files && input.files[0] ) {
-
+        file = {}
         for (var j = 0; j <  input.files.length; j++) {
-          var file = input.files[j];
-          var fr = new FileReader(); 
-          fr.readAsText( file );
+          file['file'+j] = input.files[j];
+          file['fr'+j] = new FileReader(); 
+          file['fr'+j].readAsText( file );
 
           fr.onload = function () {
             $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
-            $( '#num_scan_'+j).val(fr.result);
-            console.log(file.name)
+            $( '#num_scan_'+j).val(file['fr'+j].result);
+            console.log( file['file'+j].name)
             // document.getElementById("file_name").value = file.name;
           };
 
