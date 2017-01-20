@@ -88,12 +88,14 @@
 
     $(document).ready(function(){
       $('#geomInputFile').on('change', function(e){
-        readFile(this.files[0], function(e) {
-          // use result in callback...
-          var j = 1
-          $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
-          $( '#num_scan_'+j).val(e.target.result);
-        });
+          for (var i = 0; i < this.files.length; i++) {
+            readFile(this.files[i], function(e) {
+              // use result in callback...
+              $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+i+"' rows='10'></textarea><hr>" );
+              $( '#num_scan_'+i).val(e.target.result);
+            });
+          };
+          
       });
     });
 
