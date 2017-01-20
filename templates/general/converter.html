@@ -3,53 +3,131 @@
   <title>Об авторах &#967; </title>
   {% load static %}
       
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-"{% static "converter/jquery.filer.min.js"%}"
-    <!-- Styles -->
-    <link href="{% static "converter/jquery.filer.css"%}" rel="stylesheet">
-    <link href="{% static "converter/jquery.filer-dragdropbox-theme.css"%}" rel="stylesheet">
-
-    <!-- Jvascript -->
-    <script src="{% static "converter/jquery.filer.min.js"%}" type="text/javascript"></script>
-    <script src="{% static "converter/custom.js"%}" type="text/javascript"></script>
     <style>
-        body {
-            font-family: 'Roboto Condensed', sans-serif;
-            font-size: 14px;
-            line-height: 1.42857143;
-            color: #47525d;
-            background-color: #fff;
-
-            margin: 0;
-            padding: 20px;
+        #filelist {
+            margin-top: 15px;
         }
 
-        hr {
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border: 0;
-            border-top: 1px solid #eee;
+        #uploadFilesButtonContainer, #selectFilesButtonContainer, #overallProgress {
+            display: inline-block;
         }
 
-    .jFiler {
-      font-family: inherit;
-    }
+        #overallProgress {
+            float: right;
+        }
     </style>
 
   {% endblock %}
   {% block content %}
-  <div>
-        <h1>Конвертер</h1>
-        <p>Для конвертирования результатов полученных на ТРС</p>
+  <div id="uploaderContainer">
+    <div id="selectFilesButtonContainer">
     </div>
-    <hr>
-    <div id="content">
-    <h2>Demo</h2>
+    <div id="uploadFilesButtonContainer">
+      <button type="button" id="uploadFilesButton"
+              class="yui3-button" style="width:250px; height:35px;">Upload Files</button>
+    </div>
+    <div id="overallProgress">
+    </div>
+</div>
 
-    <!-- Example 2 -->
-      <input type="file" name="files[]" id="filer_input2" multiple="multiple">
-    <!-- end of Example 2 -->
+<div id="filelist">
+  <table id="filenames">
+    <thead>
+       <tr><th>File name</th><th>File size</th><th>Percent uploaded</th></tr>
+       <tr id="nofiles">
+        <td colspan="3">
+            No files have been selected.
+        </td>
+       </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
 
-    </div>    
+<script>
+
+YUI({filter:"raw"}).use("uploader", function(Y) {
+Y.one("#overallProgress").set("text", "Uploader type: " + Y.Uploader.TYPE);
+   if (Y.Uploader.TYPE != "none" && !Y.UA.ios) {
+       var uploader = new Y.Uploader({width: "250px",
+                                      height: "35px",
+                                      multipleFiles: true,
+                                      swfURL: "flashuploader.swf?t=" + Math.random(),
+                                      uploadURL: "http://yuilibrary.com/sandbox/upload/",
+                                      simLimit: 2,
+                                      withCredentials: false
+                                     });
+       var uploadDone = false;
+
+       uploader.render("#selectFilesButtonContainer");
+
+       uploader.after("fileselect", function (event) {
+
+          var fileList = event.fileList;
+          var fileTable = Y.one("#filenames tbody");
+          if (fileList.length > 0 && Y.one("#nofiles")) {
+            Y.one("#nofiles").remove();
+          }
+
+          if (uploadDone) {
+            uploadDone = false;
+            fileTable.setHTML("");
+          }
+
+          Y.each(fileList, function (fileInstance) {
+              fileTable.append("<tr id='" + fileInstance.get("id") + "_row" + "'>" +
+                                    "<td class='filename'>" + fileInstance.get("name") + "</td>" +
+                                    "<td class='filesize'>" + fileInstance.get("size") + "</td>" +
+                                    "<td class='percentdone'>Hasn't started yet</td>");
+                             });
+       });
+
+       uploader.on("uploadprogress", function (event) {
+            var fileRow = Y.one("#" + event.file.get("id") + "_row");
+                fileRow.one(".percentdone").set("text", event.percentLoaded + "%");
+       });
+
+       uploader.on("uploadstart", function (event) {
+            uploader.set("enabled", false);
+            Y.one("#uploadFilesButton").addClass("yui3-button-disabled");
+            Y.one("#uploadFilesButton").detach("click");
+       });
+
+       uploader.on("uploadcomplete", function (event) {
+            var fileRow = Y.one("#" + event.file.get("id") + "_row");
+                fileRow.one(".percentdone").set("text", "Finished!");
+       });
+
+       uploader.on("totaluploadprogress", function (event) {
+                Y.one("#overallProgress").setHTML("Total uploaded: <strong>" + event.percentLoaded + "%" + "</strong>");
+       });
+
+       uploader.on("alluploadscomplete", function (event) {
+                     uploader.set("enabled", true);
+                     uploader.set("fileList", []);
+                     Y.one("#uploadFilesButton").removeClass("yui3-button-disabled");
+                     Y.one("#uploadFilesButton").on("click", function () {
+                          if (!uploadDone && uploader.get("fileList").length > 0) {
+                             uploader.uploadAll();
+                          }
+                     });
+                     Y.one("#overallProgress").set("text", "Uploads complete!");
+                     uploadDone = true;
+       });
+
+       Y.one("#uploadFilesButton").on("click", function () {
+         if (!uploadDone && uploader.get("fileList").length > 0) {
+            uploader.uploadAll();
+         }
+       });
+   }
+   else {
+       Y.one("#uploaderContainer").set("text", "We are sorry, but to use the uploader, you either need a browser that support HTML5 or have the Flash player installed on your computer.");
+   }
+
+
+});
+
+</script> 
   {% endblock %}
