@@ -63,9 +63,8 @@
       data['points_2'] = parseInt(new_txt[6]);
       data['scan_to'] = data['scan_from']+(data['points_1']-1)*data['shag'];
       console.log(new_txt.splice(0,7));
-      new_txt = new_txt.split();
       for (var i = 0; i < new_txt.length; i++) {
-        console.log(new_txt[i]);
+        console.log(new_txt[i].split());
       }
       
       $( "#text_for_x_y" ).append( name_aa[num]+"<br><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
