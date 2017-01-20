@@ -61,8 +61,13 @@
       data['how_many_detectors'] = parseFloat(new_txt[4]);
       data['points_1'] = parseInt(new_txt[5]);
       data['points_2'] = parseInt(new_txt[6]);
-      data['scan_to'] = data['scan_from']+(data['points_1']-1)*data['shag'];
       data['body'] = [];
+      data['x'] = [];
+      for (var i = 0; i < data['points_1']; i++) {
+          data['x'][i]= data['scan_from'] + i*data['shag'];
+      };
+      console.log(data['x'].length);
+
       new_txt.splice(0,7);
       var ind = 0;
       for (var i = 0; i < new_txt.length; i++) {
