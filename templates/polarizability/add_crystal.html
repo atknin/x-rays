@@ -408,9 +408,13 @@
       $("#id_crystal_system").val("{{crystal_system}}");
       var a = "{{crystalGeom}}".split('//');
       var text = '';
-      for(var i = 0; i < a.length;i++){
-        text+=a[i] + '\n'
+      for(var i = 0; i < a.length-1;i++){
+        if(a[i].split(' ').length==5){
+          text+=a[i] + '\n'
+        };
       };
+      text+=a[a.length-1];
+      
 
       $( '#text_area_geometry' ).val(text);
       $( "#id_crystal_system" ).change();
