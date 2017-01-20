@@ -63,6 +63,7 @@
       data['points_2'] = parseInt(new_txt[6]);
       data['scan_to'] = data['scan_from']+(data['points_1']-1)*data['shag'];
       data['body'] = [];
+      new_txt.splice(0,7);
       var ind = 0;
       for (var i = 0; i < new_txt.length; i++) {
         inside = new_txt[i].split(' ');
