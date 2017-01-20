@@ -64,10 +64,12 @@
       data['scan_to'] = data['scan_from']+(data['points_1']-1)*data['shag'];
       console.log(new_txt.splice(0,7));
       data['body'] = [];
+      var ind = 0;
       for (var i = 0; i < new_txt.length; i++) {
         inside = new_txt[i].split();
         for (var j = 0; j < inside.length; j++) {
-          data['body'][i] = parseFloat(inside[j]);
+          data['body'][ind] = parseFloat(inside[j]);
+          ind++;
         };
         
       };
