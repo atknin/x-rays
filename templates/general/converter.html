@@ -44,7 +44,7 @@
       $('#geomInputFile').on('change', function(e){
           for (var i = 0; i < this.files.length; i++) {
               name['nm'+(i+1)] = this.files[i];
-              console.log(name['nm'+(i+1)] );
+              console.log(this.files[i]);
               readFile(this.files[i], function(e) {
                 // use result in callback...
               ok(e.target);
