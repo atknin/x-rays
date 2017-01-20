@@ -86,11 +86,11 @@ def add_crystal(request):
 		args['gamma'] = crystal.gamma
 		args['density'] = crystal.density
 		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
-		lines = open(path+"structure/"+crystal.name+'.dat', 'r').readlines()
-		a = ''
-		for line in lines:
-			a += line + "\n" 
-		args['crystalGeom'] = a
+		# lines = open(path+"structure/"+crystal.name+'.dat', 'r').readlines()
+		# a = ''
+		# for line in lines:
+		# 	a += line + "\n" 
+		args['crystalGeom'] = open(path+"structure/"+crystal.name+'.dat', 'r').read()
 		return render(
 		 	request, 'polarizability/add_crystal.html', args
 		 	)
