@@ -34,14 +34,14 @@
       <div class="form-row field-crystal_system">
         <div>
           <select class="form-control" id="id_crystal_system" name="crystal_system">
-            <option>неизвестно</option>
-            <option>Триклинная</option>
-            <option>Моноклинная</option>
-            <option>Ромбическая</option>
-            <option>Тетрагональная</option>
-            <option>Тригональная</option>
-            <option>Гексагональная</option>
-            <option>Кубическая</option>
+            <option value="неизвестно">неизвестно</option>
+            <option value="Триклинная">Триклинная</option>
+            <option value="Моноклинная">Моноклинная</option>
+            <option value="Ромбическая">Ромбическая</option>
+            <option value="Тетрагональная">Тетрагональная</option>
+            <option value="Тригональная">Тригональная</option>
+            <option value="Гексагональная">Гексагональная</option>
+            <option value="Кубическая">Кубическая</option>
           </select>
           <p class="help">симметрия кристаллической структуры</p>
         </div>
@@ -160,7 +160,7 @@
       $('#id_beta').val("{{beta}}");
       $('#id_gamma').val("{{gamma}}");
       $('#id_density').val("{{density}}");
-      $( "#id_crystal_system option:selected" ).text("{{crystal_system}}");
+      $("#id_crystal_system").val("{{crystal_system}}");
     };
 
     $( "#id_crystal_system" ).change(function() {
