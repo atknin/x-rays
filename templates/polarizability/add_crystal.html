@@ -409,7 +409,7 @@
       var a = "{{crystalGeom}}".split('//');
       var text = '';
       for(var i = 0; i < a.length-1;i++){
-        if(a[i].split(' ').length==5){
+        if(a[i].split(' ').length!=1){
           text+=a[i] + '\n'
         };
       };
