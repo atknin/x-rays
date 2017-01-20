@@ -23,7 +23,6 @@ def delete(request):
 			path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 			crystal = polarizability_models.crystals.objects.get(pk = request.POST['id'])
 			name = crystal.name
-
 			message['status'] = 'не авторизирован, не удалено'
 			if request.user.is_authenticated():
 				os.remove(path+"structure/"+crystal.name+'.dat')
@@ -38,36 +37,57 @@ def delete(request):
 
 
 def add_crystal(request):
+	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 	if request.is_ajax():
 		message = {}
-		try:
-			path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
-			name = request.POST['id_name']
-			if not polarizability_models.crystals.objects.filter(name=name).exists():	
-				new = polarizability_models.crystals.objects.create(name=name)
-				new.short_name = request.POST['id_short_name']
-				new.crystal_system = request.POST['syngony']
-				new.a = float(request.POST['id_a'])
-				new.b = float(request.POST['id_b'])
-				new.c = float(request.POST['id_c'])
-				new.alfa = float(request.POST['id_alfa'])
-				new.beta = float(request.POST['id_beta'])
-				new.gamma = float(request.POST['id_gamma'])
-				new.density = float(request.POST['id_density'])
-				new.save()
+		if request.POST['edit']:
+			edit = polarizability_models.crystals.objects.get(pk = request.POST['crystal_id'])
+			edit.short_name = request.POST['id_short_name']
+			edit.crystal_system = request.POST['syngony']
+			edit.a = float(request.POST['id_a'])
+			edit.b = float(request.POST['id_b'])
+			edit.c = float(request.POST['id_c'])
+			edit.alfa = float(request.POST['id_alfa'])
+			edit.beta = float(request.POST['id_beta'])
+			edit.gamma = float(request.POST['id_gamma'])
+			edit.density = float(request.POST['id_density'])
+			edit.save()
+			file = open(path+"structure/"+name+'.dat', 'w')
+			geom = str(request.POST['id_geom']).split(' // ')
+			for i in geom:
+				file.write(str(i))
+				file.write("\n")
+			file.close()
+			message['status'] = "успешно обновлено"
 
-				file = open(path+"structure/"+name+'.dat', 'w')
-				geom = str(request.POST['id_geom']).split(' // ')
-				for i in geom:
-					file.write(str(i))
-					file.write("\n")
-				file.close()
-				message['status'] = "Успешно добавлено в базу"
-			else:
-				message['status'] = "Такой кристалл уже существует"
-			
-		except Exception as e:
-			message['status'] = e
+		else:
+			try:
+				name = request.POST['id_name']
+				if not polarizability_models.crystals.objects.filter(name=name).exists():	
+					new = polarizability_models.crystals.objects.create(name=name)
+					new.short_name = request.POST['id_short_name']
+					new.crystal_system = request.POST['syngony']
+					new.a = float(request.POST['id_a'])
+					new.b = float(request.POST['id_b'])
+					new.c = float(request.POST['id_c'])
+					new.alfa = float(request.POST['id_alfa'])
+					new.beta = float(request.POST['id_beta'])
+					new.gamma = float(request.POST['id_gamma'])
+					new.density = float(request.POST['id_density'])
+					new.save()
+
+					file = open(path+"structure/"+name+'.dat', 'w')
+					geom = str(request.POST['id_geom']).split(' // ')
+					for i in geom:
+						file.write(str(i))
+						file.write("\n")
+					file.close()
+					message['status'] = "Успешно добавлено в базу"
+				else:
+					message['status'] = "Такой кристалл уже существует"
+				
+			except Exception as e:
+				message['status'] = e
 
 		return JsonResponse(message)
 	elif request.method == 'POST':
@@ -85,6 +105,8 @@ def add_crystal(request):
 		args['beta'] = crystal.beta
 		args['gamma'] = crystal.gamma
 		args['density'] = crystal.density
+		args['crystal_id'] = crystal_id
+		
 		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 		lines = open(path+"structure/"+crystal.name+'.dat', 'r').read().split('\n')
 		a = ''

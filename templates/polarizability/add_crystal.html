@@ -24,6 +24,7 @@
         <div >
               <input type="text" class="form-control change_check"  maxlength="80" id="id_name" placeholder="название">
               <p class="help">коротко, без пробелов, без спец. символов, на английском</p>
+              <input type="hidden" id = "crystal_id" name = "crystal_name">
         </div>
       </div>
       <div class="form-row field-short_name">
@@ -410,6 +411,21 @@
 
     });
 
+    $("#btn_edit").click(function(){
+      compute_dict['edit'] = 'true';
+      compute_dict['crystal_id'] = $("#crystal_id").val();
+      $.ajaxSetup({data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+      }});
+      $.post("/polarizability/add_crystal/", compute_dict ,function(data) {
+        var info_2 = info
+        info_2 +=data.status+'\n'
+        $( '#info_geometry' ).val(info_2);
+      });
+
+    });
+
+
 
     if ({{edit}}) {
       $('#id_name').val("{{name}}");
@@ -422,6 +438,8 @@
       $('#id_gamma').val("{{gamma}}");
       $('#id_density').val("{{density}}");
       $("#id_crystal_system").val("{{crystal_system}}");
+      $("#crystal_id").val("{{crystal_id}}");
+
       var a = "{{crystalGeom}}".split('//');
       var text = '';
       for(var i = 0; i < a.length;i++){
