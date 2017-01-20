@@ -6,6 +6,9 @@ from django.contrib import auth
 from django.http import JsonResponse
 
 # Create your views here. dsds
+
+
+
 def index(request):
 	if request.is_ajax():
 		message = {}
@@ -36,4 +39,9 @@ def updates(request):
 	return render(
 		request, 'general/updates.html', args
 		)
-	
+
+def converter(request):
+
+ 	return render(
+	 	request, 'general/converter.html',
+	 	)	
