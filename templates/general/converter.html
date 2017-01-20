@@ -68,7 +68,7 @@
       for (var i = 0; i < new_txt.length; i++) {
         inside = new_txt[i].split(' ');
         for (var j = 0; j < inside.length; j++) {
-          if (inside[j]!=NaN) {
+          if (!isNaN(inside[j])) {
             data['body'][ind] = parseFloat(inside[j]);
             ind++;
           }
