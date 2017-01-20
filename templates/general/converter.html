@@ -44,7 +44,6 @@
       $('#geomInputFile').on('change', function(e){
           for (var i = 0; i < this.files.length; i++) {
               name_aa[i] = (this.files[i].name);
-              console.log(name_aa[i]);
               readFile(this.files[i], function(e) {
                 // use result in callback...
               ok(e.target);
@@ -56,7 +55,7 @@
 
 
     function ok(text){
-      var new_txt = text.split(' ');
+      var new_txt = text.result.split(' ');
       console.log(new_txt.length);
       $( "#text_for_x_y" ).append( name_aa[num]+"<br><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
       $( '#num_scan_'+num).val(text.result);
