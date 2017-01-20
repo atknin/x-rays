@@ -138,7 +138,14 @@
   <div class="col-md-2" id = 'btn_save' style="display: none;">
     <div class="input-group" style="margin-top: 10px;">             
       <div class="input-group-btn">
+      {% if edit%}
+        <button type="button" id="btn_edit" class="btn btn-success" style="width: 100%;">Обновить</button>
+      {%else%}
         <button type="button" id="save" class="btn btn-success" style="width: 100%;">Сохранить</button>
+      }
+      {%endif%}
+
+
       </div>
       <span class="input-group-addon " id="loader_addon" style="background-color: transparent;"></span>
     </div>
@@ -282,7 +289,7 @@
             flag = true;
             $('.check_area_geom').addClass("has-error");
           };
-          
+
           if (parseFloat(atom[4])<0 || parseFloat(atom[4])>1) {
             info +='атом №' +(i+1)+'  -  вероятность обнаружить атом в данном месте должна принадлежать [0,1]'+';\n';
             flag = true;
