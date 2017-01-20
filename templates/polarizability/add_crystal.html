@@ -405,8 +405,9 @@
       $('#id_gamma').val("{{gamma}}");
       $('#id_density').val("{{density}}");
       $("#id_crystal_system").val("{{crystal_system}}");
-
-      $( '#text_area_geometry' ).val({{crystalGeom}}.toString());
+      var a = '';
+      a+="{{crystalGeom}}";
+      $( '#text_area_geometry' ).val(a);
       $( "#id_crystal_system" ).change();
 
     };
