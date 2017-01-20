@@ -48,19 +48,37 @@
         var fr, file;
         for (var j = 0; j <  input.files.length; j++) {
 
-          file = input.files[j];
-          fr = new FileReader(); 
-          fr.onload = function (e) {
-            var text = e.target.result; 
-            fr.readAsText( file );
+          function fetchVal(callback) {
+                  var val = "x";      
+                  file = input.files[j];
+                  var r;
+                  r = new FileReader();
+                  r.onload = function (e) {
+                      val = e.target.result;  
+                      r.readAsText(file);
+                      callback(val);
+                  };  
+          }
+
+          fetchVal(function(val){
             $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
             $( '#num_scan_'+j).val(text);
-            // document.getElementById("file_name").value = file.name;
-          };
+             // use val
+          });   
+          
 
           
-        // fr.readAsDataURL( file );
-        }
+        //   fr.onload = function (e) {
+        //     var text = e.target.result; 
+        //     fr.readAsText( file );
+        //     $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
+        //     $( '#num_scan_'+j).val(text);
+        //     // document.getElementById("file_name").value = file.name;
+        //   };
+
+          
+        // // fr.readAsDataURL( file );
+        // }
         
       } else {
         // Handle errors here
