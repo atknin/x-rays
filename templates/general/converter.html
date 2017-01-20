@@ -87,25 +87,22 @@
   //   } );
     var num = 0;
     $(document).ready(function(){
-      var a = []; 
-     
       $('#geomInputFile').on('change', function(e){
           for (var i = 0; i < this.files.length; i++) {
             readFile(this.files[i], function(e) {
               // use result in callback...
-              a[i] = e.target;
-              ok(a[i]);
-              
+              ok(e.target);
             });
           };
           
       });
     });
 
-    function ok(ll){
+
+    function ok(text){
       num++;
       $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
-      $( '#num_scan_'+num).val(ll.result);
+      $( '#num_scan_'+num).val(text.result);
     };
 
     function readFile(file, onLoadCallback){
