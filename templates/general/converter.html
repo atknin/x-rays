@@ -21,4 +21,28 @@
     </div>
   </div>
     
+
+<script type="text/javascript">
+  $( '#geomInputFile' ).on("change", function(){
+      if ( ! window.FileReader ) {
+        return alert( 'Ваш браузер не поддерживает загрузку' );
+      }
+      var $i = $( '#geomInputFile' ), // Put file input ID here
+        input = $i[0]; // Getting the element from jQuery
+      if ( input.files && input.files[0] ) {
+        file = input.files[0]; // The file
+        fr = new FileReader(); // FileReader instance
+        fr.onload = function () {
+          // Do stuff on onload, use fr.result for contents of file
+          $( '#text_area_geometry' ).val(fr.result);
+          document.getElementById("file_name").value = file.name;
+        };
+        fr.readAsText( file );
+        // fr.readAsDataURL( file );
+      } else {
+        // Handle errors here
+        alert( "Файл не выбран или браузер устарел" )
+      }
+    } );
+</script>
   {% endblock %}
