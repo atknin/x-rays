@@ -38,60 +38,13 @@
     
 
 <script type="text/javascript">
-  // $( '#geomInputFile' ).on("change", function(){
-  //     if ( ! window.FileReader ) {
-  //       return alert( 'Ваш браузер не поддерживает загрузку' );
-  //     }
-  //     var $i = $( '#geomInputFile' ), // Put file input ID here
-  //       input = $i[0]; // Getting the element from jQuery
-  //     if ( input.files && input.files[0] ) {
-  //       var fr, file;
-  //       for (var j = 0; j <  input.files.length; j++) {
-
-  //         function fetchVal(callback) {
-  //                 var val = "x";      
-  //                 file = input.files[j];
-  //                 var r;
-  //                 r = new FileReader();
-  //                 r.onload = function (e) {
-  //                     val = e.target.result;  
-  //                     r.readAsText(file);
-  //                     callback(val);
-  //                 };  
-  //         }
-
-  //         fetchVal(function(val){
-  //           $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
-  //           $( '#num_scan_'+j).val(text);
-  //            // use val
-  //         });   
-          
-
-          
-  //       //   fr.onload = function (e) {
-  //       //     var text = e.target.result; 
-  //       //     fr.readAsText( file );
-  //       //     $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
-  //       //     $( '#num_scan_'+j).val(text);
-  //       //     // document.getElementById("file_name").value = file.name;
-  //       //   };
-
-          
-  //       // // fr.readAsDataURL( file );
-  //       }
-        
-  //     } else {
-  //       // Handle errors here
-  //       alert( "Файл не выбран или браузер устарел" )
-  //     }
-  //   } );
     var num = 0;
     $(document).ready(function(){
       $('#geomInputFile').on('change', function(e){
           for (var i = 0; i < this.files.length; i++) {
             readFile(this.files[i], function(e) {
               // use result in callback...
-              ok(e.target);
+              ok(e.target,this.files[i].name);
             });
           };
           
@@ -99,10 +52,11 @@
     });
 
 
-    function ok(text){
+    function ok(text,name){
       num++;
       $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
       $( '#num_scan_'+num).val(text.result);
+      console.log(name);
     };
 
     function readFile(file, onLoadCallback){
