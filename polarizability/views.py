@@ -71,8 +71,21 @@ def add_crystal(request):
 
 		return JsonResponse(message)
 	elif request.method == 'POST':
-		bot_inform.sent_to_atknin_bot(request.POST['edit_crystal'], 'v')
 		args = {}
+		crystal_id = request.POST['edit_crystal']
+		crystal = polarizability_models.crystals.objects.get(pk = crystal_id)
+		args['edit'] = 'true'
+		args['short_name'] = crystal.short_name
+		args['name'] = crystal.name
+		args['crystal_system'] = crystal.crystal_system
+		args['a'] = crystal.a
+		args['b'] = crystal.b 
+		args['c'] = crystal.c 
+		args['alfa'] = crystal.alfa
+		args['beta'] = crystal.beta
+		args['gamma'] = crystal.gamma
+		args['density'] = crystal.density
+
 		return render(
 		 	request, 'polarizability/add_crystal.html', args
 		 	)

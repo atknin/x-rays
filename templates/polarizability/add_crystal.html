@@ -150,6 +150,9 @@
 <script type="text/javascript">
 
   $(document).ready(function(){
+    if ({{edit}}) {
+      alert('yes');
+    };
 
     $( "#id_crystal_system" ).change(function() {
       syng = $( "#id_crystal_system option:selected" ).text();
