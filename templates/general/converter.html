@@ -30,6 +30,7 @@
     var name_aa = [];
     $(document).ready(function(){
       $('#geomInputFile').on('change', function(e){
+          $( "#text_for_x_y" ).empty();
           for (var i = 0; i < this.files.length; i++) {
               name_aa[i] = (this.files[i].name);
               readFile(this.files[i], function(e) {
@@ -91,9 +92,9 @@
         type: 'scatter'
       };
 
-      var data = [trace1];
+      var data_1 = [trace1];
 
-      var layout = {
+      var layout_1 = {
         title: name_aa[num],
         xaxis: {
           title: 'отстройка, сек',
@@ -104,7 +105,7 @@
           }
         },
         yaxis: {
-          title: 'Интенсивностьб отс.',
+          title: 'Интенсивность отс.',
           titlefont: {
             family: 'Courier New, monospace',
             size: 18,
@@ -112,7 +113,37 @@
           }
         }
       };
-      Plotly.newPlot('myDiv_left_'+num, data, layout);
+      Plotly.newPlot('myDiv_left_'+num, data_1, layout_1);
+
+      var trace2 = {
+        x: data['x'], 
+        y: l1, 
+        type: 'scatter'
+      };
+
+      var data_2 = [trace1];
+
+      var layout_2 = {
+        title: name_aa[num],
+        xaxis: {
+          title: 'отстройка, сек',
+          titlefont: {
+            family: 'Courier New, monospace',
+            size: 18,
+            color: '#7f7f7f'
+          }
+        },
+        yaxis: {
+          title: 'Интенсивность отс.',
+          titlefont: {
+            family: 'Courier New, monospace',
+            size: 18,
+            color: '#7f7f7f'
+          }
+        }
+      };
+      Plotly.newPlot('myDiv_right_'+num, data_2, layout_2);
+
 
       num++;
 
