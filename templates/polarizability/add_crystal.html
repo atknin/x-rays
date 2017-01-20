@@ -406,7 +406,12 @@
       $('#id_density').val("{{density}}");
       $("#id_crystal_system").val("{{crystal_system}}");
       var a = "{{crystalGeom}}".split('//');
-      $( '#text_area_geometry' ).val(a);
+      var text = '';
+      for(var i = 0; i < a.length;i++){
+        text+=a[i] + '\n'
+      };
+
+      $( '#text_area_geometry' ).val(text);
       $( "#id_crystal_system" ).change();
 
     };
