@@ -71,7 +71,7 @@ def add_crystal(request):
 
 		return JsonResponse(message)
 	elif request.method == 'POST':
-		bot_inform.sent_to_atknin_bot('post ok', 'v')
+		bot_inform.sent_to_atknin_bot(request.POST['edit_crystal'], 'v')
 	else:
 		return render(
 		 	request, 'polarizability/add_crystal.html'

@@ -62,8 +62,9 @@
                   {% for group in user.groups.all %}                   
                     {% if "user_admin" == group.name %}
                       <a class="btn_remove_crystal" name = "{{crystal.id}}" > <span class="label label-danger image">remove</span></a>
-                      <form method="post" name = "{{crystal.id}}" action="add_crystal/">
-                        <a class="btn_edit_crystal" type="submit"  > <span class="label label-primary image">edit</span></a>
+                      <form method="POST"  action="add_crystal/">
+                        {% csrf_token %}
+                        <a type="submit" name = "edit_crystal" value = "{{crystal.id}}"> <span class="label label-primary image">edit</span></a>
                       </form>
                     {% endif %}
                   {%endfor%}      
