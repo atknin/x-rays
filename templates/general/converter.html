@@ -62,8 +62,8 @@
       data['points_1'] = parseInt(new_txt[5]);
       data['points_2'] = parseInt(new_txt[6]);
       data['scan_to'] = data['scan_from']+(data['points_1']-1)*data['shag'];
-      console.log(new_txt.splice(0,6));
-
+      console.log(new_txt.splice(0,7));
+      new_txt = new_txt.split();
       for (var i = 0; i < new_txt.length; i++) {
         console.log(new_txt[i]);
       }
