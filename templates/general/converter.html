@@ -103,15 +103,15 @@
             size: 18,
             color: '#7f7f7f'
           }
-        },
-        yaxis: {
-          title: 'Интенсивность отс.',
-          titlefont: {
-            family: 'Courier New, monospace',
-            size: 18,
-            color: '#7f7f7f'
-          }
+      },
+      yaxis: {
+        title: 'Интенсивность отс.',
+        titlefont: {
+          family: 'Courier New, monospace',
+          size: 18,
+          color: '#7f7f7f'
         }
+      }
       };
       Plotly.newPlot('myDiv_left_'+num, data_1, layout_1);
 
@@ -121,26 +121,26 @@
         type: 'scatter'
       };
 
-      var data_2 = [trace1];
+      var data_2 = [trace2];
 
       var layout_2 = {
-        title: name_aa[num],
-        xaxis: {
-          title: 'отстройка, сек',
-          titlefont: {
-            family: 'Courier New, monospace',
-            size: 18,
-            color: '#7f7f7f'
-          }
-        },
-        yaxis: {
-          title: 'Интенсивность отс.',
-          titlefont: {
-            family: 'Courier New, monospace',
-            size: 18,
-            color: '#7f7f7f'
-          }
+      title: name_aa[num],
+      xaxis: {
+        title: 'отстройка, сек',
+        titlefont: {
+          family: 'Courier New, monospace',
+          size: 18,
+          color: '#7f7f7f'
         }
+      },
+      yaxis: {
+        title: 'Интенсивность отс.',
+        titlefont: {
+          family: 'Courier New, monospace',
+          size: 18,
+          color: '#7f7f7f'
+        }
+      }
       };
       Plotly.newPlot('myDiv_right_'+num, data_2, layout_2);
 
