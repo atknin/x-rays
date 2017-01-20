@@ -8,5 +8,4 @@ urlpatterns = [
 	url(r'^about/$', views.about),
 	url(r'^updates/$', views.updates),
 	url(r'^converter/$', views.converter),
-
 ]
