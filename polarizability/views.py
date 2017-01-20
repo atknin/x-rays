@@ -42,6 +42,7 @@ def add_crystal(request):
 		message = {}
 		if request.POST['edit']:
 			edit = polarizability_models.crystals.objects.get(pk = request.POST['crystal_id'])
+			edit.name = request.POST['id_name']
 			edit.short_name = request.POST['id_short_name']
 			edit.crystal_system = request.POST['syngony']
 			edit.a = float(request.POST['id_a'])
@@ -52,7 +53,7 @@ def add_crystal(request):
 			edit.gamma = float(request.POST['id_gamma'])
 			edit.density = float(request.POST['id_density'])
 			edit.save()
-			file = open(path+"structure/"+name+'.dat', 'w')
+			file = open(path+"structure/"+request.POST['id_name']+'.dat', 'w')
 			geom = str(request.POST['id_geom']).split(' // ')
 			for i in geom:
 				file.write(str(i))
