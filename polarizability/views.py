@@ -85,7 +85,8 @@ def add_crystal(request):
 		args['beta'] = crystal.beta
 		args['gamma'] = crystal.gamma
 		args['density'] = crystal.density
-		
+		args['crystalGeom'] = open(path+"structure/"+crystal.name+'.dat')
+
 
 		return render(
 		 	request, 'polarizability/add_crystal.html', args
