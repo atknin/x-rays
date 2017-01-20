@@ -66,13 +66,13 @@
       data['body'] = [];
       var ind = 0;
       for (var i = 0; i < new_txt.length; i++) {
-        inside = new_txt[i].split();
+        inside = new_txt[i].split(' ');
         for (var j = 0; j < inside.length; j++) {
           data['body'][ind] = parseFloat(inside[j]);
           ind++;
         };
-        
       };
+
       console.log( data['body']);
       
       $( "#text_for_x_y" ).append( name_aa[num]+"<br><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
