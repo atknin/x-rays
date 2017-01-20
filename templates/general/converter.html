@@ -61,7 +61,8 @@
       data['how_many_detectors'] = parseFloat(new_txt[4]);
       data['points_1'] = parseInt(new_txt[5]);
       data['points_2'] = parseInt(new_txt[6]);
-      console.log(data);
+      data['scan_to'] = data['scan_from']+(data['points_1']-1)*data['shag'];
+      console.log(new_txt.splice(0,6));
 
       for (var i = 0; i < new_txt.length; i++) {
         console.log(new_txt[i]);
