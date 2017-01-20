@@ -151,7 +151,15 @@
 
   $(document).ready(function(){
     if ({{edit}}) {
-      alert('yes');
+      $('#id_name').val({{name}});
+      $('#id_short_name').val({{short_name}});
+      $('#id_a').val({{a}});
+      $('#id_b').val({{b}});
+      $('#id_c').val({{c}});
+      $('#id_alfa').val({{alfa}});
+      $('#id_beta').val({{beta}});
+      $('#id_gamma').val({{gamma}});
+      $('#id_density').val({{density}});
     };
 
     $( "#id_crystal_system" ).change(function() {
