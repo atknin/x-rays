@@ -81,17 +81,14 @@
               <a href="/diffraction/" style="color: #555; "><h4>Дифракция </h4> <br> 
               #собери свою схему дифракции</a></li>
 
-              <li role="presentation" style="background: #D5D5D5; width: 100px;">
-              <a href="/converter/" style="color: #555; "><h4>Ковертер </h4> <br> 
-              #конвертирует экспериментальные данные с ТРС</a></li>
-
-
             </ul>
           </div><!-- / слева минюшка -->
 
 
            <div class="col-lg-9" style="padding: 50px;">
            Ваши права:  {% for group in user.groups.all %} | {{group}} | {%endfor%}
+           <br>
+           <a href="/converter/" style="color: #555; "><h4><span aria-hidden="true">&times;</span> </h4> <br> 
           </div>
         {% endblock %}
       </div><!-- / основное тело -->
