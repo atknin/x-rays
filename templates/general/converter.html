@@ -2,11 +2,9 @@
   {% block title %}
   <title>Об авторах &#967; </title>
   {% load static %}
-      
+    <script src="{% static "graph/plotly/plotly-latest.min.js"%}" ></script>
     <style>
-
     </style>
-
   {% endblock %}
   {% block content %}
 
@@ -18,18 +16,10 @@
         </label>
     </div>
   </div>
-  <div class="row" style="margin-top: 50px;">
-    <div class="col-md-5">
-      
-    </div>
-    <div class="col-md-2" id = 'text_for_x_y' >
-    </div>
-    <div class="col-md-5">
-      
-    </div>
+  <div class="row" style="margin-top: 50px;" id = 'text_for_x_y'>      
+  </div>
 
   </div>
-  
     
 
 <script type="text/javascript">
@@ -84,9 +74,43 @@
           data['x'][i]= data['scan_from'] + i*data['shag'];
           to_out+= data['x'][i] + '  ' + l1[i] + '  ' + l2[i] + '\n'
       };
-      
-      $( "#text_for_x_y" ).append( name_aa[num]+"<br><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
+  
+      $( "#text_for_x_y" ).append( "<div class='row' id = 'num_row_"+num+"'><hr></div>" );
+      $( "#num_row_"+num).append( "<div class='col-md-4' id = 'myDiv_left_"+num+"'></div>" );
+      $( "#num_row_"+num ).append( "<div class='col-md-4' id = 'myDiv_center_"+num+"'><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea></div>" );
+      $( "#num_row_" +num).append( "<div class='col-md-4' id = 'myDiv_right_"+num+"'></div>" );
+
+
       $( '#num_scan_'+num).val(to_out);
+      var trace1 = {
+        x: data['x'], 
+        y: l1, 
+        type: 'scatter'
+      };
+
+      var data = [trace1];
+
+      var layout = {
+        title: name_aa[num],
+        xaxis: {
+          title: 'отстройка, сек',
+          titlefont: {
+            family: 'Courier New, monospace',
+            size: 18,
+            color: '#7f7f7f'
+          }
+        },
+        yaxis: {
+          title: 'Интенсивностьб отс.',
+          titlefont: {
+            family: 'Courier New, monospace',
+            size: 18,
+            color: '#7f7f7f'
+          }
+        }
+      };
+      Plotly.newPlot('myDiv_left_'+num, data, layout);
+
       num++;
 
     };
