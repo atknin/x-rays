@@ -52,7 +52,9 @@
           // file['fr'+j].readAsText( file );
           b = a.readAsText( file['file'+j] );
           console.log( file['file'+j].name);
-          console.log( b.result );
+          b.onload = function () {
+            console.log( b.result );
+          };
 
           // fr.onload = function () {
           //   $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
