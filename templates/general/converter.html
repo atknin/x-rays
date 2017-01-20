@@ -63,10 +63,8 @@
       data['points_2'] = parseInt(new_txt[6]);
       data['body'] = [];
       data['x'] = [];
-      for (var i = 0; i < data['points_1']; i++) {
-          data['x'][i]= data['scan_from'] + i*data['shag'];
-      };
-      console.log(data['x'].length);
+      
+      // console.log(data['x'].length);
 
       new_txt.splice(0,7);
       var ind = 0;
@@ -83,13 +81,14 @@
 
       l1 = data['body'].splice(0,data['points_1']);
       l2 = data['body'];
-      console.log(l1,l1.length);
-      console.log(l2,l2.length );
-
-
+      var to_out = ''
+      for (var i = 0; i < data['points_1']; i++) {
+          data['x'][i]= data['scan_from'] + i*data['shag'];
+          to_out+= data['x'][i] + '  ' + l1[i] + '  ' + l2[i] + '\n'
+      };
       
       $( "#text_for_x_y" ).append( name_aa[num]+"<br><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
-      $( '#num_scan_'+num).val(text.result);
+      $( '#num_scan_'+num).val(to_out);
       num++;
 
     };
