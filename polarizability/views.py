@@ -86,7 +86,7 @@ def add_crystal(request):
 		args['gamma'] = crystal.gamma
 		args['density'] = crystal.density
 		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
-		args['crystalGeom'] = open(path+"structure/"+crystal.name+'.dat')
+		args['crystalGeom'] = open(path+"structure/"+crystal.name+'.dat', 'r').read()
 
 
 		return render(
