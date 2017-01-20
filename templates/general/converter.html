@@ -56,6 +56,8 @@
 
 
     function ok(text){
+      var new_txt = text.split(' ');
+      console.log(new_txt.length);
       $( "#text_for_x_y" ).append( name_aa[num]+"<br><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
       $( '#num_scan_'+num).val(text.result);
       num++;
