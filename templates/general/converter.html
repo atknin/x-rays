@@ -43,7 +43,8 @@
     $(document).ready(function(){
       $('#geomInputFile').on('change', function(e){
           for (var i = 0; i < this.files.length; i++) {
-              name['nm'+(i+1)] = this.files[i].name;
+              name['nm'+(i+1)] = this.files[i];
+              console.log(name['nm'+(i+1)] );
               readFile(this.files[i], function(e) {
                 // use result in callback...
               ok(e.target);
@@ -58,7 +59,7 @@
       num++;
       $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
       $( '#num_scan_'+num).val(text.result);
-      console.log(name['nm'+num]);
+      // console.log(name['nm'+num]);
     };
 
     function readFile(file, onLoadCallback){
