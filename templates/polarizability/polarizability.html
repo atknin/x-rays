@@ -64,7 +64,8 @@
                       <a class="btn_remove_crystal" name = "{{crystal.id}}" > <span class="label label-danger image">remove</span></a>
                       <form method="POST"  action="add_crystal/">
                         {% csrf_token %}
-                        <a href="#" onclick="$(this).closest('form').submit()" name = "edit_crystal" value = "{{crystal.id}}"> <span class="label label-primary image">edit</span></a>
+                        <input type="hidden" name = "edit_crystal" value = "{{crystal.id}}">
+                        <a href="#" onclick="$(this).closest('form').submit()" > <span class="label label-primary image">edit</span></a>
                       </form>
                     {% endif %}
                   {%endfor%}      
