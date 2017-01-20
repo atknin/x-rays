@@ -88,26 +88,30 @@
 
     $(document).ready(function(){
       var a = []; 
+      var num = 0;
       $('#geomInputFile').on('change', function(e){
           for (var i = 0; i < this.files.length; i++) {
             readFile(this.files[i], function(e) {
               // use result in callback...
               a[i] = e.target;
               ok(a[i]);
-              $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+i+"' rows='10'></textarea><hr>" );
-              $( '#num_scan_'+i).val(e.target.result);
+              
             });
           };
           
       });
     });
+
     function ok(ll){
-      console.log(ll);
-    }
+      num++;
+      $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea><hr>" );
+      $( '#num_scan_'+num).val(ll.result);
+    };
+
     function readFile(file, onLoadCallback){
       var reader = new FileReader();
       reader.onload = onLoadCallback;
       reader.readAsText(file);
-    }
+    };
 </script>
   {% endblock %}
