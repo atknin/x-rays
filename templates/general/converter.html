@@ -7,6 +7,19 @@
     .plot{
       height: 300px;
     }
+    textarea.Whiteboard{
+      resize: none;
+      background-color: #F1F1F1;
+      border: none;
+      height: 300px;
+      width: 500px;
+      font-size: 50px;
+      
+      white-space: normal;
+      text-align: justify;
+      -moz-text-align-last: center;
+      text-align-last: center;
+    }
     </style>
   {% endblock %}
   {% block content %}
@@ -17,6 +30,7 @@
             <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
             <input type="file" multiple id="geomInputFile" style="display: none;">
         </label>
+        <p> Просьба не добавлять не правильные файлы (картинки, файлы др.форматов) - НЕТ ПРОВЕРКИ. Работает Мильтизагрузка, выделить нужное колличество файлов в окне ввода. </p>
     </div>
   </div>
   <div class="row" style="margin-top: 50px;" id = 'text_for_x_y'>      
@@ -81,7 +95,7 @@
   
       $( "#text_for_x_y" ).append( "<div class='row' id = 'num_row_"+num+"'><hr></div>" );
       $( "#num_row_"+num).append( "<div class='col-md-4 plot' id = 'myDiv_left_"+num+"'></div>" );
-      $( "#num_row_"+num ).append( "<div class='col-md-4 plot' id = 'myDiv_center_"+num+"'><textarea class='form-control' id = 'num_scan_"+num+"' rows='10'></textarea></div>" );
+      $( "#num_row_"+num ).append( "<div class='col-md-4 plot' id = 'myDiv_center_"+num+"'><textarea class='form-control Whiteboard' id = 'num_scan_"+num+"' rows='10'></textarea></div>" );
       $( "#num_row_" +num).append( "<div class='col-md-4 plot' id = 'myDiv_right_"+num+"'></div>" );
 
 
