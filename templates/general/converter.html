@@ -15,7 +15,7 @@
       <div class="input-group-btn">
         <label class="btn btn-default btn-file">
             <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-            <input type="file"  id="geomInputFile" style="display: none;">
+            <input type="file" multiple id="geomInputFile" style="display: none;">
         </label>
       </div>
       <input type="text" style="width: 200px;" class="form-control" id = 'file_name' aria-label="...">
@@ -43,21 +43,22 @@
         return alert( 'Ваш браузер не поддерживает загрузку' );
       }
       var $i = $( '#geomInputFile' ), // Put file input ID here
-        input = $i[0]; // Getting the element from jQuery
-      if ( input.files && input.files[0] ) {
-        file = input.files[0]; // The file
-        fr = new FileReader(); // FileReader instance
-        fr.onload = function () {
-          // Do stuff on onload, use fr.result for contents of file
-          $( '#text_area_geometry' ).val(fr.result);
-          document.getElementById("file_name").value = file.name;
-        };
-        fr.readAsText( file );
-        // fr.readAsDataURL( file );
-      } else {
-        // Handle errors here
-        alert( "Файл не выбран или браузер устарел" )
-      }
+      console.log($i);
+      //   input = $i[0]; // Getting the element from jQuery
+      // if ( input.files && input.files[0] ) {
+      //   file = input.files[0]; // The file
+      //   fr = new FileReader(); // FileReader instance
+      //   fr.onload = function () {
+      //     // Do stuff on onload, use fr.result for contents of file
+      //     $( '#text_area_geometry' ).val(fr.result);
+      //     document.getElementById("file_name").value = file.name;
+      //   };
+      //   fr.readAsText( file );
+      //   // fr.readAsDataURL( file );
+      // } else {
+      //   // Handle errors here
+      //   alert( "Файл не выбран или браузер устарел" )
+      // }
     } );
 </script>
   {% endblock %}
