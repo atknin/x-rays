@@ -19,15 +19,18 @@ import os
 def delete(request):
 	message = {}
 	if request.is_ajax():
-		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
-		crystal = polarizability_models.crystals.objects.get(pk = request.POST['id'])
-		name = crystal.name
+		try:
+			path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
+			crystal = polarizability_models.crystals.objects.get(pk = request.POST['id'])
+			name = crystal.name
 
-		message['status'] = 'не авторизирован, не удалено'
-		if request.user.is_authenticated():
-			os.remove(path+"structure/"+crystal.name+'.dat')
-			crystal.delete()
-			message['status'] = 'удалено'
+			message['status'] = 'не авторизирован, не удалено'
+			if request.user.is_authenticated():
+				os.remove(path+"structure/"+crystal.name+'.dat')
+				crystal.delete()
+				message['status'] = 'удалено'
+		except Exception as e:
+			message['status'] = e
 
 	else:
 		message['status'] = 'error'
@@ -67,6 +70,8 @@ def add_crystal(request):
 			message['status'] = e
 
 		return JsonResponse(message)
+	elif request.method == 'POST':
+		bot_inform.sent_to_atknin_bot('post ok', 'v')
 	else:
 		return render(
 		 	request, 'polarizability/add_crystal.html'
