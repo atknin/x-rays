@@ -48,11 +48,11 @@
         file = {}
         for (var j = 0; j <  input.files.length; j++) {
           file['file'+j] = input.files[j];
-          file['fr'+j] = new FileReader(); 
+          a = new FileReader(); 
           // file['fr'+j].readAsText( file );
 
           console.log( file['file'+j].name)
-          console.log( file['fr'+j].readAsText( file['file'+j] ))
+          console.log( a.readAsText( file['file'+j] ))
 
           // fr.onload = function () {
           //   $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
