@@ -48,7 +48,7 @@
 
         for (var j = 0; j <  input.files.length; j++) {
           fr = new FileReader(); 
-          fr.readAsText( input.files[j]; );
+          fr.readAsText( input.files[j] );
 
           fr.onload = function () {
             $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
