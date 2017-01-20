@@ -50,9 +50,9 @@
           file['file'+j] = input.files[j];
           a = new FileReader(); 
           // file['fr'+j].readAsText( file );
-
-          console.log( file['file'+j].name)
-          console.log( a.readAsText( file['file'+j] ))
+          b = a.readAsText( file['file'+j] );
+          console.log( file['file'+j].name);
+          console.log( b.result );
 
           // fr.onload = function () {
           //   $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
