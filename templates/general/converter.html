@@ -45,29 +45,28 @@
       var $i = $( '#geomInputFile' ), // Put file input ID here
         input = $i[0]; // Getting the element from jQuery
       if ( input.files && input.files[0] ) {
-        file = {}
-        for (var j = 0; j <  input.files.length; j++) {
-          file['file'+j] = input.files[j];
-          a = new FileReader(); 
-          // file['fr'+j].readAsText( file );
-          a.readAsText( file['file'+j] );
-          console.log( file['file'+j].name);
 
-          a.onload = function () {
-            console.log( b.result );
-          };
+        file = input.files[4];
+        fr = new FileReader(); 
+        fr.onload = function () {
+          $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
+          $( '#num_scan_'+j).val(fr.result);
+        };
+        fr.readAsText( file );
 
-          
+        // for (var j = 0; j <  input.files.length; j++) {
+        //   file = input.files[j];
+        //   fr = new FileReader(); 
+        //   fr.onload = function () {
+        //     $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
+        //     $( '#num_scan_'+j).val(fr.result);
 
-          // fr.onload = function () {
-          //   $( "#text_for_x_y" ).append( "<textarea class='form-control' id = 'num_scan_"+j+"' rows='10'></textarea><hr>" );
-          //   $( '#num_scan_'+j).val(file['fr'+j].result);
-          //   console.log( file['file'+j].name)
-          //   // document.getElementById("file_name").value = file.name;
-          // };
+        //     document.getElementById("file_name").value = file.name;
+        //   };
 
-        // fr.readAsDataURL( file );
-        }
+        //   fr.readAsText( file );
+        // // fr.readAsDataURL( file );
+        // }
         
       } else {
         // Handle errors here
