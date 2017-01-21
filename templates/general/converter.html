@@ -92,19 +92,28 @@
 
       l1 = data['body'].splice(0,data['points_1']);
       l2 = data['body'];
-      var to_out = ''
+      var to_out1 = '';
+      var to_out2 = '';
       for (var i = 0; i < data['points_1']; i++) {
           data['x'][i]= data['scan_from'] + i*data['shag'];
-          to_out+= data['x'][i] + '  ' + l1[i] + '  ' + l2[i] + '\n'
+          to_out1+= data['x'][i] + '  ' + l1[i]  + '\n'
+          to_out2+= data['x'][i] + '  ' + l2[i] + '\n'
       };
   
       $( "#text_for_x_y" ).append( "<div class='row' id = 'num_row_"+num+"'><hr></div>" );
       $( "#num_row_"+num).append( "<div class='col-md-4 plot' id = 'myDiv_left_"+num+"'></div>" );
-      $( "#num_row_"+num ).append( "<div class='col-md-4 plot' id = 'myDiv_center_"+num+"'><textarea class='form-control Whiteboard' id = 'num_scan_"+num+"' rows='10'></textarea></div>" );
+
+      $( "#num_row_"+num ).append( "<div class='col-md-2 plot' id = 'myDiv_center_left_"+num+"'><textarea class='form-control Whiteboard' id = 'num_scan_left_"+num+"' rows='10'></textarea></div>" );
+
+      $( "#num_row_"+num ).append( "<div class='col-md-2 plot' id = 'myDiv_center_right_"+num+"'><textarea class='form-control Whiteboard' id = 'num_scan_right_"+num+"' rows='10'></textarea></div>" );
+
       $( "#num_row_" +num).append( "<div class='col-md-4 plot' id = 'myDiv_right_"+num+"'></div>" );
 
 
-      $( '#num_scan_'+num).val(to_out);
+      $( '#num_scan_left_'+num).val(to_out1);
+      $( '#num_scan_right_'+num).val(to_out2);
+
+
       var trace1 = {
         x: data['x'], 
         y: l1, 
