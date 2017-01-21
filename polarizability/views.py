@@ -182,7 +182,7 @@ def compute(request):
 		s3 = 2*kInd*lInd*COSalfaprmtr_
 		s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
 		dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
-
+		bot_inform.sent_to_atknin_bot('185', 'v')
 		# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
 		tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
 
@@ -209,7 +209,8 @@ def compute(request):
 		gamma_0 = math.cos(math.pi/2-tetaprmtr)
 		gamma_h = math.cos(math.pi/2+tetaprmtr)
 		b=-1 # коэффициент ассиметрии брэговского отражения
-	
+		bot_inform.sent_to_atknin_bot('212', 'v')
+		
 		# ---------фактор Дебая - Валлера, по идее должен вычисляться для разных атомов по разному
 		B=8*math.pow((math.pi*0.08*math.pow(10,-10)), 2)
 		DedayFactor = math.exp(-B*math.pow((math.sin(tetaprmtr)/(wavelength*math.pow(10,-10))),2))
@@ -235,6 +236,7 @@ def compute(request):
 
 				f0 = f0+float(abc[k])*math.exp(-float(abc[k+5])*math.pow((math.sin(tetaprmtr)/wavelength),2))# длинна волны в ангстремах
 			f0=f0+float(abc[4])
+			bot_inform.sent_to_atknin_bot('239', 'v')
 			
 
 	    	#___найти строку с элементом в f1f2_Chantler.dat__________________________________________________________________________________________________________________________
