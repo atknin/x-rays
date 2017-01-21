@@ -328,14 +328,15 @@ def compute(request):
 				eps = (1/4/gamma_0)*(X0*(1-b)-b*alfa-cmath.sqrt(((X0*(1+b)+b*alfa)*(X0*(1+b)+b*alfa))-4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
 			else:
 				eps = prover
-			R=(gamma_h/gamma_0)*(2*eps*gamma_0-X0)/Xh/C
-			epslist.append(abs(R)*abs(R))
-			for_downloading+= str(i/100-50)+'   '+str(abs(R)*abs(R)) + '\n'
+			R=(2*eps*gamma_0-X0)/Xh/C
+			P = (gamma_h/gamma_0)*abs(R)*abs(R)
+			epslist.append((gamma_h/gamma_0)*abs(R)*abs(R))
+			for_downloading+= str(i/100-50)+'   '+str(P) + '\n'
 
-			if (abs(R)*abs(R)) > 0.05 and schet==0: schet = i 
-			if (abs(R)*abs(R)) < 0.05 and schet > 0 and schet1 == 0: schet1 = i
-			if max_pow_R<(abs(R)*abs(R)):
-				max_pow_R = (abs(R)*abs(R))
+			if (P) > 0.05 and schet==0: schet = i 
+			if (P) < 0.05 and schet > 0 and schet1 == 0: schet1 = i
+			if max_pow_R<(P):
+				max_pow_R = (P)
 
 		otstup = 10 # для того чтобы обрезать диапазон вывода графика
 		y = epslist[schet-otstup:schet1+otstup:1]	
