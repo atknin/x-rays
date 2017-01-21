@@ -306,11 +306,10 @@ def compute(request):
 		Ld = (wavelength*math.sqrt(abs(gamma_0)*abs(gamma_h)))/(math.pi*C*abs(Xh))
 
 		# Полуширина кривой 
-		delta = math.degrees(C*abs(Xh)/(math.sin(2*tetaprmtr)))*3600
+		delta = math.degrees(C*math.sqrt(Xh.real*Xh.real+Xh.imag*Xh.imag)/(cmath.sqrt(b) * math.sin(2*tetaprmtr)))*3600
 
 		# Смещение кривой
-		bb=1
-		sdvig = math.degrees(-X0.real*(1+bb)/(2*bb*math.sin(2*tetaprmtr)))*3600
+		sdvig = math.degrees(-X0.real*(1+b)/(2*b*math.sin(2*tetaprmtr)))*3600
 
 # Собственная кривая кристалла -–––––––––––––––––––––––––––––––––––
 		schet=0
