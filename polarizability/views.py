@@ -306,7 +306,7 @@ def compute(request):
 		Ld = (wavelength*math.sqrt(abs(gamma_0)*abs(gamma_h)))/(math.pi*C*abs(Xh))
 
 		# Полуширина кривой 
-		delta = math.degrees(abs(C*cmath.sqrt(Xh.real*Xh.real+Xh.imag*Xh.imag)/(cmath.sqrt(b) * math.sin(2*tetaprmtr))))*3600
+		delta = 2*math.degrees(abs(C*cmath.sqrt(Xh.real*Xh.real+Xh.imag*Xh.imag)/(cmath.sqrt(b) * math.sin(2*tetaprmtr))))*3600
 
 		# Смещение кривой
 		sdvig = math.degrees(-X0.real*(1+b)/(2*b*math.sin(2*tetaprmtr)))*3600
