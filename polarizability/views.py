@@ -220,8 +220,7 @@ def compute(request):
 	
 
 		for i in range(Natom):
-			if len(crystalGeom[i].split()) == 5:
-				NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам
+			NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам
 
 			f0=0# обнуляем коэффициен для следующего атома в ячейке
 			
@@ -237,6 +236,29 @@ def compute(request):
 					cromer_man_file.seek(0) # возвращаем каретку в началао файла
 					abc = re.split(r'   ', line)
 					break
+			#_____________________________________________________________________________________________________________________________
+			# #__считаем f0_raspredelenie  для определения зависимости от sin(teta)/lam_____________________________________________________
+			# sin_by_lam = 0
+			# X_f0_raspredelenie = []
+			# Y_f0_raspredelenie = []
+			# with  open(path+'saved/f0_'+element_name.replace('\n', '')+'.dat', 'w') as out1:
+		# 		while sin_by_lam<=2*math.pi:
+		# 			f0_raspredelenie=0# обнуляем коэффициен для следующего атома в ячейке для построения зависимоти 
+		# 			for k in range(0, 4):
+		# 				f0_raspredelenie += float(abc[k])*math.exp(-float(abc[k+5])*(math.sin(sin_by_lam)/wavelength)**2)# длинна волны в ангстремах
+		# 			f0_raspredelenie=(f0_raspredelenie+float(abc[4]))
+		# 			X_f0_raspredelenie.append(sin_by_lam)
+		# 			Y_f0_raspredelenie.append(f0_raspredelenie)
+		# 			out1.write('%14.8s'  % str(sin_by_lam))
+		# 			out1.write('%14.8s' % str(f0_raspredelenie))
+		# 			out1.write('\n')
+
+		# 			sin_by_lam+=math.pi/100
+
+		# 	# a_element = PolarizabilityClass.plot_for_sin_by_lam(X_f0_raspredelenie,Y_f0_raspredelenie, element_name,a_element)
+		# 	if not element_name in a_element: 
+		# 		ax.plot(X_f0_raspredelenie, Y_f0_raspredelenie,label=element_name.replace('\n', '')+' (N = ' + NXYZocup[0]+')')
+		# 		a_element.add(element_name)
 
 			# __считаем f0________________________________________________________________________________________________________________
 			for k in range(0, 4):
