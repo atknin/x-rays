@@ -35,8 +35,7 @@
 
 {% block content %}
   <div class="row" style="min-height: 500px">    
-
-    <div class="col-md-3" > 
+    <div class="col-md-3">  <!-- Первая колонка -->
       <div class="row" style="margin-left: 10px; margin-bottom: 25px;">
         <div class="btn-group">
           <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">меню<span class="caret"></span>
@@ -45,7 +44,12 @@
             <li><a target="_blank" href="add_crystal/">Добавить кристалл</a></li>
           </ul>
         </div>
-        <!-- <button type="button" class="btn btn-default btn-sm btn-block">Добавить кристалл</button> -->
+
+        <label>
+          <input type="checkbox" value="">
+          симметричное отражение
+        </label>
+
       </div>
       <div class="row" style="overflow:auto; height: 300px; margin-left: 10px; overflow-y:scroll;">
         <table class="table table-bordered" id = "inputgroup_check_choose_crystal_parent" style="">
@@ -75,8 +79,7 @@
           {% endfor %}
         </table>
       </div>
-      
-    </div>
+    </div> <!-- Первая колонка -->
 
 
 
@@ -92,7 +95,6 @@
                 <input type="text"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index_surface" aria-describedby="basic-addon3">
               </div>
             </div>
-
             <div class="row" style="margin-top: 10px;">
               <div class="input-group " id = "inputgroup_check_h_index" >
                 <span class="input-group-addon" id="sizing-addon1"><small>Miller Indices</small></span>
@@ -162,7 +164,6 @@
 
         </div>
      </div><!-- / Вторая колонка -->
-
      <div class="col-md-4">
       <div class="row" style="margin-left: 20px; margin-top: 10px;">
         <a id ="get_data" download="data.txt" style="display: none"><span class="label label-default image">data.txt</span></a>
