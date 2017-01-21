@@ -329,6 +329,10 @@ def compute(request):
 		max_pow_R = 0
 		x_whole = []
 		for_downloading = ''
+		
+		X0 = complex(-31.745*1e-7, 0.1606*1e-7)  
+		Xh = complex(19.210*1e-7, 0.15*1e-7) 
+
 		for i in range(0,10000):
 			dTeta = (i/100-50)*math.pi/180/3600
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr+dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
