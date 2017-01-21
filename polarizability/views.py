@@ -205,9 +205,9 @@ def compute(request):
 		fi = math.degrees( math.acos( s10_surface ) ) #проверка
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
-		gamma_0 = math.cos(math.pi/2-tetaprmtr)
-		gamma_h = math.cos(math.pi/2+tetaprmtr)
-		b=-1 # коэффициент ассиметрии брэговского отражения
+		gamma_0 = math.sin(math.radians(fi) + tetaprmtr)
+		gamma_h = math.sin(math.radians(fi) - tetaprmtr)
+		b=gamma_0/gamma_h # коэффициент ассиметрии брэговского отражения
 		
 		# ---------фактор Дебая - Валлера, по идее должен вычисляться для разных атомов по разному
 		B=8*math.pow((math.pi*0.08*math.pow(10,-10)), 2)
@@ -323,9 +323,9 @@ def compute(request):
 		for i in range(0,10000):
 			dTeta = (i/100-50)*math.pi/180/3600
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr+dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
-			prover = (1/4)*(X0*(b+1)-b*alfa+cmath.sqrt(((X0*(b-1)-b*alfa)*(X0*(b-1)-b*alfa))+4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
+			prover = (1/4/gamma_0)*(X0*(b+1)+b*alfa+cmath.sqrt((math.pow((X0*(1-b)-b*alfa),2))+4*b*math.pow(C,2)*(math.pow(Xh.real,2)-math.pow(Xh.imag,2)-2j*Xh.real*Xh.imag)))
 			if prover.imag < 0:
-				eps = (1/4)*(X0*(b+1)-b*alfa-cmath.sqrt(((X0*(b-1)-b*alfa)*(X0*(b-1)-b*alfa))+4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
+				eps = (1/4/gamma_0)*(X0*(b+1)+b*alfa-cmath.sqrt((math.pow((X0*(1-b)-b*alfa),2))+4*b*math.pow(C,2)*(math.pow(Xh.real,2)-math.pow(Xh.imag,2)-2j*Xh.real*Xh.imag)))
 			else:
 				eps = prover
 			R=(2*eps-X0)/Xh/C
@@ -355,6 +355,7 @@ def compute(request):
 		message['y_darwin'] = y
 		message['for_downloading'] = for_downloading
 		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
+		message['b'] =  b
 
 		
 
