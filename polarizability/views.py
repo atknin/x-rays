@@ -337,7 +337,6 @@ def compute(request):
 				eps = (1/4)*(X0*(b+1)-b*alfa-cmath.sqrt(((X0*(b-1)-b*alfa)*(X0*(b-1)-b*alfa))+4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
 			else:
 				eps = prover
-			
 			R=(2*eps-X0)/Xh/C
 			epslist.append(abs(R)*abs(R))
 			for_downloading+= str(i/100-50)+'   '+str(abs(R)*abs(R)) + '\n'
