@@ -205,8 +205,8 @@ def compute(request):
 		fi = math.degrees( math.acos( s10_surface ) ) #проверка
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
-		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
-		gamma_h = math.sin(math.radians(90-fi) - tetaprmtr)
+		gamma_0 = math.sin(math.radians(fi) + tetaprmtr)
+		gamma_h = math.sin(math.radians(fi) - tetaprmtr)
 		b=gamma_0/gamma_h # коэффициент ассиметрии брэговского отражения
 		
 		# ---------фактор Дебая - Валлера, по идее должен вычисляться для разных атомов по разному
