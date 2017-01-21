@@ -82,7 +82,7 @@
         <div class="row"> 
 
           <label>
-            <input type="checkbox" value="">
+            <input type="checkbox" value="" id = "check_symmetric_case">
             симметричное отражение
           </label>
           <hr>
@@ -174,6 +174,15 @@
 
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
+  $("#check_symmetric_case").change(function() {
+      if(this.checked) {
+        $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", true );
+        $('#h_index_surface,#k_index_surface,#l_index_surface').val('');
+      }
+      else{
+        $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", false );
+      }
+  });
  var flag_delete;
  $(function() {
     $('#delete_for_sure').click(function() {
@@ -197,7 +206,13 @@
       $("#loader_addon").addClass("loader"); //анимациая загрузки
 
       var hkl_valid_array = ['-9' ,'-8' ,'-7' ,'-6' ,'-5' ,'-4' ,'-3' ,'-2' ,'-1', '0','1' ,'2' ,'3' ,'4' ,'5' ,'6' ,'7' ,'8' ,'9' ]
-      var flag = false
+      var flag = false;
+      
+      if ($("#check_symmetric_case").checked){
+          $('#h_index_surface').val($('#h_index').val());
+          $('#k_index_surface').val($('#k_index').val());
+          $('#l_index_surface').val($('#l_index').val());
+        }
 
       if (!$.isNumeric($('#wavelength').val())){ // проверка, длина волны это число или нет, если нет то покрасить красным input
         $("#inputgroup_check_wave").addClass("has-error");
@@ -251,6 +266,7 @@
         $("#loader_addon").removeClass("loader");
       }
 
+
       if (flag != true) { 
         $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
@@ -267,6 +283,7 @@
         compute_dict["k"] = $('#k_index').val();
         compute_dict["l"] = $('#l_index').val();
         compute_dict["crystal_id"] = $('input[name=crystal]').filter(':checked').val()
+
 
 
         $.post("compute/", compute_dict ,function(data) {
