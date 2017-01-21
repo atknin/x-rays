@@ -216,7 +216,8 @@ def compute(request):
 		# #–––––––––––––––––––––––––#считаем структурный фактор––––––––––––––––––––––
 		Natom = len(crystalGeom)# колличество эллементов в элементарной ячейке
 		for i in range(Natom):
-			NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам
+			if len(crystalGeom[i].split()) == 5:
+				NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам				
 			f0=0# обнуляем коэффициен для следующего атома в ячейке
 			#___найти строку с элементом в cromerMan__________________________________________________________________________________________________________________________
 			while True:
@@ -283,10 +284,8 @@ def compute(request):
 			# --------стоит в знаменателе в поляризуемости падающей волны-------------
 			SumOcupAtomWeight = SumOcupAtomWeight + float(NXYZocup[4])*AtomicWeight
 		# Расчет поляризуемостей-------------------------------
-		bot_inform.sent_to_atknin_bot('286', 'v')
 		Relectron = 2.8179403267 * math.pow(10,-15) # радиус электрона в метрах
 		Navogadro =  6.02214129 * math.pow(10,23)
-		bot_inform.sent_to_atknin_bot('287', 'v')
 
 		X0r = - Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
 		X0i =  Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
@@ -309,7 +308,6 @@ def compute(request):
 		# Смещение кривой
 		bb=1
 		sdvig = math.degrees(-X0.real*(1+bb)/(2*bb*math.sin(2*tetaprmtr)))*3600
-		bot_inform.sent_to_atknin_bot('310', 'v')
 
 # Собственная кривая кристалла -–––––––––––––––––––––––––––––––––––
 		schet=0
@@ -339,7 +337,6 @@ def compute(request):
 		otstup = 10 # для того чтобы обрезать диапазон вывода графика
 		y = epslist[schet-otstup:schet1+otstup:1]	
 		x = np.linspace((schet-otstup)/100-50,(schet1+otstup)/100-50,len(y)).tolist()
-		bot_inform.sent_to_atknin_bot('340', 'v')
 		
 		message['status'] = "ok"
 		message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
