@@ -330,8 +330,8 @@ def compute(request):
 		x_whole = []
 		for_downloading = ''
 		
-		X0 = complex(-31.745*1e-7, 0.1606*1e-7)  
-		Xh = complex(19.210*1e-7, 0.15*1e-7) 
+		# X0 = complex(-31.745*1e-7, 0.1606*1e-7)  
+		# Xh = complex(19.210*1e-7, 0.15*1e-7) 
 
 		for i in range(0,10000):
 			dTeta = (i/100-50)*math.pi/180/3600
