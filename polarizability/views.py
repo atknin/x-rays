@@ -323,9 +323,9 @@ def compute(request):
 		for i in range(0,10000):
 			dTeta = (i/100-50)*math.pi/180/3600
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr+dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
-			prover = (1/4*gamma_h)*(X0*(b+1)-b*alfa+cmath.sqrt(((X0*(b-1)-b*alfa)*(X0*(b-1)-b*alfa))+4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
+			prover = (1/4)*(X0*(b+1)-b*alfa+cmath.sqrt(((X0*(b-1)-b*alfa)*(X0*(b-1)-b*alfa))+4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
 			if prover.imag < 0:
-				eps = (1/4*gamma_h)*(X0*(b+1)-b*alfa-cmath.sqrt(((X0*(b-1)-b*alfa)*(X0*(b-1)-b*alfa))+4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
+				eps = (1/4)*(X0*(b+1)-b*alfa-cmath.sqrt(((X0*(b-1)-b*alfa)*(X0*(b-1)-b*alfa))+4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
 			else:
 				eps = prover
 			R=(2*eps-X0)/Xh/C
