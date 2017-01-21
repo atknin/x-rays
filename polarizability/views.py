@@ -165,6 +165,7 @@ def compute(request):
 		SumOcupAtomWeight = 0
 		crystalGeom = open(path+"structure/"+crystal.name+'.dat').readlines() # открыл файл с геометрие элементарной ячейки
 		
+		#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
 		V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 		
 		# расчет межплоскостного расстояния ––––––––––––––––––
@@ -208,9 +209,7 @@ def compute(request):
 		gamma_0 = math.cos(math.pi/2-tetaprmtr)
 		gamma_h = math.cos(math.pi/2+tetaprmtr)
 		b=-1 # коэффициент ассиметрии брэговского отражения
-		#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
-
-		V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
+	
 		# ---------фактор Дебая - Валлера, по идее должен вычисляться для разных атомов по разному
 		B=8*math.pow((math.pi*0.08*math.pow(10,-10)), 2)
 		DedayFactor = math.exp(-B*math.pow((math.sin(tetaprmtr)/(wavelength*math.pow(10,-10))),2))
@@ -332,7 +331,6 @@ def compute(request):
 		for_downloading = ''
 		for i in range(0,10000):
 			dTeta = (i/100-50)*math.pi/180/3600
-
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr+dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
 			prover = (1/4)*(X0*(b+1)-b*alfa+cmath.sqrt(((X0*(b-1)-b*alfa)*(X0*(b-1)-b*alfa))+4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
 			if prover.imag < 0:
