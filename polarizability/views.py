@@ -276,6 +276,7 @@ def compute(request):
 			# Атомный вес элемента--------------------------------------------
 			AtomicWeight = float(AtomicWeightLine.split()[4]) # г/моль
 			#------cтруктурный фактор для падающей волны, он другой ------
+			bot_inform.sent_to_atknin_bot('279', 'v')
 			StructFactor0 = StructFactor0 +float(NXYZocup[4])*(f1+f2*1j)
 			StructFactorReal = StructFactorReal + float(NXYZocup[4])*(f0+f1-float(NXYZocup[0]))*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor
 			StructFactorImag = StructFactorImag + float(NXYZocup[4])*f2*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor	
