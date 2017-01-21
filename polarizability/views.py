@@ -215,16 +215,10 @@ def compute(request):
 		DedayFactor = math.exp(-B*math.pow((math.sin(tetaprmtr)/(wavelength*math.pow(10,-10))),2))
 
 		# #–––––––––––––––––––––––––#считаем структурный фактор––––––––––––––––––––––
-		
 		Natom = len(crystalGeom)# колличество эллементов в элементарной ячейке
-	
-
 		for i in range(Natom):
 			NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам
-
 			f0=0# обнуляем коэффициен для следующего атома в ячейке
-			
-
 			#___найти строку с элементом в cromerMan__________________________________________________________________________________________________________________________
 			while True:
 				line = cromer_man_file.readline()
@@ -236,30 +230,6 @@ def compute(request):
 					cromer_man_file.seek(0) # возвращаем каретку в началао файла
 					abc = re.split(r'   ', line)
 					break
-			#_____________________________________________________________________________________________________________________________
-			# #__считаем f0_raspredelenie  для определения зависимости от sin(teta)/lam_____________________________________________________
-			# sin_by_lam = 0
-			# X_f0_raspredelenie = []
-			# Y_f0_raspredelenie = []
-			# with  open(path+'saved/f0_'+element_name.replace('\n', '')+'.dat', 'w') as out1:
-		# 		while sin_by_lam<=2*math.pi:
-		# 			f0_raspredelenie=0# обнуляем коэффициен для следующего атома в ячейке для построения зависимоти 
-		# 			for k in range(0, 4):
-		# 				f0_raspredelenie += float(abc[k])*math.exp(-float(abc[k+5])*(math.sin(sin_by_lam)/wavelength)**2)# длинна волны в ангстремах
-		# 			f0_raspredelenie=(f0_raspredelenie+float(abc[4]))
-		# 			X_f0_raspredelenie.append(sin_by_lam)
-		# 			Y_f0_raspredelenie.append(f0_raspredelenie)
-		# 			out1.write('%14.8s'  % str(sin_by_lam))
-		# 			out1.write('%14.8s' % str(f0_raspredelenie))
-		# 			out1.write('\n')
-
-		# 			sin_by_lam+=math.pi/100
-
-		# 	# a_element = PolarizabilityClass.plot_for_sin_by_lam(X_f0_raspredelenie,Y_f0_raspredelenie, element_name,a_element)
-		# 	if not element_name in a_element: 
-		# 		ax.plot(X_f0_raspredelenie, Y_f0_raspredelenie,label=element_name.replace('\n', '')+' (N = ' + NXYZocup[0]+')')
-		# 		a_element.add(element_name)
-
 			# __считаем f0________________________________________________________________________________________________________________
 			for k in range(0, 4):
 
@@ -304,24 +274,17 @@ def compute(request):
 			#-----------------f1 and f2 -----
 			f1 = f1_1 + (wavelength*math.pow(10,-1)-lambd1)*((f1_2-f1_1)/(lambd2-lambd1))
 			f2 = f2_1 + (wavelength*math.pow(10,-1)-lambd1)*((f2_2-f2_1)/(lambd2-lambd1))
-
 			# Атомный вес элемента--------------------------------------------
 			AtomicWeight = float(AtomicWeightLine.split()[4]) # г/моль
-			
 			#------cтруктурный фактор для падающей волны, он другой ------
 			StructFactor0 = StructFactor0 +float(NXYZocup[4])*(f1+f2*1j)
-
 			StructFactorReal = StructFactorReal + float(NXYZocup[4])*(f0+f1-float(NXYZocup[0]))*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor
-			
-			StructFactorImag = StructFactorImag + float(NXYZocup[4])*f2*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor
-			
+			StructFactorImag = StructFactorImag + float(NXYZocup[4])*f2*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor	
 			# --------стоит в знаменателе в поляризуемости падающей волны-------------
 			SumOcupAtomWeight = SumOcupAtomWeight + float(NXYZocup[4])*AtomicWeight
 		# Расчет поляризуемостей-------------------------------
 		Relectron = 2.8179403267 * math.pow(10,-15) # радиус электрона в метрах
 		Navogadro =  6.02214129 * math.pow(10,23)
-
-		
 		X0r = - Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
 		X0i =  Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
 		X0=X0r.real+X0i.imag*1j
