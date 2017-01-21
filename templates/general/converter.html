@@ -96,8 +96,8 @@
       var to_out2 = '';
       for (var i = 0; i < data['points_1']; i++) {
           data['x'][i]= data['scan_from'] + i*data['shag'];
-          to_out1+= data['x'][i] + '  ' + l1[i]  + '\n'
-          to_out2+= data['x'][i] + '  ' + l2[i] + '\n'
+          to_out1+= data['x'][i] + '\t' + l1[i]  + '\n'
+          to_out2+= data['x'][i] + '\t' + l2[i] + '\n'
       };
   
       $( "#text_for_x_y" ).append( "<div class='row' id = 'num_row_"+num+"'><hr></div>" );
