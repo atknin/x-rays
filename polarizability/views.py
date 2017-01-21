@@ -283,6 +283,8 @@ def compute(request):
 			StructFactorImag = StructFactorImag + float(NXYZocup[4])*f2*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor	
 			# --------стоит в знаменателе в поляризуемости падающей волны-------------
 			SumOcupAtomWeight = SumOcupAtomWeight + float(NXYZocup[4])*AtomicWeight
+			bot_inform.sent_to_atknin_bot(i, 'v')
+
 		# Расчет поляризуемостей-------------------------------
 		Relectron = 2.8179403267 * math.pow(10,-15) # радиус электрона в метрах
 		Navogadro =  6.02214129 * math.pow(10,23)
