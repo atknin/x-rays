@@ -217,7 +217,9 @@ def compute(request):
 		Natom = len(crystalGeom)# колличество эллементов в элементарной ячейке
 		for i in range(Natom):
 			if len(crystalGeom[i].split()) == 5:
-				NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам				
+				NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам
+			else:
+				continue				
 			f0=0# обнуляем коэффициен для следующего атома в ячейке
 			#___найти строку с элементом в cromerMan__________________________________________________________________________________________________________________________
 			while True:
@@ -283,7 +285,6 @@ def compute(request):
 			StructFactorImag = StructFactorImag + float(NXYZocup[4])*f2*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor	
 			# --------стоит в знаменателе в поляризуемости падающей волны-------------
 			SumOcupAtomWeight = SumOcupAtomWeight + float(NXYZocup[4])*AtomicWeight
-			bot_inform.sent_to_atknin_bot(i, 'v')
 
 		# Расчет поляризуемостей-------------------------------
 		Relectron = 2.8179403267 * math.pow(10,-15) # радиус электрона в метрах
