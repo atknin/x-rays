@@ -59,13 +59,12 @@
                 </a>
                   {% for group in user.groups.all %}                   
                     {% if "user_admin" == group.name %}
-                      
+                      <a class="btn_remove_crystal" name = "{{crystal.id}}" > <span class="label label-danger image">x</span></a>
                       <form method="POST"  action="add_crystal/">
                         {% csrf_token %}
                         <input type="hidden" name = "edit_crystal" value = "{{crystal.id}}">
                         <a href="#" onclick="$(this).closest('form').submit()" > <span class="label label-primary image">edit</span></a>
                       </form>
-                      <a class="btn_remove_crystal" name = "{{crystal.id}}" > <span class="label label-danger image">x</span></a>
                     {% endif %}
                   {%endfor%}      
                 
