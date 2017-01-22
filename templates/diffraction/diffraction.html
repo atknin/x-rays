@@ -78,7 +78,7 @@
 
 
     <!-- Без кристаллов скрипт-->
-    <script src="{% static "diffraction/js/zero_crystal.js"%}" >
+    <script type="text/javascript">
       
 $('#btn_0_cryst').click(function(event) {
   $('#div_choose_howmanycrystals').hide(); 
@@ -102,6 +102,7 @@ var crystal1 = new fabric.Rect({
 });
 crystal1.scale(0.5)
 canvas.add(crystal1);
+
 var source = new fabric.Image(document.getElementById('source'), {
   left: 650,
   top: 125,
@@ -115,5 +116,6 @@ var source = new fabric.Image(document.getElementById('source'), {
 source.scale(0.5);
 canvas.add(source);
     </script>
+    <!-- <script src="{% static "diffraction/js/zero_crystal.js"%}" ></script> -->
 
 {% endblock %}

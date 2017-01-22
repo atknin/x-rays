@@ -21,6 +21,7 @@ var crystal1 = new fabric.Rect({
 });
 crystal1.scale(0.5)
 canvas.add(crystal1);
+
 var source = new fabric.Image(document.getElementById('source'), {
   left: 650,
   top: 125,
