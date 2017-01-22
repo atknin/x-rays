@@ -13,7 +13,7 @@ def index(request):
 		
 	if request.is_ajax():
 		message = {}
-		if request.POST['logout']: 
+		if 'logout' in request.POST: 
 			auth.logout(request)
 			message['status'] = "logouted"
 			return JsonResponse(message)
