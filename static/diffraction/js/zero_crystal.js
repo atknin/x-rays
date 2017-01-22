@@ -44,7 +44,7 @@ var slit_a = new fabric.Rect({
     width: 10,
     height: 20,
     left: 320,
-    top: 115,
+    top: 120,
     fill: '#949494',
 });
 
