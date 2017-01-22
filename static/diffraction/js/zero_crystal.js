@@ -74,7 +74,7 @@ var slit_2 = new fabric.Group([ slit_a, slit_b ], {
 canvas.add(slit_2);
 
 
-
+$('.settings').hide();
 canvas.on('mouse:down', function(options) {
 	if (options.target) {
 		
