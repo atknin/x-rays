@@ -90,7 +90,7 @@ canvas.on('mouse:down', function(options) {
 		$('#div_settings_'+options.target.class).show();
 		console.log(options.target.class);
 		if(options.target.class=='animate'){
-
+			console.log('ok');
             slit_2.animate('angle', '-=10'); 
             detector.animate('angle', '-=10'); 
 
