@@ -60,8 +60,6 @@ var rect2 = new fabric.Rect({
 });
 
 var group1 = new fabric.Group([ rect1, rect2 ], {
-  left: 150,
-  top: 100,
   angle: 45
 });
 
