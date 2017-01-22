@@ -40,9 +40,7 @@
             {% if user.is_authenticated %}
 
             <span class="label label-default" style="margin-right: 5px;">{{user.username}}</span>
-            <button type="button" id = 'btn_logout' class="btn btn-default" aria-label="Left Align">
-              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            </button>
+            <a type="button" id = 'btn_logout' > <span class="label label-danger image">x</span></a>
              <a href="\dashboard\">
               <span class="glyphicon glyphicon-record" style="margin-right: 30px;" aria-hidden="true"></span>
             </a>
@@ -158,6 +156,7 @@
           }});
 
           $.post("/", login_dict ,function(data) {
+            location.reload()
           });
       
 
