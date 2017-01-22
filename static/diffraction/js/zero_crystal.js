@@ -59,7 +59,7 @@ var rect2 = new fabric.Rect({
 });
 
 var group1 = new fabric.Group([ rect1, rect2 ], {
-	angle: 45
+	angle: 45,
 	left: 320,
 	top: 110,
 });
