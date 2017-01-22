@@ -17,9 +17,6 @@
     <link href="{% static "bootstrap/css/own1.css" %}" rel="stylesheet">
     <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
     <script src="{% static "bootstrap/js/tooltip.js"%}"></script>
-    <script src="{% static "bootstrap/js/popover.js"%}"></script>
-    <script src="{% static "bootstrap/js/dropdown.js"%}"></script>
-    <script src="{% static "bootstrap/js/modal.js"%}"></script>
 
     {% block title%}
     <title>X-RAYS</title>
@@ -44,7 +41,7 @@
             {% if user.is_authenticated %}
 
             <span class="label label-default" style="margin-right: 5px;">{{user.username}}</span>
-            <a  data-toggle="tooltip" data-placement="bottom" title="выход"> <a type="button" id = 'btn_logout'> <span class="glyphicon glyphicon-log-out"></span></a></a>
+            <a type="button" id = 'btn_logout' data-toggle="tooltip" data-placement="bottom" title="выход"> <span class="glyphicon glyphicon-log-out"></span></a>
              <a href="\dashboard\">
 
               <span class="glyphicon glyphicon-record" style="margin-right: 30px;" aria-hidden="true"></span>
