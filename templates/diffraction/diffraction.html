@@ -37,8 +37,8 @@
   {% endblock %}
     
   {% block content %}
-    <div class="row" style="margin-top: 50px;">
-      <div class="btn-group btn-group-justified" role="group" aria-label="..." id = "div_choose_howmanycrystals">
+    <div class="row" style="margin-top: 50px;" id = "div_choose_howmanycrystals">
+      <div class="btn-group btn-group-justified" role="group" aria-label="..." >
         <div class="btn-group" role="group">
           <button type="button" id = 'btn_0_cryst' class="btn btn-default">без кристаллов</button>
         </div>
@@ -53,10 +53,11 @@
         </div>
       </div>
     </div>
+
    <!-- Без кристаллов -->
-    <div class="row" style="background-color: #FAFAFA; height: 360px; margin-top: 40px; display: none;">
+    <div class="row" style="background-color: #FAFAFA; height: 360px; margin-top: 40px; display: none;" id = "div_zero_crystal">
       <div class="col-md-7" style="margin-left: 20px;">
-        <canvas width=800 height=300 id="fabric" style="display: none;"></canvas>
+        <canvas width=800 height=300 id="fabric"></canvas>
         <div style="display: none;">
           <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
           <img src="{% static 'diffraction/img/source.png' %}" id="source">
@@ -72,7 +73,8 @@
     <script type="text/javascript">
 
       $('#btn_0_cryst').click(function(event) {
-        
+          $('#div_choose_howmanycrystals').hide();
+          $('#div_zero_crystal').show();
       });
     </script>
 {% endblock %}
