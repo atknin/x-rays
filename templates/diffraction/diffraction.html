@@ -32,9 +32,8 @@
         border: 1px dashed #777;
         border-radius: 18px;
     }
-
   </style>
-
+  
   {% endblock %}
     
   {% block content %}
@@ -54,7 +53,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
+   <!-- Без кристаллов -->
+    <div class="row" style="background-color: #FAFAFA; height: 360px; margin-top: 40px; display: none;">
       <div class="col-md-7" style="margin-left: 20px;">
         <canvas width=800 height=300 id="fabric" style="display: none;"></canvas>
         <div style="display: none;">
@@ -68,10 +68,11 @@
         НАСТРОЙКА
       </div>
     </div>
-    <!-- Без кристаллов -->
+    <!-- Без кристаллов скрипт-->
     <script type="text/javascript">
+
       $('#btn_0_cryst').click(function(event) {
-        /* Act on the event */
+        
       });
     </script>
 {% endblock %}
