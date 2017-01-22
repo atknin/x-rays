@@ -43,8 +43,8 @@ canvas.add(detector);
 var rect1 = new fabric.Rect({
     width: 10,
     height: 25,
-    left: 350,
-    top: 150,
+    left: 320,
+    top: 155,
     fill: '#949494',
     selectable: false
 });
@@ -53,8 +53,8 @@ canvas.add(rect1);
 var rect2 = new fabric.Rect({
     width: 10,
     height: 25,
-    left: 350,
-    top: 105,
+    left: 320,
+    top: 110,
     fill: '#949494',
     selectable: false
 });
