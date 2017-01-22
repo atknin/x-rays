@@ -44,7 +44,7 @@ var slit_a = new fabric.Rect({
     width: 10,
     height: 20,
     left: 320,
-    top: 115,
+    top: 125,
     fill: '#949494',
 });
 
@@ -52,7 +52,7 @@ var slit_b = new fabric.Rect({
     width: 10,
     height: 20,
     left: 320,
-    top: 150,
+    top: 140,
     fill: '#949494',
 });
 
