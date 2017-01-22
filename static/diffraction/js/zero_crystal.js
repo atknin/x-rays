@@ -10,8 +10,8 @@ var canvas = new fabric.Canvas('fabric');
 var crystal1 = new fabric.Rect({
   width: 30,
   height: 30,
-  left: 570,
-  top: 135,
+  left: 10,
+  top: 10,
   stroke: '#aaf',
   strokeWidth: 1,
   fill: '#eee',
