@@ -44,7 +44,7 @@ var slit_a = new fabric.Rect({
     width: 10,
     height: 20,
     left: 320,
-    top: 130,
+    top: 135,
     fill: '#949494',
 });
 
@@ -61,7 +61,7 @@ var slit_b = new fabric.Rect({
 
 var slit_1 = new fabric.Group([ slit_a, slit_b ], {
 	left: 500,
-	top: 115,
+	top: 120,
 	selectable: false,
 	class: 'slit_1'
 });
@@ -69,7 +69,7 @@ canvas.add(slit_1);
 
 var slit_2 = new fabric.Group([ slit_a, slit_b ], {
 	left: 320,
-	top: 115,
+	top: 120,
 	selectable: false,
 	class: 'slit_2'
 });
