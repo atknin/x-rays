@@ -77,7 +77,12 @@ canvas.add(slit_2);
 
 canvas.on('mouse:down', function(options) {
 	if (options.target) {
-		console.log(options.target.class)
+		
+		$('.settings').hide();
+		$('#sign_settings').hide();
+		
+		$('#div_settings_'+options.target.class).show();
+		console.log(options.target.class);
 	};
 });
 

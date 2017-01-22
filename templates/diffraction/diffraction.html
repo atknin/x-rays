@@ -69,7 +69,8 @@
       
       <div class="col-md-4" style="margin-left: 20px;">
         <div class="panels" style="height: 300px; background-color: white;">
-          
+
+<!-- ИСТОЧНИК -->
           <div class="row settings" id="div_settings_source" style="display: none;">  
             <span class="label label-primary">Параметры источника</span>
               <div class="form-group">
@@ -96,8 +97,54 @@
                 </div>
               </div>
             </div>
+<!-- // ИСТОЧНИК -->
+<!-- ЩЕЛЬ 1 -->
+            <div class="row settings" id="div_settings_slit1">
+              <span class="label label-primary">Параметры щели №1</span>
+              <div class="form-group">
+                <label>расстояние до источника</label>
+                  <div class="input-group ">
+                    <input type="text" class="form-control" value = 0.54 id="input_l_slit1">
+                  <div class="input-group-addon">m</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                <label>Размер щели</label>
+                  <div class="input-group ">
+                    <input type="text" class="form-control" value = 0.02 id="input_size_slit1">
+                  <div class="input-group-addon">mm</div>
+                  </div>
+                </div>
+            </div>
+<!-- // ЩЕЛЬ 1 -->
 
-          <p class="lead" style="margin: 30px;" >НАСТРОЙКА</p> 
+<!-- ЩЕЛЬ 2 -->
+            <div class="row settings" id="div_settings_slit2">
+              <span class="label label-primary">Параметры щели №2</span>
+              <div class="form-group">
+                <label>расстояние до источника</label>
+                  <div class="input-group ">
+                    <input type="text" class="form-control" value = 0.99 id="input_l_slit2">
+                  <div class="input-group-addon">m</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                <label>Размер щели</label>
+                  <div class="input-group ">
+                    <input type="text" class="form-control" value = 0.02 id="input_size_slit2">
+                  <div class="input-group-addon">mm</div>
+                  </div>
+                </div>
+            </div>
+<!-- // ЩЕЛЬ 2 -->
+ <!-- настроить детектор -->
+              <div class="row settings" id="div_settings_detector" >
+                <div style="margin-bottom: 20px"><span class="label label-primary">Параметры детектора</span></div>
+                отсутсвуют
+              </div>
+<!-- / настроить детектор -->
+          <p class="lead" id = 'sign_settings' style="margin: 30px;" >НАСТРОЙКА</p> 
+
         </div>
       </div>
 
