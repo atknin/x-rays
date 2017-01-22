@@ -33,7 +33,7 @@ var detector = new fabric.Image(document.getElementById('detector'), {
   shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
   selectable: false,
   name: 'детектор, нажмите для настройки',
-  class: 'detector_settings'
+  class: 'detector'
 
 });
 detector.scale(0.5);
@@ -44,11 +44,11 @@ var slit_1 = new fabric.Image(document.getElementById('slit'), {
 	top: 100,
 	// angle: 30,
 	opacity: 0.85,
+	selectable: false,
 	shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
 	name: 'щель, перетащите для установки',
 	class: 'slit'
 	});
-	slit_1.scale(0.3);
-	slit_1.hasControls = slit_1.hasBorders = false;
-	canvas.add(slit_1);
-	
+slit_1.scale(0.3);
+slit_1.hasControls = slit_1.hasBorders = false;
+canvas.add(slit_1);
