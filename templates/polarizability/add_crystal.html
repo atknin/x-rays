@@ -429,7 +429,7 @@
 
 
 
-    if ({{edit}}) {
+    if ($('#edit_or_not').attr('name')) {
       $('#id_name').val("{{name}}");
       $('#id_short_name').val("{{short_name}}");
       $('#id_a').val("{{a}}");
@@ -455,4 +455,5 @@
 
   });
 </script>
+<input type="hidden" id = "edit_or_not" name = "{{edit}}">
 {% endblock %}
