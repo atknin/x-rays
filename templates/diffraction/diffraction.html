@@ -25,7 +25,7 @@
     }
  
 
-    #fabric{
+    .panels{
         background-color: white;
         margin-top: 30px;
         margin-left: 5px;
@@ -55,8 +55,9 @@
 
    <!-- Без кристаллов -->
     <div class="row" style="background-color: #FAFAFA; height: 360px; margin-top: 40px; display: none;" id = "div_zero_crystal">
+      
       <div class="col-md-7" style="margin-left: 20px;">
-        <canvas width=800 height=300 id="fabric"></canvas>
+        <canvas class = 'panels' width=800 height=300 id="fabric"></canvas>
         <div style="display: none;">
           <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
           <img src="{% static 'diffraction/img/source.png' %}" id="source">
@@ -64,9 +65,13 @@
           <img src="{% static 'diffraction/img/slit.png' %}" id="slit" >
         </div>
       </div>
-      <div class="col-md-4">
-        НАСТРОЙКА
+      
+      <div class="col-md-4" style="margin-left: 20px;">
+        <div class="panels">
+          НАСТРОЙКА
+        </div>
       </div>
+      
     </div>
     <!-- Без кристаллов скрипт-->
     <script type="text/javascript">
