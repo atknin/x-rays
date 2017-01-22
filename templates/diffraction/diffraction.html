@@ -58,12 +58,14 @@
       
       <div class="col-md-7" style="margin-left: 20px;">
         <canvas class = 'panels' width=800 height=300 id="fabric"></canvas>
+        
         <div style="display: none;">
           <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
           <img src="{% static 'diffraction/img/source.png' %}" id="source">
           <img src="{% static 'diffraction/img/sample.png' %}" id="sample" >
           <img src="{% static 'diffraction/img/slit.png' %}" id="slit" >
         </div>
+
       </div>
       
       <div class="col-md-4" style="margin-left: 20px;">
@@ -73,6 +75,8 @@
       </div>
 
     </div>
+
+    <div class="row panels" style="margin-top: 100px; "></div> 
     <!-- Без кристаллов скрипт-->
 
     <script src="{% static "diffraction/js/zero_crystal.js"%}" ></script>
