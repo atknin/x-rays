@@ -6,7 +6,6 @@ $('#btn_0_cryst').click(function(event) {
 });
 
 var canvas = new fabric.Canvas('fabric');
-canvas.setBackgroundImage("{% static 'diffraction/img/background.png' %}", canvas.renderAll.bind(canvas));
 
 var crystal1 = new fabric.Rect({
   width: 30,
