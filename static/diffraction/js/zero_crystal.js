@@ -39,16 +39,14 @@ var detector = new fabric.Image(document.getElementById('detector'), {
 detector.scale(0.5);
 canvas.add(detector);
 
-var slit_1 = new fabric.Image(document.getElementById('slit'), {
-	left: 60,
-	top: 100,
-	// angle: 30,
-	opacity: 0.85,
-	selectable: false,
-	shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
-	name: 'щель, перетащите для установки',
-	class: 'slit'
-	});
-slit_1.scale(0.3);
-slit_1.hasControls = slit_1.hasBorders = false;
-canvas.add(slit_1);
+var rect = new fabric.Rect({
+    width: 10,
+    height: 50,
+    left: 100,
+    top: 135,
+    stroke: '#aaf',
+    strokeWidth: 5,
+    fill: '#949494',
+    selectable: false
+});
+canvas.add(rect);
