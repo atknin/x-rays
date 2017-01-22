@@ -14,7 +14,7 @@ var crystal1 = new fabric.Rect({
   top: 135,
   stroke: '#aaf',
   strokeWidth: 1,
-  fill: '#FAFAFA',
+  fill: '#eee',
   selectable: false,
   name: 'на это место можно установить кристалл',
   class: 'place_sample1'
@@ -32,5 +32,6 @@ var source = new fabric.Image(document.getElementById('source'), {
   name: 'источник, нажмите для настройки',
   class: 'source_settings'
 });
+
 source.scale(0.5);
 canvas.add(source);
