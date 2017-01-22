@@ -39,9 +39,9 @@
     
   {% block content %}
     <div class="row" style="margin-top: 50px;">
-      <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group btn-group-justified" role="group" aria-label="..." id = "div_choose_howmanycrystals">
         <div class="btn-group" role="group">
-          <button type="button" class="btn btn-default">без кристаллов</button>
+          <button type="button" id = 'btn_0_cryst' class="btn btn-default">без кристаллов</button>
         </div>
         <div class="btn-group" role="group">
           <button type="button" class="btn btn-default" disabled>1 кристалл</button>
@@ -54,4 +54,24 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-7" style="margin-left: 20px;">
+        <canvas width=800 height=300 id="fabric" style="display: none;"></canvas>
+        <div style="display: none;">
+          <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
+          <img src="{% static 'diffraction/img/source.png' %}" id="source">
+          <img src="{% static 'diffraction/img/sample.png' %}" id="sample" >
+          <img src="{% static 'diffraction/img/slit.png' %}" id="slit" >
+        </div>
+      </div>
+      <div class="col-md-4">
+        НАСТРОЙКА
+      </div>
+    </div>
+    <!-- Без кристаллов -->
+    <script type="text/javascript">
+      $('#btn_0_cryst').click(function(event) {
+        /* Act on the event */
+      });
+    </script>
 {% endblock %}
