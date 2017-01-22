@@ -40,7 +40,7 @@ detector.scale(0.5);
 canvas.add(detector);
 
 
-var rect1 = new fabric.Rect({
+var slit1_a = new fabric.Rect({
     width: 10,
     height: 25,
     left: 320,
@@ -49,7 +49,7 @@ var rect1 = new fabric.Rect({
     selectable: false
 });
 
-var rect2 = new fabric.Rect({
+var slit1_b = new fabric.Rect({
     width: 10,
     height: 25,
     left: 320,
@@ -58,10 +58,14 @@ var rect2 = new fabric.Rect({
     selectable: false
 });
 
-var group1 = new fabric.Group([ rect1, rect2 ], {
-	angle: 45,
+var group1 = new fabric.Group([ slit1_a, slit1_b ], {
 	left: 320,
 	top: 110,
 });
 
+var group2 = new fabric.Group([ slit1_a, slit1_b ], {
+	left: 450,
+	top: 110,
+});
 canvas.add(group1);
+canvas.add(group2);
