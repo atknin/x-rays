@@ -17,7 +17,7 @@ var source = new fabric.Image(document.getElementById('source'), {
   shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
   selectable: false,
   name: 'источник, нажмите для настройки',
-  class: 'source_settings'
+  class: 'source'
 });
 source.scale(0.5);
 canvas.add(source);
@@ -40,36 +40,44 @@ detector.scale(0.5);
 canvas.add(detector);
 
 
-var slit1_a = new fabric.Rect({
+var slit_a = new fabric.Rect({
     width: 10,
-    height: 25,
+    height: 20,
     left: 320,
     top: 155,
     fill: '#949494',
-    selectable: false
 });
 
-var slit1_b = new fabric.Rect({
+var slit_b = new fabric.Rect({
     width: 10,
-    height: 25,
+    height: 20,
     left: 320,
     top: 110,
     fill: '#949494',
-    selectable: false
 });
 
-var group1 = new fabric.Group([ slit1_a, slit1_b ], {
+
+var slit_1 = new fabric.Group([ slit_a, slit_b ], {
 	left: 320,
 	top: 110,
 	selectable: false,
+	class: 'slit_1'
 });
+canvas.add(slit_1);
 
-var group2 = new fabric.Group([ slit1_a, slit1_b ], {
+var slit_2 = new fabric.Group([ slit_a, slit_b ], {
 	left: 500,
 	top: 110,
 	selectable: false,
+	class: 'slit_2'
+});
+canvas.add(slit_2);
+
+
+
+canvas.on('mouse:down', function(options) {
+	if (options.target) {
+		console.log(options.target.class)
+	};
 });
 
-
-canvas.add(group1);
-canvas.add(group2);
