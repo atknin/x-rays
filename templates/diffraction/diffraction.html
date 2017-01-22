@@ -69,6 +69,34 @@
       
       <div class="col-md-4" style="margin-left: 20px;">
         <div class="panels" style="height: 300px; background-color: white;">
+          
+          <div class="row settings" id="div_settings_source" style="display: none;">  
+            <span class="label label-primary">Параметры источника</span>
+              <div class="form-group">
+                <label>Анод:</label>
+                <select class="form-control" id ='source_to_backend' size="6">
+                {%for source in anod%}
+                  <option value="{{source.wavelength.all.0.wavelength }}"><small>{{source.name}}</small></option>
+                {% endfor %}
+                </select> 
+              </div>
+              <div class="form-group">
+                <label>Полуширина излучающего пятная, расходимость источника</label>
+                <div class="col-md-6 ">
+                  <div class="input-group ">
+                    <input type="text" class="form-control" value = 0.5 id="source_divergence_mmetr" disabled>
+                  <div class="input-group-addon">mm</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                <div class="input-group">
+                  <input type="text" class="form-control" value="600" id="source_divergence_arc" >
+                  <div class="input-group-addon">arcsec</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           <p class="lead" style="margin: 30px;" >НАСТРОЙКА</p> 
         </div>
       </div>
