@@ -40,7 +40,9 @@
             {% if user.is_authenticated %}
 
             <span class="label label-default" style="margin-right: 5px;">{{user.username}}</span>
-
+            <button type="button" id = 'btn_logout' class="btn btn-default" aria-label="Left Align">
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
              <a href="\dashboard\">
               <span class="glyphicon glyphicon-record" style="margin-right: 30px;" aria-hidden="true"></span>
             </a>
@@ -140,8 +142,24 @@
               $('.check_id_login').addClass("error");
             }
           });
-        }
+        };
       });
+
+      $(".check_id_login").click(function(){
+        $(this).removeClass("error");
+      });
+    });
+
+    $("#btn_logout").click(function() {
+          var login_dict = {'logout': 'quit' }
+
+          $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+          }});
+
+          $.post("/", login_dict ,function(data) {
+          });
+      
 
       $(".check_id_login").click(function(){
         $(this).removeClass("error");

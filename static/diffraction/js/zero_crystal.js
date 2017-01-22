@@ -77,9 +77,6 @@ var slit_2 = new fabric.Group([ slit_a, slit_b ], {
 });
 canvas.add(slit_2);
 
-canvas.add(new fabric.Rect({ left: 30, top: 30, fill: '#f0f', width: 50, height: 50, class: 'animate',selectable: false }));
-
-
 
 
 $('.settings').hide();
@@ -88,18 +85,8 @@ canvas.on('mouse:down', function(options) {
 		$('.settings').hide();
 		$('#sign_settings').hide();
 		$('#div_settings_'+options.target.class).show();
-		console.log(options.target.class);
-		if(options.target.class=='animate'){
-			console.log('ok');
-            animate()
-		}
 	};
 });
 
-function animate(){
-	slit_2.animate('angle', '-=10'); 
-    detector.animate('angle', '-=10'); 
-	slit_2.animate('angle', '+=10'); 
-    detector.animate('angle', '+=10'); 
-};
+
 

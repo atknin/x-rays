@@ -10,8 +10,14 @@ from django.http import JsonResponse
 
 
 def index(request):
+		
 	if request.is_ajax():
 		message = {}
+		if request.POST['logout']: 
+			auth.logout(request)
+			message['status'] = "logouted"
+			return JsonResponse(message)
+		
 		login = request.POST['login']
 		password = request.POST['password']
 		user = auth.authenticate(username=login, password=password)
@@ -25,7 +31,8 @@ def index(request):
 	else:
 	 	return render(
 		 	request, 'general/index.html',
-		 	)
+		 	)	
+
 
 def about(request):
  	return render(
