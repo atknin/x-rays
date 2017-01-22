@@ -48,7 +48,6 @@ var rect1 = new fabric.Rect({
     fill: '#949494',
     selectable: false
 });
-canvas.add(rect1);
 
 var rect2 = new fabric.Rect({
     width: 10,
@@ -65,4 +64,4 @@ var group1 = new fabric.Group([ rect1, rect2 ], {
 	top: 110,
 });
 
-canvas.add(rect2);
+canvas.add(group1);
