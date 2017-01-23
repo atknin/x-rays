@@ -147,30 +147,10 @@ $("#compute").click(function(){
 	}
 	else {
 		$('#id_alert_message').hide();
-
-
 		$.ajaxSetup({data: {
-			csrfmiddlewaretoken: $('#tokken').val()
+			csrfmiddlewaretoken: $('#abracadabraa').val()
 		}});
-
-		// $.post("/diffraction/compute/", compute_dict ,function(data) {
-		// alert('Успешно');
-		// });
-
-		
-		// 
-		// $.ajax({
-		//   type: "POST",
-		//   url: "/diffraction/compute/",
-		//   data: compute_dict,
-		//   success: function(msg){
-		//         alert( "Status: " + msg );
-		//   },
-		//   error: function(XMLHttpRequest, textStatus, errorThrown) {
-		//      alert("some error");
-		//   }
-		// });
-
+		compute_dict['schem'] = 'zero_crystal'
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
 			alert( msg.status);

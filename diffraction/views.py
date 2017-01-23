@@ -36,9 +36,15 @@ def diffraction(request):
 def compute(request):
 	message = {}
 	message['instrument'] = 'diffraction'
+	# zero_crystal
+	scheem = request.POST['scheem']
+	for mm in request.POST:
+		sender.send_msg(mm, str(message))
+	# scheem = float(request.POST['scheem'])
+
 	if request.is_ajax():
 		message['status'] = "ok"
-		sender.send_msg("Atknin", str(message))
+		
 	else:
 		message['status'] = "error"
 	return JsonResponse(message)
