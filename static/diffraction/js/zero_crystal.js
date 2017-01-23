@@ -130,7 +130,7 @@ $("#compute").click(function(){
 			console.log('error ', key);
 		}
 		else{
-			console.log('ok ', key);
+			console.log('ok key: ', key, 'val: ' ,check_array['key']);
 		};
 	}
 
