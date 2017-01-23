@@ -148,29 +148,31 @@ $("#compute").click(function(){
 	else {
 		$('#id_alert_message').hide();
 		
-		// $.ajaxSetup({data: {
-		// 	csrfmiddlewaretoken: '{{ csrf_token }}'
-		// }});
-		compute_dict.push({
-		    csrfmiddlewaretoken:   "{{ csrf_token }}"
-		});
-		$.ajax({
+		$.ajaxSetup({data: {
+			csrfmiddlewaretoken: '{{ csrf_token }}'
+		}});
+		// compute_dict.push({
+		//     csrfmiddlewaretoken:   "{{ csrf_token }}"
+		// });
+		// $.ajax({
 
-		  type: "POST",
-		  url: "/diffraction/compute/",
-		  data: compute_dict,
-		  success: function(msg){
-		        alert( "Status: " + msg );
-		  },
-		  error: function(XMLHttpRequest, textStatus, errorThrown) {
-		     alert("some error");
-		  }
-		});
+		//   type: "POST",
+		//   url: "/diffraction/compute/",
+		//   data: compute_dict,
+		//   success: function(msg){
+		//         alert( "Status: " + msg );
+		//   },
+		//   error: function(XMLHttpRequest, textStatus, errorThrown) {
+		//      alert("some error");
+		//   }
+		// });
 
-		// $.post("/diffraction/compute/", compute_dict)
-		// 	.done(function(msg) {
-		// 	    alert( msg.status);
-		// 	});
+		$.post("/diffraction/compute/", compute_dict ,function(data) {
+			alert( msg.status);
+		});
+			// .done(function(msg) {
+			//     
+			// });
 	};
 
 
