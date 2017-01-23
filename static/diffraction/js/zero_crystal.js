@@ -128,9 +128,11 @@ $("#compute").click(function(){
 	for (var key in check_array){
 		if (check_array[key]==false){
 			console.log('error ', key);
+			error($('#'+key));
 		}
 		else{
 			console.log('ok ', key);
+			ok($('#'+key));
 		};
 	}
 
