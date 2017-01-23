@@ -93,7 +93,7 @@ var check_array = {'input_l_slit1':false,'input_l_slit2':false, 'input_size_slit
 $('#input_l_slit1, #input_l_slit2').keyup(function() {
   if( parseFloat($(this).val()) < 2 && parseFloat($(this).val()) > 0){
   	console.log('ok');
-  	console.log(this.attr('id'));
+  	console.log($(this).attr('id'));
 
   }
   else{
