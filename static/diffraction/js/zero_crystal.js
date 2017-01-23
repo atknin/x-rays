@@ -123,7 +123,8 @@ $('#source_to_backend').change(function() {
 });
 
 
-$("#btn_edit").click(function(){
+$("#compute").prop( "disabled", false );
+$("#compute").click(function(){
 	for (var key in check_array){
 		if (check_array['key'] == false){
 			console.log('compute ', key);
