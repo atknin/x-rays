@@ -122,6 +122,7 @@ $('#source_to_backend').change(function() {
 
 });
 var compute_dict = {}
+
 $('#id_alert_message').hide();
 $("#compute").prop( "disabled", false );
 $("#compute").click(function(){
@@ -149,19 +150,19 @@ $("#compute").click(function(){
 
 	}
 
-	if(!false in )
-	compute_dict['edit'] = 'true';
-	compute_dict['crystal_id'] = $("#crystal_id").val();
-	$.ajaxSetup({data: {
-	csrfmiddlewaretoken: '{{ csrf_token }}'
-	}});
-	$.post("/polarizability/add_crystal/", compute_dict ,function(data) {
-	var info_2 = info
-	info_2 +=data.status+'\n'
-	$( '#info_geometry' ).val(info_2);
-	aler('Успешно');
-	window.location.replace("/polarizability/");
-	});
+	// if(!false in )
+	// compute_dict['edit'] = 'true';
+	// compute_dict['crystal_id'] = $("#crystal_id").val();
+	// $.ajaxSetup({data: {
+	// csrfmiddlewaretoken: '{{ csrf_token }}'
+	// }});
+	// $.post("/polarizability/add_crystal/", compute_dict ,function(data) {
+	// var info_2 = info
+	// info_2 +=data.status+'\n'
+	// $( '#info_geometry' ).val(info_2);
+	// aler('Успешно');
+	// window.location.replace("/polarizability/");
+	// });
 
 });
 
