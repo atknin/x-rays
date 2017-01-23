@@ -147,12 +147,12 @@ $("#compute").click(function(){
 	}
 	else {
 		$('#id_alert_message').hide();
-		var token = $("#tokken").val()
-		console.log(token);
+
+		console.log(document.write(token););
 		// compute_dict[csrfmiddlewaretoken] = token;
 
 		$.ajaxSetup({data: {
-			csrfmiddlewaretoken: token
+			csrfmiddlewaretoken: document.write(token)
 		}});
 
 		$.post("/diffraction/compute/", compute_dict ,function(data) {
