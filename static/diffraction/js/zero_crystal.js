@@ -90,24 +90,27 @@ canvas.on('mouse:down', function(options) {
 
 var check_array = {'input_l_slit1':false,'input_l_slit2':false, 'input_size_slit1':false, 'input_size_slit2':false,'source_divergence_arc':false,'source_to_backend':false, 'source_to_backend':false}
 
-$('#input_l_slit1, #input_l_slit2').keyup(function() {
-  if( parseFloat($(this).val()) < 2 && parseFloat($(this).val()) > 0){
-  	console.log('ok');
-  	console.log($(this).attr('id'));
 
-  }
-  else{
-  	console.log('error');
-  }
+function error(e){
+	check_array[$(e).attr('id')] = false;
+  	console.log(check_array[$(e).attr('id')]);
+  	$(e).addClass('error');
+};
+function ok(e){
+	check_array[$(e).attr('id')] = true;
+  	console.log($(e).attr('id'),check_array[$(e).attr('id')]);
+  	$(e).removeClass('error');
+};
+
+
+$('#input_l_slit1, #input_l_slit2').keyup(function() {
+  if( parseFloat($(this).val()) < 2 && parseFloat($(this).val()) > 0){ok(this);}
+  else{error(this);}
 });
 
 $('#input_size_slit1, #input_size_slit2').keyup(function() {
-  if( parseFloat($(this).val()) < 100 && parseFloat($(this).val()) > 0){
-  	console.log('ok');
-  }
-  else{
-  	console.log('error');
-  }
+  if( parseFloat($(this).val()) < 100 && parseFloat($(this).val()) > 0){ok(this);}
+  else{error(this);}
 });
 
 $('#source_divergence_arc').change(function() {
