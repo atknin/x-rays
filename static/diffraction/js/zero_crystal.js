@@ -121,7 +121,7 @@ $('#source_to_backend').change(function() {
 	ok(this);
 
 });
-var compute_dict = {};
+var compute_dict = [];
 
 $('#id_alert_message').hide();
 $("#compute").prop( "disabled", false );
@@ -148,8 +148,10 @@ $("#compute").click(function(){
 	else {
 		$('#id_alert_message').hide();
 		token = $("#change_password-form").find('input[name=csrfmiddlewaretoken]').val()
-		compute_dict[csrfmiddlewaretoken] = token;
-		
+		// compute_dict[csrfmiddlewaretoken] = token;
+		compute_dict.push({
+		    csrfmiddlewaretoken:   token
+		});
 		$.post("/diffraction/compute/", compute_dict ,function(data) {
 		alert('Успешно');
 		});
@@ -157,9 +159,7 @@ $("#compute").click(function(){
 		// $.ajaxSetup({data: {
 		// 	csrfmiddlewaretoken: '{{ csrf_token }}'
 		// }});
-		// compute_dict.push({
-		//     csrfmiddlewaretoken:   "{{ csrf_token }}"
-		// });
+		// 
 		// $.ajax({
 
 		//   type: "POST",
