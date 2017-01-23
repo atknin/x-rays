@@ -121,7 +121,7 @@ $('#source_to_backend').change(function() {
 	ok(this);
 
 });
-var compute_dict = {}
+var compute_dict = []
 
 $('#id_alert_message').hide();
 $("#compute").prop( "disabled", false );
