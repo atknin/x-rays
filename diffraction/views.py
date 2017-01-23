@@ -40,7 +40,7 @@ def compute(request):
 	# scheem = request.POST['scheem']
 	for mm in request.POST:
 		sender.send_msg("Atknin", str(mm))
-	scheem = float(request.POST['scheem'])
+	# scheem = float(request.POST['scheem'])
 
 	if request.is_ajax():
 		message['status'] = "ok"
