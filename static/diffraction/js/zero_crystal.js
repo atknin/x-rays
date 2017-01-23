@@ -157,11 +157,6 @@ $("#compute").click(function(){
 			  });
 	};
 
-	if(!false in )
-	compute_dict['edit'] = 'true';
-	compute_dict['crystal_id'] = $("#crystal_id").val();
-	
-	
 
 });
 
