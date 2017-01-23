@@ -48,7 +48,7 @@ def compute(request):
 		input_data['input_l_slit2'] = float(request.POST['input_l_slit2'])
 		input_data['anod'] = diffraction_models.anod.objects.get(pk = request.POST['id_source'])
 		output_data['status'] = "ok"
-		sender.send_msg("Atknin", str(request.POST))
+		sender.send_msg("Atknin", str(output_data))
 	else:
 		output_data['status'] = "error"
 	return JsonResponse(output_data)
