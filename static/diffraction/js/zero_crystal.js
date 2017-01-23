@@ -146,17 +146,16 @@ $("#compute").click(function(){
 		$('#id_alert_message').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span>'+mes)
 	}
 	else {
+		$('#id_alert_message').hide();
 		$.ajaxSetup({data: {
 			csrfmiddlewaretoken: '{{ csrf_token }}'
 		}});
-		$.post("/diffraction/compute/", compute_dict ,function(data) {
-			.done(function() {
+
+		$.post("/diffraction/compute/", compute_dict)
+			.done(function(data) {
 			    alert( data.status);
 			  });
-		});
-		$('#id_alert_message').hide();
-
-	}
+	};
 
 	if(!false in )
 	compute_dict['edit'] = 'true';
