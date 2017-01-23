@@ -100,6 +100,7 @@ function ok(e){
 	check_array[$(e).attr('id')] = true;
   	console.log($(e).attr('id'),check_array[$(e).attr('id')]);
   	$(e).removeClass('error');
+  	console.log(obj.hasOwnProperty(false));
 };
 
 
@@ -118,7 +119,25 @@ $('#source_divergence_arc').change(function() {
   else{error(this);}
 });
 $('#source_to_backend').change(function() {
-  $(this).val();
-  console.log($(this).val());
+	ok(this);
 
 });
+
+
+$("#btn_edit").click(function(){
+	if(!false in )
+	compute_dict['edit'] = 'true';
+	compute_dict['crystal_id'] = $("#crystal_id").val();
+	$.ajaxSetup({data: {
+	csrfmiddlewaretoken: '{{ csrf_token }}'
+	}});
+	$.post("/polarizability/add_crystal/", compute_dict ,function(data) {
+	var info_2 = info
+	info_2 +=data.status+'\n'
+	$( '#info_geometry' ).val(info_2);
+	aler('Успешно');
+	window.location.replace("/polarizability/");
+});
+
+});
+
