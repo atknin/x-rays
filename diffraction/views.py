@@ -37,7 +37,7 @@ def compute(request):
 	message = {}
 	message['instrument'] = 'diffraction'
 	# zero_crystal
-	scheem = request.POST['scheem']
+	# scheem = request.POST['scheem']
 	for mm in request.POST:
 		sender.send_msg(mm, str(message))
 	# scheem = float(request.POST['scheem'])
