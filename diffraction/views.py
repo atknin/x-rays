@@ -46,9 +46,10 @@ def compute(request):
 		input_data['schem'] = request.POST['schem']
 		input_data['input_size_slit1'] = float(request.POST['input_size_slit1'])
 		input_data['input_l_slit2'] = float(request.POST['input_l_slit2'])
+		input_data['id_email'] = float(request.POST['id_email'])
+		
 		i = 1;
 		for wave in diffraction_models.anod.objects.get(pk = request.POST['id_source']).wavelength.all():
-
 			input_data['anod'+str(i)] = str(wave.wavelength)
 			i+=1
 

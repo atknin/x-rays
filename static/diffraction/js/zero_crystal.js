@@ -151,6 +151,8 @@ $("#compute").click(function(){
 			csrfmiddlewaretoken: $('#abracadabraa').val()
 		}});
 		compute_dict['schem'] = 'zero_crystal'
+		compute_dict['id_email'] = $('#id_email').val()
+		
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
 			alert( msg.status);
