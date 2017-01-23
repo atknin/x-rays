@@ -141,7 +141,7 @@ $("#compute").click(function(){
 	};
 
 	if (!flag){
-		$('#id_alert_message').html('<p id ="id_alert_message_p" >'+mes+'</p>')
+		$('#id_alert_message').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span>'+mes)
 	};
 
 	// if(!false in )
