@@ -35,22 +35,20 @@ def diffraction(request):
 
 def compute(request):
 	output_data = {}
-	input_data = {}
-	input_data['source_divergence_arc'] = float(request.POST['source_divergence_arc'])
-	input_data['input_l_slit1'] = float(request.POST['input_l_slit1'])
-	input_data['input_size_slit2'] = float(request.POST['input_size_slit2'])
-	input_data['schem'] = request.POST['schem']
-	input_data['input_size_slit1'] = float(request.POST['input_size_slit1'])
-	input_data['input_l_slit2'] = float(request.POST['input_l_slit2'])
-	input_data['id_source'] = int(request.POST['id_source'])
-
 	# zero_crystal
-	# scheem = request.POST['scheem']
-	for mm in request.POST:
-		sender.send_msg("Atknin", str(mm)+': '+request.POST[mm])
-	# scheem = float(request.POST['scheem'])
 
 	if request.is_ajax():
+		input_data = {}
+		
+		input_data['source_divergence_arc'] = float(request.POST['source_divergence_arc'])
+		input_data['input_l_slit1'] = float(request.POST['input_l_slit1'])
+		input_data['input_size_slit2'] = float(request.POST['input_size_slit2'])
+		input_data['schem'] = request.POST['schem']
+		input_data['input_size_slit1'] = float(request.POST['input_size_slit1'])
+		input_data['input_l_slit2'] = float(request.POST['input_l_slit2'])
+		input_data['anod'] = diffraction_models.anod.objects.get(pk = request.POST['id_source'])
+
+
 		output_data['status'] = "ok"
 		
 	else:
