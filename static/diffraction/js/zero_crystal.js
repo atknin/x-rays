@@ -100,7 +100,7 @@ function ok(e){
 	check_array[$(e).attr('id')] = true;
   	console.log($(e).attr('id'),check_array[$(e).attr('id')]);
   	$(e).removeClass('error');
-  	console.log('compute ',obj.hasOwnProperty(false));
+  	console.log('compute ',check_array.hasOwnProperty(false));
 };
 
 
