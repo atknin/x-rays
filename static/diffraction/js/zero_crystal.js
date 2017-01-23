@@ -146,23 +146,23 @@ $("#compute").click(function(){
 		$('#id_alert_message').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span>'+mes)
 	}
 	else {
+		$.ajaxSetup({data: {
+			csrfmiddlewaretoken: '{{ csrf_token }}'
+		}});
+		$.post("/diffraction/compute/", compute_dict ,function(data) {
+			.done(function() {
+			    alert( data.status);
+			  });
+		});
 		$('#id_alert_message').hide();
 
 	}
 
-	// if(!false in )
-	// compute_dict['edit'] = 'true';
-	// compute_dict['crystal_id'] = $("#crystal_id").val();
-	// $.ajaxSetup({data: {
-	// csrfmiddlewaretoken: '{{ csrf_token }}'
-	// }});
-	// $.post("/polarizability/add_crystal/", compute_dict ,function(data) {
-	// var info_2 = info
-	// info_2 +=data.status+'\n'
-	// $( '#info_geometry' ).val(info_2);
-	// aler('Успешно');
-	// window.location.replace("/polarizability/");
-	// });
+	if(!false in )
+	compute_dict['edit'] = 'true';
+	compute_dict['crystal_id'] = $("#crystal_id").val();
+	
+	
 
 });
 
