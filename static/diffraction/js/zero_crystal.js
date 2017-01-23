@@ -100,7 +100,7 @@ $('#input_l_slit1, #input_l_slit2').keyup(function() {
 });
 
 $('#input_size_slit1, #input_size_slit2').keyup(function() {
-  if($(this).val() < 2 || $(this).val() > 0 || $(this).val()){
+  if($(this).val() < 2 || $(this).val() > 0){
   	console.log('ok');
   }
   else{
