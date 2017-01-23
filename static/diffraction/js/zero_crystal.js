@@ -147,12 +147,12 @@ $("#compute").click(function(){
 	}
 	else {
 		$('#id_alert_message').hide();
-		$.ajaxSetup({data: {
-	        csrfmiddlewaretoken: '{{ csrf_token }}'
-	      }});
-	      $.post("/diffraction/compute/", compute_dict ,function(data) {
-	        alert('Успешно');
-	      });
+		token = $("#change_password-form").find('input[name=csrfmiddlewaretoken]').val()
+		compute_dict[csrfmiddlewaretoken] = token;
+		
+		$.post("/diffraction/compute/", compute_dict ,function(data) {
+		alert('Успешно');
+		});
 
 		// $.ajaxSetup({data: {
 		// 	csrfmiddlewaretoken: '{{ csrf_token }}'
