@@ -88,7 +88,7 @@ canvas.on('mouse:down', function(options) {
 	};
 });
 
-var check_array = {'input_l_slit1':false,'input_l_slit2':false, 'input_size_slit1':false, 'input_size_slit2':false,'source_divergence_arc':false,'source_to_backend':false, 'source_to_backend':false}
+var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'source_to_backend':false}
 
 
 function error(e){
@@ -100,7 +100,7 @@ function ok(e){
 	check_array[$(e).attr('id')] = true;
   	console.log($(e).attr('id'),check_array[$(e).attr('id')]);
   	$(e).removeClass('error');
-  	console.log('compute ',check_array.hasOwnProperty(false));
+  	console.log('compute ', false in check_array);
 };
 
 
