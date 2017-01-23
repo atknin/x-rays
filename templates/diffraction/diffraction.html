@@ -87,9 +87,9 @@
             <span class="label label-primary">Параметры источника</span>
               <div class="form-group">
                 <label>Анод:</label>
-                <select class="form-control" name = 'Источник'  id ='source_to_backend' size="6">
+                <select class="form-control" name = 'Источник'  id ='id_source' size="6">
                 {%for source in anod%}
-                  <option value="{{source.wavelength.all.0.wavelength }}"><small>{{source.name}}</small></option>
+                  <option value="{{source.id}}"><small>{{source.name}}</small></option>
                 {% endfor %}
                 </select> 
               </div>
