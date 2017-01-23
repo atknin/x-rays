@@ -121,7 +121,7 @@ $('#source_to_backend').change(function() {
 	ok(this);
 
 });
-
+var compute_dict = {}
 $('#id_alert_message').hide();
 $("#compute").prop( "disabled", false );
 $("#compute").click(function(){
@@ -129,13 +129,13 @@ $("#compute").click(function(){
 	var mes = '';
 	for (var key in check_array){
 		if (check_array[key]==false){
-			console.log('error ', key);
 			error($('#'+key));
 			flag = false;
-			mes+=$('#'+key).attr('name')+'!,  ';
+			mes+=' |'+$('#'+key).attr('name')+'| ';
+			compute_dict[key] = $('#'+key).val();
+			console.log( $('#'+key).val())
 		}
 		else{
-			console.log('ok ', key);
 			ok($('#'+key));
 		};
 	};
@@ -144,21 +144,24 @@ $("#compute").click(function(){
 		$('#id_alert_message').show();
 		$('#id_alert_message').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span>'+mes)
 	}
-	else $('#id_alert_message').hide();
+	else {
+		$('#id_alert_message').hide();
 
-	// if(!false in )
-	// compute_dict['edit'] = 'true';
-	// compute_dict['crystal_id'] = $("#crystal_id").val();
-	// $.ajaxSetup({data: {
-	// csrfmiddlewaretoken: '{{ csrf_token }}'
-	// }});
-	// $.post("/polarizability/add_crystal/", compute_dict ,function(data) {
-	// var info_2 = info
-	// info_2 +=data.status+'\n'
-	// $( '#info_geometry' ).val(info_2);
-	// aler('Успешно');
-	// window.location.replace("/polarizability/");
-	// });
+	}
+
+	if(!false in )
+	compute_dict['edit'] = 'true';
+	compute_dict['crystal_id'] = $("#crystal_id").val();
+	$.ajaxSetup({data: {
+	csrfmiddlewaretoken: '{{ csrf_token }}'
+	}});
+	$.post("/polarizability/add_crystal/", compute_dict ,function(data) {
+	var info_2 = info
+	info_2 +=data.status+'\n'
+	$( '#info_geometry' ).val(info_2);
+	aler('Успешно');
+	window.location.replace("/polarizability/");
+	});
 
 });
 
