@@ -88,16 +88,16 @@ canvas.on('mouse:down', function(options) {
 	};
 });
 
-var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'source_to_backend':false}
+var check_array = {'input_l_slit1':'true','input_l_slit2':'true', 'input_size_slit1':'true', 'input_size_slit2':'true','source_divergence_arc':'true','source_to_backend':'false'}
 
 
 function error(e){
-	check_array[$(e).attr('id')] = false;
+	check_array[$(e).attr('id')] = 'false';
   	console.log(check_array[$(e).attr('id')]);
   	$(e).addClass('error');
 };
 function ok(e){
-	check_array[$(e).attr('id')] = true;
+	check_array[$(e).attr('id')] = 'true';
   	console.log($(e).attr('id'),check_array[$(e).attr('id')]);
   	$(e).removeClass('error');
 };
@@ -126,7 +126,7 @@ $('#source_to_backend').change(function() {
 $("#compute").prop( "disabled", false );
 $("#compute").click(function(){
 	for (var key in check_array){
-		if (check_array['key']){
+		if (check_array['key']=='false'){
 			console.log('error ', key);
 		}
 		else{
