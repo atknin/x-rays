@@ -180,7 +180,7 @@
 
 
     <!-- Без кристаллов скрипт-->
-    <script type="text/javascript">window.token = '{{ csrf_token }}';</script>
+    <script type="text/javascript">var window.token = '{{ csrf_token }}';</script>
     <script src="{% static "diffraction/js/zero_crystal.js"%}" ></script>
 
 {% endblock %}
