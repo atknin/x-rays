@@ -151,7 +151,7 @@ $("#compute").click(function(){
 		// $.ajaxSetup({data: {
 		// 	csrfmiddlewaretoken: '{{ csrf_token }}'
 		// }});
-		compute_dict[csrfmiddlewaretoken] = '{{ csrf_token }}'
+		compute_dict['csrfmiddlewaretoken'] = '{{ csrf_token }}'
 		$.ajax({
 
 		  type: "POST",
