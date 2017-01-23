@@ -93,12 +93,12 @@ var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1'
 
 function error(e){
 	check_array[$(e).attr('id')] = false;
-  	console.log(check_array[$(e).attr('id')]);
+  	// console.log(check_array[$(e).attr('id')]);
   	$(e).addClass('error');
 };
 function ok(e){
 	check_array[$(e).attr('id')] = true;
-  	console.log($(e).attr('id'),check_array[$(e).attr('id')]);
+  	// console.log($(e).attr('id'),check_array[$(e).attr('id')]);
   	$(e).removeClass('error');
 };
 
