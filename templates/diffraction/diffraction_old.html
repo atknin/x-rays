@@ -322,9 +322,9 @@
 
       if (flag != true) { 
         $("#loader_addon"+cryst_num).addClass("loader"); //анимациая загрузки
-        $.ajaxSetup({
-  data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
-});
+        $.ajaxSetup({data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
         compute_dict["h"] = $('#h_index'+cryst_num).val();
         compute_dict["k"] = $('#k_index'+cryst_num).val();
         compute_dict["l"] = $('#l_index'+cryst_num).val();
