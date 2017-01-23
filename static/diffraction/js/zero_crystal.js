@@ -114,8 +114,11 @@ $('#input_size_slit1, #input_size_slit2').keyup(function() {
 });
 
 $('#source_divergence_arc').change(function() {
-  
+  if( parseFloat($(this).val()) < 2000 && parseFloat($(this).val()) > 0){ok(this);}
+  else{error(this);}
 });
 $('#source_to_backend').change(function() {
-  
+  $(this).val();
+  console.log($(this).val());
+
 });
