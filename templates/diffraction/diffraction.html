@@ -85,7 +85,7 @@
             <span class="label label-primary">Параметры источника</span>
               <div class="form-group">
                 <label>Анод:</label>
-                <select class="form-control" id ='source_to_backend' size="6">
+                <select class="form-control" name = 'Источник'  id ='source_to_backend' size="6">
                 {%for source in anod%}
                   <option value="{{source.wavelength.all.0.wavelength }}"><small>{{source.name}}</small></option>
                 {% endfor %}
@@ -95,13 +95,13 @@
                 <label>Полуширина излучающего пятная, расходимость источника</label>
                 <div class="col-md-6 ">
                   <div class="input-group ">
-                    <input class="form-control" type="number" value = 0.5 id="source_divergence_mmetr" disabled>
+                    <input class="form-control" type="number" name = 'Расходимость источника' value = 0.5 id="source_divergence_mmetr" disabled>
                   <div class="input-group-addon">mm</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                 <div class="input-group">
-                  <input class="form-control" type="number" value="600" id="source_divergence_arc" >
+                  <input class="form-control" type="number" name = 'Расходимость источника' value="600" id="source_divergence_arc" >
                   <div class="input-group-addon">arcsec</div>
                   </div>
                 </div>
@@ -114,14 +114,14 @@
               <div class="form-group">
                 <label>расстояние до источника</label>
                   <div class="input-group ">
-                    <input class="form-control" type="number" value = 0.54 id="input_l_slit1">
+                    <input class="form-control" type="number" name = 'Первая щель. Положение' value = 0.54 id="input_l_slit1">
                   <div class="input-group-addon">m</div>
                   </div>
                 </div>
                 <div class="form-group">
                 <label>Размер щели</label>
                   <div class="input-group ">
-                    <input class="form-control" type="number" value = 0.02 id="input_size_slit1">
+                    <input class="form-control" type="number" name = 'Первая щель. Ширина' value = 0.02 id="input_size_slit1">
                   <div class="input-group-addon">mm</div>
                   </div>
                 </div>
@@ -134,14 +134,14 @@
               <div class="form-group">
                 <label>расстояние до источника</label>
                   <div class="input-group ">
-                    <input class="form-control" type="number" value = 0.99 id="input_l_slit2">
+                    <input class="form-control" type="number" name = 'Вторая щель. Положение' value = 0.99 id="input_l_slit2">
                   <div class="input-group-addon">m</div>
                   </div>
                 </div>
                 <div class="form-group">
                 <label>Размер щели</label>
                   <div class="input-group ">
-                    <input class="form-control" type="number" value = 0.02 id="input_size_slit2">
+                    <input class="form-control" type="number" name = 'Вторая щель. Ширина' value = 0.02 id="input_size_slit2">
                   <div class="input-group-addon">mm</div>
                   </div>
                 </div>
@@ -159,7 +159,22 @@
       </div>
 
     </div>
-    <button type="button" style="margin: 40px;" id = "compute" class="btn btn-success" disabled>Расчитать</button>
+    <div class="row">
+      <hr>
+      <div class="col-md-4">
+        <div class="row" >
+          <div class="alert alert-danger" role="alert" id='id_alert_message'>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+          </div>
+        </div>
+        <button type="button" style="margin: 40px;" id = "compute" class="btn btn-success" disabled>Расчитать</button>
+      </div>
+
+      <div class="col-md-8"></div>
+
+    </div>
+    
 
 
 

@@ -125,17 +125,24 @@ $('#source_to_backend').change(function() {
 
 $("#compute").prop( "disabled", false );
 $("#compute").click(function(){
+	var flag = true;
+	var mes = '';
 	for (var key in check_array){
 		if (check_array[key]==false){
 			console.log('error ', key);
 			error($('#'+key));
+			flag = false;
+			mes+=$('#'+key).attr('name')+'!,  ';
 		}
 		else{
 			console.log('ok ', key);
 			ok($('#'+key));
 		};
-	}
+	};
 
+	if (!flag){
+		$('#id_alert_message').html('<p id ="id_alert_message_p" >'+mes+'</p>')
+	};
 
 	// if(!false in )
 	// compute_dict['edit'] = 'true';
