@@ -126,9 +126,8 @@ $('#source_to_backend').change(function() {
 $("#compute").prop( "disabled", false );
 $("#compute").click(function(){
 	for (var key in check_array){
-		if (!check_array['key']){
+		if (check_array['key']){
 			console.log('error ', key);
-			return;
 		}
 		else{
 			console.log('ok ', key);
