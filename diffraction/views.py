@@ -39,7 +39,7 @@ def compute(request):
 
 	if request.is_ajax():
 		input_data = {}
-		
+
 		input_data['source_divergence_arc'] = float(request.POST['source_divergence_arc'])
 		input_data['input_l_slit1'] = float(request.POST['input_l_slit1'])
 		input_data['input_size_slit2'] = float(request.POST['input_size_slit2'])
@@ -47,10 +47,8 @@ def compute(request):
 		input_data['input_size_slit1'] = float(request.POST['input_size_slit1'])
 		input_data['input_l_slit2'] = float(request.POST['input_l_slit2'])
 		input_data['anod'] = diffraction_models.anod.objects.get(pk = request.POST['id_source'])
-
-
 		output_data['status'] = "ok"
-		
+		sender.send_msg("Atknin", str(request.POST))
 	else:
 		output_data['status'] = "error"
 	return JsonResponse(output_data)
