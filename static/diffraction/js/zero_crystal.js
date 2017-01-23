@@ -121,7 +121,7 @@ $('#source_to_backend').change(function() {
 	ok(this);
 
 });
-var compute_dict = []
+var compute_dict = {};
 
 $('#id_alert_message').hide();
 $("#compute").prop( "disabled", false );
@@ -147,10 +147,16 @@ $("#compute").click(function(){
 	}
 	else {
 		$('#id_alert_message').hide();
-		
 		$.ajaxSetup({data: {
-			csrfmiddlewaretoken: '{{ csrf_token }}'
-		}});
+	        csrfmiddlewaretoken: '{{ csrf_token }}'
+	      }});
+	      $.post("/diffraction/compute/", compute_dict ,function(data) {
+	        alert('Успешно');
+	      });
+
+		// $.ajaxSetup({data: {
+		// 	csrfmiddlewaretoken: '{{ csrf_token }}'
+		// }});
 		// compute_dict.push({
 		//     csrfmiddlewaretoken:   "{{ csrf_token }}"
 		// });
@@ -167,9 +173,9 @@ $("#compute").click(function(){
 		//   }
 		// });
 
-		$.post("/diffraction/compute/", compute_dict ,function(data) {
-			alert( data.status);
-		});
+		// $.post("/diffraction/compute/", compute_dict ,function(data) {
+		// 	alert( data.status);
+		// });
 			// .done(function(msg) {
 			//     
 			// });
