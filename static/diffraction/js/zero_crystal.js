@@ -147,7 +147,7 @@ $("#compute").click(function(){
 	}
 	else {
 		$('#id_alert_message').hide();
-		var token = $("#change_password-form").find('input[name=csrfmiddlewaretoken]').val()
+		var token = $("#csrfmiddlewaretoken").val()
 		console.log(token);
 		// compute_dict[csrfmiddlewaretoken] = token;
 
