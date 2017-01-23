@@ -94,18 +94,20 @@ check_array['input_l_slit1':false,'input_l_slit2':false,'input_size_slit1':false
 			'source_to_backend':false,];
 
 $('#input_l_slit1, #input_l_slit2').keyup(function() {
-  if(!!$(this).val()){
+  if($(this) == 'null'){
   	alert('пусто');
-  }
+  };
 });
 
 $('#input_size_slit1, #input_size_slit2').keyup(function() {
-  
+  if($(this) == 'null'){
+  	alert('пусто');
+  };
 });
 
-$('#source_divergence_arc, #source_to_backend').keyup(function() {
+$('#source_divergence_arc').change(function() {
   
 });
-$('#source_to_backend').keyup(function() {
+$('#source_to_backend').change(function() {
   
 });
