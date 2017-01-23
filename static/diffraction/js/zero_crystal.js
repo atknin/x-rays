@@ -173,7 +173,7 @@ $("#compute").click(function(){
 
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
-			alert( data.status);
+			alert( msg.status);
 		});
 	};
 
