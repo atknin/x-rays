@@ -122,7 +122,7 @@ $('#source_to_backend').change(function() {
 
 });
 
-
+$('#id_alert_message').hide();
 $("#compute").prop( "disabled", false );
 $("#compute").click(function(){
 	var flag = true;
@@ -141,8 +141,10 @@ $("#compute").click(function(){
 	};
 
 	if (!flag){
+		$('#id_alert_message').show();
 		$('#id_alert_message').html('<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span><span class="sr-only">Error:</span>'+mes)
-	};
+	}
+	else $('#id_alert_message').hide();
 
 	// if(!false in )
 	// compute_dict['edit'] = 'true';
