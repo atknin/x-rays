@@ -91,7 +91,7 @@ canvas.on('mouse:down', function(options) {
 var check_array = {'input_l_slit1':false,'input_l_slit2':false, 'input_size_slit1':false, 'input_size_slit2':false,'source_divergence_arc':false,'source_to_backend':false, 'source_to_backend':false}
 
 $('#input_l_slit1, #input_l_slit2').keyup(function() {
-  if($(this).val() < 2 || $(this).val() > 0){
+  if($(this).val() < 2 || $(this).val() > 0 || !$(this).val() ){
   	console.log('ok');
   }
   else{
@@ -100,7 +100,7 @@ $('#input_l_slit1, #input_l_slit2').keyup(function() {
 });
 
 $('#input_size_slit1, #input_size_slit2').keyup(function() {
-  if($(this).val() < 2 || $(this).val() > 0){
+  if($(this).val() < 2 || $(this).val() > 0 ||  !$(this).val()){
   	console.log('ok');
   }
   else{
