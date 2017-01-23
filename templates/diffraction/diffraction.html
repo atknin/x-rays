@@ -45,7 +45,7 @@
   {% endblock %}
     
   {% block content %}
-    <input type='hidden' id='tokken' value="{%csrf_token %}" />
+    <input type='hidden' id='tokken' value="{{ csrf_token }}" />
 
     <div class="row" style="margin-top: 50px;" id = "div_choose_howmanycrystals">
       <div class="btn-group btn-group-justified" role="group" aria-label="..." >
@@ -180,6 +180,6 @@
 
 
     <!-- Без кристаллов скрипт-->
-    <script src="{% static "diffraction/js/zero_crystal.js"%}" ></script>
+    <script src="{% static "diffraction/js/zero_crystal.js"%}" > </script>
 
 {% endblock %}
