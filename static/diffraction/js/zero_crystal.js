@@ -148,7 +148,7 @@ $("#compute").click(function(){
 	else {
 		$('#id_alert_message').hide();
 
-		console.log(document.write(token););
+		console.log(document.write(token));
 		// compute_dict[csrfmiddlewaretoken] = token;
 
 		$.ajaxSetup({data: {
