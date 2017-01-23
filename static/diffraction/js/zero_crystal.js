@@ -147,7 +147,7 @@ $("#compute").click(function(){
 	}
 	else {
 		$('#id_alert_message').hide();
-		var token = $("#csrfmiddlewaretoken").val()
+		var token = $("#tokken").val()
 		console.log(token);
 		// compute_dict[csrfmiddlewaretoken] = token;
 
