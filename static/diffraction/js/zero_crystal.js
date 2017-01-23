@@ -94,7 +94,7 @@ check_array['input_l_slit1':false,'input_l_slit2':false,'input_size_slit1':false
 			'source_to_backend':false,];
 
 $('#input_l_slit1, #input_l_slit2').keyup(function() {
-  if(!$(this).val()){
+  if(!!$(this).val){
   	alert('пусто');
   }
 });
