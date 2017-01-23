@@ -133,11 +133,11 @@ $("#compute").click(function(){
 			error($('#'+key));
 			flag = false;
 			mes+=' |'+$('#'+key).attr('name')+'| ';
-			compute_dict[key] = $('#'+key).val();
-			console.log( $('#'+key).val())
 		}
 		else{
 			ok($('#'+key));
+			compute_dict[key] = $('#'+key).val();
+			console.log( $('#'+key).val());
 		};
 	};
 
