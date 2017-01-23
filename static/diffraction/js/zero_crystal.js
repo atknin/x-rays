@@ -168,7 +168,7 @@ $("#compute").click(function(){
 		// });
 
 		$.post("/diffraction/compute/", compute_dict ,function(data) {
-			alert( msg.status);
+			alert( data.status);
 		});
 			// .done(function(msg) {
 			//     
