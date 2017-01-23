@@ -131,7 +131,7 @@ $("#compute").click(function(){
 			return;
 		}
 		else{
-			onsole.log('error ', key);
+			console.log('error ', key);
 		};
 	}
 
