@@ -178,6 +178,11 @@
 
 
     <!-- Без кристаллов скрипт-->
+    <script>
+      $.ajaxSetup({data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+      }});
+    </script>
     <script src="{% static "diffraction/js/zero_crystal.js"%}" ></script>
 
 {% endblock %}
