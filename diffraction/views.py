@@ -39,7 +39,8 @@ def compute(request):
 	# zero_crystal
 	# scheem = request.POST['scheem']
 	for mm in request.POST:
-		sender.send_msg(mm, str(message))
+		time.sleep(20)
+		sender.send_msg(str(mm), str(message))
 	# scheem = float(request.POST['scheem'])
 
 	if request.is_ajax():
