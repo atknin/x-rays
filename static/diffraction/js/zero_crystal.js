@@ -148,11 +148,11 @@ $("#compute").click(function(){
 	else {
 		$('#id_alert_message').hide();
 
-		console.log(window.token);
+		console.log($('#tokken').val());
 		// compute_dict[csrfmiddlewaretoken] = token;
 
 		$.ajaxSetup({data: {
-			csrfmiddlewaretoken: window.token
+			csrfmiddlewaretoken: $('#tokken').val()
 		}});
 
 		$.post("/diffraction/compute/", compute_dict ,function(data) {
