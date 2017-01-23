@@ -42,7 +42,7 @@ def compute(request):
 	input_data['schem'] = request.POST['schem']
 	input_data['input_size_slit1'] = float(request.POST['input_size_slit1'])
 	input_data['input_l_slit2'] = float(request.POST['input_l_slit2'])
-	input_data['id_source'] = int(request.POST['source_to_backend'])
+	input_data['id_source'] = int(request.POST['id_source'])
 
 	# zero_crystal
 	# scheem = request.POST['scheem']
