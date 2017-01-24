@@ -186,7 +186,7 @@ def compute(request):
 		dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
 		predel_hkl = wavelength/2/dprmtr
 		if predel_hkl>1:
-			message['error'] = "Из условия Брегга, wavelength/2d > 1 ("+str(predel_hkl)+"): пробуйте меньшие hkl "
+			message['error'] = "Из условия Брегга, wavelength/2d > 1 ("+str(round(predel_hkl,4))+"): пробуйте меньшие hkl "
 			return JsonResponse(message)
 		# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
 		tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
