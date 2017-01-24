@@ -347,8 +347,8 @@ def compute(request):
 				min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
 				min_rasst_ot_centra_which_point = len(epslist)
 
-		From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
-		To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
+		From_ = min_rasst_ot_centra_which_point - int(2*point_for_curve)
+		To_ = min_rasst_ot_centra_which_point + int(2*point_for_curve)
 
 		y = epslist[From_:To_:1]	
 		x = x_epslist[From_:To_:1]
