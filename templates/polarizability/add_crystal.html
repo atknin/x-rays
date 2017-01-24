@@ -449,8 +449,13 @@
           text+=a[i] + '\n';
       };
       text+=a[a.length-1];
-      console.log(text);
-      $( '#text_area_geometry' ).val(text);
+      $( ).val(text);
+      $('#text_area_geometry' ).val(
+          function(index, value){
+              return value.substr(0, value.length - 1);
+      });
+
+      
       $( "#id_crystal_system" ).change();
 
     };
