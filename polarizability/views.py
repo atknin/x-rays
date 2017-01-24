@@ -112,7 +112,7 @@ def add_crystal(request):
 		lines = open(path+"structure/"+crystal.name+'.dat', 'r').read().split('\n')
 		a = ''
 		for line in lines:
-			if line.split()>1:
+			if len(line.split())>1:
 				a += line + '//'
 		args['crystalGeom'] = a
 
