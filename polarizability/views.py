@@ -314,16 +314,20 @@ def compute(request):
 		sdvig = math.degrees(-X0.real*(1+b)/(2*b*math.sin(2*tetaprmtr)))*3600
 
 # Собственная кривая кристалла -–––––––––––––––––––––––––––––––––––
-		schet=0
-		schet1=0
+		min_rasst_ot_centra = 100
+		min_rasst_ot_centra_which_point = 100
+
 		epslist = []
+		x_epslist = []
+
 		max_pow_R = 0
-		x_whole = []
 		for_downloading = ''
 
-		shag = delta/10
-		for i in range(0,10000):
-			dTeta = (i/100-50)*math.pi/180/3600
+		shag = (delta/10)*math.pi/180/3600
+		dTeta = (sdvig - delta/10*100)*math.pi/180/3600
+		dTeta_end = (sdvig + delta/10*100)*math.pi/180/3600
+		while dTeta<dTeta_end:
+			dTeta+=shag
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
 			prover = (1/4/gamma_0)*(X0*(1-b)-b*alfa+cmath.sqrt(((X0*(1+b)+b*alfa)*(X0*(1+b)+b*alfa))-4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
 			if prover.imag < 0:
@@ -333,16 +337,19 @@ def compute(request):
 			R=(2*eps*gamma_0-X0)/Xh/C
 			P = (gamma_h/gamma_0)*abs(R)*abs(R)
 			epslist.append(P)
-			for_downloading+= str(i/100-50)+'   '+str(P) + '\n'
-
-			if (P) > 0.05 and schet==0: schet = i 
-			if (P) < 0.05 and schet > 0 and schet1 == 0: schet1 = i
+			x_epslist.append(dTeta*3600*180/math.pi)
+			for_downloading+= str(dTeta*3600*180/math.pi)+'   '+str(P) + '\n'
 			if max_pow_R<(P):
 				max_pow_R = (P)
+			if min_rasst_ot_centra < abs(sdvig*math.pi/180/3600 - dTeta):
+				min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
+				min_rasst_ot_centra_which_point = len(epslist)
 
-		otstup = 10 # для того чтобы обрезать диапазон вывода графика
-		y = epslist[schet-otstup:schet1+otstup:1]	
-		x = np.linspace((schet-otstup)/100-50,(schet1+otstup)/100-50,len(y)).tolist()
+		From_ = min_rasst_ot_centra_which_point - int(20*sdvig/delta)
+		To_ = min_rasst_ot_centra_which_point + int(20*sdvig/delta)
+
+		y = epslist[From_:To_:1]	
+		x = x_epslist[From_:To_:1]
 		
 		message['status'] = "ok"
 		message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
