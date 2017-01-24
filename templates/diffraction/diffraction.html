@@ -169,13 +169,16 @@
             
           </div>
         </div>
-          <div class="input-group" style="margin: 40px;">
-          
-              <button type="button" id = "compute" class="btn btn-success" disabled>Рассчитать</button>
-              <span class="input-group-addon" id="basic-addon2">{{user.email}}</span>
-
-            <!-- <input type="email" class="form-control" id="id_email" placeholder="Email"> -->
-          </div><!-- /input-group -->
+          {% if user.is_authenticated %}
+            <div class="input-group" style="margin: 40px;">
+              <span class="input-group-btn">
+                <button type="button" id = "compute" class="btn btn-success" disabled>Рассчитать</button>
+              </span>
+              <input type="email" class="form-control" id="id_email" placeholder="Email" value = "{{user.email}}">
+            </div><!-- /input-group -->
+          {% else %}
+          <span class="label label-default">Только зарегистрированным пользователем</span>
+          {% endif %}
 
         
         
