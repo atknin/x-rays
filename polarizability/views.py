@@ -321,6 +321,7 @@ def compute(request):
 		x_whole = []
 		for_downloading = ''
 
+		shag = delta/10
 		for i in range(0,10000):
 			dTeta = (i/100-50)*math.pi/180/3600
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
@@ -353,6 +354,7 @@ def compute(request):
 		message['dprmtr'] = str(round(dprmtr, 4))
 		message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 		message['maximum'] = str(round(max_pow_R,4))
+		message['sdvig'] = str(round(sdvig,4))
 		message['x_darwin'] = x
 		message['y_darwin'] = y
 		message['for_downloading'] = for_downloading
