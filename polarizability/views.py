@@ -112,8 +112,10 @@ def add_crystal(request):
 		lines = open(path+"structure/"+crystal.name+'.dat', 'r').read().split('\n')
 		a = ''
 		for line in lines:
-			a += line + ' // '
+			if line.split()>1:
+				a += line + '//'
 		args['crystalGeom'] = a
+
 		return render(
 		 	request, 'polarizability/add_crystal.html', args
 		 	)
