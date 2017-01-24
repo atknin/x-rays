@@ -450,7 +450,7 @@
       };
       text+=a[a.length-1];
       $('#text_area_geometry' ).val(text);
-      $('#text_area_geometry' ).val(
+      $('#text_area_geometry' ).val( //удалить последний символ, он переносит строку - не проходит проверка
           function(index, value){
               return value.substr(0, value.length - 1);
       });

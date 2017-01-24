@@ -28,6 +28,7 @@ class crystals(models.Model):
 	class Meta:
 		verbose_name = u'кристалл'
 		verbose_name_plural = u'кристаллы' 
+		ordering = ('name',)
 
 	def __unicode__(self):
 		return self.name.encode('utf-8')
