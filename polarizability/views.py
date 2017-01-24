@@ -350,6 +350,8 @@ def compute(request):
 		From_ = min_rasst_ot_centra_which_point - int(point_for_curve*2*sdvig/delta)
 		To_ = min_rasst_ot_centra_which_point + int(point_for_curve*2*sdvig/delta)
 
+		bot_inform.sent_to_atknin_bot('poin: y' + str(epslist[min_rasst_ot_centra_which_point])+' x'+ str(x_epslist[min_rasst_ot_centra_which_point]), 'v')
+
 		y = epslist[From_:To_:1]	
 		x = x_epslist[From_:To_:1]
 		
