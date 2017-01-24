@@ -325,8 +325,8 @@ def compute(request):
 
 		point_for_curve = 100
 		shag = (delta/point_for_curve)*math.pi/180/3600
-		dTeta = sdvig*math.pi/180/3600 - 3*delta*math.pi/180/3600
-		dTeta_end = sdvig*math.pi/180/3600 + 3*delta*math.pi/180/3600
+		dTeta = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
+		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
 
 		while dTeta<dTeta_end:
 			dTeta+=shag
