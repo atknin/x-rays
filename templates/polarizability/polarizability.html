@@ -105,13 +105,13 @@
           <div class="row">
               <div class="input-group " id = "inputgroup_check_h_index_surface" >
                 <span class="input-group-addon" id="sizing-addon1"><small>Surface index</small></span>
-                <input type="text"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index_surface" aria-describedby="basic-addon3">
+                <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index_surface" aria-describedby="basic-addon3">
               </div>
             </div>
             <div class="row" style="margin-top: 10px;">
               <div class="input-group " id = "inputgroup_check_h_index" >
                 <span class="input-group-addon" id="sizing-addon1"><small>Miller Indices</small></span>
-                <input type="text"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index" aria-describedby="basic-addon3">
+                <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index" aria-describedby="basic-addon3">
               </div>
             </div>
             <div class="row" style="margin-top: 12px">
@@ -127,34 +127,34 @@
           <!-- k,l index - surface of crystal -->
             <div class="row">
               <div class="col-md-6" id = "inputgroup_check_k_index_surface">
-                <input type="text" style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index_surface" aria-describedby="basic-addon3">
+                <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index_surface" aria-describedby="basic-addon3">
               </div>
 
               <div class="col-md-6" id = "inputgroup_check_l_index_surface">
-                <input type="text" style="text-align: center;" value="0" placeholder="l"  class="form-control" id="l_index_surface" aria-describedby="basic-addon3">
+                <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control" id="l_index_surface" aria-describedby="basic-addon3">
               </div>
             </div>
 
             <!-- k,l index - surface of PLANAR -->
             <div class="row" style="margin-top: 10px;">
               <div class="col-md-6" id = "inputgroup_check_k_index">
-                <input type="text" style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index" aria-describedby="basic-addon3">
+                <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index" aria-describedby="basic-addon3">
               </div>
 
               <div class="col-md-6" id = "inputgroup_check_l_index">
-                <input type="text" style="text-align: center;" value="0" placeholder="l"  class="form-control" id="l_index" aria-describedby="basic-addon3">
+                <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control" id="l_index" aria-describedby="basic-addon3">
               </div>
             </div>
 
             <div class="row">
               <dir class="col-md-12">
                 <div class="input-group" id = "inputgroup_check_wave">
-                  <input type="text" class="form-control" id ="wavelength"  placeholder="wavelength" \
+                  <input type="number" class="form-control" id ="wavelength"  placeholder="wavelength" \
                   onChange="document.getElementById('energy_val').value = (12398/this.value).toFixed(4);document.getElementById('lab_source').value = 0;">
                   <span class="input-group-addon">&#8491;</span>
                 </div> 
                 <div class="input-group" id = "inputgroup_check_energy" style="margin-top: 5px;">
-                  <input type="text" id='energy_val' class="form-control" placeholder="energy" \ 
+                  <input type="number" id='energy_val' class="form-control" placeholder="energy" \ 
                   onChange="document.getElementById('wavelength').value = (12398/this.value).toFixed(4);document.getElementById('lab_source').value = 0;">
                   <span class="input-group-addon">eV</span>
                 </div>
@@ -220,7 +220,6 @@
     $("#compute").click(function() {
       $("#loader_addon").addClass("loader"); //анимациая загрузки
 
-      var hkl_valid_array = ['-10','-9' ,'-8' ,'-7' ,'-6' ,'-5' ,'-4' ,'-3' ,'-2' ,'-1', '0','1' ,'2' ,'3' ,'4' ,'5' ,'6' ,'7' ,'8' ,'9','10' ]
       var flag = false;
 
       if ($("#check_symmetric_case").is(":checked")){
@@ -236,37 +235,6 @@
         $("#loader_addon").removeClass("loader");    
       }
 
-      if ($.inArray($('#h_index_surface').val(), hkl_valid_array) == -1){
-         $("#inputgroup_check_h_index_surface").addClass("has-error");
-        flag = true;
-        $("#loader_addon").removeClass("loader");
-      }
-      if ($.inArray($('#k_index_surface').val(), hkl_valid_array) == -1){
-         $("#inputgroup_check_k_index_surface").addClass("has-error");
-        flag = true;
-        $("#loader_addon").removeClass("loader");
-      }
-      if ($.inArray($('#l_index_surface').val(), hkl_valid_array) == -1){
-         $("#inputgroup_check_l_index_surface").addClass("has-error");
-        flag = true;
-        $("#loader_addon").removeClass("loader");
-      }
-
-      if ($.inArray($('#h_index').val(), hkl_valid_array) == -1){
-         $("#inputgroup_check_h_index").addClass("has-error");
-        flag = true;
-        $("#loader_addon").removeClass("loader");
-      }
-      if ($.inArray($('#k_index').val(), hkl_valid_array) == -1){
-         $("#inputgroup_check_k_index").addClass("has-error");
-        flag = true;
-        $("#loader_addon").removeClass("loader");
-      }
-      if ($.inArray($('#l_index').val(), hkl_valid_array) == -1){
-         $("#inputgroup_check_l_index").addClass("has-error");
-        flag = true;
-        $("#loader_addon").removeClass("loader");
-      }
       if (!$('input[name=crystal]').is(':checked')){
          $("#inputgroup_check_choose_crystal_parent").addClass("check_danger");
         flag = true;
