@@ -323,9 +323,11 @@ def compute(request):
 		max_pow_R = 0
 		for_downloading = ''
 
-		shag = (delta/10)*math.pi/180/3600
-		dTeta = (sdvig - delta/10*100)*math.pi/180/3600
-		dTeta_end = (sdvig + delta/10*100)*math.pi/180/3600
+		point_for_curve = 100
+		shag = (delta/point_for_curve)*math.pi/180/3600
+		dTeta = (sdvig - delta/point_for_curve*100)*math.pi/180/3600
+		dTeta_end = (sdvig + delta/point_for_curve*100)*math.pi/180/3600
+
 		while dTeta<dTeta_end:
 			dTeta+=shag
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
@@ -345,8 +347,8 @@ def compute(request):
 				min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
 				min_rasst_ot_centra_which_point = len(epslist)
 
-		From_ = min_rasst_ot_centra_which_point - int(20*sdvig/delta)
-		To_ = min_rasst_ot_centra_which_point + int(20*sdvig/delta)
+		From_ = min_rasst_ot_centra_which_point - int(point_for_curve*2*sdvig/delta)
+		To_ = min_rasst_ot_centra_which_point + int(point_for_curve*2*sdvig/delta)
 
 		y = epslist[From_:To_:1]	
 		x = x_epslist[From_:To_:1]
