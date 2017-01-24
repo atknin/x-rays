@@ -184,6 +184,10 @@ def compute(request):
 		s3 = 2*kInd*lInd*COSalfaprmtr_
 		s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
 		dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
+		predel_hkl = wavelength/2/dprmtr
+		if predel_hkl>1:
+			message['error'] = "Из условия Брегга, wavelength/2d > 1: выберите меньшие hkl "
+			return JsonResponse(message)
 		# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
 		tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
 
@@ -370,6 +374,7 @@ def compute(request):
 		message['for_downloading'] = for_downloading
 		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 		message['b'] =  round(b,3)
+
 
 		
 

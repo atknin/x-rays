@@ -302,22 +302,26 @@
 
 
         $.post("compute/", compute_dict ,function(data) {
-          
-          var text_out = 'Угол Брегга = '+ data.bragg + ' град. \n' + 
-          'X0 = (' +data.X0_real+ ' + i'+data.X0_imag+')E-7' + 
-          '\n' + 'Xh = (' + data.Xh_real+ ' + i'+data.Xh_imag+')E-7' + '\n' + 
-          'Полуширина: ' + data.delta + ' сек \n' +
-          'межпл-ое,  d = ' + data.dprmtr + ' А \n' +
-          'Глубина экстинкции: ' + data.extintion+ ' мкм' + '\n'+
-          'Максимальный коэффициент отражения: ' + data.maximum + '\n' + 
-          'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +  
-          'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +  
-          'коэффициент ассиметрии b: ' + data.b + ' \n';
-          if (data.Xh_real<0.0001){
-            text_out = 'ЗАПРЕЩЕННЫЙ РЕФЛЕКС' + '\n' + 
+          if(data.error){
+
+          }
+          else if(data.Xh_real<0.0001) {
+            var text_out = 'ЗАПРЕЩЕННЫЙ РЕФЛЕКС' + '\n' + 
             'Угол Брегга = '+ data.bragg + ' град. \n' +
             'межпл-ое,  d = ' + data.dprmtr + ' А \n' ;
-          };
+          }
+          else{
+            var text_out = 'Угол Брегга = '+ data.bragg + ' град. \n' + 
+            'X0 = (' +data.X0_real+ ' + i'+data.X0_imag+')E-7' + 
+            '\n' + 'Xh = (' + data.Xh_real+ ' + i'+data.Xh_imag+')E-7' + '\n' + 
+            'Полуширина: ' + data.delta + ' сек \n' +
+            'межпл-ое,  d = ' + data.dprmtr + ' А \n' +
+            'Глубина экстинкции: ' + data.extintion+ ' мкм' + '\n'+
+            'Максимальный коэффициент отражения: ' + data.maximum + '\n' + 
+            'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +  
+            'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +  
+            'коэффициент ассиметрии b: ' + data.b + ' \n';
+           };
   
           var  data_download = new Blob([data.for_downloading], {type: 'text/plain'});
           var textFile = null;
