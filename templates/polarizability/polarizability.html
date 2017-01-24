@@ -271,7 +271,7 @@
 
         $.post("compute/", compute_dict ,function(data) {
           if(data.error){
-
+            var text_out = data.error;
           }
           else if(data.Xh_real<0.0001) {
             var text_out = 'ЗАПРЕЩЕННЫЙ РЕФЛЕКС' + '\n' + 
