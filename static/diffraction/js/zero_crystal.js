@@ -1,10 +1,11 @@
+$("#id_div_compute").hide();
 
 $('#btn_0_cryst').click(function(event) {
 	$('#div_choose_howmanycrystals').hide(); 
 	$('#div_zero_crystal').show();
+	$("#id_div_compute").show();
 
 });
-
 var canvas = new fabric.Canvas('fabric');
 
 //--------- добавить источник --------------
