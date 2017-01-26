@@ -174,4 +174,47 @@ $("#compute").click(function(){
 
 
 });
+$("#getX1,#getX2,#getX3").click(function() {
+  var compute_dict = {};
+  var cryst_num = $(this).attr( "name" );
+  var flag = false
+  var error_message = ''
+  
 
+  if (!$.isNumeric($('#source_to_backend').val())){ // проверка, выбран ли источник
+    flag = true;   
+    $( "#error_filling").show();
+    error_message+="1. The source wasn't chosen. \n"
+    $( "#error_filling" ).text(error_message);
+  }
+
+
+   if (!$.isNumeric($('#select_crystal'+cryst_num).val())){ // проверка, выбран ли источник
+
+    flag = true;   
+    $("#check_crystal"+cryst_num).addClass("has-error");
+  }
+
+  if (flag != true) { 
+    $("#loader_addon"+cryst_num).addClass("loader"); //анимациая загрузки
+    $.ajaxSetup({data: {
+    csrfmiddlewaretoken: '{{ csrf_token }}'
+    }});
+    compute_dict["h"] = $('#h_index'+cryst_num).val();
+    compute_dict["k"] = $('#k_index'+cryst_num).val();
+    compute_dict["l"] = $('#l_index'+cryst_num).val();
+    compute_dict["crystal_id"] = $('#select_crystal'+cryst_num).val();
+    compute_dict["wavelength"] = $('#source_to_backend').val();
+
+    $.post("/polarizability/compute/", compute_dict ,function(data) {
+      var x0_res = 
+      $('#x0_'+cryst_num).val(data.X0_real + " + i"+data.X0_imag);
+      $('#xh_'+cryst_num).val(data.Xh_real + " + i"+data.Xh_imag);
+
+      
+      $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
+    });
+
+  };
+  
+});
