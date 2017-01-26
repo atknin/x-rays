@@ -44,6 +44,7 @@
 <script type="text/javascript">
     var num = 0;
     var name_aa = [];
+    var scan_data = {};
     $('#id_compute_all_files').hide();
     $(document).ready(function(){
       $('#geomInputFile').on('change', function(e){
@@ -59,7 +60,7 @@
           
       });
       $('#id_compute_all_files').on('click', function(){
-        
+        console.log(scan_data);
       });
     });
 
@@ -97,11 +98,13 @@
       l2 = data['body'];
       var to_out1 = '';
       var to_out2 = '';
+
       for (var i = 0; i < data['points_1']; i++) {
           data['x'][i]= data['scan_from'] + i*data['shag'];
           to_out1+= data['x'][i] + '\t' + l1[i]  + '\n'
           to_out2+= data['x'][i] + '\t' + l2[i] + '\n'
       };
+      scan_data[num] = {"x":data['x'],"y1":l1,"y2":l2};
   
       $( "#text_for_x_y" ).append( "<div class='row' id = 'num_row_"+num+"'><hr></div>" );
       $( "#num_row_"+num).append( "<div class='col-md-4 plot' id = 'myDiv_left_"+num+"'></div>" );
