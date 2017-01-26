@@ -26,12 +26,13 @@
       table-layout: fixed;
         
       }
-      td{
-      width: 80px;
-      }
-      th{
-      width: 80px;
-      }
+      table th,
+      table td {
+      width:80px;
+        min-width:70px;
+      height:30px;
+      text-align:center;
+        background-color:#ECF0F5;}
 
       table{
        height:300px; 
@@ -44,11 +45,7 @@
         position: absolute;
       }
       thead{
-        overflow-x: scroll;
-
         width: 100%;
-        position: absolute;
-
       }
     
     </style>
