@@ -3,7 +3,6 @@
   <title>ТРС конвертер </title>
   {% load static %}
     <script src="{% static "graph/plotly/plotly-latest.min.js"%}" ></script>
-    <script src="{% static "bootstrap/js/scrollingtable.js"%}"></script>
 
     <style>
     .plot{
@@ -109,7 +108,42 @@
             $('#stroka_'+i).append('<td>'+scan_data[j]['y2'][i]+'</td>');
          };
         };
-       
+      +function ($) {
+          "use strict";
+
+          var ScrollingTable = function (ele, op) {
+            ele = $(ele);
+            var wrapper = null,
+              hors=ele.find('.headerHor'),
+              vers=ele.find('.headerVer');
+
+            ele.wrap('<div class="scrollingTable"/>');
+            wrapper = $(ele.parent());
+            wrapper.bind('scroll',
+              function() {
+                hors.css('top', wrapper.scrollTop());
+                vers.css('left', wrapper.scrollLeft());
+              }
+            );
+          };
+
+          ScrollingTable.DEFAULTS = {};
+
+          $.fn.ScrollingTable = function (option) {
+            return this.each(function () {
+              var $this = $(this),
+                data  = $this.data('ScrollingTable'),
+                options = $.extend({}, ScrollingTable.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+              if (!data) {
+                $this.data('ScrollingTable', (data = new ScrollingTable(this, options)));
+              }
+            });
+          };
+
+          $.fn.ScrollingTable.Constructor = ScrollingTable;
+
+        }(window.jQuery);       
       });
     });
 
@@ -163,7 +197,6 @@
       $( "#num_row_"+num ).append( "<div class='col-md-2 plot' id = 'myDiv_center_right_"+num+"'><textarea class='form-control Whiteboard' id = 'num_scan_right_"+num+"' rows='10'></textarea></div>" );
 
       $( "#num_row_" +num).append( "<div class='col-md-4 plot' id = 'myDiv_right_"+num+"'></div>" );
-
 
       $( '#num_scan_left_'+num).val(to_out1);
       $( '#num_scan_right_'+num).val(to_out2);
