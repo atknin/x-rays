@@ -117,11 +117,11 @@ function ok(e){
 $("#check_symmetric_case").change(function() {
   if(this.checked) {
   	console.log('ok')
-    $('#h_index_surface1,#k_index_surface1,#l_index_surface1').prop( "disabled", true );
-    $('#h_index_surface1,#k_index_surface1,#l_index_surface1').val('');
+    $('#h_index1_surface,#k_index1_surface,#l_index1_surface').prop( "disabled", true );
+    $('#h_index1_surface,#k_index1_surface,#l_index1_surface').val('');
   }
   else{
-    $('#h_index_surface1,#k_index_surface1,#l_index_surface1').prop( "disabled", false );
+    $('#h_index1_surface,#k_index1_surface,#l_index1_surface').prop( "disabled", false );
   }
 });
 $("#check_symmetric_case").change();
