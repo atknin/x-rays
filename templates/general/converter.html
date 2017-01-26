@@ -23,19 +23,16 @@
   {% block content %}
 
   <div class="row" style=" background-color: #F7F7F9; height: 145px;" >
-    <div class="input-group">
-        <div class="col-md-4" style="margin: 50px;">
-          <label class="btn btn-default btn-file">
-            <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-            <input type="file" multiple id="geomInputFile" style="display: none;">
-          </label>
-        </div>
-        <div class="col-md-6">
-          <a href="#" id = 'id_compute_all_files' > <span class="label label-primary image"><sup>*</sup>.txt</span></a>
-        </div>
-
-        
-        
+    <div class="col-md-4" style="margin: 50px;">
+      <div class="input-group">
+        <label class="btn btn-default btn-file">
+          <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+          <input type="file" multiple id="geomInputFile" style="display: none;">
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <a href="#" id = 'id_compute_all_files' > <span class="label label-primary image"><sup>*</sup>.txt</span></a>
     </div>
   </div>
   <div class="row" style="margin-top: 50px;" id = 'text_for_x_y'>      
