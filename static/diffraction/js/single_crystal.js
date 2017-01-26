@@ -54,6 +54,7 @@ var sample = new fabric.Image(document.getElementById('sample'), {
     name: 'кристалл, перетащите для установки',
     class: 'sample_1'
   });
+
   sample.scale(0.5);
   sample.hasControls = sample.hasBorders = false;
   canvas.add(sample);
