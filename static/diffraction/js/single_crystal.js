@@ -132,6 +132,8 @@ $('#source_divergence_arc').change(function() {
 });
 $('#id_source').change(function() {
 	ok(this);
+	$('#x0_1').val('');
+    $('#xh_1').val('');
 
 });
 var compute_dict = {};
@@ -180,22 +182,17 @@ $("#getX1").click(function() {
   	var compute_dict = {};
   	var cryst_num = $(this).attr( "name" );
   	var flag = false
-  	var error_message = ''
-  
+ 
 
-  if (!$.isNumeric($('#id_source').val())){ // проверка, выбран ли источник
-    flag = true;   
-    $( "#error_filling").show();
-    error_message+="1. The source wasn't chosen. \n"
-    $( "#error_filling" ).text(error_message);
-  }
-
-
-   if (!$.isNumeric($('#select_crystal'+cryst_num).val())){ // проверка, выбран ли источник
-
+   if (!$.isNumeric($('#select_crystal1').val())){ // проверка, выбран ли источник
     flag = true;   
     $("#check_crystal"+cryst_num).addClass("has-error");
-  }
+  };
+  if ($("#check_symmetric_case").is(":checked")){
+      $('#h_index1_surface').val($('#h_index1').val());
+      $('#k_index1_surface').val($('#k_index1').val());
+      $('#l_index1_surface').val($('#l_index1').val());
+    };
 
   if (flag != true) { 
     $("#loader_addon"+cryst_num).addClass("loader"); //анимациая загрузки
@@ -211,7 +208,6 @@ $("#getX1").click(function() {
 
     compute_dict["crystal_id"] = $('#select_crystal1').val();
     compute_dict["wavelength"] = $('#id_source').find('option:selected').attr("name");
-    console.log(compute_dict);
 
     $.post("/polarizability/compute/", compute_dict ,function(data) {
       $('#x0_1').val(data.X0_real + " + i"+data.X0_imag);
@@ -226,4 +222,13 @@ $("#getX1").click(function() {
           $(this).removeClass("has-error");
       });
       
-
+$("#check_symmetric_case").change(function() {
+      if(this.checked) {
+        $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", true );
+        $('#h_index_surface,#k_index_surface,#l_index_surface').val('');
+      }
+      else{
+        $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", false );
+      }
+  });
+$("#check_symmetric_case").change();
