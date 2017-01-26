@@ -68,7 +68,7 @@
   </div>
   <hr>
   <div class='row' id="grid_array" style="margin-top:20px; margin-bottom:20px; height: 200px;"></div>
-  <div class="row" style="margin-top: 50px;" id = 'text_for_x_y'>    </div>
+  <div class="row" style=" width: 50%; margin: 0 auto; margin-top: 50px;" id = 'text_for_x_y'>    </div>
 
   </div>
     
@@ -92,9 +92,8 @@
           
       });
       $('#id_compute_all_files').on('click', function(){
-        $('#grid_array').css( "width",0.6*$( window ).width());
 
-        $('#grid_array').append('<table class = "table table-striped header-fixed" style="margin: 0 auto;" id="Demo"></table>');
+        $('#grid_array').append('<table class = "table table-striped header-fixed" style="margin-left: 30px; "id="Demo"></table>');
         $('#Demo').append('<thead id = "table_head"></thead>');
 
         $('#table_head').append('<tr id = "x_name_table"></tr>');
