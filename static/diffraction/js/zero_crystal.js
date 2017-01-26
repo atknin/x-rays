@@ -119,7 +119,8 @@ var compute_dict = {};
 
 $('#id_alert_message').hide();
 $("#compute").click(function(){
-	$("#id_div_compute").hide();
+	// $("#id_div_compute").hide();
+	
 	var flag = true;
 	var mes = '';
 	for (var key in check_array){
