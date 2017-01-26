@@ -100,8 +100,7 @@ canvas.on('mouse:down', function(options) {
 		$('#div_settings_'+options.target.class).show();
 	};
 });
-
-var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'id_source':true}
+var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'id_source':true,'X0':false,'Xh':false}
 
 
 function error(e){
@@ -220,8 +219,8 @@ $("#getX1").click(function() {
     compute_dict["wavelength"] = $('#id_source').find('option:selected').attr("name");
 
     $.post("/polarizability/compute/", compute_dict ,function(data) {
-      $('#x0_1').val(data.X0_real + " + i"+data.X0_imag);
-      $('#xh_1').val(data.Xh_real + " + i"+data.Xh_imag);
+      $('#X0').val(data.X0_real + " + i"+data.X0_imag);
+      $('#Xh').val(data.Xh_real + " + i"+data.Xh_imag);
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
     });
   }; 
