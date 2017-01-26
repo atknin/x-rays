@@ -93,18 +93,18 @@
         $('#grid_array').append('<table style="margin-left: 30px;"id="Demo"></table>');
         $('#Demo').append('<tr id = "x_name_table"></tr>');
         $('#x_name_table').append('<th class="headerHor"></th>');
-        for (var i = 0; i < num-1; i++) {
+        for (var i = 0; i < num; i++) {
           console.log(i);
-          $('#x_name_table').append('<th class="headerHor">a: y('+i+')</th>');
-          $('#x_name_table').append('<th class="headerHor">b: y('+i+')</th>');
+          $('#x_name_table').append('<th class="headerHor">a: y('+(i+1)+')</th>');
+          $('#x_name_table').append('<th class="headerHor">b: y('+(i+1)+')</th>');
         };
 
         for (var i = 0; i <  scan_data[0]['x'].length ; i++) {
            $('#Demo').append('<tr id = "stroka_'+i+'"></tr>');
            $('#stroka_'+i).append('<td class="headerVer">'+scan_data[0]['x'][i]+'</td>')
-           for (var j = 0; j < num-1; j++) {
-            $('#stroka_'+i).append('<td>'+scan_data[i]['y1'][j]+'</td>');
-            $('#stroka_'+i).append('<td>'+scan_data[i]['y2'][j]+'</td>');
+           for (var j = 0; j < num; j++) {
+            $('#stroka_'+i).append('<td>'+scan_data[j]['y1'][i]+'</td>');
+            $('#stroka_'+i).append('<td>'+scan_data[j]['y2'][i]+'</td>');
          };
         };
        
