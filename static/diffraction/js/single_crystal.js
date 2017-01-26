@@ -7,8 +7,8 @@ var canvas = new fabric.Canvas('fabric');
 
 var source = new fabric.Image(document.getElementById('source'), {
   left: 450,
-  top: 125,
-  // angle: 30,
+  top: 100,
+  angle: -15,
   opacity: 0.85,
   shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
   selectable: false,
@@ -21,8 +21,8 @@ canvas.add(source);
 // --------- добавть детектор ---------------
 var detector = new fabric.Image(document.getElementById('detector'), {
   left: 50,
-  top: 135,
-  // angle: 30,
+  top: 110,
+  angle: 15,
   width: 100,
   height: 30,
   opacity: 0.85,
@@ -45,10 +45,11 @@ var slit_a = new fabric.Rect({
 });
 
 var sample = new fabric.Image(document.getElementById('sample'), {
-    left: 45,
-    top: 50,
+    left: 200,
+    top: 200,
     // angle: 30,
     opacity: 0.85,
+  	selectable: false,
     shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
     name: 'кристалл, перетащите для установки',
     class: 'sample'
@@ -72,6 +73,7 @@ var slit_1 = new fabric.Group([ slit_a, slit_b ], {
 	left: 300,
 	top: 120,
 	selectable: false,
+	angle: 15,
 	class: 'slit_1',
 	shadow: 'rgba(0,0,0,0.3) 1px 2px 5px',
 });
@@ -80,6 +82,7 @@ canvas.add(slit_1);
 var slit_2 = new fabric.Group([ slit_a, slit_b ], {
 	left: 120,
 	top: 120,
+	angle: -15,
 	selectable: false,
 	class: 'slit_2',
 	shadow: 'rgba(0,0,0,0.3) 1px 2px 5px',
