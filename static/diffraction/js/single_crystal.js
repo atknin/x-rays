@@ -210,7 +210,7 @@ $("#getX1").click(function() {
    	compute_dict["l_surface"] = $('#l_index1_surface').val();
 
     compute_dict["crystal_id"] = $('#select_crystal1').val();
-    compute_dict["wavelength"] = $('#id_source').val();
+    compute_dict["wavelength"] = $('#id_source').attr('name');
     console.log(compute_dict);
 
     $.post("/polarizability/compute/", compute_dict ,function(data) {
@@ -218,5 +218,12 @@ $("#getX1").click(function() {
       $('#xh_1').val(data.Xh_real + " + i"+data.Xh_imag);
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
     });
-  };  
+  }; 
+
 });
+// как только мы прикаснемся к одному из .. окон удалится класс окрасски
+      $("#check_crystal1").click(function(){
+          $(this).removeClass("has-error");
+      });
+      
+

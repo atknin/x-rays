@@ -75,7 +75,7 @@
                 <label>Анод:</label>
                 <select class="form-control" name = 'Источник'  id ='id_source' size="6">
                 {%for source in anod%}
-                  <option value="{{source.id}}"><small>{{source.name}}</small></option>
+                  <option value="{{source.id}}" name = "{{source.wavelength.all.0.wavelength }}"><small>{{source.name}}</small></option>
                 {% endfor %}
                 </select> 
               </div>
