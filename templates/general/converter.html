@@ -29,6 +29,9 @@
       td{
       width: 80px;
       }
+      th{
+      width: 80px;
+      }
 
       table{
        height:300px; 
@@ -37,6 +40,11 @@
       tbody{
         overflow-y: scroll;
         height: 200px;
+        width: 100%;
+        position: absolute;
+      }
+      thead{
+        overflow-y: scroll;
         width: 100%;
         position: absolute;
       }
@@ -84,21 +92,20 @@
           
       });
       $('#id_compute_all_files').on('click', function(){
-        // $('#grid_array').css( "width",$( window ).width());
+        $('#grid_array').css( "width",0.6*$( window ).width());
 
-        $('#grid_array').append('<table class = "table table-striped header-fixed" style="margin-left: 30px; "id="Demo"></table>');
-        $('#Demo').append('<tbody id = "table_body"></tbody>');
-        // $('#Demo').append('<thead id = "table_head"></thead>');
+        $('#grid_array').append('<table class = "table table-striped header-fixed" style="margin: 0 auto;" id="Demo"></table>');
+        $('#Demo').append('<thead id = "table_head"></thead>');
 
-        $('#table_body').append('<tr id = "x_name_table"></tr>');
-        $('#x_name_table').append('<td></td>');
+        $('#table_head').append('<tr id = "x_name_table"></tr>');
+        $('#x_name_table').append('<th></th>');
         // class="filterable-cell"
         for (var i = 0; i < num; i++) {
-          $('#x_name_table').append('<td> a: y('+(i+1)+')</td>');
-          $('#x_name_table').append('<td> b: y('+(i+1)+')</td>');
+          $('#x_name_table').append('<th> a: y('+(i+1)+')</th>');
+          $('#x_name_table').append('<th> b: y('+(i+1)+')</th>');
         };
 
-        
+        $('#Demo').append('<tbody id = "table_body"></tbody>');
 
         for (var i = 0; i <  scan_data[0]['x'].length ; i++) {
            $('#table_body').append('<tr id = "stroka_'+i+'"></tr>');
