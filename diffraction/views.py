@@ -45,16 +45,8 @@ def compute(request):
 	# zero_crystal
 
 	if request.is_ajax():
-		input_data = {}
-
-		input_data['source_divergence_arc'] = float(request.POST['source_divergence_arc'])
-		input_data['input_l_slit1'] = float(request.POST['input_l_slit1'])
-		input_data['input_size_slit2'] = float(request.POST['input_size_slit2'])
-		input_data['schem'] = request.POST['schem']
-		input_data['input_size_slit1'] = float(request.POST['input_size_slit1'])
-		input_data['input_l_slit2'] = float(request.POST['input_l_slit2'])
-		input_data['id_email'] = request.POST['id_email']
-
+		input_data = request.POST
+		# input_data.pop('key', None)
 		i = 1;
 		for wave in diffraction_models.anod.objects.get(pk = request.POST['id_source']).wavelength.all():
 			input_data['anod'+str(i)] = str(wave.wavelength)

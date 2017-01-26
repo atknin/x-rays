@@ -186,6 +186,7 @@ $("#compute").click(function(){
 		compute_dict['X0'] = $('#X0').val();
 		compute_dict['Xh'] = $('#Xh').val();
 		
+		
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
 			alert( msg.status);
