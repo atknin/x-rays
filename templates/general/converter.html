@@ -19,34 +19,39 @@
       -moz-text-align-last: center;
       text-align-last: center;
     }
-    .scrollingTable {overflow:auto;}
-    .scrollingTable > table {border-collapse:collapse;}
-    .scrollingTable > table .headerHor,
-    .scrollingTable > table .headerVer {position:relative;}
-    .scrollingTable > table .headerHor {z-index:1;}
-    .scrollingTable {
-        margin:auto;
-        width:600px;
-      height:300px;
-        -webkit-border-radius:6px;
-        -moz-border-radius:6px;
-        border-radius:6px;
-        border:2px solid #DCE4EC;}
+    table {
+        width: 100%;
+    }
 
-    
-    table .headerHor,
-    table .headerVer {
-        color:#FFF;
-        font-weight:bold;}
-    table .headerHor {background-color:#1ABC9C;}
-    table .headerVer {background:#34495e;}
-    table th,
-    table td {
-      width:50px;
-        min-width:50px;
-      height:30px;
-      text-align:center;
-        background-color:#ECF0F5;}
+    thead, tbody, tr, td, th { display: block; }
+
+    tr:after {
+        content: ' ';
+        display: block;
+        visibility: hidden;
+        clear: both;
+    }
+
+    thead th {
+        height: 30px;
+
+        /*text-align: left;*/
+    }
+
+    tbody {
+        height: 120px;
+        overflow-y: auto;
+    }
+
+    thead {
+        /* fallback */
+    }
+
+
+    tbody td, thead th {
+        width: 19.2%;
+        float: left;
+    }
     </style>
   {% endblock %}
   {% block content %}
@@ -90,60 +95,29 @@
           
       });
       $('#id_compute_all_files').on('click', function(){
-        $('#grid_array').css( "width",$( window ).width());
+        // $('#grid_array').css( "width",$( window ).width());
 
-        $('#grid_array').append('<table style="margin-left: 30px; align: center;"id="Demo"></table>');
-        $('#Demo').append('<tr id = "x_name_table"></tr>');
-        $('#x_name_table').append('<th class="headerHor"></th>');
+        $('#grid_array').append('<table class = "table table-striped" style="margin-left: 30px; "id="Demo"></table>');
+        $('#Demo').append('<thead id = "table_head"></thead>');
+
+        $('#table_head').append('<tr id = "x_name_table"></tr>');
+        $('#x_name_table').append('<th ></th>');
+        // class="filterable-cell"
         for (var i = 0; i < num; i++) {
-          $('#x_name_table').append('<th class="headerHor">a: y('+(i+1)+')</th>');
-          $('#x_name_table').append('<th class="headerHor">b: y('+(i+1)+')</th>');
+          $('#x_name_table').append('<th> a: y('+(i+1)+')</th>');
+          $('#x_name_table').append('<th> b: y('+(i+1)+')</th>');
         };
+
+        $('#Demo').append('<tbody id = "table_body"></tbody>');
 
         for (var i = 0; i <  scan_data[0]['x'].length ; i++) {
-           $('#Demo').append('<tr id = "stroka_'+i+'"></tr>');
+           $('#table_body').append('<tr id = "stroka_'+i+'"></tr>');
            $('#stroka_'+i).append('<td class="headerVer">'+scan_data[0]['x'][i]+'</td>')
            for (var j = 0; j < num; j++) {
-            $('#stroka_'+i).append('<td>'+scan_data[j]['y1'][i]+'</td>');
-            $('#stroka_'+i).append('<td>'+scan_data[j]['y2'][i]+'</td>');
+            $('#stroka_'+i).append('<td class="filterable-cell">'+scan_data[j]['y1'][i]+'</td>');
+            $('#stroka_'+i).append('<td class="filterable-cell">'+scan_data[j]['y2'][i]+'</td>');
          };
-        };
-      +function ($) {
-          "use strict";
-
-          var ScrollingTable = function (ele, op) {
-            ele = $(ele);
-            var wrapper = null,
-              hors=ele.find('.headerHor'),
-              vers=ele.find('.headerVer');
-
-            ele.wrap('<div class="scrollingTable"/>');
-            wrapper = $(ele.parent());
-            wrapper.bind('scroll',
-              function() {
-                hors.css('top', wrapper.scrollTop());
-                vers.css('left', wrapper.scrollLeft());
-              }
-            );
-          };
-
-          ScrollingTable.DEFAULTS = {};
-
-          $.fn.ScrollingTable = function (option) {
-            return this.each(function () {
-              var $this = $(this),
-                data  = $this.data('ScrollingTable'),
-                options = $.extend({}, ScrollingTable.DEFAULTS, $this.data(), typeof option == 'object' && option)
-
-              if (!data) {
-                $this.data('ScrollingTable', (data = new ScrollingTable(this, options)));
-              }
-            });
-          };
-
-          $.fn.ScrollingTable.Constructor = ScrollingTable;
-
-        }(window.jQuery);       
+        };      
       });
     });
 
