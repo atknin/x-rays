@@ -49,7 +49,7 @@ def compute(request):
 		# input_data.pop('key', None)
 		i = 1;
 		for wave in diffraction_models.anod.objects.get(pk = request.POST['id_source']).wavelength.all():
-			input_data['anod'+str(i)] = str(wave.wavelength)
+			input_data.update({'anod'+str(i): str(wave.wavelength)})
 			i+=1
 
 		output_data['status'] = "ok"
