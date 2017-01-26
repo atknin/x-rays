@@ -174,14 +174,15 @@ $("#compute").click(function(){
 
 
 });
-$("#getX1,#getX2,#getX3").click(function() {
-  var compute_dict = {};
-  var cryst_num = $(this).attr( "name" );
-  var flag = false
-  var error_message = ''
+$("#getX1").click(function() {
+	console.log('compute');
+  	var compute_dict = {};
+  	var cryst_num = $(this).attr( "name" );
+  	var flag = false
+  	var error_message = ''
   
 
-  if (!$.isNumeric($('#source_to_backend').val())){ // проверка, выбран ли источник
+  if (!$.isNumeric($('#id_source').val())){ // проверка, выбран ли источник
     flag = true;   
     $( "#error_filling").show();
     error_message+="1. The source wasn't chosen. \n"
@@ -207,8 +208,9 @@ $("#getX1,#getX2,#getX3").click(function() {
     compute_dict["k_surface"] = $('#k_index1_surface').val();
    	compute_dict["l_surface"] = $('#l_index1_surface').val();
 
-    compute_dict["crystal_id"] = $('#select_crystal'+cryst_num).val();
-    compute_dict["wavelength"] = $('#source_to_backend').val();
+    compute_dict["crystal_id"] = $('#select_crystal1').val();
+    compute_dict["wavelength"] = $('#id_source').val();
+    console.log(compute_dict);
 
     $.post("/polarizability/compute/", compute_dict ,function(data) {
       $('#x0_1').val(data.X0_real + " + i"+data.X0_imag);
