@@ -44,8 +44,10 @@
 <script type="text/javascript">
     var num = 0;
     var name_aa = [];
+    $('#id_compute_all_files').hide();
     $(document).ready(function(){
       $('#geomInputFile').on('change', function(e){
+          $('#id_compute_all_files').show();
           $( "#text_for_x_y" ).empty();
           for (var i = 0; i < this.files.length; i++) {
               name_aa[i] = (this.files[i].name);
@@ -56,8 +58,12 @@
           };
           
       });
+      $('#id_compute_all_files').on('click', function(){
+        
+      });
     });
 
+   
 
     function ok(text){
       var new_txt = text.result.split('\n');
@@ -176,5 +182,6 @@
       reader.onload = onLoadCallback;
       reader.readAsText(file);
     };
+    
 </script>
   {% endblock %}
