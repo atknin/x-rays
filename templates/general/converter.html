@@ -66,7 +66,7 @@
     </div>
   </div>
   <hr>
-  <div class='row' id="grid_array" style="margin-top:20px; margin-bottom:20px;"></div>
+  <div class='row' id="grid_array" style="margin-top:20px; margin-bottom:20px; height: 200px;"></div>
   <div class="row" style="margin-top: 50px;" id = 'text_for_x_y'>    </div>
 
   </div>
@@ -91,8 +91,9 @@
           
       });
       $('#id_compute_all_files').on('click', function(){
-        console.log('create_table');
-        $('#grid_array').append('<table class = "scrollingTable" style="margin-left: 30px; align: center; height: 200px;"id="Demo"></table>');
+        $('#grid_array').css( "width",$( window ).width());
+
+        $('#grid_array').append('<table style="margin-left: 30px; align: center;"id="Demo"></table>');
         $('#Demo').append('<tr id = "x_name_table"></tr>');
         $('#x_name_table').append('<th class="headerHor"></th>');
         for (var i = 0; i < num; i++) {
