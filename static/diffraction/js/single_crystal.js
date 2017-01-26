@@ -73,7 +73,7 @@ var slit_1 = new fabric.Group([ slit_a, slit_b ], {
 	left: 300,
 	top: 120,
 	selectable: false,
-	angle: 15,
+	angle: -15,
 	class: 'slit_1',
 	shadow: 'rgba(0,0,0,0.3) 1px 2px 5px',
 });
@@ -82,7 +82,7 @@ canvas.add(slit_1);
 var slit_2 = new fabric.Group([ slit_a, slit_b ], {
 	left: 120,
 	top: 120,
-	angle: -15,
+	angle: 15,
 	selectable: false,
 	class: 'slit_2',
 	shadow: 'rgba(0,0,0,0.3) 1px 2px 5px',
