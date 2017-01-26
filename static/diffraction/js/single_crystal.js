@@ -161,7 +161,7 @@ $("#compute").click(function(){
 	else {
 		$('#id_alert_message').hide();
 		$.ajaxSetup({data: {
-			csrfmiddlewaretoken: $('#abracadabraa').val()
+			csrfmiddlewaretoken: $('#abracadabraa').val();
 		}});
 		compute_dict['schem'] = 'zero_crystal'
 		compute_dict['id_email'] = $('#id_email').val()
@@ -200,7 +200,7 @@ $("#getX1").click(function() {
   if (flag != true) { 
     $("#loader_addon"+cryst_num).addClass("loader"); //анимациая загрузки
     $.ajaxSetup({data: {
-    csrfmiddlewaretoken: '{{ csrf_token }}'
+    csrfmiddlewaretoken: $('#abracadabraa').val()
     }});
     compute_dict["h"] = $('#h_index1').val();
     compute_dict["k"] = $('#k_index1').val();
