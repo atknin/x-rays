@@ -7,7 +7,7 @@ var canvas = new fabric.Canvas('fabric');
 
 var source = new fabric.Image(document.getElementById('source'), {
   left: 450,
-  top: 100,
+  top: 93,
   angle: -15,
   opacity: 0.85,
   shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
@@ -21,7 +21,7 @@ canvas.add(source);
 // --------- добавть детектор ---------------
 var detector = new fabric.Image(document.getElementById('detector'), {
   left: 50,
-  top: 110,
+  top: 118,
   angle: 15,
   width: 100,
   height: 30,
@@ -46,7 +46,7 @@ var slit_a = new fabric.Rect({
 
 var sample = new fabric.Image(document.getElementById('sample'), {
     left: 200,
-    top: 200,
+    top: 170,
     // angle: 30,
     opacity: 0.85,
   	selectable: false,
