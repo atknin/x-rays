@@ -45,7 +45,7 @@ var slit_a = new fabric.Rect({
 });
 
 var sample = new fabric.Image(document.getElementById('sample'), {
-    left: 200,
+    left: 186,
     top: 170,
     // angle: 30,
     opacity: 0.85,
