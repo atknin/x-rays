@@ -1,5 +1,4 @@
 
-$('#div_zero_crystal').show();
 $("#id_div_compute").show();
 var canvas = new fabric.Canvas('fabric');
 
