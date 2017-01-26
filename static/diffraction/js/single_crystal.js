@@ -210,7 +210,7 @@ $("#getX1").click(function() {
    	compute_dict["l_surface"] = $('#l_index1_surface').val();
 
     compute_dict["crystal_id"] = $('#select_crystal1').val();
-    compute_dict["wavelength"] = $('#id_source').attr('name');
+    compute_dict["wavelength"] = $('#id_source').find('option:selected').attr("name");
     console.log(compute_dict);
 
     $.post("/polarizability/compute/", compute_dict ,function(data) {
