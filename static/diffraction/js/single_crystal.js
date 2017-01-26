@@ -44,6 +44,19 @@ var slit_a = new fabric.Rect({
     fill: '#949494',
 });
 
+var sample = new fabric.Image(document.getElementById('sample'), {
+    left: 45,
+    top: 50,
+    // angle: 30,
+    opacity: 0.85,
+    shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+    name: 'кристалл, перетащите для установки',
+    class: 'sample'
+  });
+  sample.scale(0.5);
+  sample.hasControls = sample.hasBorders = false;
+  canvas.add(sample);
+
 var slit_b = new fabric.Rect({
     width: 10,
     height: 20,
