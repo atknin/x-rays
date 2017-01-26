@@ -1,4 +1,6 @@
 
+var myOpts = document.getElementById('id_source').options;
+$('#id_source').val(myOpts[0].value);
 var canvas = new fabric.Canvas('fabric');
 
 //--------- добавить источник --------------
