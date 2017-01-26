@@ -118,9 +118,10 @@ $('#id_source').change(function() {
 var compute_dict = {};
 
 $('#id_alert_message').hide();
+$("#compute").prop( "disabled", false );
 $("#compute").click(function(){
-	// $("#id_div_compute").hide();
-	
+	$("#compute").prop( "disabled", true );
+
 	var flag = true;
 	var mes = '';
 	for (var key in check_array){
