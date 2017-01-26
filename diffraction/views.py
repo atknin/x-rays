@@ -46,7 +46,8 @@ def compute(request):
 
 	if request.is_ajax():
 		input_data = {}
-		input_data.update(request.POST)
+		for a in request.POST:
+			input_data[a] = request.POST[a]
 		del input_data['csrfmiddlewaretoken']
 		i = 1;
 		for wave in diffraction_models.anod.objects.get(pk = request.POST['id_source']).wavelength.all():
