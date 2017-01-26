@@ -174,6 +174,7 @@ $("#compute").click(function(){
 
 
 });
+
 $("#getX1").click(function() {
 	console.log('compute');
   	var compute_dict = {};
@@ -217,7 +218,5 @@ $("#getX1").click(function() {
       $('#xh_1').val(data.Xh_real + " + i"+data.Xh_imag);
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
     });
-
-  };
-  
+  };  
 });
