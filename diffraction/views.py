@@ -21,14 +21,21 @@ receiver = tg.receiver
 sender = tg.sender
 #------для телеграма------------
 
-
-def diffraction_0(request):
+def diffraction(request):
 	args = {}
 	args['crystals'] = polarizability_models.crystals.objects.all()
 	args['anod'] = diffraction_models.anod.objects.all()
-
 	return render(
-	 	request, 'diffraction/diffraction_0.html', args
+	 	request, 'diffraction/diffraction.html', args
+	 	)
+
+def diffraction_scheme(request,pk_num):
+	args = {}
+	args['crystals'] = polarizability_models.crystals.objects.all()
+	args['anod'] = diffraction_models.anod.objects.all()
+	url = 'diffraction/diffraction_'+pk_num
+	return render(
+	 	request, url, args
 	 	)
 
 
