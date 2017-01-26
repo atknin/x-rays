@@ -135,6 +135,62 @@
                 </div>
             </div>
 <!-- // ЩЕЛЬ 2 -->
+
+      <div class="row settings" id="div_settings_sample_1" name = "1" > 
+        <div style="margin-bottom: 20px"><span class="label label-primary">Параметры кристалла №1</span></div>
+
+            <div class="col-md-4">
+              <div class="row" style="height: 35px">
+                <div class="input-group" >
+                  <span class="input-group-addon" ><small>Miller Indices</small></span>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 12px" id = "check_crystal1">
+                <select class="form-control" id ='select_crystal1' size="6" >
+                {% for crystal in crystals %}
+                  <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
+                {% endfor %}
+                </select>  
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="row" >
+                <div class="col-md-4" id = "inputgroup_check_h_index1">
+                  <input type="text"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index1" >
+                </div>
+                <div class="col-md-4" id = "inputgroup_check_k_index1">
+                  <input type="text" style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index1" >
+                </div>
+
+                <div class="col-md-4" id = "inputgroup_check_l_index1">
+                  <input type="text" style="text-align: center;" value="0" placeholder="l"  class="form-control" id="l_index1" >
+                </div>
+              </div>
+
+              <div class="row" style="height: 35px; margin-top: 15px;">
+                <div class="col-md-12">
+                  <div class="input-group" id = "inputgroup_check_x0_1">
+                    <input type="text" class="form-control" id ="x0_1"  placeholder="">
+                    <span class="input-group-addon">&#967;<sub>0</sub>*E<sup>-7</sup></span>
+                  </div> 
+                  <div class="input-group" id = "inputgroup_check_xh_1" style="margin-top: 5px;">
+                    <input type="text" id='xh_1' class="form-control" placeholder="" >
+                    <span class="input-group-addon">&#967;<sub>h</sub>*E<sup>-7</sup></span>
+                  </div>
+
+                  <div class="input-group" style="margin-top: 5px;">
+                    <div class="input-group-btn">
+                      <button type="button" name = "1" id="getX1" class="btn btn-default" style="width: 100%;">get &#967;...</button>
+                    </div>
+                    <span class="input-group-addon " id="loader_addon1" style="background-color: transparent;"></span>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+       </div>
+
  <!-- настроить детектор -->
               <div class="row settings" id="div_settings_detector" >
                 <div style="margin-bottom: 20px"><span class="label label-primary">Параметры детектора</span></div>
