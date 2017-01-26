@@ -19,39 +19,7 @@
       -moz-text-align-last: center;
       text-align-last: center;
     }
-    table {
-        width: 100%;
-    }
-
-    thead, tbody, tr, td, th { display: block; }
-
-    tr:after {
-        content: ' ';
-        display: block;
-        visibility: hidden;
-        clear: both;
-    }
-
-    thead th {
-        height: 30px;
-
-        /*text-align: left;*/
-    }
-
-    tbody {
-        height: 120px;
-        overflow-y: auto;
-    }
-
-    thead {
-        /* fallback */
-    }
-
-
-    tbody td, thead th {
-        width: 19.2%;
-        float: left;
-    }
+    
     </style>
   {% endblock %}
   {% block content %}
@@ -101,7 +69,7 @@
         $('#Demo').append('<thead id = "table_head"></thead>');
 
         $('#table_head').append('<tr id = "x_name_table"></tr>');
-        $('#x_name_table').append('<th ></th>');
+        $('#x_name_table').append('<th></th>');
         // class="filterable-cell"
         for (var i = 0; i < num; i++) {
           $('#x_name_table').append('<th> a: y('+(i+1)+')</th>');
