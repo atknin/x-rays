@@ -29,9 +29,6 @@
       td{
       width: 80px;
       }
-      th{
-      width: 80px;
-      }
 
       table{
        height:300px; 
@@ -93,11 +90,11 @@
         $('#Demo').append('<thead id = "table_head"></thead>');
 
         $('#table_head').append('<tr id = "x_name_table"></tr>');
-        $('#x_name_table').append('<th></th>');
+        $('#x_name_table').append('<td></td>');
         // class="filterable-cell"
         for (var i = 0; i < num; i++) {
-          $('#x_name_table').append('<th> a: y('+(i+1)+')</th>');
-          $('#x_name_table').append('<th> b: y('+(i+1)+')</th>');
+          $('#x_name_table').append('<td> a: y('+(i+1)+')</td>');
+          $('#x_name_table').append('<td> b: y('+(i+1)+')</td>');
         };
 
         $('#Demo').append('<tbody id = "table_body"></tbody>');
