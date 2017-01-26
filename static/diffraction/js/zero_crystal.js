@@ -1,5 +1,4 @@
 
-$("#id_div_compute").show();
 var canvas = new fabric.Canvas('fabric');
 
 //--------- добавить источник --------------
