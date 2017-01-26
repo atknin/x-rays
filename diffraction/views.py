@@ -33,7 +33,7 @@ def diffraction_scheme(request,pk_num):
 	args = {}
 	args['crystals'] = polarizability_models.crystals.objects.all()
 	args['anod'] = diffraction_models.anod.objects.all()
-	url = 'diffraction/diffraction_'+pk_num
+	url = 'diffraction/diffraction_'+pk_num + '.html'
 	return render(
 	 	request, url, args
 	 	)
