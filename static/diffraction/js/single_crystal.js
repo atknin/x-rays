@@ -200,18 +200,19 @@ $("#getX1,#getX2,#getX3").click(function() {
     $.ajaxSetup({data: {
     csrfmiddlewaretoken: '{{ csrf_token }}'
     }});
-    compute_dict["h"] = $('#h_index'+cryst_num).val();
-    compute_dict["k"] = $('#k_index'+cryst_num).val();
-    compute_dict["l"] = $('#l_index'+cryst_num).val();
+    compute_dict["h"] = $('#h_index1').val();
+    compute_dict["k"] = $('#k_index1').val();
+    compute_dict["l"] = $('#l_index1').val();
+    compute_dict["h_surface"] = $('#h_index1_surface').val();
+    compute_dict["k_surface"] = $('#k_index1_surface').val();
+   	compute_dict["l_surface"] = $('#l_index1_surface').val();
+
     compute_dict["crystal_id"] = $('#select_crystal'+cryst_num).val();
     compute_dict["wavelength"] = $('#source_to_backend').val();
 
     $.post("/polarizability/compute/", compute_dict ,function(data) {
-      var x0_res = 
-      $('#x0_'+cryst_num).val(data.X0_real + " + i"+data.X0_imag);
-      $('#xh_'+cryst_num).val(data.Xh_real + " + i"+data.Xh_imag);
-
-      
+      $('#x0_1').val(data.X0_real + " + i"+data.X0_imag);
+      $('#xh_1').val(data.Xh_real + " + i"+data.Xh_imag);
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
     });
 
