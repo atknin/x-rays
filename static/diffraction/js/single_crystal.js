@@ -139,6 +139,13 @@ $('#source_divergence_arc').change(function() {
   if( parseFloat($(this).val()) < 2000 && parseFloat($(this).val()) > 0){ok(this);}
   else{error(this);}
 });
+
+$('#X0,#Xh').change(function() {
+	var X = $(this).val().split('+');
+ 	if(X.length == 2){ok(this);}
+ 	else{error(this);}
+});
+
 $('#id_source').change(function() {
 	ok(this);
 	$('#x0_1').val('');
@@ -174,8 +181,10 @@ $("#compute").click(function(){
 		$.ajaxSetup({data: {
 			csrfmiddlewaretoken: $('#abracadabraa').val()
 		}});
-		compute_dict['schem'] = 'zero_crystal'
-		compute_dict['id_email'] = $('#id_email').val()
+		compute_dict['schem'] = 'single_crystal';
+		compute_dict['id_email'] = $('#id_email').val();
+		compute_dict['X0'] = $('#X0').val();
+		compute_dict['Xh'] = $('#Xh').val();
 		
 		$.post("/diffraction/compute1/", compute_dict)
 		.done(function(msg) {
@@ -188,7 +197,7 @@ $("#compute").click(function(){
 
 $("#getX1").click(function() {
 	console.log('compute');
-  	var compute_dict = {};
+  	var compute_dict_X = {};
   	var cryst_num = $(this).attr( "name" );
   	var flag = false
  
@@ -208,27 +217,29 @@ $("#getX1").click(function() {
     $.ajaxSetup({data: {
     	csrfmiddlewaretoken: $('#abracadabraa').val()
     }});
-    compute_dict["h"] = $('#h_index1').val();
-    compute_dict["k"] = $('#k_index1').val();
-    compute_dict["l"] = $('#l_index1').val();
-    compute_dict["h_surface"] = $('#h_index1_surface').val();
-    compute_dict["k_surface"] = $('#k_index1_surface').val();
-   	compute_dict["l_surface"] = $('#l_index1_surface').val();
+    compute_dict_X["h"] = $('#h_index1').val();
+    compute_dict_X["k"] = $('#k_index1').val();
+    compute_dict_X["l"] = $('#l_index1').val();
+    compute_dict_X["h_surface"] = $('#h_index1_surface').val();
+    compute_dict_X["k_surface"] = $('#k_index1_surface').val();
+   	compute_dict_X["l_surface"] = $('#l_index1_surface').val();
 
-    compute_dict["crystal_id"] = $('#select_crystal1').val();
-    compute_dict["wavelength"] = $('#id_source').find('option:selected').attr("name");
+    compute_dict_X["crystal_id"] = $('#select_crystal1').val();
+    compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
 
-    $.post("/polarizability/compute/", compute_dict ,function(data) {
-      $('#X0').val(data.X0_real + " + i"+data.X0_imag);
-      $('#Xh').val(data.Xh_real + " + i"+data.Xh_imag);
+    $.post("/polarizability/compute/", compute_dict_X ,function(data) {
+      $('#X0').val(data.X0_real + " + "+data.X0_imag+"j");
+      $('#Xh').val(data.Xh_real + " + "+data.Xh_imag+"j");
+      ok($('#X0'));
+      ok($('#Xh'));
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
     });
   }; 
 
 });
 // как только мы прикаснемся к одному из .. окон удалится класс окрасски
-      $("#check_crystal1").click(function(){
-          $(this).removeClass("has-error");
-      });
+$("#check_crystal1").click(function(){
+  $(this).removeClass("has-error");
+});
       
 
