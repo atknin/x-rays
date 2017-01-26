@@ -1,17 +1,12 @@
-$("#id_div_compute").hide();
 
-$('#btn_0_cryst').click(function(event) {
-	$('#div_choose_howmanycrystals').hide(); 
-	$('#div_zero_crystal').show();
-	$("#id_div_compute").show();
-
-});
+$('#div_zero_crystal').show();
+$("#id_div_compute").show();
 var canvas = new fabric.Canvas('fabric');
 
 //--------- добавить источник --------------
 
 var source = new fabric.Image(document.getElementById('source'), {
-  left: 650,
+  left: 450,
   top: 125,
   // angle: 30,
   opacity: 0.85,
@@ -25,7 +20,7 @@ canvas.add(source);
 
 // --------- добавть детектор ---------------
 var detector = new fabric.Image(document.getElementById('detector'), {
-  left: 250,
+  left: 50,
   top: 135,
   // angle: 30,
   width: 100,
@@ -44,7 +39,7 @@ canvas.add(detector);
 var slit_a = new fabric.Rect({
     width: 10,
     height: 20,
-    left: 320,
+    left: 120,
     top: 135,
     fill: '#949494',
 });
@@ -52,7 +47,7 @@ var slit_a = new fabric.Rect({
 var slit_b = new fabric.Rect({
     width: 10,
     height: 20,
-    left: 320,
+    left: 120,
     top: 160,
     fill: '#949494',
 });
@@ -61,7 +56,7 @@ var slit_b = new fabric.Rect({
 
 
 var slit_1 = new fabric.Group([ slit_a, slit_b ], {
-	left: 500,
+	left: 300,
 	top: 120,
 	selectable: false,
 	class: 'slit_1',
@@ -70,7 +65,7 @@ var slit_1 = new fabric.Group([ slit_a, slit_b ], {
 canvas.add(slit_1);
 
 var slit_2 = new fabric.Group([ slit_a, slit_b ], {
-	left: 320,
+	left: 120,
 	top: 120,
 	selectable: false,
 	class: 'slit_2',
