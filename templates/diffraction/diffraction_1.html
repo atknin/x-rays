@@ -237,6 +237,16 @@
           </div>
         </div>
           {% if user.is_authenticated %}
+            <div class="row"> 
+              схема: 
+              <hr>
+              <label class="radio-inline"> 
+                  <input type="radio" name="inlineRadioOptions" id="scan_theta" value="option1"> 2 - Theta
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="inlineRadioOptions" id="scan_omega" value="option2"> Omega
+                </label>
+            </div>
             <div class="input-group" style="margin: 40px;" id = ''>
               <span class="input-group-btn">
                 <button type="button" id = "compute" class="btn btn-success">Рассчитать</button>

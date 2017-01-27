@@ -157,4 +157,6 @@ $("#compute").click(function(){
 
 
 });
-
+$("#new_compute").click(function(){
+  $("#compute").prop( "disabled", false );
+});
