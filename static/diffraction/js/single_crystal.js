@@ -185,7 +185,9 @@ $("#compute").click(function(){
 		compute_dict['id_email'] = $('#id_email').val();
 		compute_dict['X0'] = $('#X0').val();
 		compute_dict['Xh'] = $('#Xh').val();
-		
+		compute_dict['scan'] = '2theta'
+
+
 		
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
@@ -242,5 +244,9 @@ $("#getX1").click(function() {
 $("#check_crystal1").click(function(){
   $(this).removeClass("has-error");
 });
+$("#new_compute").click(function(){
+  $("#compute").prop( "disabled", false );
+});
+
       
 
