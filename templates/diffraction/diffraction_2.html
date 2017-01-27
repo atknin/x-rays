@@ -1,6 +1,6 @@
 {% extends "general/index.html" %}
   {% block title %}
-  <title>Дифракция</title>
+  <title>2x-Дифракция</title>
   {% load static %}
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="{% static "konva/konva.min.js"%}" ></script>
@@ -45,10 +45,10 @@
   {% endblock %}
     
   {% block content %}
+
     <input type='hidden' id='abracadabraa' value="{{ csrf_token }}" />
 
     <div class="row" style="margin-top: 50px;" id = "div_choose_howmanycrystals">
-
 
    <!-- Без кристаллов -->
     <div class="row" style="background-color: #FAFAFA; height: 360px; margin-top: 40px;" id = "div_zero_crystal">
