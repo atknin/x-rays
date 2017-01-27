@@ -56,9 +56,8 @@ def converter(request):
 			scan = request.POST[key].split('//')
 			input_data[key] = scan
 			
-		message['input_data'] = input_data
 
-		return JsonResponse(message)
+		return JsonResponse(input_data)
 	else:
 	 	return render(
 		 	request, 'general/converter.html',
