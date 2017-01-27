@@ -7,7 +7,7 @@ var canvas = new fabric.Canvas('fabric');
 
 var source = new fabric.Image(document.getElementById('source'), {
   left: 450,
-  top: 177,
+  top: 155,
   angle: 15,
   opacity: 0.85,
   shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
@@ -61,7 +61,7 @@ var sample1 = new fabric.Image(document.getElementById('sample'), {
 
  var sample2 = new fabric.Image(document.getElementById('sample'), {
     left: 380,
-    top: 90,
+    top: 120,
     angle: 180,
     opacity: 0.85,
   	selectable: false,
