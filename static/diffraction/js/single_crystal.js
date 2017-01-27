@@ -185,7 +185,7 @@ $("#compute").click(function(){
 		compute_dict['id_email'] = $('#id_email').val();
 		compute_dict['X0'] = $('#X0').val();
 		compute_dict['Xh'] = $('#Xh').val();
-		compute_dict['scan'] = '2theta'
+		compute_dict['scan'] = $('input[name=schem_radio]').filter(':checked').val()
 
 
 		
@@ -228,6 +228,7 @@ $("#getX1").click(function() {
    	compute_dict_X["l_surface"] = $('#l_index1_surface').val();
 
     compute_dict_X["crystal_id"] = $('#select_crystal1').val();
+
     compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
 
     $.post("/polarizability/compute/", compute_dict_X ,function(data) {
