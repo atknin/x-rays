@@ -27,6 +27,10 @@
       .error {
         border-color: #d9534f !important;
       }
+      .not-active {
+         pointer-events: none;
+         cursor: default;
+      }
     </style>
 
   </head>
@@ -86,8 +90,14 @@
                 фактор #собственная кривая отражения</p></a></li>
 
               <li role="presentation" style="background: #D5D5D5;">
-              <a href="/diffraction/" style="color: #555; "><h4>Дифракция </h4> <br> 
-              #собери свою схему дифракции</a></li>
+              {% if user.is_authenticated %}
+                <a href="/diffraction/" style="color: #555; "><h4>Дифракция </h4> <br> 
+                  #собери свою схему дифракции</a></li>
+              {% else %}
+                <a href="/diffraction/" class="not-active" style="color: #555; "><h4>Дифракция </h4> <br> 
+                  #собери свою схему дифракции</a></li>
+              {% endif %}
+              
 
             </ul>
             <hr>
@@ -111,7 +121,7 @@
         <br> 
         <a href="">об авторах</a> | <a href="/updates/">обновления</a> | <a href="#">обратная связь</a>
         <br>
-        Данный сайт разработан при поддержке РФФИ (проект №16-32-60045 мол_а_дк)
+          Данный сайт разработан при поддержке РФФИ (проект №16-32-60045 мол_а_дк)
         <br>
         
         </p>
