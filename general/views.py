@@ -51,7 +51,7 @@ def converter(request):
 	if request.is_ajax():
 		message = {}
 		message['status'] = 'ok'
-		# message['input'] = str(request.POST)
+		message['input'] = str(request.POST)
 		return JsonResponse(message)
 	else:
 	 	return render(
