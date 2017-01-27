@@ -51,7 +51,13 @@ def converter(request):
 	if request.is_ajax():
 		message = {}
 		message['status'] = 'ok'
-		message['input'] = str(request.POST)
+		input_data = {}
+		for key in request.POST:
+			scan = request.POST[key].split('//')
+			input_data[key] = scan
+			
+		message['input_data'] = input_data
+
 		return JsonResponse(message)
 	else:
 	 	return render(
