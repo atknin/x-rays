@@ -67,7 +67,7 @@ var sample1 = new fabric.Image(document.getElementById('sample'), {
   	selectable: false,
     shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
     name: 'кристалл, перетащите для установки',
-    class: 'sample_1'
+    class: 'sample_2'
   });
 
   sample2.scale(0.5);

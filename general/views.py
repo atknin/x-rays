@@ -48,7 +48,12 @@ def updates(request):
 		)
 
 def converter(request):
-
- 	return render(
-	 	request, 'general/converter.html',
-	 	)	
+	if request.is_ajax():
+		message = {}
+		message['status'] = 'ok'
+		message['input'] = str(request.POST)
+		return JsonResponse(message)
+	else:
+	 	return render(
+		 	request, 'general/converter.html',
+		 	)	

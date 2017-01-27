@@ -102,29 +102,38 @@
           
       });
       $('#id_compute_all_files').on('click', function(){
+        $.ajaxSetup({data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}'
+        }});
 
-        $('#grid_array').append('<table class = "table table-striped header-fixed" style="margin-left: 30px; "id="Demo"></table>');
-        // $('#Demo').append('<thead id = "table_head"></thead>');
-        $('#Demo').append('<tbody id = "table_body"></tbody>');
+      
+        $.post("/", scan_data ,function(data) {
+          console.log(data.status);
+          console.log(data.input);
+
+        });
+        // $('#grid_array').append('<table class = "table table-striped header-fixed" style="margin-left: 30px; "id="Demo"></table>');
+        // // $('#Demo').append('<thead id = "table_head"></thead>');
+        // $('#Demo').append('<tbody id = "table_body"></tbody>');
 
 
-        $('#table_body').append('<tr id = "x_name_table"></tr>');
-        $('#x_name_table').append('<th></th>');
-        // class="filterable-cell"
-        for (var i = 0; i < num; i++) {
-          $('#x_name_table').append('<th> a: y('+(i+1)+')</th>');
-          $('#x_name_table').append('<th> b: y('+(i+1)+')</th>');
-        };
+        // $('#table_body').append('<tr id = "x_name_table"></tr>');
+        // $('#x_name_table').append('<th></th>');
+        // // class="filterable-cell"
+        // for (var i = 0; i < num; i++) {
+        //   $('#x_name_table').append('<th> a: y('+(i+1)+')</th>');
+        //   $('#x_name_table').append('<th> b: y('+(i+1)+')</th>');
+        // };
 
 
-        for (var i = 0; i <  scan_data[0]['x'].length ; i++) {
-           $('#table_body').append('<tr id = "stroka_'+i+'"></tr>');
-           $('#stroka_'+i).append('<td class="headerVer">'+scan_data[0]['x'][i]+'</td>')
-           for (var j = 0; j < num; j++) {
-            $('#stroka_'+i).append('<td class="filterable-cell">'+scan_data[j]['y1'][i]+'</td>');
-            $('#stroka_'+i).append('<td class="filterable-cell">'+scan_data[j]['y2'][i]+'</td>');
-         };
-        };      
+        // for (var i = 0; i <  scan_data[0]['x'].length ; i++) {
+        //    $('#table_body').append('<tr id = "stroka_'+i+'"></tr>');
+        //    $('#stroka_'+i).append('<td class="headerVer">'+scan_data[0]['x'][i]+'</td>')
+        //    for (var j = 0; j < num; j++) {
+        //     $('#stroka_'+i).append('<td class="filterable-cell">'+scan_data[j]['y1'][i]+'</td>');
+        //     $('#stroka_'+i).append('<td class="filterable-cell">'+scan_data[j]['y2'][i]+'</td>');
+        //  };
+        // };      
       });
     });
 
