@@ -52,10 +52,24 @@ def converter(request):
 		message = {}
 		message['status'] = 'ok'
 		input_data = {}
-		for key in request.POST:
-			scan = request.POST[key].split('//')
-			input_data[key] = scan
-			
+		with open('/home/atknin/env/xrays/media/'+ name +'.dat', 'w') as out:
+			out.write('%14.8s' % 'keys')
+			for key in request.POST:
+				scan = request.POST[key].split('//')
+				input_data[key] = scan
+				out.write('%14.8s' % key)
+			out.write('\n')
+			del input_data['csrfmiddlewaretoken']
+			valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+			name = ''.join((random.choice(valid_letters) for i in range(5)))
+			for i in range(len(input_data['scan1'][0].split()))
+				out.write('%14.8s' % input_data[key][0].split())
+				for key in input_data:
+					input_data[key]
+					out.write('%14.8s' % key)
+
+
+
 
 		return JsonResponse(input_data)
 	else:

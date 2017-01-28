@@ -56,6 +56,7 @@ def compute(request):
 
 		output_data['status'] = "ok"
 		sender.send_msg("Atknin", str(input_data))
+		bot_inform.sent_to_atknin_bot(str(input_data), 'n') # проинформируем в telegramm bot
 	else:
 		output_data['status'] = "error"
 	return JsonResponse(output_data)
