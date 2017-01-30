@@ -69,7 +69,7 @@ def converter(request):
 					data['b_y' + str(j)] = str(input_q[2]).split(',')
 					j+=1
 					out.write('%14.8s' % key)
-				
+
 			out.write('\n')
 			find_x_min = 100
 			sam_dlinny = 0
@@ -82,7 +82,7 @@ def converter(request):
 						find_x_min = float(k)
 			find_shag = abs(float(data['x' + str(0)][0]) - float(data['x' + str(0)][1]))
 			
-			for i in sam_dlinny:
+			for i in range(sam_dlinny):
 				
 				for k in range(j):
 					out.write('%14.8f' % find_x_min)
