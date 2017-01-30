@@ -55,14 +55,14 @@ def converter(request):
 		message['status'] = 'ok'
 		input_data = {}
 		valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
-		data = []
+		data = {}
 		name = ''.join((random.choice(valid_letters) for i in range(5)))
 		with open('/home/atknin/env/xrays/media/'+ name +'.dat', 'w') as out:
 			out.write('%14.8s' % 'keys')
 			j = 0
 			for key in request.POST:
 				input_q = request.POST[key].split('//')
-				data['x' + str(j)] =[str(input_q[0]).split(',')]
+				data['x' + str(j)] =[]
 
 				data['a_y' + str(j)] = [str(input_q[1]).split(',')]
 				data['b_y' + str(j)] = [str(input_q[2]).split(',')]
