@@ -82,7 +82,6 @@ def converter(request):
 						find_x_min = float(k)
 			find_shag = abs(float(data['x' + str(0)][0]) - float(data['x' + str(0)][1]))
 			
-			del input_data['csrfmiddlewaretoken']
 			for i in sam_dlinny:
 				
 				for k in range(j):
