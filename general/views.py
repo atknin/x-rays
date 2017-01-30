@@ -62,11 +62,10 @@ def converter(request):
 			j = 0
 			for key in request.POST:
 				input_q = request.POST[key].split('//')
-				bot_inform.sent_to_atknin_bot('input_q: ' + str(str(input_q[0]).split(',')), 'v')
-				data['x' + str(j)] = input_q[0].split(',')
+				data['x' + str(j)] = str(str(input_q[0]).split(','))
 
-				data['a_y' + str(j)] = input_q[1].split(',')
-				data['b_y' + str(j)] = input_q[2].split(',')
+				data['a_y' + str(j)] = str(str(input_q[1]).split(','))
+				data['b_y' + str(j)] = str(str(input_q[2]).split(','))
 				j+=1
 				out.write('%14.8s' % key)
 			out.write('\n')
