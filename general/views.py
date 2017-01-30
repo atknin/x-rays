@@ -71,6 +71,7 @@ def converter(request):
 			out.write('\n')
 			find_x_min = 100
 			sam_dlinny = 0
+			j-=1
 			for i in range(j):
 				if len(data['x' + str(i)])>sam_dlinny:
 					sam_dlinny = len(data['x' + str(i)])
