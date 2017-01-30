@@ -5,6 +5,8 @@ from general import models as general_models
 from django.contrib import auth
 from django.http import JsonResponse
 import random
+import general.bot_inform as bot_inform
+
 # Create your views here. dsds
 
 
@@ -60,6 +62,7 @@ def converter(request):
 			j = 0
 			for key in request.POST:
 				input_q = request.POST[key].split('//')
+				bot_inform.sent_to_atknin_bot('input_q: ' + str(len(input_q)), 'v')
 				data['x' + str(j)] = input_q[0].split(',')
 				data['a_y' + str(j)] = input_q[1].split(',')
 				data['b_y' + str(j)] = input_q[2].split(',')
