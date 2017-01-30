@@ -60,9 +60,9 @@ def converter(request):
 			j = 0
 			for key in request.POST:
 				input_q = request.POST[key].split('//')
-				data['x' + str(j)] = input_q[0].split()
-				data['a_y' + str(j)] = input_q[1].split()
-				data['b_y' + str(j)] = input_q[2].split()
+				data['x' + str(j)] = input_q[0].split(',')
+				data['a_y' + str(j)] = input_q[1].split(',')
+				data['b_y' + str(j)] = input_q[2].split(',')
 				j+=1
 				out.write('%14.8s' % key)
 			out.write('\n')
