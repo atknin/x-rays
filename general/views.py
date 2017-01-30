@@ -57,7 +57,7 @@ def converter(request):
 		valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
 		data = {}
 		name = ''.join((random.choice(valid_letters) for i in range(5)))
-		with open('/home/atknin/env/xrays/media/'+ name +'.dat', 'w') as out:
+		with open('/home/atknin/env/xrays/media/converter/'+ name +'.dat', 'w') as out:
 			out.write('%14.8s' % 'keys')
 			j = 0
 			for key in request.POST:
