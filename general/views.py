@@ -4,7 +4,7 @@ from django.shortcuts import render
 from general import models as general_models
 from django.contrib import auth
 from django.http import JsonResponse
-
+import random
 # Create your views here. dsds
 
 
