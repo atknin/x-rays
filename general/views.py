@@ -62,8 +62,7 @@ def converter(request):
 			j = 0
 			for key in request.POST:
 				input_q = request.POST[key].split('//')
-				data['x' + str(j)] =[]
-
+				data['x' + str(j)] =[str(input_q[1]).split(',')]
 				data['a_y' + str(j)] = [str(input_q[1]).split(',')]
 				data['b_y' + str(j)] = [str(input_q[2]).split(',')]
 				j+=1
