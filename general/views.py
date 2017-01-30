@@ -62,8 +62,8 @@ def converter(request):
 			j = 0
 			for key in request.POST:
 				input_q = request.POST[key].split('//')
+				bot_inform.sent_to_atknin_bot('input_q: ' + str(input_q[0]), 'v')
 				data['x' + str(j)] = input_q[0].split(',')
-				bot_inform.sent_to_atknin_bot('input_q: ' + str(data['x' + str(j)]), 'v')
 				
 				data['a_y' + str(j)] = input_q[1].split(',')
 				data['b_y' + str(j)] = input_q[2].split(',')
