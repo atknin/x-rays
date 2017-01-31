@@ -57,6 +57,7 @@ def converter(request):
 		valid_letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
 		data = {}
 		name = ''.join((random.choice(valid_letters) for i in range(5)))
+		detector = int(request.POST['detector'])
 		with open('/home/atknin/env/xrays/media/converter/'+ name +'.dat', 'w') as out:
 			out.write('%14.8s' % 'keys')
 			j = 0
@@ -65,8 +66,7 @@ def converter(request):
 				if len(input_q)==3:
 					# bot_inform.sent_to_atknin_bot( str( str(input_q[0]).split(',')), 'v')
 					data['x' + str(j)] = str(input_q[0]).split(',')
-					data['a_y' + str(j)] = str(input_q[1]).split(',')
-					data['b_y' + str(j)] = str(input_q[2]).split(',')
+					data['y' + str(j)] = str(input_q[detector]).split(',')
 					j+=1
 					out.write('%14.8s' % key)
 
@@ -87,7 +87,7 @@ def converter(request):
 				for k in range(j):
 					out.write('%14.8f' % find_x_min)
 					if find_x_min==float(data['x' + str(k)][i]):
-						out.write('%14.8f' % float(data['a_y' + str(k)][i]))
+						out.write('%14.8f' % float(data['y' + str(k)][i]))
 					else:
 						out.write('%14.8f' % 0)
 				out.write('\n')

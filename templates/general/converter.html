@@ -68,7 +68,20 @@
       </div>
     </div>
     <div class="col-md-6" style="margin-top: 50px" >
-      <a href="#" id = 'id_compute_all_files' > <span class="label label-primary image"><sup>*</sup>.txt</span></a>
+      <div class="row">
+        <a href="#" id = 'id_compute_all_files' > <span class="label label-primary image"><sup>*</sup>.txt</span></a>
+      </div>
+      <div class="row">
+        <label class="radio-inline">
+          <input type="radio" name="name_input_detector" id="id_input_detector_1" value="1" checked> детектор 1
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="name_input_detector" id="id_input_detector_2" value="2"> детектор 2
+        </label>
+      </div>
+
+
+      
     </div>
   </div>
   <hr>
@@ -105,7 +118,7 @@
         $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
-
+        scan_data['detector'] = $('input[name=name_input_detector]').filter(':checked').val()
         $.post("/converter/", scan_data ,function(data) {
           console.log(data);
         });
