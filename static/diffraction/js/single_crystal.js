@@ -234,6 +234,7 @@ $("#getX1").click(function() {
     $.post("/polarizability/compute/", compute_dict_X ,function(data) {
       $('#X0').val(data.X0_real + " + "+data.X0_imag+"j");
       $('#Xh').val(data.Xh_real + " + "+data.Xh_imag+"j");
+      compute_dict['bragg'] = data.bragg
       ok($('#X0'));
       ok($('#Xh'));
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
