@@ -44,24 +44,10 @@ var slit_a = new fabric.Rect({
     fill: '#949494',
 });
 
-var sample1 = new fabric.Image(document.getElementById('sample'), {
+var sample2 = new fabric.Image(document.getElementById('sample'), {
     left: 186,
     top: 170,
     // angle: 30,
-    opacity: 0.85,
-  	selectable: false,
-    shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
-    class: 'sample_1'
-  });
-
-  sample1.scale(0.5);
-  sample1.hasControls = sample1.hasBorders = false;
-  canvas.add(sample1);
-
- var sample2 = new fabric.Image(document.getElementById('sample'), {
-    left: 380,
-    top: 120,
-    angle: 180,
     opacity: 0.85,
   	selectable: false,
     shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
@@ -71,6 +57,20 @@ var sample1 = new fabric.Image(document.getElementById('sample'), {
   sample2.scale(0.5);
   sample2.hasControls = sample2.hasBorders = false;
   canvas.add(sample2);
+
+ var sample1 = new fabric.Image(document.getElementById('sample'), {
+    left: 380,
+    top: 120,
+    angle: 180,
+    opacity: 0.85,
+  	selectable: false,
+    shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+    class: 'sample_1'
+  });
+
+  sample1.scale(0.5);
+  sample1.hasControls = sample1.hasBorders = false;
+  canvas.add(sample1);
 
 var slit_b = new fabric.Rect({
     width: 10,
