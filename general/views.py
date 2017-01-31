@@ -87,11 +87,12 @@ def converter(request):
 				
 				for k in range(j):
 					out.write('%14.8f' % find_x_min)
-					if not data['x' + str(k)][i]:
-						out.write('%14.8f' % 0)
-					elif find_x_min==float(data['x' + str(k)][i]):
-						out.write('%14.8f' % float(data['y' + str(k)][i]))
-					else:
+					try: 
+						if find_x_min==float(data['x' + str(k)][i]):
+							out.write('%14.8f' % float(data['y' + str(k)][i]))
+						else:
+							out.write('%14.8f' % 0)
+					except: 
 						out.write('%14.8f' % 0)
 				out.write('\n')
 				find_x_min+=find_shag
