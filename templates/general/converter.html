@@ -119,7 +119,9 @@
         }});
         scan_data['detector'] = $('input[name=name_input_detector]').filter(':checked').val()
         $.post("/converter/", scan_data ,function(data) {
-          console.log(data);
+            url = data.path
+            var win = window.open(url, '_blank');
+            win.focus();
         });     
       });
     });

@@ -96,6 +96,7 @@ def converter(request):
 						out.write('%14.8f' % 0)
 				out.write('\n')
 				find_x_min+=find_shag
+			message['path'] = '/media/converter/'+ name +'.dat'
 
 		return JsonResponse(message)
 	else:
