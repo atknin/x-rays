@@ -60,7 +60,7 @@ def converter(request):
 		detector = int(request.POST['detector'])
 		# bot_inform.sent_to_atknin_bot( str( detector ), 'v')
 		with open('/home/atknin/env/xrays/media/converter/'+ name +'.dat', 'w') as out:
-			out.write('%14.8s' % 'keys')
+			out.write('%14s' % 'keys')
 			j = 0
 			for key in request.POST:
 				input_q = request.POST[key].split('//')
@@ -69,7 +69,7 @@ def converter(request):
 					data['x' + str(j)] = str(input_q[0]).split(',')
 					data['y' + str(j)] = str(input_q[detector]).split(',')
 					j+=1
-					out.write('%14.8s' % 'sc_'+str(key.split('_')[1]))
+					out.write('%14s' % 'sc_'+str(key.split('_')[1]))
 
 			out.write('\n')
 			find_x_min = 100
@@ -89,9 +89,9 @@ def converter(request):
 						if find_x_min==float(data['x' + str(k)][i]):
 							out.write('%14.4f' % float(data['y' + str(k)][i]))
 						else:
-							out.write('%14.8f' % 0)
+							out.write('%14.4f' % 0)
 					except: 
-						out.write('%14.8f' % 0)
+						out.write('%14.4f' % 0)
 				out.write('\n')
 				find_x_min+=find_shag
 			message['path'] = '/media/converter/'+ name +'.dat'
