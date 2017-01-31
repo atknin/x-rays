@@ -69,7 +69,7 @@ def converter(request):
 					data['x' + str(j)] = str(input_q[0]).split(',')
 					data['y' + str(j)] = str(input_q[detector]).split(',')
 					j+=1
-					out.write('%14.8s' % str(key))
+					out.write('%14.8s' % 'sc_'+str(key.split('_')[1]))
 
 			out.write('\n')
 			find_x_min = 100
