@@ -228,7 +228,7 @@ $("#getX2, #getX1").click(function() {
     flag = true;   
     $("#check_crystal"+cryst_num).addClass("has-error");
   };
-  if ($("#check_symmetric_case").is(":checked")){
+  if ($("#check_symmetric_case_"+cryst_num).is(":checked")){
       $('#h_index'+cryst_num+'_surface').val($('#h_index'+cryst_num).val());
       $('#k_index'+cryst_num+'_surface').val($('#k_index'+cryst_num).val());
       $('#l_index'+cryst_num+'_surface').val($('#l_index'+cryst_num).val());
