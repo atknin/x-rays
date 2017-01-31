@@ -126,7 +126,7 @@ function ok(e){
   	// console.log($(e).attr('id'),check_array[$(e).attr('id')]);
   	$(e).removeClass('error');
 };
-$("#check_symmetric_case_1, #check_symmetric_case_1").change(function() {
+$("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
   if(this.checked) {
   	console.log('ok')
   	var nnn = $(this).attr('name')
