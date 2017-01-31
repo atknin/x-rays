@@ -84,9 +84,8 @@ def converter(request):
 			find_shag = abs(float(data['x' + str(0)][0]) - float(data['x' + str(0)][1]))
 			
 			for i in range(sam_dlinny):
-				
+				out.write('%14.8f' % find_x_min)
 				for k in range(j):
-					out.write('%14.8f' % find_x_min)
 					try: 
 						if find_x_min==float(data['x' + str(k)][i]):
 							out.write('%14.8f' % float(data['y' + str(k)][i]))
