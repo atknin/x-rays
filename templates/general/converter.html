@@ -68,20 +68,19 @@
       </div>
     </div>
     <div class="col-md-6" style="margin-top: 50px" >
-      <div class="row">
-        <a href="#" id = 'id_compute_all_files' > <span class="label label-primary image"><sup>*</sup>.txt</span></a>
+      <div id = 'id_div_compute_all_files'>
+        <div class="row">
+          <a href="#" id = 'id_compute_all_files' > <span class="label label-primary image">GET<sup>*</sup>.txt</span></a>
+        </div>
+        <div class="row">
+          <label class="radio-inline">
+            <input type="radio" name="name_input_detector" id="id_input_detector_1" value="1" checked> детектор 1
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="name_input_detector" id="id_input_detector_2" value="2"> детектор 2
+          </label>
+        </div>
       </div>
-      <div class="row">
-        <label class="radio-inline">
-          <input type="radio" name="name_input_detector" id="id_input_detector_1" value="1" checked> детектор 1
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="name_input_detector" id="id_input_detector_2" value="2"> детектор 2
-        </label>
-      </div>
-
-
-      
     </div>
   </div>
   <hr>
@@ -100,10 +99,10 @@
     var num = 0;
     var name_aa = [];
     var scan_data = {};
-    $('#id_compute_all_files').hide();
+    $('#id_div_compute_all_files').hide();
     $(document).ready(function(){
       $('#geomInputFile').on('change', function(e){
-          $('#id_compute_all_files').show();
+          $('#id_div_compute_all_files').show();
           $( "#text_for_x_y" ).empty();
           for (var i = 0; i < this.files.length; i++) {
               name_aa[i] = (this.files[i].name);
@@ -121,29 +120,7 @@
         scan_data['detector'] = $('input[name=name_input_detector]').filter(':checked').val()
         $.post("/converter/", scan_data ,function(data) {
           console.log(data);
-        });
-        // $('#grid_array').append('<table class = "table table-striped header-fixed" style="margin-left: 30px; "id="Demo"></table>');
-        // // $('#Demo').append('<thead id = "table_head"></thead>');
-        // $('#Demo').append('<tbody id = "table_body"></tbody>');
-
-
-        // $('#table_body').append('<tr id = "x_name_table"></tr>');
-        // $('#x_name_table').append('<th></th>');
-        // // class="filterable-cell"
-        // for (var i = 0; i < num; i++) {
-        //   $('#x_name_table').append('<th> a: y('+(i+1)+')</th>');
-        //   $('#x_name_table').append('<th> b: y('+(i+1)+')</th>');
-        // };
-
-
-        // for (var i = 0; i <  scan_data[0]['x'].length ; i++) {
-        //    $('#table_body').append('<tr id = "stroka_'+i+'"></tr>');
-        //    $('#stroka_'+i).append('<td class="headerVer">'+scan_data[0]['x'][i]+'</td>')
-        //    for (var j = 0; j < num; j++) {
-        //     $('#stroka_'+i).append('<td class="filterable-cell">'+scan_data[j]['y1'][i]+'</td>');
-        //     $('#stroka_'+i).append('<td class="filterable-cell">'+scan_data[j]['y2'][i]+'</td>');
-        //  };
-        // };      
+        });     
       });
     });
 
