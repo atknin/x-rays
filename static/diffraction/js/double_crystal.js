@@ -217,7 +217,7 @@ $("#compute").click(function(){
 
 });
 
-$("#getX1,#getX2").click(function() {
+$("#getX2, #getX1").click(function() {
 	console.log('compute');
   	var compute_dict_X = {};
   	var cryst_num = $(this).attr( "name" );
