@@ -137,7 +137,7 @@ $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
     $('#h_index'+nnn+'_surface,#k_index'+nnn+'_surface,#l_index'+nnn+'_surface').prop( "disabled", false );
   };
 });
-$("#check_symmetric_case").change();
+$("#check_symmetric_case_1, #check_symmetric_case_2").change();
 
 $('#input_l_slit1, #input_l_slit2').keyup(function() {
   if( parseFloat($(this).val()) < 2 && parseFloat($(this).val()) > 0){ok(this);}
