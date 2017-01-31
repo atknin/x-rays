@@ -7,7 +7,7 @@ var canvas = new fabric.Canvas('fabric');
 
 var source = new fabric.Image(document.getElementById('source'), {
   left: 450,
-  top: 155,
+  top: 125,
   angle: 15,
   opacity: 0.85,
   shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
