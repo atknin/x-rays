@@ -85,7 +85,7 @@ def converter(request):
 			
 			for i in range(sam_dlinny):
 				
-				for k in range(j):
+				for k in range(j-2):
 					out.write('%14.8f' % find_x_min)
 					if len(data['x' + str(k)])>=i:
 						out.write('%14.8f' % 0)
