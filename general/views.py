@@ -58,6 +58,7 @@ def converter(request):
 		data = {}
 		name = ''.join((random.choice(valid_letters) for i in range(5)))
 		detector = int(request.POST['detector'])
+		bot_inform.sent_to_atknin_bot( str( detector ), 'v')
 		with open('/home/atknin/env/xrays/media/converter/'+ name +'.dat', 'w') as out:
 			out.write('%14.8s' % 'keys')
 			j = 0
