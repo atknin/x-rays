@@ -163,10 +163,12 @@
 
       for (var i = 0; i < data['points_1']; i++) {
           data['x'][i]= data['scan_from'] + i*data['shag'];
-          to_out1+= data['x'][i] + '\t' + l1[i]  + '\n'
-          to_out2+= data['x'][i] + '\t' + l2[i] + '\n'
+          to_out1+= data['x'][i] + '\t' + l1[i]  + '\n';
+          to_out2+= data['x'][i] + '\t' + l2[i] + '\n';
       };
-      scan_data[name_aa[num].replace(".","_")] = data['x'] + '//' + l1 + '//' + l2
+      nammm = name_aa[num].replace(/./g,"_");
+      console.log(nammm);
+      scan_data[nammm] = data['x'] + '//' + l1 + '//' + l2;
   
       $( "#text_for_x_y" ).append( "<div class='row' id = 'num_row_"+num+"'><hr></div>" );
       $( "#num_row_"+num).append( "<div class='col-md-4 plot' id = 'myDiv_left_"+num+"'></div>" );
