@@ -140,7 +140,7 @@
         <div style="margin-bottom: 20px"><span class="label label-primary">Параметры кристалла №1</span></div>
         <div class="row">
           <label>
-            <input type="checkbox" value="" id = "check_symmetric_case" checked>
+            <input type="checkbox" value="" id = "check_symmetric_case_1" checked>
             симметричное отражение
           </label>
         </div>
@@ -196,11 +196,11 @@
               <div class="row" style="height: 35px; margin-top: 15px;">
                 <div class="col-md-12">
                   <div class="input-group" id = "inputgroup_check_x0_1">
-                    <input type="text" class="form-control" name = 'Поляризуемость X0' id ="X0"  placeholder="">
+                    <input type="text" class="form-control" name = 'Поляризуемость X0' id ="X0_1"  placeholder="">
                     <span class="input-group-addon">&#967;<sub>0</sub>*E<sup>-7</sup></span>
                   </div> 
                   <div class="input-group" id = "inputgroup_check_xh_1" style="margin-top: 5px;">
-                    <input type="text" id='Xh' name = 'Поляризуемость Xh' class="form-control" placeholder="" >
+                    <input type="text" id='Xh_1' name = 'Поляризуемость Xh' class="form-control" placeholder="" >
                     <span class="input-group-addon">&#967;<sub>h</sub>*E<sup>-7</sup></span>
                   </div>
 
@@ -215,7 +215,86 @@
               </div>
             </div>
        </div>
+<!-- Кристалл 2 -->
+      <div class="row settings" id="div_settings_sample_2" name = "2" > 
+        <div style="margin-bottom: 20px"><span class="label label-primary">Параметры кристалла №1</span></div>
+        <div class="row">
+          <label>
+            <input type="checkbox" value="" id = "check_symmetric_case_2" checked>
+            симметричное отражение
+          </label>
+        </div>
+            <div class="col-md-4">
 
+              <div class="row" style="height: 35px">
+                <div class="input-group" >
+                  <span class="input-group-addon" ><small>Surface indices</small></span>
+                </div>
+              </div>
+
+              <div class="row" style="height: 35px" style="margin-top: 30px;">
+                <div class="input-group">
+                  <span class="input-group-addon" ><small>Miller Indices</small></span>
+                </div>
+              </div>
+              <div class="row" style="margin-top: 12px" id = "check_crystal2">
+                <select class="form-control" id ='select_crystal2' size="6" >
+                {% for crystal in crystals %}
+                  <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
+                {% endfor %}
+                </select>  
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="row" >
+                <div class="col-md-4" id = "inputgroup_check_h_index2_surface">
+                  <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index2_surface" >
+                </div>
+                <div class="col-md-4" id = "inputgroup_check_k_index2_surface">
+                  <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index2_surface" >
+                </div>
+
+                <div class="col-md-4" id = "inputgroup_check_l_index2_surface">
+                  <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control" id="l_index2_surface" >
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 10px;">
+                <div class="col-md-4" id = "inputgroup_check_h_index2">
+                  <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index2" >
+                </div>
+                <div class="col-md-4" id = "inputgroup_check_k_index2">
+                  <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index2" >
+                </div>
+
+                <div class="col-md-4" id = "inputgroup_check_l_index2">
+                  <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control" id="l_index2" >
+                </div>
+              </div>
+
+              <div class="row" style="height: 35px; margin-top: 15px;">
+                <div class="col-md-12">
+                  <div class="input-group" id = "inputgroup_check_x0_2">
+                    <input type="text" class="form-control" name = 'Поляризуемость X0' id ="X0_2"  placeholder="">
+                    <span class="input-group-addon">&#967;<sub>0</sub>*E<sup>-7</sup></span>
+                  </div> 
+                  <div class="input-group" id = "inputgroup_check_xh_2" style="margin-top: 5px;">
+                    <input type="text" id='Xh_2' name = 'Поляризуемость Xh' class="form-control" placeholder="" >
+                    <span class="input-group-addon">&#967;<sub>h</sub>*E<sup>-7</sup></span>
+                  </div>
+
+                  <div class="input-group" style="margin-top: 5px;">
+                    <div class="input-group-btn">
+                      <button type="button" name = "2" id="getX2" class="btn btn-default" style="width: 100%;">get &#967;...</button>
+                    </div>
+                    <span class="input-group-addon " id="loader_addon1" style="background-color: transparent;"></span>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+       </div>
  <!-- настроить детектор -->
               <div class="row settings" id="div_settings_detector" >
                 <div style="margin-bottom: 20px"><span class="label label-primary">Параметры детектора</span></div>
@@ -241,10 +320,10 @@
               схема: 
               <hr>
               <label class="radio-inline"> 
-                  <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta"> Поворотом детектора, образец на месте
+                  <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta"> Поворотом детектора, образец на месте (&theta; - 2&theta;)
                 </label>
                 <label class="radio-inline">
-                  <input type="radio" name="schem_radio" id="scan_omega" value="omega"> Детектор на месте, поворотом образца
+                  <input type="radio" name="schem_radio" id="scan_omega" value="omega"> Детектор на месте, поворотом образца (&omega;)
                 </label>
             </div>
             <div class="input-group" style="margin: 40px;" id = ''>
