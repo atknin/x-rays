@@ -58,7 +58,7 @@ def converter(request):
 		data = {}
 		name = ''.join((random.choice(valid_letters) for i in range(5)))
 		detector = int(request.POST['detector'])
-		bot_inform.sent_to_atknin_bot( str( detector ), 'v')
+		# bot_inform.sent_to_atknin_bot( str( detector ), 'v')
 		with open('/home/atknin/env/xrays/media/converter/'+ name +'.dat', 'w') as out:
 			out.write('%14.8s' % 'keys')
 			j = 0
@@ -87,6 +87,8 @@ def converter(request):
 				
 				for k in range(j):
 					out.write('%14.8f' % find_x_min)
+					if not data['x' + str(k)][i]:
+						data['x' + str(k)][i] = 0
 					if find_x_min==float(data['x' + str(k)][i]):
 						out.write('%14.8f' % float(data['y' + str(k)][i]))
 					else:
