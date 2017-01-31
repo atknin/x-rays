@@ -113,7 +113,7 @@ canvas.on('mouse:down', function(options) {
 		$('#div_settings_'+options.target.class).show();
 	};
 });
-var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'id_source':true,'X0_1':false,'Xh_1':false'X0_2':false,'Xh_2':false}
+var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'id_source':true,'X0_1':false,'Xh_1':false,'X0_2':false,'Xh_2':false}
 
 
 function error(e){
