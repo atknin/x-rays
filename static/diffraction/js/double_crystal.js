@@ -172,6 +172,8 @@ var compute_dict = {};
 
 $('#id_alert_message').hide();
 $("#compute").click(function(){
+	$('#getX1').click();
+	$('#getX2').click();
 	$("#compute").prop( "disabled", true );
 	var flag = true;
 	var mes = '';
@@ -197,6 +199,7 @@ $("#compute").click(function(){
 		$.ajaxSetup({data: {
 			csrfmiddlewaretoken: $('#abracadabraa').val()
 		}});
+
 		compute_dict['schem'] = 'double_crystal';
 		compute_dict['id_email'] = $('#id_email').val();
 		compute_dict['X0_1'] = $('#X0_1').val();
