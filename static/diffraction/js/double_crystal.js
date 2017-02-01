@@ -258,6 +258,7 @@ $("#getX2, #getX1").click(function() {
       $('#Xh_'+cryst_num).val(data.Xh_real + " + "+data.Xh_imag+"j");
       ok($('#X0_'+cryst_num));
       ok($('#Xh_'+cryst_num));
+      $('id_bragg_'+cryst_num).val( data.bragg);
       compute_dict['bragg_'+cryst_num] = data.bragg
       
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
