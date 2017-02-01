@@ -158,7 +158,7 @@
                 </div>
               </div>
               <div class="row" style="margin-top: 12px" id = "check_crystal1">
-                <select class="form-control" id ='select_crystal1' size="6" >
+                <select class="form-control" id ='select_crystal1' onchange="$('#getX1').click()" size="6" >
                 {% for crystal in crystals %}
                   <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
                 {% endfor %}
@@ -238,7 +238,7 @@
                 </div>
               </div>
               <div class="row" style="margin-top: 12px" id = "check_crystal2">
-                <select class="form-control" id ='select_crystal2' size="6" >
+                <select class="form-control" onchange="$('#getX2').click()" id ='select_crystal2' size="6" >
                 {% for crystal in crystals %}
                   <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
                 {% endfor %}
