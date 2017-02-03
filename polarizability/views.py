@@ -331,7 +331,8 @@ def compute(request):
 		shag = (delta/point_for_curve)*math.pi/180/3600
 		dTeta = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
-
+		if b<0:
+			b = abs(b)
 		while dTeta<dTeta_end:
 			dTeta+=shag
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
