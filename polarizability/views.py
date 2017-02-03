@@ -208,7 +208,8 @@ def compute(request):
 		s10_surface = dprmtr_surface * dprmtr * s9_surface
 		if s10_surface > 1:
 			s10_surface = 1
-		fi = math.degrees( math.acos( s10_surface ) ) #проверка
+		# fi = math.degrees( math.acos( s10_surface ) ) #проверка
+		fi = s10_surface  #проверка
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
