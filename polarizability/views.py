@@ -213,9 +213,6 @@ def compute(request):
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
 		gamma_h = math.sin(math.radians(90-fi) - tetaprmtr)
-		if gamma_0<0:
-			gamma_0 = abs(gamma_0)
-			gamma_h = abs(gamma_h)
 		b=gamma_0/abs(gamma_h) # коэффициент ассиметрии брэговского отражения
 		
 		# ---------фактор Дебая - Валлера, по идее должен вычисляться для разных атомов по разному
