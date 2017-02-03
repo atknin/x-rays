@@ -347,8 +347,8 @@ def compute(request):
 			for_downloading+= str(dTeta*3600*180/math.pi)+'   '+str(P) + '\n'
 			if max_pow_R<(P):
 				max_pow_R = (P)
-			if min_rasst_ot_centra > abs(sdvig*math.pi/180/3600 - dTeta):
-				min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
+			if min_rasst_ot_centra > sdvig*math.pi/180/3600 - dTeta:
+				min_rasst_ot_centra = sdvig*math.pi/180/3600 - dTeta
 				min_rasst_ot_centra_which_point = len(epslist)
 
 		From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
