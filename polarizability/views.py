@@ -213,9 +213,10 @@ def compute(request):
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
 		gamma_h = math.sin(math.radians(90-fi) - tetaprmtr)
+		if gamma_0<0:
+			gamma_0 = abs(gamma_0)
 		b=gamma_0/abs(gamma_h) # коэффициент ассиметрии брэговского отражения
-		if b<0:
-			b = abs(b)
+		
 		# ---------фактор Дебая - Валлера, по идее должен вычисляться для разных атомов по разному
 		B=8*math.pow((math.pi*0.08*math.pow(10,-10)), 2)
 		DedayFactor = math.exp(-B*math.pow((math.sin(tetaprmtr)/(wavelength*math.pow(10,-10))),2))
@@ -332,7 +333,7 @@ def compute(request):
 		shag = (delta/point_for_curve)*math.pi/180/3600
 		dTeta = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
-		
+
 		while dTeta<dTeta_end:
 			dTeta+=shag
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
