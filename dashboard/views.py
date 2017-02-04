@@ -19,6 +19,8 @@ def books(request):
 		info = ' |git pull| '
 		# info += str(os.system('git --work-tree='+ path+' --git-dir='+path+'.git pull origin master'))
 		info += str(os.system('git pull'))
+		info += str(os.system('atknin'))
+		info += str(os.system('vfntvfnbrf43'))
 		info += ' |gitbook build| '
 		info +=  str(os.system('gitbook build'))
 
