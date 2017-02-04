@@ -11,11 +11,13 @@ def books(request):
 	message = {}
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
-		path = book.path
+		path = '/home/atknin/env/xrays'+book.path
+		os.chdir(path)
 		info = ' |git pull| '
-		info += str(os.system('cd /home/atknin/env/xrays'+ path +' && git pull'))
+		# info += str(os.system('git --work-tree='+ path+' --git-dir='+path+'.git pull origin master'))
+		info += str(os.system('git pull'))
 		info += ' |gitbook build| '
-		info +=  str(os.system('cd /home/atknin/env/xrays'+ path +' && gitbook build'))
+		info +=  str(os.system('gitbook build'))
 
 		message['info']= info
 		return JsonResponse(message)
