@@ -6,7 +6,11 @@ from dashboard import models as dashboard_models
 def dashboard(request):
 	args = {}
 	args['books'] = dashboard_models.books.objects.all()
-
-	return render(
-	 	request, 'dashboard/dashboard.html', args
-	 	)
+	if request.user.is_authenticated():
+		return render(
+		 	request, 'dashboard/dashboard.html', args
+		 	)
+	else
+		return render(
+		 	request, 'general/index.html',
+		 	)	
