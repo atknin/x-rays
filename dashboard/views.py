@@ -10,7 +10,7 @@ def dashboard(request):
 		return render(
 		 	request, 'dashboard/dashboard.html', args
 		 	)
-	else
+	else:
 		return render(
 		 	request, 'general/index.html',
 		 	)	
