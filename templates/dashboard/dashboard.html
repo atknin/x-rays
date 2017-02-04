@@ -117,11 +117,13 @@
             <div class="chart-title">
               Книги
             </div>
+            {% for book in books%}
             <div class="chart-stage">
               <div id="chart-05">
-                ьт
+                {{book.name}}
               </div>
               <hr>
+              {% endfor %}
               <div id="chart-05">
                 ьт
               </div>
