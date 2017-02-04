@@ -12,7 +12,10 @@ def books(request):
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays'+book.path
+		
+		bot_inform.sent_to_atknin_bot('path1: ' + str(os.getcwd()), 'v')
 		os.chdir(path)
+		bot_inform.sent_to_atknin_bot('path2: ' + str(os.getcwd()), 'v')
 		info = ' |git pull| '
 		# info += str(os.system('git --work-tree='+ path+' --git-dir='+path+'.git pull origin master'))
 		info += str(os.system('git pull'))
