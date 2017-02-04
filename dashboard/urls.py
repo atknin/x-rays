@@ -5,6 +5,5 @@ from dashboard import views
 
 urlpatterns = [
 	url(r'^$', views.dashboard),
-    # url(r'^compute/', views.compute),
- 
+    url(r'^books/', views.books),
 ]

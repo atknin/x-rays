@@ -5,7 +5,8 @@ from django.db import models
 # Create your models here.
 class books(models.Model):
 	name = models.CharField(max_length=20)
-	path = models.CharField(max_length=40)
+	path = models.CharField(max_length=80)
+	url = models.CharField(max_length=80)
 	
 	class Meta:
 		verbose_name = u'книга'

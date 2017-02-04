@@ -120,19 +120,15 @@
             {% for book in books%}
             <div class="chart-stage">
               <div id="chart-05">
-                <a target="_blank" href="{{book.path}}">{{book.name}}</a> 
-                <span class="label label-primary">обновить</span>
+                <a target="_blank" href="{{book.path}}_book/">{{book.name}}</a> 
+                <a onclick="pull_book({{book.pk}})">
+                  <span class="label label-primary">обновить</span>
+                </a>
                 <span class="label label-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></span>
                 <span class="label label-primary"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></span>
-                
-                
-                
               </div>
               <hr>
               {% endfor %}
-              <div id="chart-05">
-                ьт
-              </div>
             </div>
 
             <!-- <div class="chart-notes">
@@ -158,6 +154,11 @@
           </div>
         </div>
       </div>
+      <script type="text/javascript">
+        function pull_book(id) {
+          console.log(id);
+        }
+      </script>
   </body>
 </html>
 
