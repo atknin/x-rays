@@ -4,6 +4,7 @@ from django.shortcuts import render
 from dashboard import models as dashboard_models
 import os
 import general.bot_inform as bot_inform
+from django.http import JsonResponse
 
 # Create your views here.
 def books(request):
@@ -11,12 +12,11 @@ def books(request):
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = book.path
-		info = 'git pull'
+		info = ' |git pull| '
 		info += str(os.system('cd /home/atknin/env/xrays'+ path +' && git pull'))
 		info += ' |gitbook build| '
 		info +=  str(os.system('cd /home/atknin/env/xrays'+ path +' && gitbook build'))
 
-		bot_inform.sent_to_atknin_bot('info: ' + str(info), 'v')
 		message['info']= info
 		return JsonResponse(message)
 
