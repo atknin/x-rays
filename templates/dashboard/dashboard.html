@@ -13,11 +13,11 @@
     <link rel="icon" href="{% static "icon/icon.png" %}">
 
     <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "bootstrap/css/dashboard.css" %}" rel="stylesheet">
 
-    <link href="{% static "bootstrap/css/jumbotron-narrow.css" %}" rel="stylesheet">
-    <link href="{% static "bootstrap/css/own1.css" %}" rel="stylesheet">
     <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "dashboard/css/keen-dashboards.css" %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static "dashboard/css/connected-devices.css" %}" />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
     <title>{{user.username}}</title>
 
@@ -28,187 +28,143 @@
     </style>
 
   </head>
-
-  <body>
-     <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Разработка</a></li>
-            <li><a href="#">Обновление</a></li>
-            <li><a href="#">Инструменты</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Статьи</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-          </ul>
-          <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="/">На главную</a></li>
-          </ul>
+  <body class="application">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="navbar-brand" href="./">Connected Devices</a>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
-
-          <div class="row placeholders">
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-            <div class="col-xs-6 col-sm-3 placeholder">
-              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-              <h4>Label</h4>
-              <span class="text-muted">Something else</span>
-            </div>
-          </div>
-
-          <h2 class="sub-header">Section title</h2>
-          <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
-                </tr>
-                <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
-                </tr>
-                <tr>
-                  <td>1,003</td>
-                  <td>libero</td>
-                  <td>Sed</td>
-                  <td>cursus</td>
-                  <td>ante</td>
-                </tr>
-                <tr>
-                  <td>1,004</td>
-                  <td>dapibus</td>
-                  <td>diam</td>
-                  <td>Sed</td>
-                  <td>nisi</td>
-                </tr>
-                <tr>
-                  <td>1,005</td>
-                  <td>Nulla</td>
-                  <td>quis</td>
-                  <td>sem</td>
-                  <td>at</td>
-                </tr>
-                <tr>
-                  <td>1,006</td>
-                  <td>nibh</td>
-                  <td>elementum</td>
-                  <td>imperdiet</td>
-                  <td>Duis</td>
-                </tr>
-                <tr>
-                  <td>1,007</td>
-                  <td>sagittis</td>
-                  <td>ipsum</td>
-                  <td>Praesent</td>
-                  <td>mauris</td>
-                </tr>
-                <tr>
-                  <td>1,008</td>
-                  <td>Fusce</td>
-                  <td>nec</td>
-                  <td>tellus</td>
-                  <td>sed</td>
-                </tr>
-                <tr>
-                  <td>1,009</td>
-                  <td>augue</td>
-                  <td>semper</td>
-                  <td>porta</td>
-                  <td>Mauris</td>
-                </tr>
-                <tr>
-                  <td>1,010</td>
-                  <td>massa</td>
-                  <td>Vestibulum</td>
-                  <td>lacinia</td>
-                  <td>arcu</td>
-                </tr>
-                <tr>
-                  <td>1,011</td>
-                  <td>eget</td>
-                  <td>nulla</td>
-                  <td>Class</td>
-                  <td>aptent</td>
-                </tr>
-                <tr>
-                  <td>1,012</td>
-                  <td>taciti</td>
-                  <td>sociosqu</td>
-                  <td>ad</td>
-                  <td>litora</td>
-                </tr>
-                <tr>
-                  <td>1,013</td>
-                  <td>torquent</td>
-                  <td>per</td>
-                  <td>conubia</td>
-                  <td>nostra</td>
-                </tr>
-                <tr>
-                  <td>1,014</td>
-                  <td>per</td>
-                  <td>inceptos</td>
-                  <td>himenaeos</td>
-                  <td>Curabitur</td>
-                </tr>
-                <tr>
-                  <td>1,015</td>
-                  <td>sodales</td>
-                  <td>ligula</td>
-                  <td>in</td>
-                  <td>libero</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="https://keen.io">Home</a></li>
+            <li><a href="https://keen.io/team">Team</a></li>
+            <li><a href="https://github.com/keenlabs/dashboards/tree/gh-pages/examples/connected-devices">Source</a></li>
+            <li><a href="https://groups.google.com/forum/#!forum/keen-io-devs">Community</a></li><li><a href="http://stackoverflow.com/questions/tagged/keen-io?sort=newest&pageSize=15">Technical Support</a></li>
+          </ul>
         </div>
       </div>
     </div>
+
+
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-sm-6">
+
+          <div class="chart-wrapper">
+            <div class="chart-title">
+              Traffic Stats
+            </div>
+            <div class="chart-stage">
+              <div class="row">
+                <div class="col-xs-3">
+                  <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs">
+                      <li class="active"><a href="#visitors" data-toggle="tab">Visitors</a></li>
+                      <li><a href="#browser" data-toggle="tab">Browser</a></li>
+                      <li><a href="#geography" data-toggle="tab">Geography</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-xs-9">
+                  <div class="tab-content">
+                   <div class="tab-pane active" id="visitors"></div>
+                   <div class="tab-pane" id="browser"></div>
+                   <div class="tab-pane" id="geography"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-6">
+          <div class="chart-wrapper">
+            <div class="chart-title">
+              Stats
+            </div>
+            <div class="chart-stage">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="chart-title knob-title">
+                    New Activations Today
+                  </div>
+                  <div class="chart-stage">
+                    <input type="text" class="users" value="0"/>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="chart-title knob-title">
+                    Device Crashes Today
+                  </div>
+                  <div class="chart-stage">
+                    <input type="text" class="errors" value="0"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="chart-wrapper">
+            <div class="chart-title">
+              Customer Engagement
+            </div>
+            <div class="chart-stage">
+              <div id="chart-05"></div>
+            </div>
+            <div class="chart-notes">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6" id="mapwrap">
+          <div class="chart-wrapper">
+            <div class="chart-title">
+              <div class="btn-group-xs">Active Users
+                <button type="button" id="7days" class="btn btn-default">7 Days</button>
+                <button type="button" id="14days" class="btn btn-default">14 Days</button>
+                <button type="button" id="28days" class="btn btn-default">28 Days</button>
+              </div>
+            </div>
+            <div class="chart-stage">
+              <div id="map"></div>
+            </div>
+            <div class="chart-notes">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- Mapbox.js Assets -->
+<!--     <script type="text/javascript" src='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.0.0/mapbox.css' rel='stylesheet' />
+    <script type="text/javascript" src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-heat/v0.1.0/leaflet-heat.js'></script>
+
+    <script type="text/javascript" src="../../assets/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../assets/lib/jquery-knob/dist/jquery.knob.min.js"></script>
+
+    <script type="text/javascript" src="../../assets/lib/keen-js/dist/keen.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/meta.js"></script>
+
+    <script type="text/javascript" src="connected-devices.js"></script>
+ -->
   </body>
 </html>
 
