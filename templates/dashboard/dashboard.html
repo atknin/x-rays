@@ -120,7 +120,7 @@
             {% for book in books%}
             <div class="chart-stage">
               <div id="chart-05">
-                {{book.name}}
+                <a target="_blank" href="{{book.path}}">{{book.name}}</a> 
               </div>
               <hr>
               {% endfor %}
