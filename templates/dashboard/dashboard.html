@@ -161,6 +161,7 @@
           }});
           compute_dict = {};
           compute_dict['id'] = id;
+          compute_dict['pull_book'] = 'refresh';
           $.post("books/", compute_dict ,function(data) {
             console.log(data.info);
           });
