@@ -156,7 +156,14 @@
       </div>
       <script type="text/javascript">
         function pull_book(id) {
-          console.log(id);
+          $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+          }});
+          compute_dict = {};
+          compute_dict['id'] = id;
+          $.post("books/", compute_dict ,function(data) {
+            console.log(data.info);
+          });
         }
       </script>
   </body>

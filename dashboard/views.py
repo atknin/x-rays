@@ -13,7 +13,7 @@ def books(request):
 		path = book.path
 		info = 'git pull'
 		info += os.system('cd /home/atknin/env/xrays'+path +' && git pull')
-		info+= ' |gitbook build| '
+		info += ' |gitbook build| '
 		info += os.system('cd /home/atknin/env/xrays'+path +' && gitbook build')
 
 		bot_inform.sent_to_atknin_bot('info: ' + str(info), 'v')
