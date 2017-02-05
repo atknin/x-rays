@@ -16,8 +16,9 @@ def books(request):
 		path = '/home/atknin/env/xrays'+book.path
 		# repo = git.Repo( path)
 		# os.chdir(path)
-		proc = subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
-		output = proc.communicate()[0]
+		output = subprocess.check_output(["git", "pull"], cwd=path)
+		# proc = subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
+		# output = proc.communicate()[0]
 		# proc = subprocess.check_output(['gitbook', 'build'], cwd=path)
 		# info = ' |git pull| '
 
