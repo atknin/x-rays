@@ -16,13 +16,14 @@ def books(request):
 		path = '/home/atknin/env/xrays'+book.path
 		# repo = git.Repo( path)
 		info = ' |git pull| '
-		info += str(subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE, cwd=path))
-		communicate('atknin')
-		communicate('vfntvfnbrf43')
+		a = subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE, cwd=path)
+		a.communicate('atknin')
+		a.communicate('vfntvfnbrf43')
+		subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
 		# info += str(repo.git.pull())
 		# os.chdir(path)
 		# info += ' |gitbook build| '
-		# info += subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
+		# info += 
 
 		message['info']= info
 		return JsonResponse(message)
