@@ -13,9 +13,9 @@ def books(request):
 	message = {}
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
-		path = '/home/atknin/env/xrays'+book.path
-		
-		git_cmd = 'gitbook build'
+		path = '/home/atknin/env/xrays' + book.path
+
+		git_cmd = 'git status'
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
 		kwargs['stderr'] = subprocess.PIPE
