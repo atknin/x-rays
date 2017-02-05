@@ -15,14 +15,14 @@ def books(request):
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays' + book.path
 
-		git_cmd = 'git submodule update --remote'
+		git_cmd = 'git submodule update --remote && atknin && vfntvfnbrf43'
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
 		kwargs['stderr'] = subprocess.PIPE
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 
 		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
-		(stdout_str, stderr_str) = proc.communicate('atknin')
+		(stdout_str, stderr_str) = proc.communicate()
 		bot_inform.sent_to_atknin_bot(str(stdout_str), 'v') 
 		bot_inform.sent_to_atknin_bot(str(stderr_str), 'v') 
 		(stdout_str, stderr_str) = proc.communicate('vfntvfnbrf43')[0].rstrip()
