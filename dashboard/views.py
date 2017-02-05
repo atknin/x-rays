@@ -7,7 +7,7 @@ import general.bot_inform as bot_inform
 from django.http import JsonResponse
 import subprocess, shlex
 import git 
-
+import time 
 # Create your views here.
 def books(request):
 	message = {}
@@ -15,23 +15,23 @@ def books(request):
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays' + book.path
 
-		git_cmd = ['git', 'submodule','update','--remote']
+		git_cmd = 'git submodule update --remote'
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
 		kwargs['stderr'] = subprocess.PIPE
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 		kwargs['shell'] = True
 
-		# proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
-		# proc.stdin.write('atknin\n')
-		# time.sleep(5)
-		# (stdout_str, stderr_str2) = proc.communicate(input=b'atknin\n')
-		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
-		# return_code = proc.wait()
-		# info = str(stdout_str)
-		# info += str(stderr_str2)
-		# info += str(return_code)
-		info = output = subprocess.check_output(git_cmd,input=b"atknin\nvfntvfnbrf43\n",)
+		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
+		proc.stdin.write('atknin\n')
+		time.sleep(5)
+		(stdout_str, stderr_str2) = proc.communicate(input=b'atknin\n')
+		time.sleep(5)
+		(stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
+		return_code = proc.wait()
+		info = str(stdout_str)
+		info += str(stderr_str2)
+		info += str(return_code)
 		git_cmd = 'sudo gitbook build'
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
