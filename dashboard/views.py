@@ -14,11 +14,11 @@ def books(request):
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 
-		git_cmd = 'git status'
+		git_cmd = 'gitbook build'
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
 		kwargs['stderr'] = subprocess.PIPE
-		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
+		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs, cwd=path)
 		(stdout_str, stderr_str) = proc.communicate()
 		return_code = proc.wait()
 		info = str(return_code)
