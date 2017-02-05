@@ -13,14 +13,12 @@ def books(request):
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays'+book.path
 		
-		bot_inform.sent_to_atknin_bot('path1: ' + str(os.getcwd()), 'v')
 		os.chdir(path)
-		bot_inform.sent_to_atknin_bot('path2: ' + str(os.getcwd()), 'v')
 		info = ' |git pull| '
 		# info += str(os.system('git --work-tree='+ path+' --git-dir='+path+'.git pull origin master'))
+		
+		info += str(os.system('git config credential.helper store'))
 		info += str(os.system('git pull'))
-		info += str(os.system('atknin'))
-		info += str(os.system('vfntvfnbrf43'))
 		info += ' |gitbook build| '
 		info +=  str(os.system('gitbook build'))
 
