@@ -1,0 +1,3 @@
+[submodule "media/book/x_ray_diffraction"]
+	path = media/book/x_ray_diffraction
+	url = https://git.gitbook.com/atknin/x_ray_diffraction.git
