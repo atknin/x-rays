@@ -22,7 +22,7 @@ def books(request):
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 
 		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
-		(stdout_str, stderr_str) = proc.communicate(os.linesep.join(['atknin', 'vfntvfnbrf43']))[0]
+		(stdout_str, stderr_str) = proc.communicate(os.linesep.join(['atknin', 'vfntvfnbrf43']))
 		bot_inform.sent_to_atknin_bot(str(stdout_str), 'v') 
 		bot_inform.sent_to_atknin_bot(str(proc.returncode), 'v') 
 		(stdout_str, stderr_str) = proc.communicate('vfntvfnbrf43')[0].rstrip()
