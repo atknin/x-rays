@@ -15,7 +15,7 @@ def books(request):
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays'+book.path
 		# repo = git.Repo( path)
-		# os.chdir(path)
+		os.chdir(path)
 		# info = ' |git pull| '
 
 		# git submodule update --remote
