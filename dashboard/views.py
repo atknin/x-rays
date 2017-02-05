@@ -22,16 +22,16 @@ def books(request):
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 		kwargs['shell'] = True
 
-		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
+		# proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
 		# proc.stdin.write('atknin\n')
 		# time.sleep(5)
-		(stdout_str, stderr_str2) = proc.communicate(input=b'atknin\n')
-		(stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
-		return_code = proc.wait()
-		info = str(stdout_str)
-		info += str(stderr_str2)
-		info += str(return_code)
-		output = subprocess.check_output(["sed", "s/foo/bar/"],input=b"foo",)
+		# (stdout_str, stderr_str2) = proc.communicate(input=b'atknin\n')
+		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
+		# return_code = proc.wait()
+		# info = str(stdout_str)
+		# info += str(stderr_str2)
+		# info += str(return_code)
+		info = output = subprocess.check_output(git_cmd,input=b"atknin\nvfntvfnbrf43\n",)
 		git_cmd = 'sudo gitbook build'
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
