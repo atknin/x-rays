@@ -21,8 +21,11 @@ def books(request):
 		kwargs['stderr'] = subprocess.PIPE
 
 		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
+		proc.wait()
 		(stdout_str, stderr_str) = proc.communicate('atknin')
+		proc.wait()
 		(stdout_str, stderr_str) = proc.communicate('vfntvfnbrf43')
+		proc.wait()
 		return_code = proc.wait()
 		info = str(return_code)
 		info += str(stdout_str)
