@@ -24,8 +24,8 @@ def books(request):
 		# info += str(repo.git.pull())
 		
 		info += ' |gitbook build| '
-		info += os.system('gitbook build')
-		
+		info += str(os.system('gitbook build'))
+
 		# 
 
 		message['info']= info
