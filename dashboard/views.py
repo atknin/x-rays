@@ -21,8 +21,8 @@ def books(request):
 		kwargs['stderr'] = subprocess.PIPE
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 		kwargs['shell'] = True
-
-		proc = subprocess.Popen(['git submodule update --remote','atknin','vfntvfnbrf43'], **kwargs)
+		proc = subprocess.check_output(['git submodule update --remote','atknin\n','vfntvfnbrf43\n']);
+		# proc = subprocess.Popen(['git submodule update --remote','atknin','vfntvfnbrf43'], **kwargs)
 		# output = proc.stdout.read()
 		# proc = os.popen(git_cmd,"r")
 		# info = str(proc)
@@ -31,13 +31,14 @@ def books(request):
 		# 	line = proc.readline()
 		# 	if not line: break
 		# 	info+= line
-		(stdout_str, stderr_str2) = proc.communicate()
+		# (stdout_str, stderr_str2) = proc.communicate()
 		# time.sleep(5)
 		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
-		return_code = proc.wait()
-		info = str(return_code)
-		info += str(stderr_str2)
-		info += str(stdout_str)
+		# return_code = proc.wait()
+		info = str(proc)
+		# info = str(return_code)
+		# info += str(stderr_str2)
+		# info += str(stdout_str)
 
 		# info = ''
 		git_cmd = 'sudo gitbook build'
