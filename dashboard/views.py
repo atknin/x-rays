@@ -25,13 +25,13 @@ def books(request):
 		# proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
 		# output = proc.stdout.read()
 		proc = os.system(git_cmd)
-		(stdout_str, stderr_str2) = proc.communicate()
+		# (stdout_str, stderr_str2) = proc.communicate()
 		# time.sleep(5)
 		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
-		return_code = proc.wait()
+		# return_code = proc.wait()
 		info = str(proc)
-		info += str(stderr_str2)
-		info += str(stdout_str)
+		# info += str(stderr_str2)
+		# info += str(stdout_str)
 
 		# info = ''
 		git_cmd = 'sudo gitbook build'
