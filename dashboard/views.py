@@ -17,11 +17,10 @@ def books(request):
 		info = ' |git pull| '
 		# info += str(os.system('git --work-tree='+ path+' --git-dir='+path+'.git pull origin master'))
 		
-		info += str(os.system('git config credential.helper store'))
-		info += str(os.system('git pull'))
+		os.system('git pull')
 		info += ' |gitbook build| '
 		path+='x_ray_diffraction/'
-		info +=  str(os.system('gitbook build'))
+		os.system('gitbook build')
 
 		message['info']= info
 		return JsonResponse(message)
