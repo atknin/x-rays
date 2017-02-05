@@ -18,7 +18,9 @@ def books(request):
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
 		kwargs['stderr'] = subprocess.PIPE
-		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs, cwd=path)
+		kwargs['cwd'] = path
+
+		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
 		(stdout_str, stderr_str) = proc.communicate()
 		return_code = proc.wait()
 		info = str(return_code)
