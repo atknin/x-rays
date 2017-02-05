@@ -24,7 +24,7 @@ def books(request):
 		# a.communicate('vfntvfnbrf43')
 		# info += str(subprocess.Popen(["gitbook build"], stdout=subprocess.PIPE, cwd=path))
 		# info += str(repo.git.pull())
-		
+		info = ''
 		info += ' |gitbook build| '+path+' '
 		info += str(os.system('gitbook build'))
 
