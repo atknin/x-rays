@@ -22,8 +22,8 @@ def books(request):
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 
 		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
-
-		(stdout_str, stderr_str2) = proc.communicate(input=b'atknin\nvfntvfnbrf43\n')
+		proc.stdin.write('atknin\nvfntvfnbrf43\n')
+		(stdout_str, stderr_str2) = proc.communicate()
 		return_code = proc.wait()
 		info = str(stdout_str)
 		info += str(stderr_str2)
