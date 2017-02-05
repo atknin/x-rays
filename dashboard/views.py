@@ -5,7 +5,7 @@ from dashboard import models as dashboard_models
 import os
 import general.bot_inform as bot_inform
 from django.http import JsonResponse
-import subprocess 
+import subprocess, shlex
 import git 
 
 # Create your views here.
@@ -13,10 +13,20 @@ def books(request):
 	message = {}
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
-		path = '/home/atknin/env/xrays'+book.path
+
+		git_cmd = 'git status'
+		kwargs = {}
+		kwargs['stdout'] = subprocess.PIPE
+		kwargs['stderr'] = subprocess.PIPE
+		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
+		(stdout_str, stderr_str) = proc.communicate()
+		return_code = proc.wait()
+		info = str(return_code)
+		info += str(stdout_str)
+		# path = '/home/atknin/env/xrays'+book.path
 		# repo = git.Repo( path)
 		# os.chdir(path)
-		output = subprocess.Popen(["gitbook build", path])
+		# output = subprocess.Popen(["gitbook build", path])
 		# proc = subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
 		# output = proc.communicate()[0]
 		# proc = subprocess.check_output(['gitbook', 'build'], cwd=path)
@@ -34,7 +44,7 @@ def books(request):
 
 		# 
 
-		message['info']= str(output)
+		message['info']= str(info)
 		return JsonResponse(message)
 
 def dashboard(request):
