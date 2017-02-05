@@ -30,6 +30,9 @@ def books(request):
 		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
 		# return_code = proc.wait()
 		info = str(proc)
+
+		for a in proc:
+			info+=a
 		# info += str(stderr_str2)
 		# info += str(stdout_str)
 
