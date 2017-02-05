@@ -13,7 +13,8 @@ def books(request):
 	message = {}
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
-
+		path = '/home/atknin/env/xrays'+book.path
+		
 		git_cmd = 'gitbook build'
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
@@ -25,7 +26,6 @@ def books(request):
 		return_code = proc.wait()
 		info = str(return_code)
 		info += str(stdout_str)
-		# path = '/home/atknin/env/xrays'+book.path
 		# repo = git.Repo( path)
 		# os.chdir(path)
 		# output = subprocess.Popen(["gitbook build", path])
