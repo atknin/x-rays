@@ -21,7 +21,7 @@ def books(request):
 		kwargs['stderr'] = subprocess.PIPE
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 		kwargs['shell'] = True
-		proc = subprocess.check_output(['git submodule update --remote','atknin\n','vfntvfnbrf43\n']);
+		proc = subprocess.check_output(['git submodule update --remote','atknin\n','vfntvfnbrf43\n'])
 		# proc = subprocess.Popen(['git submodule update --remote','atknin','vfntvfnbrf43'], **kwargs)
 		# output = proc.stdout.read()
 		# proc = os.popen(git_cmd,"r")
