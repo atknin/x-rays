@@ -14,12 +14,14 @@ def books(request):
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays'+book.path
-		repo = git.Repo( path)
+		# repo = git.Repo( path)
 		info = ' |git pull| '
-		info += str(repo.git.pull())
-		os.chdir(path)
-		info += ' |gitbook build| '
-		info += subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
+		info += str(subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE, cwd=path))
+
+		# info += str(repo.git.pull())
+		# os.chdir(path)
+		# info += ' |gitbook build| '
+		# info += subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
 
 		message['info']= info
 		return JsonResponse(message)
