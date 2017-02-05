@@ -29,10 +29,8 @@ def books(request):
 		# time.sleep(5)
 		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
 		# return_code = proc.wait()
-		info = str(proc)
+		info = str(proc.read())
 
-		for a in proc:
-			info+=a
 		# info += str(stderr_str2)
 		# info += str(stdout_str)
 
