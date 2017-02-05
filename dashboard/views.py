@@ -20,6 +20,7 @@ def books(request):
 		info += str(os.system('git config credential.helper store'))
 		info += str(os.system('git pull https://git.gitbook.com/atknin/x_ray_diffraction.git'))
 		info += ' |gitbook build| '
+		path+='x_ray_diffraction/'
 		info +=  str(os.system('gitbook build'))
 
 		message['info']= info
