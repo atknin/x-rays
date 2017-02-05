@@ -15,7 +15,7 @@ def books(request):
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays' + book.path
 
-		git_cmd = 'git status'
+		git_cmd = 'sudo gitbook build'
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
 		kwargs['stderr'] = subprocess.PIPE
