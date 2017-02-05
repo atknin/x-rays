@@ -22,11 +22,17 @@ def books(request):
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 
 		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
-		(stdout_str, stderr_str2) = proc.communicate(os.linesep.join(['atknin\n', 'vfntvfnbrf43\n']))
-		return_code = proc.wait()
-		info = str(stdout_str)
-		info += str(stderr_str2)
-		info += str(return_code)
+		info =  str(proc.stdout.readline())
+		info += str(proc.stdin.write('atknin\n'))
+		info += str(proc.stdout.readline())
+		info += str(proc.stdin.write('vfntvfnbrf43\n'))
+
+		# (stdout_str, stderr_str2) = proc.communicate(os.linesep.join('atknin\n'))
+		# (stdout_str3, stderr_str4) = proc.communicate(os.linesep.join('vfntvfnbrf43\n'))
+		# return_code = proc.wait()
+		# info = str(stdout_str)
+		# info += str(stderr_str2)
+		# info += str(return_code)
 
 		git_cmd = 'sudo gitbook build'
 		kwargs = {}
@@ -35,7 +41,7 @@ def books(request):
 		kwargs['cwd'] = path
 
 		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
-		(stdout_str, stderr_str2) = proc.communicate(['vfntvfnbrf43'])
+		(stdout_str, stderr_str2) = proc.communicate(['vfntvfnbrf43\n'])
 		return_code = proc.wait()
 		info += str(stdout_str)
 		info += str(stderr_str2)
