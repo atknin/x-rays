@@ -14,6 +14,17 @@ def books(request):
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays' + book.path
+		
+		git_cmd = 'git submodule update --remote'
+		kwargs = {}
+		kwargs['stdout'] = subprocess.PIPE
+		kwargs['stderr'] = subprocess.PIPE
+
+		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
+		(stdout_str, stderr_str) = proc.communicate()
+		return_code = proc.wait()
+		info = str(return_code)
+		info += str(stdout_str)
 
 		git_cmd = 'sudo gitbook build'
 		kwargs = {}
