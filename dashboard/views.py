@@ -38,7 +38,7 @@ def books(request):
 		kwargs['cwd'] = path
 
 		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
-		(stdout_str, stderr_str2) = proc.communicate(['vfntvfnbrf43\n'])
+		(stdout_str, stderr_str2) = proc.communicate()
 		return_code = proc.wait()
 		info += str(stdout_str)
 		info += str(stderr_str2)
