@@ -15,29 +15,29 @@ def books(request):
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays' + book.path
 
-		git_cmd = 'git submodule update --remote'
+		git_cmd = ['git submodule update --remote','atknin','vfntvfnbrf43']
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
 		kwargs['stderr'] = subprocess.PIPE
 		kwargs['cwd'] = '/home/atknin/env/xrays/'
 		kwargs['shell'] = True
 
-		# proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
+		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
 		# output = proc.stdout.read()
-		proc = os.popen(git_cmd,"r")
-		info = str(proc)
-		
-		while 1:
-			line = proc.readline()
-			if not line: break
-			info+= line
-		# (stdout_str, stderr_str2) = proc.communicate()
+		# proc = os.popen(git_cmd,"r")
+		# info = str(proc)
+
+		# while 1:
+		# 	line = proc.readline()
+		# 	if not line: break
+		# 	info+= line
+		(stdout_str, stderr_str2) = proc.communicate()
 		# time.sleep(5)
 		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
-		# return_code = proc.wait()
-
-		# info += str(stderr_str2)
-		# info += str(stdout_str)
+		return_code = proc.wait()
+		info = str(return_code)
+		info += str(stderr_str2)
+		info += str(stdout_str)
 
 		# info = ''
 		git_cmd = 'sudo gitbook build'
