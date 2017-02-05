@@ -5,6 +5,7 @@ from dashboard import models as dashboard_models
 import os
 import general.bot_inform as bot_inform
 from django.http import JsonResponse
+import subprocess
 
 # Create your views here.
 def books(request):
@@ -15,12 +16,10 @@ def books(request):
 		
 		os.chdir(path)
 		info = ' |git pull| '
-		# info += str(os.system('git --work-tree='+ path+' --git-dir='+path+'.git pull origin master'))
-		
-		os.system('git pull')
+		info += subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE, cwd=path)
 		info += ' |gitbook build| '
 		path+='x_ray_diffraction/'
-		os.system('gitbook build')
+		info += subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
 
 		message['info']= info
 		return JsonResponse(message)
