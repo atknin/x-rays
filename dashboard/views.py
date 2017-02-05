@@ -15,15 +15,17 @@ def books(request):
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays'+book.path
 		# repo = git.Repo( path)
-		os.chdir(path)
-		info = ' |git pull| '
+		# os.chdir(path)
+		# info = ' |git pull| '
+
+		# git submodule update --remote
 		# a = subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE, cwd=path)
 		# info += a.communicate('atknin')
 		# a.communicate('vfntvfnbrf43')
 		# info += str(subprocess.Popen(["gitbook build"], stdout=subprocess.PIPE, cwd=path))
 		# info += str(repo.git.pull())
 		
-		info += ' |gitbook build| '
+		info += ' |gitbook build| '+path+' '
 		info += str(os.system('gitbook build'))
 
 		# 
