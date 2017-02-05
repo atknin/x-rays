@@ -18,7 +18,7 @@ def books(request):
 		# info += str(os.system('git --work-tree='+ path+' --git-dir='+path+'.git pull origin master'))
 		
 		info += str(os.system('git config credential.helper store'))
-		info += str(os.system('git pull https://git.gitbook.com/atknin/x_ray_diffraction.git'))
+		info += str(os.system('git pull'))
 		info += ' |gitbook build| '
 		path+='x_ray_diffraction/'
 		info +=  str(os.system('gitbook build'))
