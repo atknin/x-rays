@@ -19,7 +19,7 @@ def books(request):
 		# a = subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE, cwd=path)
 		# info += a.communicate('atknin')
 		# a.communicate('vfntvfnbrf43')
-		info += str(subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path))
+		info += str(subprocess.Popen(["gitbook build"], stdout=subprocess.PIPE, cwd=path))
 		# info += str(repo.git.pull())
 		# os.chdir(path)
 		# info += ' |gitbook build| '
