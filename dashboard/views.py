@@ -16,7 +16,7 @@ def books(request):
 		path = '/home/atknin/env/xrays'+book.path
 		g = git.cmd.Git(path)
 		info = ' |git pull| '
-		info += str(g.pull())
+		info += str(repo.git.pull())
 		os.chdir(path)
 		info += ' |gitbook build| '
 		info += subprocess.Popen(["gitbook", "build"], stdout=subprocess.PIPE, cwd=path)
