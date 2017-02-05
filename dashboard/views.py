@@ -23,13 +23,13 @@ def books(request):
 		kwargs['shell'] = True
 
 		proc = subprocess.Popen(shlex.split(git_cmd), **kwargs)
-		output = proc.stdout.read()
+		# output = proc.stdout.read()
 
 		# (stdout_str, stderr_str2) = proc.communicate(input=b'atknin\n')
 		# time.sleep(5)
 		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
 		# return_code = proc.wait()
-		info = str(output)
+		info = str(proc)
 		# info += str(stderr_str2)
 		# info += str(return_code)
 
