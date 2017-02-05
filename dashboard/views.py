@@ -14,7 +14,7 @@ def books(request):
 	if 'pull_book' in request.POST:
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays'+book.path
-		g = git.cmd.Git(path)
+		repo = git.Repo( path)
 		info = ' |git pull| '
 		info += str(repo.git.pull())
 		os.chdir(path)
