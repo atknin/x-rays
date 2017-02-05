@@ -32,7 +32,7 @@ def books(request):
 
 		# 
 
-		message['info']= info
+		message['info']= str(proc)
 		return JsonResponse(message)
 
 def dashboard(request):
