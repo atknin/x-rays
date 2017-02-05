@@ -120,8 +120,8 @@
             {% for book in books%}
             <div class="chart-stage">
               <div id="chart-05">
-                <a target="_blank" href="{{book.path}}_book/">{{book.name}}</a> 
-                <a href="#" onclick="pull_book({{book.pk}})">
+                <a target="_blank" href="{{book.path}}_book/">{{book.url}}</a> 
+                <a href="#" disabled onclick="pull_book({{book.pk}})">
                   <span class="label label-primary">обновить</span>
                 </a>
                 <span class="label label-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></span>
