@@ -17,7 +17,7 @@ def books(request):
 		# repo = git.Repo( path)
 		# os.chdir(path)
 
-		proc = Popen(['gitbook', 'build'], stdin=PIPE, cwd=path)
+		proc = Popen(['gitbook', 'build'], shell=True, stdin=PIPE, cwd=path)
 		# info = ' |git pull| '
 
 		# git submodule update --remote
