@@ -96,3 +96,35 @@ transition: opacity 0.3s;
 opacity: 1;
 }
 
+.scroll {
+	position:relative;
+	font-size:1.3em;
+	margin-top:6em;
+	display:inline-block;
+
+}
+.scroll:hover {
+	text-decoration:none;
+}
+
+.scroll:after {
+	content:'';
+	width:40px;
+	height:40px;
+	position:absolute;
+	top:40px;
+	margin:auto;
+	top:50px;
+	right:0;
+	bottom:0;
+	left:0;
+	-webkit-animation:3s arrow infinite ease;
+	animation:3s arrow infinite ease;
+}
+
+.scroll:after {
+	border-right:2px solid #FFF;
+	border-bottom:2px solid #FFF;
+	-webkit-transform:rotate(45deg);
+	transform:rotate(45deg);
+	
