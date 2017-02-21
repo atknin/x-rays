@@ -1,12 +1,22 @@
 .slidescroll-enabled, .slidescroll-enabled body {
 height: 100%;
 }
-.start{
+.class_start_index{
  -moz-background-size: 100%; /* Firefox 3.6+ */
 -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
 -o-background-size: 100%; /* Opera 9.6+ */
 background-size: 100%; /* Современные браузеры */
-/*-webkit-filter: opacity(0.3);*/
+/*-webkit-filter: opacity(0.3);*/ 
+}
+.class_calc_index{
+	background: -webkit-gradient(linear, top left, bottom left, from(#7baabe), to(#969ac6));
+	background: -webkit-linear-gradient(#7BAABE, #969AC6);
+	background: linear-gradient(#7BAABE,#969AC6);
+}
+.class_school_index{
+	background: -webkit-gradient(linear, top left, bottom left, from(#969ac6), to(#636F8F));
+	background: -webkit-linear-gradient(#969AC6, #636F8F);
+	background: linear-gradient(#969AC6,#636F8F);
 }
 .slidescroll-enabled .slidescroll-wrap {
 position: relative;
