@@ -172,7 +172,7 @@ footer{
   text-transform: uppercase !important;
   letter-spacing: 2px !important;
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  right: 50%;
+  bottom: 5;
+  vertical-align: center;
+
 }
