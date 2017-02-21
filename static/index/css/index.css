@@ -2,6 +2,7 @@
 
 .slidescroll-enabled, .slidescroll-enabled body {
 height: 100%;
+font: normal 22px/26px "Open Sans Condensed", sans-serif !important;
 }
 .class_start_index{
  -moz-background-size: 100%; /* Firefox 3.6+ */
