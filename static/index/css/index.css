@@ -173,5 +173,5 @@ footer{
   letter-spacing: 2px !important;
   position: absolute;
   bottom: 0;
-  text-align: center;
+  align-content: center;
 }
