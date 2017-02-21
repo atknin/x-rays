@@ -146,6 +146,7 @@ opacity: 1;
 }
 a {
   text-decoration: none !important;
+  color: red;
 }
 
 h1 {
