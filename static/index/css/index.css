@@ -168,18 +168,11 @@ h2 {
 
 .opacity_grant {
     background-color:#fff;
- 	position: relative;
+ 	position: fixed;
     -moz-opacity:0.5;
+    margin-top: 30%;
     -khtml-opacity: 0.5;    
     opacity:0.5; 
     filter:alpha(opacity=50);
     zoom:1; /* hasLayout for IE6 and IE7 */
-}
- 
-.opacity_grant:hover {
-    -moz-opacity:1.0;
-    -khtml-opacity: 1.0;    
- 
-    opacity:1;
-    filter:alpha(opacity=100);
 }
