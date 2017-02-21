@@ -178,4 +178,8 @@ footer{
 }
 img{
 	margin: 20px;
+	border: 1px solid #fff;
+	opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+
 }
