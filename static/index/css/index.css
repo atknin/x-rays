@@ -173,7 +173,6 @@ footer{
   letter-spacing: 2px !important;
   position: absolute;
   bottom: 0;
-}
-footer p, a, {
-	text-align: center;
+  left: 50%;
+  right: 50%;
 }
