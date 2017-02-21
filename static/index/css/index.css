@@ -148,3 +148,15 @@ opacity: 1;
 a {
     text-decoration: none !important;
 }
+h1 {
+  font: normal 29px/38px "Lato", sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+}
+h2 {
+  margin-top: 50px;
+  margin-bottom: 5px;
+  font: normal 15px/26px "Lato", sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
