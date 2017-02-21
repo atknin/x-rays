@@ -19,6 +19,10 @@
     <script src="{% static "bootstrap/js/tooltip.js"%}"></script>
     
 
+    <link href="{% static "index/css/index.css" %}" rel="stylesheet">
+    <script src="{% static "index/js/index_modernizr.js"%}"></script>
+
+
     {% block title%}
     <title>X-RAYS</title>
     {% endblock %}
@@ -36,148 +40,39 @@
   </head>
 
   <body>
-  <div class="header clearfix">
+ <div class="slidescroll-wrap"><!-- this element is required -->
+  <div class="main"><!-- this element will be animated -->
+  <div class="page start" id="start" data-slidescroll-title-selector="h1"> 
+  <h1 style="color: white; font-family: sans-serif;
+      -ms-text-size-adjust: 100%;">X-RAYS.WORLD</h1>
+  <p style="color: white; text-align: center;">slidescroll is a jQuery plugin to create a Apple's iPhone 5S website style one page scrolling website that allows to vertically navigate between different sections with smooth effects. The plugin works with all the modern browsers which support CSS3 transitions and transforms.</p>
+  </div>
 
-
-    <div class="container-fluid">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right" style="margin-top: 15px;" >
-            {% if user.is_authenticated %}
-
-            <span class="label label-default" style="margin-right: 5px;">{{user.username}}</span>
-            <a type="button" id = 'btn_logout' data-toggle="tooltip" data-placement="bottom" title="выход"> <span class="glyphicon glyphicon-log-out"></span></a>
-            
-             <a href="\dashboard\">
-              <span class="glyphicon glyphicon-user" style="margin-right: 30px;" aria-hidden="true"></span>
-            </a>
-
-            {% else %}
-              <div class="form-inline">
-                <div class="form-group">
-                  <label class="sr-only" for="login_id">Логин</label>
-                  <input type="text" class="form-control check_id_login" id="login_id" placeholder="Логин">
-                </div>
-                <div class="form-group">
-                  <label class="sr-only" for="password_id">Пароль</label>
-                  <input type="password" class="form-control check_id_login" id="password_id" placeholder="Пароль">
-                </div>
-                <button id = 'btn_login' class="btn btn-default">Войти</button>
-              </div>
-            {% endif %}
-            
-          </ul>
-        </nav>
-
-        <h3 class="text-muted">
-          {% block logo %} 
-            <a href="/"> <img height="60px" src="{% static "icon/x_rays_sign_2.png" %}"" alt="home"> </a>     
-          {% endblock %}
-        </h3>
-      </div>
-
-
-      <div class="row marketing" style="min-height: 500px;"><!-- основное тело -->
-         {% block content %}
-
-          <div class="col-lg-3"><!-- слева минюшка -->
-            <ul class="nav nav-pills nav-stacked">
-
-              <li role="presentation" style="background: #D5D5D5;">
-              <a href="/polarizability/" style="color: #555; ">
-                <h4 class="list-group-item-heading">Поляризумость   &#967; <sub>0,h</sub>  </h4> <br> 
-                <p class="list-group-item-text"> #атомный фактор #структурный фактор #температурный 
-                фактор #собственная кривая отражения</p></a></li>
-
-              <li role="presentation" style="background: #D5D5D5;">
-              {% if user.is_authenticated %}
-                <a href="/diffraction/" style="color: #555; "><h4>Дифракция </h4> <br> 
-                  #собери свою схему дифракции</a></li>
-              {% else %}
-                <a href="/diffraction/" class="not-active" style="color: #555; "><h4>Дифракция </h4> <br> 
-                  #только для зарегестрированных пользователей</a></li>
-              {% endif %}
-              
-
-            </ul>
-            <hr>
-            <a href="/converter/" style="color: #555; "><h4><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span> трс конвертер</h4> <br>
-          </div><!-- / слева минюшка -->
-
-
-           <div class="col-lg-9" style="padding: 50px;">
-           Ваши права:  {% for group in user.groups.all %} | {{group}} | {%endfor%}
-           <br>
-            
-          </div>
-        {% endblock %}
-      </div><!-- / основное тело -->
-
-
-
-
-      <footer class="footer" align = center>
-        <p>&copy; 2017 ФНИЦ "Кристаллография и фотоника" | НИЦ "Курчатовский институт"
-        <br> 
-        <a href="">об авторах</a> | <a href="/updates/">обновления</a> | <a href="#">обратная связь</a>
-        <br>
-          Данный сайт разработан при поддержке РФФИ (проект №16-32-60045 мол_а_дк)
-        <br>
-        
-        </p>
-      </footer>
-
-    </div> <!-- /container -->
-  <script type="text/javascript">
-    $(function() {
-      
-
-      $("#btn_login").click(function() {
-        if ($('#login_id').val() == '' || $('#password_id').val() == ''){
-          $('.check_id_login').addClass("error");
-          console.log('ОШИБКА')
-          return;
-        }
-        else{
-          var login_dict = {'login': $('#login_id').val(), 'password': $('#password_id').val() }
-
-          $.ajaxSetup({data: {
-            csrfmiddlewaretoken: '{{ csrf_token }}'
-          }});
-
-          $.post("/", login_dict ,function(data) {
-            if (data.status == 'ok') {
-              location.reload()
-            }
-            else{
-              $('.check_id_login').addClass("error");
-            }
+  <div class="page" id="second" data-slidescroll-title="Second" style="background: url(gradient-wallpaper_1.jpg) no-repeat; -moz-background-size: 100%; /* Firefox 3.6+ */
+      -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+      -o-background-size: 100%; /* Opera 9.6+ */
+      background-size: 100%; /* Современные браузеры */"><!-- these elements hold each content page -->
+  <h2>Second Page</h2>
+  <p>Donec porta varius iaculis. Ut ornare lacinia velit sit amet auctor. Nunc egestas leo ante, sed vestibulum ligula cursus non. Maecenas sodales arcu vel quam viverra, vel scelerisque neque lobortis. Suspendisse sollicitudin, arcu sit amet commodo ultricies, nulla lacus accumsan arcu, nec scelerisque turpis felis quis neque. Duis sed faucibus felis. Morbi venenatis tellus nec justo dictum euismod sed in ligula. Quisque mi nunc, malesuada at felis non, accumsan commodo massa. Maecenas ac dolor ac nisi dignissim pellentesque. Nunc vulputate aliquam suscipit. Morbi convallis ac lorem in aliquam. Sed dictum varius leo, sit amet congue metus cursus sit amet. Maecenas vehicula placerat scelerisque. Nullam congue egestas est nec fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+  </div>
+  <div id="third" class="page" data-slidescroll-title-selector="h2" style="background: url(school1.jpg) no-repeat; -moz-background-size: 100%; /* Firefox 3.6+ */
+      -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+      -o-background-size: 100%; /* Opera 9.6+ */
+      background-size: 100%; /* Современные браузеры */">
+  <h2>Third page</h2>
+  <p>Maecenas ut rutrum lectus, quis hendrerit magna. Donec augue dui, mollis at mollis in, egestas ut erat. Vestibulum quam turpis, eleifend ac erat non, mattis bibendum purus. Curabitur luctus, nisi in accumsan tempor, justo mi rutrum ante, ac volutpat ligula urna vel lectus. Nam eu eros sagittis, fringilla nunc id, gravida ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer interdum eget tellus eget faucibus. Donec vitae mi tincidunt, posuere turpis in, aliquet sapien. Morbi nec purus adipiscing, dignissim nibh vel, convallis sapien. Pellentesque leo ipsum, consequat vel enim nec, fermentum euismod arcu. Nam fringilla nec tellus at consequat. Pellentesque ac nisi enim. Ut ultrices sem ac tellus ornare molestie. Sed euismod lobortis ornare.</p>
+  </div>
+  </div>
+  </div>
+    <script src="{% static "index/js/jquery.mousewheel.js"%}"></script>
+    <script src="{% static "index/js/jquery.slidescroll.js"%}"></script>
+  <script>
+      $(document).ready( function() {
+          $('.main').slidescroll({
+           'pagesSelector': '.page'
           });
-        };
       });
-
-      $(".check_id_login").click(function(){
-        $(this).removeClass("error");
-      });
-    });
-
-    $("#btn_logout").click(function() {
-          var login_dict = {'logout': 'quit' }
-
-          $.ajaxSetup({data: {
-            csrfmiddlewaretoken: '{{ csrf_token }}'
-          }});
-
-          $.post("/", login_dict ,function(data) {
-            location.reload()
-          });
-      
-
-      $(".check_id_login").click(function(){
-        $(this).removeClass("error");
-      });
-    });
-
   </script>
+
   </body>
 </html>
