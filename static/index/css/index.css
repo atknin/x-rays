@@ -144,17 +144,25 @@ opacity: 1;
   border: 1px solid #fff;
 }
 a {
-    text-decoration: none !important;
+   color: #67cae3 !important;
+  border-bottom: 1px solid #67cae3 !important;
+  text-decoration: none !important;
+  transition: color 0.5s ease-out, border-bottom 0.5s ease-out !important;
+}
+a:hover {
+  color: #fff !important;
+  border-bottom: 1px solid #fff !important;
+  transition: color 0.6s ease-in, border-bottom 0.6s ease-in !important;
 }
 h1 {
-  font: normal 29px/38px "Lato", sans-serif !important;;
-  color: rgba(255, 255, 255, 0.5) !important;;
+  font: normal 29px/38px "Lato", sans-serif !important;
+  color: rgba(255, 255, 255, 0.5) !important;
 }
 h2 {
   margin-top: 50px !important;;
   margin-bottom: 5px !important;;
-  font: normal 15px/26px "Lato", sans-serif !important;;
-  color: rgba(255, 255, 255, 0.5) !important;;
+  font: normal 15px/26px "Lato", sans-serif !important;
+  color: rgba(255, 255, 255, 0.5) !important;
   text-transform: uppercase !important;;
-  letter-spacing: 2px !important;;
+  letter-spacing: 2px !important;
 }
