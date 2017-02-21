@@ -2,8 +2,6 @@
 
 .slidescroll-enabled, .slidescroll-enabled body {
 height: 100%;
-font-family: 'Roboto', 'Arial', sans-serif !important;
-text-rendering: geometricPrecision;
 }
 .class_start_index{
  -moz-background-size: 100%; /* Firefox 3.6+ */
@@ -149,14 +147,14 @@ a {
     text-decoration: none !important;
 }
 h1 {
-  font: normal 29px/38px "Lato", sans-serif;
-  color: rgba(255, 255, 255, 0.5);
+  font: normal 29px/38px "Lato", sans-serif !important;;
+  color: rgba(255, 255, 255, 0.5) !important;;
 }
 h2 {
   margin-top: 50px;
   margin-bottom: 5px;
-  font: normal 15px/26px "Lato", sans-serif;
-  color: rgba(255, 255, 255, 0.5);
+  font: normal 15px/26px "Lato", sans-serif !important;;
+  color: rgba(255, 255, 255, 0.5) !important;;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 2px !important;;
 }
