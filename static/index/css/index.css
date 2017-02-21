@@ -1,3 +1,4 @@
+
 .slidescroll-enabled, .slidescroll-enabled body {
 height: 100%;
 }
@@ -28,6 +29,8 @@ overflow: hidden;
 position: relative;
 height: 100%;
 width: 100%;
+font-family: 'Roboto', 'Arial', sans-serif;
+text-rendering: geometricPrecision;
 }
 .slidescroll-enabled .main {
 -webkit-transform: translate3d(0, 0, 0);
