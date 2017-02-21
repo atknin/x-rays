@@ -155,6 +155,8 @@ a:hover {
 h1 {
   font: normal 29px/38px "Lato", sans-serif !important;
   color: rgba(255, 255, 255, 0.5) !important;
+  text-align: center;
+  margin-top: 40px;
 }
 h2 {
   margin-top: 50px !important;
