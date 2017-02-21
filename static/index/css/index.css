@@ -143,6 +143,10 @@ opacity: 1;
 .with-border {
   border: 1px solid #fff;
 }
+a {
+  text-decoration: none !important;
+}
+
 h1 {
   font: normal 29px/38px "Lato", sans-serif !important;
   color: rgba(255, 255, 255, 0.5) !important;
