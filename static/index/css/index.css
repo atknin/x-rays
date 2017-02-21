@@ -181,5 +181,5 @@ img{
 	border: 1px solid #fff!important;
 	opacity: 0.5 !important;
     filter: alpha(opacity=50)!important; /* For IE8 and earlier */
-
+    border-radius: 8px;
 }
