@@ -2,12 +2,11 @@
 height: 100%;
 }
 .start{
-
-background-image: url("{% static "index/img/start.png"%}") no-repeat; -moz-background-size: 100%; /* Firefox 3.6+ */
+ -moz-background-size: 100%; /* Firefox 3.6+ */
 -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
 -o-background-size: 100%; /* Opera 9.6+ */
 background-size: 100%; /* Современные браузеры */
--webkit-filter: opacity(0.3);
+/*-webkit-filter: opacity(0.3);*/
 }
 .slidescroll-enabled .slidescroll-wrap {
 position: relative;
