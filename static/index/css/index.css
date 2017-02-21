@@ -164,15 +164,4 @@ h2 {
   text-transform: uppercase !important;
   letter-spacing: 2px !important;
 }
-/*При поддержке*/
 
-.opacity_grant {
-    background-color:#fff;
- 	position: fixed;
-    -moz-opacity:0.5;
-    margin-top: 100px;
-    -khtml-opacity: 0.5;    
-    opacity:0.5; 
-    filter:alpha(opacity=50);
-    zoom:1; /* hasLayout for IE6 and IE7 */
-}
