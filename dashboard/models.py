@@ -6,7 +6,7 @@ from django.db import models
 class books(models.Model):
 	name = models.CharField(max_length=20)
 	path = models.CharField(max_length=80)
-	url = models.CharField(max_length=80);
+	url = models.CharField(max_length=80)
 	
 	class Meta:
 		verbose_name = u'книга'
@@ -17,7 +17,6 @@ class books(models.Model):
 
 class tasks(models.Model):
 	text = models.CharField(max_length=1000)
-	models.DateTimeField
 	path = models.CharField(max_length=80)
 	url = models.CharField(max_length=80)
 	
