@@ -1,5 +1,5 @@
 .slidescroll-enabled, .slidescroll-enabled body {
-height: 100%;
+height: 100% !important;
 }
 .start{
 background: url(Atom-HD-Wallpaper.png) no-repeat; -moz-background-size: 100%; /* Firefox 3.6+ */
