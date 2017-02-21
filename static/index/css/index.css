@@ -6,7 +6,7 @@ background: url("{% static "index/img/start.png"%}") no-repeat; -moz-background-
 -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
 -o-background-size: 100%; /* Opera 9.6+ */
 background-size: 100%; /* Современные браузеры */
--webkit-filter: opacity(0.3);
+-webkit-filter: opacity(0.8);
 }
 .slidescroll-enabled .slidescroll-wrap {
 position: relative;
