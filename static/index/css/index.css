@@ -1,6 +1,9 @@
 
+
 .slidescroll-enabled, .slidescroll-enabled body {
 height: 100%;
+font-family: 'Roboto', 'Arial', sans-serif !important;
+text-rendering: geometricPrecision;
 }
 .class_start_index{
  -moz-background-size: 100%; /* Firefox 3.6+ */
@@ -29,8 +32,7 @@ overflow: hidden;
 position: relative;
 height: 100%;
 width: 100%;
-font-family: 'Roboto', 'Arial', sans-serif;
-text-rendering: geometricPrecision;
+
 }
 .slidescroll-enabled .main {
 -webkit-transform: translate3d(0, 0, 0);
