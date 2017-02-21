@@ -167,8 +167,8 @@ h2 {
 /*При поддержке*/
 
 .opacity_grant {
-    background-color:#ffffff;
- 	position: absolute;
+    background-color:#fff;
+ 	position: relative;
     -moz-opacity:0.5;
     -khtml-opacity: 0.5;    
     opacity:0.5; 
