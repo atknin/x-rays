@@ -148,7 +148,10 @@ a {
   text-decoration: none !important;
   color: #AB1214;
 }
-
+a:hover {
+  cursor: pointer;
+  color: #777;
+}
 h1 {
   font: normal 29px/38px "Lato", sans-serif !important;
   color: rgba(255, 255, 255, 0.5) !important;
