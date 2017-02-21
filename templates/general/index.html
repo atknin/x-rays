@@ -77,9 +77,7 @@
     <h1 style="color: white; font-family: sans-serif;
         -ms-text-size-adjust: 100%;">X-RAYS.WORLD</h1>
     <p style="color: white; text-align: center;">slidescroll is a jQuery plugin to create a Apple's iPhone 5S website style one page scrolling w</p>
-    <input type='button' class='pulsebutton'>
-      <div class="text">Like +<span id="value">99</span></div>
-    </input>
+    <a class="semi-transparent-button with-border" href="#">Button</a>
   </div>
 
   <div class="page class_calc_index" id="second" data-slidescroll-title="Second"><!-- these elements hold each content page -->
@@ -101,16 +99,6 @@
            'pagesSelector': '.page'
           });
       });
-      // This function adds an increment of 1 ONCE to the 'likes' value
-      $(function (){
-          var valueElement = $('#value');
-          function incrementValue(e){
-              valueElement.text(Math.max(parseInt(valueElement.text()) + e.data.increment, 0));
-              return false;
-          }
-          $('.pulsebutton').one('mouseenter', {increment: 1}, incrementValue);
-      });
-
   </script>
    <script type="text/javascript">
     $(function() {

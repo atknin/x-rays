@@ -102,86 +102,46 @@ transition: opacity 0.3s;
 .slidescroll-nav a:hover .title {
 opacity: 1;
 }
-
-/*Кнопка*/
-
-// Variables
-
-$height: 50px;
-$width: 50px;
-$background-color: #1a1a1a;
-$button-color: #2da372;
-$hover-color: #2da372;
-
-
-@mixin text {
-  color:white;
-  font-family:'Lato';
-  font-weight:500;
-  letter-spacing:1.8px;
-  text-transform: uppercase;
-  text-align:center;
-  padding: 10px 0 0 5px;
+/*Кнопка на главной*/
+.semi-transparent-button {
+  display: block;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 8px;
+  width: 80%;
+  max-width: 200px;
+  background: #fff; /* fallback color for old browsers */
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-out;
 }
-
-
-// Main
-
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,700);
-
-h1 {
-  
-  @include text;
-  width:500px;
-  margin-left:-220px;
-  margin-bottom:60px;
-  
+.semi-transparent-button:hover,
+.semi-transparent-button:focus,
+.semi-transparent-button:active {
+  background: #fff;
+  color: #000;
+  transition: all 0.5s ease-in;
 }
-
-
-body {
- background-color:$background-color;
-
-
-}
-
-.text, .hover {
-
-  @include text;
-
-  span {
-    font-weight:300;
-  }
-  
-}
-
-.hover {
- color:$background-color; 
- margin-top:-$height;
- margin-bottom:$height/2;
-}
-
-.container {
-  height:$height;
-  width:$width;
-  padding-top:$height;
-  margin:auto;
-}
-
-.pulsebutton {
-
-  border-radius:50%;
-  border: 4px solid;
-  border-color: $button-color;
-  background-color: $background-color;
-  height:$height;
-  width:$width;
-  padding: 0;
+.semi-transparent:focus {
   outline: none;
-  transition: all 1.2s ease-in;
+}
 
-  &:hover {
-    box-shadow:inset 0 0 0px $height/2 $hover-color;
-    transition: all 1.2s linear;
-  }
+.is-blue {
+  background: #1e348e; /* fallback color for old browsers */
+  background: rgba(30, 52, 142, 0.5);
+}
+.is-blue:hover,
+.is-blue:focus,
+.is-blue:active {
+  background: #1e348e; /* fallback color for old browsers */
+  background: rgb(30, 52, 142);
+  color: #fff;
+}
+
+.with-border {
+  border: 1px solid #fff;
 }
