@@ -189,7 +189,7 @@ body {
   background: #ddd;
 }
 
-.button_sch {
+#button_sch {
   width: 100px;
   height: 100px;  
   border-bottom: 2px solid #eee;
