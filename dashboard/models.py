@@ -15,16 +15,16 @@ class books(models.Model):
 	def __unicode__(self):
 		return self.name.encode('utf-8')
 
-class tasks(models.Model):
-	text = models.CharField(max_length=1000)
-	user = models.CharField(max_length=5)
-	feedback = models.CharField(max_length=500)
-	status = models.BooleanField(default=False)	
-	date = models.DateTimeField(auto_now_add=True, blank=True)
+# class tasks(models.Model):
+# 	text = models.CharField(max_length=1000)
+# 	user = models.CharField(max_length=5)
+# 	feedback = models.CharField(max_length=500)
+# 	status = models.BooleanField(default=False)	
+# 	date = models.DateTimeField(auto_now_add=True, blank=True)
 
-	class Meta:
-		verbose_name = u'Задача'
-		verbose_name_plural = u'Задачи' 
+# 	class Meta:
+# 		verbose_name = u'Задача'
+# 		verbose_name_plural = u'Задачи' 
 
-	def __unicode__(self):
-		return self.name.encode('utf-8')	
+# 	def __unicode__(self):
+# 		return self.name.encode('utf-8')	
