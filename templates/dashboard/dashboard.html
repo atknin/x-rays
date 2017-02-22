@@ -138,9 +138,9 @@
             <div class="chart-stage">
               <div id="chart-05">
               {% if task.status %}
-                <input type="checkbox" checked="checked" style=" display: block;" />
+                <input type="checkbox" checked="checked" disabled="true" />
               {% else %}
-               <input type="checkbox" style="display: block;" />
+               <input type="checkbox" disabled="true"  />
               {% endif %}
 
               {{task.text}} - ({{task.user}}) - {{task.date}} - {{task.feedback}}
@@ -152,9 +152,9 @@
             {% endfor %}
             <div class="chart-stage">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
+              <input type="text" class="form-control" placeholder="новая задача">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
+                <button class="btn btn-default" type="button">add</button>
               </span>
             </div><!-- /input-group -->
             </div>
