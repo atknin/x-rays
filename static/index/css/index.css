@@ -186,94 +186,33 @@ img{
     border-radius: 8px;
 }
 /*BOTON SCHOOL*/
-.switch input {
-    /* First, we make it as wide as the container */
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* Then, we put it on top of everything else */
-    z-index: 100;
-    /* Last, we make it invisible */
-    opacity: 0;
-    /* This one is just for ergonomy */
-    cursor: pointer;
-}
-.switch {
-    width: 150px !important;
-    height: 150px !important;
-    position: relative !important;
-}
-.switch label {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important; 
-    position: relative !important;
-    color: #a5a39d !important;
-    font-size: 70px !important;
-    text-align: center !important;
-    line-height: 115px !important;
-    text-shadow: 0 2px 1px rgba(0,0,0,0.25);
-    border-radius: 50% !important;
-    background: #b25244 !important; /* Fallback */
-    background: linear-gradient(#f7f2f6, #b2ac9e) !important;
-    transition: all 0.3s ease-out !important;
-    z-index: -1 !important;
-    box-shadow :
-        inset 0 2px 3px rgba(255,255,255,0.13),
-        0 5px 8px rgba(0,0,0,0.3),
-        0 10px 10px 4px rgba(0,0,0,0.3) !important;
-}
-.switch label:before {
-    content: "q" !important; 
-    position: absolute !important;
-    left: -10px !important;
-    right: -10px !important;
-    top: -10px !important;
-    bottom: -10px !important;
-    z-index: -1 !important;
-    border-radius: inherit !important;
-    box-shadow: inset 0 10px 10px rgba(0,0,0,0.13) !important; 
-    -webkit-filter:blur(1px) !important; /* Smooth trick */
-    filter: blur(1px) !important; /* Future-proof */
-}
 
-.switch label:after {
-    content: ""; 
-    position: absolute;
-    left: -20px;
-    right: -20px;
-    top: -20px;
-    bottom: -20px;
-    z-index: -2;
-    border-radius: inherit;
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.1),
-        0 1px 2px rgba(0,0,0,0.3),
-        0 0 10px rgba(0,0,0,0.15);
+.orange-circle-button {
+	box-shadow: 2px 4px 0 2px rgba(0,0,0,0.1);
+	border: .5em solid #E84D0E;
+	font-size: 1em;
+	line-height: 1.1em;
+	color: #ffffff;
+	background-color: #e84d0e;
+	margin: auto;
+	border-radius: 50%;
+	height: 7em;
+	width: 7em;
+	position: relative;
 }
-.switch .icon-off:after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 70%;
-    height: 70%;
-    left: 50%;
-    top: 50%;
-    z-index: -1;
-    margin: -35% 0 0 -35%;
-    border-radius: 50%;
-    background: #d2cbc3; /* Fallback */
-    background: linear-gradient(#cbc7bc, #d2cbc3);
-    box-shadow:
-        0 -2px 5px rgba(255,255,255,0.05),
-        0 2px 5px rgba(255,255,255,0.1);
-    -webkit-filter:blur(1px); /* Smooth trick */
-    filter: blur(1px); /* Future-proof */
+.orange-circle-button:hover {
+	color:#ffffff;
+    background-color: #e84d0e;
+	text-decoration: none;
+	border-color: #ff7536;
+	
 }
-.switch input:checked ~ label { /* Button */
-    color: #9abb82;
-    box-shadow:
-        inset 0 2px 3px rgba(255,255,255,0.13),
-        0 5px 8px rgba(0,0,0,0.35),
-        0 3px 10px 4px rgba(0,0,0,0.2);
-} 
+.orange-circle-button:visited {
+	color:#ffffff;
+    background-color: #e84d0e;
+	text-decoration: none;
+	
+}
+.orange-circle-link-greater-than {
+    font-size: 1em;
+}
