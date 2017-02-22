@@ -151,8 +151,9 @@
     <script src="{% static "index/js/jquery.mousewheel.js"%}"></script>
     <script src="{% static "index/js/jquery.slidescroll.js"%}"></script>
     <script type="text/javascript">
+    $(".slidescroll-wrap").hide();
       $(window).on('load', function() {
-        $(".slidescroll-wrap").fadeOut(200);
+        $(".slidescroll-wrap").fadeIn(200);
     });
     </script>
   <script>
