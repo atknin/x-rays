@@ -185,6 +185,19 @@ img{
     filter: alpha(opacity=50)!important; /* For IE8 and earlier */
     border-radius: 8px;
 }
+/*BOTON SCHOOL*/
+.switch input {
+    /* First, we make it as wide as the container */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Then, we put it on top of everything else */
+    z-index: 100;
+    /* Last, we make it invisible */
+    opacity: 0;
+    /* This one is just for ergonomy */
+    cursor: pointer;
+}
 .switch {
     width: 150px;
     height: 150px;
