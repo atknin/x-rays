@@ -150,23 +150,15 @@
               <hr>
             </div>
             {% endfor %}
-              <div id="chart-05">
-              {% if task.status %}
-                <input type="checkbox" checked="checked" style=" display: block;" />
-              {% else %}
-               <input type="checkbox" style="display: block;" />
-              {% endif %}
-
-              {{task.text}} - ({{task.user}}) - {{task.date}} - {{task.feedback}}
-              <a type="button" id = 'finish' data-toggle="tooltip" data-placement="bottom" title="выход"> <span class="label label-default">завершить</span></a>
-
-              </div>
-               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Новая задача">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button">Add</button>
-                </span>
-              </div><!-- /input-group -->
+            <div class="chart-stage">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div><!-- /input-group -->
+            </div>
+             
             
 
             <!-- <div class="chart-notes">
