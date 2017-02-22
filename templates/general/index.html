@@ -40,17 +40,6 @@
   </head>
 
   <body>
-
-  <div class="ladpagebody">
-    <h1>Loading...</h1>
-    <div class="slider">
-      <div class="line"></div>
-      <div class="break dot1"></div>
-      <div class="break dot2"></div>
-      <div class="break dot3"></div>
-    </div>
-  </div>
-
  <div class="slidescroll-wrap" style="display: none;"><!-- this element is required -->
   <div class="main"><!-- this element will be animated -->
 
@@ -163,7 +152,6 @@
     <script src="{% static "index/js/jquery.slidescroll.js"%}"></script>
     <script type="text/javascript">
       $(window).on('load', function() {
-        $(".ladpagebody").hide();
         $(".slidescroll-wrap").fadeIn(200);
     });
     </script>
