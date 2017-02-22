@@ -152,7 +152,7 @@
             {% endfor %}
             <div class="chart-stage">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="новая задача">
+              <input type="text" id = 'text_task' class="form-control" placeholder="новая задача">
               <span class="input-group-btn">
                 <button class="btn btn-default" id ='add_task' type="button">add</button>
               </span>
@@ -171,7 +171,15 @@
       <script type="text/javascript">
        $(function() {
         $('#add_task').click(function() {
-          console.log('as')
+          $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+          }});
+
+          var compute_dict = {};
+          compute_dict["text"] = $('#text_task').val();
+          $.post("/dashboard/", compute_dict ,function(data) {
+            console.log(data.status);
+          });
         });
       });
 

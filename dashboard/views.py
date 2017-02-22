@@ -68,6 +68,16 @@ def books(request):
 		return JsonResponse(message)
 
 def dashboard(request):
+	if request.is_ajax():
+		message = {}
+		text = request.POST['text']
+		current_user = request.user
+		new = dashboard_models.task.objects.create(text=text)
+		new.user = current_user.id 
+		new.save()
+		message['status'] = 'success'
+		return JsonResponse(message)
+
 	args = {}
 	args['books'] = dashboard_models.books.objects.all()
 	args['tasks'] = dashboard_models.task.objects.all()
