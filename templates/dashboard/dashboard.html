@@ -154,7 +154,7 @@
             <div class="input-group">
               <input type="text" class="form-control" placeholder="новая задача">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="button">add</button>
+                <button class="btn btn-default" id ='add_task' type="button">add</button>
               </span>
             </div><!-- /input-group -->
             </div>
@@ -169,6 +169,12 @@
 
       </div>
       <script type="text/javascript">
+       $(function() {
+        $('#add_task').click(function() {
+          console.log('as')
+        });
+      });
+
         function pull_book(id) {
           $.ajaxSetup({data: {
             csrfmiddlewaretoken: '{{ csrf_token }}'
