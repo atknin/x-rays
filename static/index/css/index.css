@@ -199,42 +199,42 @@ img{
     cursor: pointer;
 }
 .switch {
-    width: 150px;
-    height: 150px;
-    position: relative;
+    width: 150px !important;
+    height: 150px !important;
+    position: relative !important;
 }
 .switch label {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    color: #a5a39d;
-    font-size: 70px;
-    text-align: center;
-    line-height: 115px;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important; 
+    position: relative !important;
+    color: #a5a39d !important;
+    font-size: 70px !important;
+    text-align: center !important;
+    line-height: 115px !important;
     text-shadow: 0 2px 1px rgba(0,0,0,0.25);
-    border-radius: 50%;
-    background: #b25244; /* Fallback */
-    background: linear-gradient(#f7f2f6, #b2ac9e);
-    transition: all 0.3s ease-out;
-    z-index: -1;
-    box-shadow:
+    border-radius: 50% !important;
+    background: #b25244 !important; /* Fallback */
+    background: linear-gradient(#f7f2f6, #b2ac9e) !important;
+    transition: all 0.3s ease-out !important;
+    z-index: -1 !important;
+    box-shadow :
         inset 0 2px 3px rgba(255,255,255,0.13),
         0 5px 8px rgba(0,0,0,0.3),
-        0 10px 10px 4px rgba(0,0,0,0.3);
+        0 10px 10px 4px rgba(0,0,0,0.3) !important;
 }
 .switch label:before {
-    content: ""; 
-    position: absolute;
-    left: -10px;
-    right: -10px;
-    top: -10px;
-    bottom: -10px;
-    z-index: -1;
-    border-radius: inherit;
-    box-shadow: inset 0 10px 10px rgba(0,0,0,0.13); 
-    -webkit-filter:blur(1px); /* Smooth trick */
-    filter: blur(1px); /* Future-proof */
+    content: "q" !important; 
+    position: absolute !important;
+    left: -10px !important;
+    right: -10px !important;
+    top: -10px !important;
+    bottom: -10px !important;
+    z-index: -1 !important;
+    border-radius: inherit !important;
+    box-shadow: inset 0 10px 10px rgba(0,0,0,0.13) !important; 
+    -webkit-filter:blur(1px) !important; /* Smooth trick */
+    filter: blur(1px) !important; /* Future-proof */
 }
 
 .switch label:after {
