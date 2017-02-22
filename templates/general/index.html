@@ -150,6 +150,11 @@
   </div>
     <script src="{% static "index/js/jquery.mousewheel.js"%}"></script>
     <script src="{% static "index/js/jquery.slidescroll.js"%}"></script>
+    <script type="text/javascript">
+      $(window).on('load', function() {
+        $(".slidescroll-wrap").fadeOut(200);
+    });
+    </script>
   <script>
       $(document).ready( function() {
           $('.main').slidescroll({
