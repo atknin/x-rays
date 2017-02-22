@@ -185,3 +185,37 @@ img{
     filter: alpha(opacity=50)!important; /* For IE8 and earlier */
     border-radius: 8px;
 }
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:100);
+.ladpagebody{
+  background:#222;
+  margin:50px 300px;
+}
+.slider{
+  position:absolute;
+  width:400px;
+  height:2px;
+  margin-top:-30px
+}
+.line{
+  position:absolute;
+  background:#4a8df8;
+  width:400px;
+  height:2px;
+  
+}
+.break{
+  position:absolute;
+  background:#222;
+  width:6px;
+  height:2px;  
+}
+
+.dot1{ animation: loading 2s infinite;}
+.dot2{ animation: loading 2s 0.5s infinite; }
+.dot3{ animation: loading 2s 1s infinite; }
+
+@keyframes "loading" {
+ from { left: 0; }
+ to { left: 400px; }
+}
