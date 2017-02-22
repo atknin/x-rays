@@ -137,7 +137,12 @@
             {% for task in tasks%}
             <div class="chart-stage">
               <div id="chart-05">
-                {{task.status}} - {{task.text}} - ({{task.user}}) - {{task.date}} - {{task.feedback}}
+              {% if task.status =='false' %}
+               <input type="checkbox" />
+              {% else %}
+                <input type="checkbox" checked="checked" />
+              {% endif %}
+              {{task.text}} - ({{task.user}}) - {{task.date}} - {{task.feedback}}
               </div>
               <hr>
               {% endfor %}

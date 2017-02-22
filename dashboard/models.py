@@ -17,7 +17,7 @@ class books(models.Model):
 
 class task(models.Model):
 	text = models.CharField(max_length=1000)
-	user = models.CharField(max_length=5)
+	user = models.CharField(max_length=30)
 	feedback = models.CharField(max_length=500, blank=True)
 	status = models.BooleanField(default=False)	
 	date = models.DateTimeField(auto_now_add=True, blank=True)
