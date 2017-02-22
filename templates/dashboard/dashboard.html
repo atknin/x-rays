@@ -138,10 +138,11 @@
             <div class="chart-stage">
               <div id="chart-05">
               {% if task.status %}
-               <input type="checkbox" />
-              {% else %}
                 <input type="checkbox" checked="checked" />
+              {% else %}
+               <input type="checkbox" />
               {% endif %}
+              
               {{task.text}} - ({{task.user}}) - {{task.date}} - {{task.feedback}}
               </div>
               <hr>
