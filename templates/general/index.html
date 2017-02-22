@@ -40,7 +40,7 @@
   </head>
 
   <body>
- <div class="slidescroll-wrap"><!-- this element is required -->
+ <div class="slidescroll-wrap" style="display: none;"><!-- this element is required -->
   <div class="main"><!-- this element will be animated -->
 
   <div class="page class_start_index" id="start" data-slidescroll-title-selector="h1" style='background: url("{% static "index/img/start.png"%}") no-repeat;'> 
@@ -151,7 +151,6 @@
     <script src="{% static "index/js/jquery.mousewheel.js"%}"></script>
     <script src="{% static "index/js/jquery.slidescroll.js"%}"></script>
     <script type="text/javascript">
-    $(".slidescroll-wrap").hide();
       $(window).on('load', function() {
         $(".slidescroll-wrap").fadeIn(200);
     });
