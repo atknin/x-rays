@@ -179,6 +179,7 @@
           compute_dict["text"] = $('#text_task').val();
           $.post("/dashboard/", compute_dict ,function(data) {
             console.log(data.status);
+            location.reload();
           });
         });
       });
@@ -192,6 +193,7 @@
           compute_dict['pull_book'] = 'refresh';
           $.post("books/", compute_dict ,function(data) {
             console.log(data.info);
+
           });
         }
       </script>
