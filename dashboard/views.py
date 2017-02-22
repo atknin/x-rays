@@ -70,6 +70,7 @@ def books(request):
 def dashboard(request):
 	args = {}
 	args['books'] = dashboard_models.books.objects.all()
+	args['tasks'] = dashboard_models.task.objects.all()
 	if request.user.is_authenticated():
 		return render(
 		 	request, 'dashboard/dashboard.html', args
