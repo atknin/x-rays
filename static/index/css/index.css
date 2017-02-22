@@ -185,6 +185,10 @@ img{
     filter: alpha(opacity=50)!important; /* For IE8 and earlier */
     border-radius: 8px;
 }
+body {
+  background: #ddd;
+}
+
 #button {
   width: 100px;
   height: 100px;  
@@ -267,3 +271,5 @@ img{
 
   -webkit-box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
   -moz-box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
+  box-shadow: inset rgba(0,0,0,.5) 0px 5px 10px;
+}
