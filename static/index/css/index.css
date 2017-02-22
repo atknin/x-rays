@@ -199,7 +199,7 @@ img{
 	height: 7em;
 	width: 7em;
 	position: relative;
-	margin: 0 auto;
+	margin: auto auto;
 }
 .orange-circle-button:hover {
 	color:#ffffff;
