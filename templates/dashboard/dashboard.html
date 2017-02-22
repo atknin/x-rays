@@ -129,22 +129,26 @@
           </div>
         </div>
 
-        <div class="col-sm-6" id="mapwrap">
+        <div class="col-sm-6">
           <div class="chart-wrapper">
             <div class="chart-title">
-              <div class="btn-group-xs">Active Users
-                <button type="button" id="7days" class="btn btn-default">7 Days</button>
-                <button type="button" id="14days" class="btn btn-default">14 Days</button>
-                <button type="button" id="28days" class="btn btn-default">28 Days</button>
-              </div>
+              Задачи/Цели
             </div>
+            {% for task in tasks%}
             <div class="chart-stage">
-              <div id="map"></div>
+              <div id="chart-05">
+                {{task.status}} - {{task.text}} - ({{task.user}}) - {{task.date}} - {{task.feedback}}
+              </div>
+              <hr>
+              {% endfor %}
             </div>
-            <div class="chart-notes">
-            </div>
+
+            <!-- <div class="chart-notes">
+             тьи
+            </div> -->
           </div>
         </div>
+
       </div>
       <script type="text/javascript">
         function pull_book(id) {
