@@ -220,7 +220,8 @@
     pctx.moveTo(x0+offset,y0);
     pctx.lineTo(x1+offset,y1);
     pctx.stroke();
-
+    ctx.fillStyle=ctx.createPattern(p,'repeat');
+    ctx.fillRect(0,0,canvas.width,canvas.height);
 
   </script>
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
