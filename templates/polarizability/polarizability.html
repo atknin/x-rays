@@ -286,10 +286,14 @@
         compute_dict["l_surface"] = $('#l_index_surface').val();
         if (!$.isNumeric($('#l_index_surface').val()) || !$.isNumeric($('#k_index_surface').val()) || !$.isNumeric($('#l_index_surface').val()) ) {
           console.log('индекс surface не задан')
-          compute_dict["h_surface"] = $('#h_index').val();
-          compute_dict["k_surface"] = $('#k_index').val();
-          compute_dict["l_surface"] = $('#l_index').val();
+          $('#h_index_surface').val($('#h_index').val());
+          $('#k_index_surface').val($('#k_index').val());
+          $('#l_index_surface').val($('#l_index').val());
         }
+        compute_dict["h_surface"] = $('#h_index_surface').val();
+        compute_dict["k_surface"] = $('#k_index_surface').val();
+        compute_dict["l_surface"] = $('#l_index_surface').val();
+
         compute_dict["h"] = $('#h_index').val();
         compute_dict["k"] = $('#k_index').val();
         compute_dict["l"] = $('#l_index').val();
