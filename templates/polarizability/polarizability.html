@@ -33,7 +33,7 @@
           -webkit-appearance: none;
           margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
       }
-
+      #myCanvas{border:1px solid red;}
     </style>
   {% endblock %}
 
@@ -64,7 +64,7 @@
         </div>
       </div>
       <div class="row" style="text-align: center;">
-        <canvas style="margin-left: auto; margin-right: auto; wi" id="myCanvas" width="200" height="100"></canvas>
+        <canvas id="myCanvas" width="200" height="100"></canvas>
       </div>
 
       <div class="row" style="overflow:auto; height: 300px; margin-left: 10px; overflow-y:scroll;">
@@ -196,14 +196,31 @@
 
   <!-- ассиметрия картинка -->
   <script type="text/javascript">
-    var canvas = document.getElementById('myCanvas');
-    var context = canvas.getContext('2d');
+    var canvas=document.getElementById("myCanvas");
+    var ctx=canvas.getContext("2d");
 
-    context.beginPath();
-    context.rect(30, 10, 150, 40);
-    context.lineWidth = 1;
-    context.strokeStyle = 'black';
-    context.stroke();
+    var p = document.createElement("canvas")
+    p.width=32;
+    p.height=16;
+    var pctx=p.getContext('2d');
+
+    var x0=36;
+    var x1=-4;
+    var y0=-2;
+    var y1=18;
+    var offset=32;
+
+    pctx.strokeStyle = "#FF0000";
+    pctx.lineWidth=2;
+    pctx.beginPath();
+    pctx.moveTo(x0,y0);
+    pctx.lineTo(x1,y1);
+    pctx.moveTo(x0-offset,y0);
+    pctx.lineTo(x1-offset,y1);
+    pctx.moveTo(x0+offset,y0);
+    pctx.lineTo(x1+offset,y1);
+    pctx.stroke();
+
 
   </script>
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
