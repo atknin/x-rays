@@ -174,7 +174,6 @@ def compute(request):
 		except Exception as e:
 			message['error'] = "структура не найдена"
 			return JsonResponse(message)
-		bot_inform.sent_to_atknin_bot('pk0', 'v')
 		
 		#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
 		V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
@@ -198,7 +197,6 @@ def compute(request):
 			return JsonResponse(message)
 		# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
 		tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
-		bot_inform.sent_to_atknin_bot('pk1', 'v')
 		#-----------Угол между поверхностью и плоскостью---------
 
 		s1_surface = math.pow( ( hInd_surface * aprmtr_) ,2) + math.pow( ( kInd_surface * bprmtr_) ,2) + math.pow( ( lInd_surface * cprmtr_) ,2)
@@ -304,7 +302,6 @@ def compute(request):
 		# Расчет поляризуемостей-------------------------------
 		Relectron = 2.8179403267 * math.pow(10,-15) # радиус электрона в метрах
 		Navogadro =  6.02214129 * math.pow(10,23)
-		bot_inform.sent_to_atknin_bot('pk2', 'v')
 
 		X0r = - Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
 		X0i =  Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
@@ -341,7 +338,6 @@ def compute(request):
 		shag = (delta/point_for_curve)*math.pi/180/3600
 		dTeta = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
-		bot_inform.sent_to_atknin_bot('pk3', 'v')
 
 		if Xh.real < 1e-12:
 			message['status'] = "запрещенный рефлекс"
@@ -391,7 +387,6 @@ def compute(request):
 		message['sdvig'] = str(round(sdvig,4))
 		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 		message['b'] =  round(b,3)
-		bot_inform.sent_to_atknin_bot('pk4', 'v')
 
 		
 
