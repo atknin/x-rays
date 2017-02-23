@@ -211,7 +211,6 @@ def compute(request):
 			s10_surface = 1
 
 		fi = math.degrees( math.acos( s10_surface ) ) #проверка
-		bot_inform.sent_to_atknin_bot('ok2', 'v')
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
@@ -298,7 +297,6 @@ def compute(request):
 		# Расчет поляризуемостей-------------------------------
 		Relectron = 2.8179403267 * math.pow(10,-15) # радиус электрона в метрах
 		Navogadro =  6.02214129 * math.pow(10,23)
-		bot_inform.sent_to_atknin_bot('ok3', 'v')
 
 		X0r = - Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
 		X0i =  Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
@@ -316,7 +314,6 @@ def compute(request):
 		Ld = (wavelength*math.sqrt(abs(gamma_0)*abs(gamma_h)))/(math.pi*C*abs(Xh))
 
 		# Полуширина кривой 
-		b= 1
 		delta = 2*math.degrees(abs(C*cmath.sqrt(Xh.real*Xh.real+Xh.imag*Xh.imag)/(cmath.sqrt(b) * math.sin(2*tetaprmtr))))*3600
 
 		# Смещение кривой
@@ -336,51 +333,53 @@ def compute(request):
 		shag = (delta/point_for_curve)*math.pi/180/3600
 		dTeta = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
-		bot_inform.sent_to_atknin_bot('ok4', 'v')
+		bot_inform.sent_to_atknin_bot('ok3', 'v')
+		try:
+			while dTeta<dTeta_end:
+				dTeta+=shag
+				alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
+				prover = (1/4/gamma_0)*(X0*(1-b)-b*alfa+cmath.sqrt(((X0*(1+b)+b*alfa)*(X0*(1+b)+b*alfa))-4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
+				if prover.imag < 0:
+					eps = (1/4/gamma_0)*(X0*(1-b)-b*alfa-cmath.sqrt(((X0*(1+b)+b*alfa)*(X0*(1+b)+b*alfa))-4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
+				else:
+					eps = prover
+				R=(2*eps*gamma_0-X0)/Xh/C
+				P = (gamma_h/gamma_0)*abs(R)*abs(R)
+				epslist.append(P)
+				x_epslist.append(dTeta*3600*180/math.pi)
+				for_downloading+= str(dTeta*3600*180/math.pi)+'   '+str(P) + '\n'
+				if max_pow_R<(P):
+					max_pow_R = (P)
+				if min_rasst_ot_centra > abs(sdvig*math.pi/180/3600 - dTeta):
+					min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
+					min_rasst_ot_centra_which_point = len(epslist)
+			From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
+			To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
 
-		while dTeta<dTeta_end:
-			dTeta+=shag
-			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
-			prover = (1/4/gamma_0)*(X0*(1-b)-b*alfa+cmath.sqrt(((X0*(1+b)+b*alfa)*(X0*(1+b)+b*alfa))-4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
-			if prover.imag < 0:
-				eps = (1/4/gamma_0)*(X0*(1-b)-b*alfa-cmath.sqrt(((X0*(1+b)+b*alfa)*(X0*(1+b)+b*alfa))-4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
-			else:
-				eps = prover
-			R=(2*eps*gamma_0-X0)/Xh/C
-			P = (gamma_h/gamma_0)*abs(R)*abs(R)
-			epslist.append(P)
-			x_epslist.append(dTeta*3600*180/math.pi)
-			for_downloading+= str(dTeta*3600*180/math.pi)+'   '+str(P) + '\n'
-			if max_pow_R<(P):
-				max_pow_R = (P)
-			if min_rasst_ot_centra > abs(sdvig*math.pi/180/3600 - dTeta):
-				min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
-				min_rasst_ot_centra_which_point = len(epslist)
 
-		From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
-		To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
-
-
-		y = epslist[From_:To_:1]	
-		x = x_epslist[From_:To_:1]
-		bot_inform.sent_to_atknin_bot('ok5', 'v')
-		
-		message['status'] = "ok"
-		message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
-		message['X0_real'] = str(round(X0.real*math.pow(10,7),4))
-		message['X0_imag'] = str(round(X0.imag*math.pow(10,7),4))
-		message['Xh_real'] = str(round(Xh.real*math.pow(10,7),4))
-		message['Xh_imag'] = str(round(Xh.imag*math.pow(10,7),4))
-		message['delta'] = str(round(delta,4))
-		message['dprmtr'] = str(round(dprmtr, 4))
-		message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
-		message['maximum'] = str(round(max_pow_R,4))
-		message['sdvig'] = str(round(sdvig,4))
-		message['x_darwin'] = x
-		message['y_darwin'] = y
-		message['for_downloading'] = for_downloading
-		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
-		message['b'] =  round(b,3)
+			y = epslist[From_:To_:1]	
+			x = x_epslist[From_:To_:1]
+			bot_inform.sent_to_atknin_bot('ok5', 'v')
+			
+			message['status'] = "ok"
+			message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
+			message['X0_real'] = str(round(X0.real*math.pow(10,7),4))
+			message['X0_imag'] = str(round(X0.imag*math.pow(10,7),4))
+			message['Xh_real'] = str(round(Xh.real*math.pow(10,7),4))
+			message['Xh_imag'] = str(round(Xh.imag*math.pow(10,7),4))
+			message['delta'] = str(round(delta,4))
+			message['dprmtr'] = str(round(dprmtr, 4))
+			message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
+			message['maximum'] = str(round(max_pow_R,4))
+			message['sdvig'] = str(round(sdvig,4))
+			message['x_darwin'] = x
+			message['y_darwin'] = y
+			message['for_downloading'] = for_downloading
+			message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
+			message['b'] =  round(b,3)
+		except Exception as e:
+			message['status'] = "error in cycle"
+			
 
 
 		
