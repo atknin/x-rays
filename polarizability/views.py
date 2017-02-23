@@ -211,7 +211,7 @@ def compute(request):
 		if s10_surface > 1:
 			s10_surface = 1
 
-		fi = assym*math.degrees( math.acos( s10_surface ) ) #проверка
+		fi = -1*math.degrees( math.acos( s10_surface ) ) #проверка
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
