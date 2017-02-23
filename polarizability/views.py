@@ -331,16 +331,17 @@ def compute(request):
 
 		point_for_curve = 100
 		shag = (delta/point_for_curve)*math.pi/180/3600
-		dTeta_start = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
+		dTeta = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
-		bot_inform.sent_to_atknin_bot('forebiden: '+str(Xh), 'v')
 
-		bot_inform.sent_to_atknin_bot('ok3', 'v')
-		try:
-			bot_inform.sent_to_atknin_bot('sttart: '+str(dTeta_start)+'; stop: '+str(dTeta_end)+'; shag: '+str(shag), 'v')
+		if Xh.real < 1e-12:
 
-			for dTeta in range(dTeta_start,dTeta_end,shag):
-
+			message['status'] = "запрещенный рефлекс"
+			message['forbidden'] = 1
+		else:
+			message['status'] = "ok"
+			while dTeta<dTeta_end:
+				dTeta+=shag
 				alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
 				prover = (1/4/gamma_0)*(X0*(1-b)-b*alfa+cmath.sqrt(((X0*(1+b)+b*alfa)*(X0*(1+b)+b*alfa))-4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
 				if prover.imag < 0:
@@ -357,34 +358,31 @@ def compute(request):
 				if min_rasst_ot_centra > abs(sdvig*math.pi/180/3600 - dTeta):
 					min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
 					min_rasst_ot_centra_which_point = len(epslist)
+
 			From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
 			To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
 
 
 			y = epslist[From_:To_:1]	
 			x = x_epslist[From_:To_:1]
-			bot_inform.sent_to_atknin_bot('ok5', 'v')
 			
-			message['status'] = "ok"
-			message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
+			
 			message['X0_real'] = str(round(X0.real*math.pow(10,7),4))
 			message['X0_imag'] = str(round(X0.imag*math.pow(10,7),4))
 			message['Xh_real'] = str(round(Xh.real*math.pow(10,7),4))
 			message['Xh_imag'] = str(round(Xh.imag*math.pow(10,7),4))
 			message['delta'] = str(round(delta,4))
-			message['dprmtr'] = str(round(dprmtr, 4))
-			message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 			message['maximum'] = str(round(max_pow_R,4))
-			message['sdvig'] = str(round(sdvig,4))
 			message['x_darwin'] = x
 			message['y_darwin'] = y
 			message['for_downloading'] = for_downloading
-			message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
-			message['b'] =  round(b,3)
-		except Exception as e:
-			message['status'] = "error in cycle"
-			
-
+		
+		message['dprmtr'] = str(round(dprmtr, 4))
+		message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
+		message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
+		message['sdvig'] = str(round(sdvig,4))
+		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
+		message['b'] =  round(b,3)
 
 		
 

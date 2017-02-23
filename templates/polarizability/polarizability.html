@@ -296,10 +296,13 @@
           if(data.error){
             var text_out = data.error;
           }
-          else if(data.Xh_real<0.0001) {
-            var text_out = 'ЗАПРЕЩЕННЫЙ РЕФЛЕКС' + '\n' + 
-            'Угол Брегга = '+ data.bragg + ' град. \n' +
-            'межпл-ое,  d = ' + data.dprmtr + ' А \n' ;
+          else if(data.forbidden) {
+            var text_out = 'Угол Брегга = '+ data.bragg + ' град. \n' + 
+            'межпл-ое,  d = ' + data.dprmtr + ' А \n' +
+            'Глубина экстинкции: ' + data.extintion+ ' мкм' + '\n'+
+            'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +  
+            'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +  
+            'коэффициент ассиметрии b: ' + data.b + ' \n';
           }
           else{
             var text_out = 'Угол Брегга = '+ data.bragg + ' град. \n' + 
