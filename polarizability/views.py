@@ -148,6 +148,8 @@ def compute(request):
 		hInd = int(request.POST['h'], 10) # индекс миллера h
 		kInd = int(request.POST['k'], 10) # индекс миллера k
 		lInd = int(request.POST['l'], 10) # индекс миллера l
+		assym = int(request.POST['assym_alfa_then_beta'])
+
 
 		hInd_surface = int(request.POST['h_surface'], 10) # индекс миллера h
 		kInd_surface = int(request.POST['k_surface'], 10) # индекс миллера k
@@ -208,7 +210,8 @@ def compute(request):
 		s10_surface = dprmtr_surface * dprmtr * s9_surface
 		if s10_surface > 1:
 			s10_surface = 1
-		fi = math.degrees( math.acos( s10_surface ) ) #проверка
+
+		fi = assym*math.degrees( math.acos( s10_surface ) ) #проверка
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)

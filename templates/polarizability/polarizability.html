@@ -68,11 +68,11 @@
         </div>
         <div class="row">
           <label class="radio-inline">
-            <input type="radio" name="assym_alfa_then_beta" id="inlineRadio1" value="option1">  
+            <input type="radio" name="assym_alfa_then_beta" id="inlineRadio1" value="1" checked="true">  
             &#945; > &beta;
           </label>
           <label class="radio-inline">
-            <input type="radio" name="assym_alfa_then_beta" id="inlineRadio2" value="option2">
+            <input type="radio" name="assym_alfa_then_beta" id="inlineRadio2" value="-1">
              &#945; < &beta;
           </label>
         </div>
@@ -287,7 +287,8 @@
         compute_dict["h"] = $('#h_index').val();
         compute_dict["k"] = $('#k_index').val();
         compute_dict["l"] = $('#l_index').val();
-        compute_dict["crystal_id"] = $('input[name=crystal]').filter(':checked').val()
+        compute_dict["crystal_id"] = $('input[name=crystal]').filter(':checked').val();
+        compute_dict["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta]').filter(':checked').val();
 
 
 
