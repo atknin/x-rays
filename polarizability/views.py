@@ -335,8 +335,9 @@ def compute(request):
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
 		bot_inform.sent_to_atknin_bot('ok3', 'v')
 		try:
+			bot_inform.sent_to_atknin_bot('sttart: 'str(dTeta_start)+'; stop: '+str(dTeta_end)+'; shag: '+str(shag), 'v')
+
 			for dTeta in range(dTeta_start,dTeta_end,shag):
-				bot_inform.sent_to_atknin_bot(dTeta, 'v')
 
 				alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
 				prover = (1/4/gamma_0)*(X0*(1-b)-b*alfa+cmath.sqrt(((X0*(1+b)+b*alfa)*(X0*(1+b)+b*alfa))-4*b*(C*C)*((Xh.real)*(Xh.real)-(Xh.imag)*(Xh.imag)-2j*Xh.real*Xh.imag)))
