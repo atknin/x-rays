@@ -180,7 +180,6 @@ def compute(request):
 		COSalfaprmtr_ =  ( math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr) )/( math.sin(betaprmtr)*math.sin(gammaprmtr) ) 
 		COSbetaprmtr_ =  ( math.cos(gammaprmtr)*math.cos(alfaprmtr)-math.cos(betaprmtr) )/( math.sin(gammaprmtr)*math.sin(alfaprmtr) )
 		COSgammaprmtr_ = ( math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr) )/( math.sin(alfaprmtr)*math.sin(betaprmtr)  ) 
-		bot_inform.sent_to_atknin_bot('ok', 'v')
 		s1 = math.pow( ( hInd * aprmtr_) ,2) + math.pow( ( kInd * bprmtr_) ,2) + math.pow( ( lInd * cprmtr_) ,2)
 		s2 = 2*hInd*kInd*aprmtr_*bprmtr_*COSgammaprmtr_
 		s3 = 2*kInd*lInd*COSalfaprmtr_
@@ -212,7 +211,8 @@ def compute(request):
 			s10_surface = 1
 
 		fi = math.degrees( math.acos( s10_surface ) ) #проверка
-
+		bot_inform.sent_to_atknin_bot('ok', 'v')
+		
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
 		gamma_h = math.sin(math.radians(90-fi) - tetaprmtr)
