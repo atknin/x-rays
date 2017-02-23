@@ -335,7 +335,7 @@ def compute(request):
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
 		bot_inform.sent_to_atknin_bot('ok3', 'v')
 		try:
-			bot_inform.sent_to_atknin_bot('sttart: 'str(dTeta_start)+'; stop: '+str(dTeta_end)+'; shag: '+str(shag), 'v')
+			bot_inform.sent_to_atknin_bot('sttart: '+str(dTeta_start)+'; stop: '+str(dTeta_end)+'; shag: '+str(shag), 'v')
 
 			for dTeta in range(dTeta_start,dTeta_end,shag):
 
