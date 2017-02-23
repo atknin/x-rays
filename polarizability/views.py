@@ -168,7 +168,6 @@ def compute(request):
 		StructFactor0 = 0
 		SumOcupAtomWeight = 0
 
-		bot_inform.sent_to_atknin_bot(path+"structure/"+crystal.name+'.dat', 'v')
 		try:
 			crystalGeom = open(path+"structure/"+crystal.name+'.dat').readlines() # открыл файл с геометрие элементарной ячейки
 		except Exception as e:
