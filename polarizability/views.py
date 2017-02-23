@@ -136,6 +136,7 @@ def compute(request):
 		crystal_id = request.POST['crystal_id']
 		crystal = polarizability_models.crystals.objects.get(pk = crystal_id)
 
+		bot_inform.sent_to_atknin_bot('pk-1', 'v')
 		
 		a_element= set() # множесто названий элементов
 		a_element_dict= {}
@@ -168,6 +169,7 @@ def compute(request):
 		StructFactor0 = 0
 		SumOcupAtomWeight = 0
 		crystalGeom = open(path+"structure/"+crystal.name+'.dat').readlines() # открыл файл с геометрие элементарной ячейки
+		bot_inform.sent_to_atknin_bot('pk0', 'v')
 		
 		#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
 		V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
