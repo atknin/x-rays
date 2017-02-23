@@ -210,7 +210,7 @@ def compute(request):
 		if s10_surface > 1:
 			s10_surface = 1
 
-		fi = math.degrees( math.acos( s10_surface ) ) #проверка
+		fi = assym*math.degrees( math.acos( s10_surface ) ) #проверка
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
@@ -376,7 +376,6 @@ def compute(request):
 			message['x_darwin'] = x
 			message['y_darwin'] = y
 			message['for_downloading'] = for_downloading
-		
 		message['dprmtr'] = str(round(dprmtr, 4))
 		message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 		message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
