@@ -194,6 +194,20 @@
      </div>
   </div>
 
+  <!-- ассиметрия картинка -->
+  <script type="text/javascript">
+    var canvas = document.getElementById('myCanvas');
+    var context = canvas.getContext('2d');
+
+    context.beginPath();
+    context.rect(10, 10, 80, 20);
+    context.fillStyle = 'grey';
+    context.fill();
+    context.lineWidth = 1;
+    context.strokeStyle = 'black';
+    context.stroke();
+
+  </script>
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
 
