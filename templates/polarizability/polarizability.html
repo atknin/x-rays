@@ -194,36 +194,6 @@
      </div>
   </div>
 
-  <!-- ассиметрия картинка -->
-  <script type="text/javascript">
-    var canvas=document.getElementById("myCanvas");
-    var ctx=canvas.getContext("2d");
-
-    var p = document.createElement("canvas")
-    p.width=32;
-    p.height=16;
-    var pctx=p.getContext('2d');
-
-    var x0=36;
-    var x1=-4;
-    var y0=-2;
-    var y1=18;
-    var offset=32;
-
-    pctx.strokeStyle = "#FF0000";
-    pctx.lineWidth=2;
-    pctx.beginPath();
-    pctx.moveTo(x0,y0);
-    pctx.lineTo(x1,y1);
-    pctx.moveTo(x0-offset,y0);
-    pctx.lineTo(x1-offset,y1);
-    pctx.moveTo(x0+offset,y0);
-    pctx.lineTo(x1+offset,y1);
-    pctx.stroke();
-    ctx.fillStyle=ctx.createPattern(p,'repeat');
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  </script>
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
 
