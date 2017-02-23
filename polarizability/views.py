@@ -136,7 +136,6 @@ def compute(request):
 		crystal_id = request.POST['crystal_id']
 		crystal = polarizability_models.crystals.objects.get(pk = crystal_id)
 
-		bot_inform.sent_to_atknin_bot('pk-1', 'v')
 		
 		a_element= set() # множесто названий элементов
 		a_element_dict= {}
@@ -168,7 +167,13 @@ def compute(request):
 		StructFactorImag=0 # обнуляем структурный фактор
 		StructFactor0 = 0
 		SumOcupAtomWeight = 0
-		crystalGeom = open(path+"structure/"+crystal.name+'.dat').readlines() # открыл файл с геометрие элементарной ячейки
+
+		bot_inform.sent_to_atknin_bot(path+"structure/"+crystal.name+'.dat', 'v')
+		try:
+			crystalGeom = open(path+"structure/"+crystal.name+'.dat').readlines() # открыл файл с геометрие элементарной ячейки
+		except Exception as e:
+			message['error'] = "структура не найдена"
+			return JsonResponse(message)
 		bot_inform.sent_to_atknin_bot('pk0', 'v')
 		
 		#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
@@ -339,7 +344,6 @@ def compute(request):
 		bot_inform.sent_to_atknin_bot('pk3', 'v')
 
 		if Xh.real < 1e-12:
-
 			message['status'] = "запрещенный рефлекс"
 			message['forbidden'] = 1
 		else:
@@ -392,7 +396,7 @@ def compute(request):
 		
 
 	else:
-		message['status'] = "error"
+		message['error'] = "error"
 	return JsonResponse(message)
 
 	
