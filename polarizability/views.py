@@ -191,7 +191,7 @@ def compute(request):
 			return JsonResponse(message)
 		# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
 		tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
-
+		bot_inform.sent_to_atknin_bot('pk1', 'v')
 		#-----------Угол между поверхностью и плоскостью---------
 
 		s1_surface = math.pow( ( hInd_surface * aprmtr_) ,2) + math.pow( ( kInd_surface * bprmtr_) ,2) + math.pow( ( lInd_surface * cprmtr_) ,2)
@@ -297,6 +297,7 @@ def compute(request):
 		# Расчет поляризуемостей-------------------------------
 		Relectron = 2.8179403267 * math.pow(10,-15) # радиус электрона в метрах
 		Navogadro =  6.02214129 * math.pow(10,23)
+		bot_inform.sent_to_atknin_bot('pk2', 'v')
 
 		X0r = - Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
 		X0i =  Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
@@ -333,6 +334,7 @@ def compute(request):
 		shag = (delta/point_for_curve)*math.pi/180/3600
 		dTeta = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
+		bot_inform.sent_to_atknin_bot('pk3', 'v')
 
 		if Xh.real < 1e-12:
 
@@ -376,12 +378,14 @@ def compute(request):
 			message['x_darwin'] = x
 			message['y_darwin'] = y
 			message['for_downloading'] = for_downloading
+
 		message['dprmtr'] = str(round(dprmtr, 4))
 		message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 		message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
 		message['sdvig'] = str(round(sdvig,4))
 		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 		message['b'] =  round(b,3)
+		bot_inform.sent_to_atknin_bot('pk4', 'v')
 
 		
 
