@@ -333,6 +333,8 @@ def compute(request):
 		shag = (delta/point_for_curve)*math.pi/180/3600
 		dTeta_start = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
+		bot_inform.sent_to_atknin_bot('forebiden: '+str(Xh), 'v')
+
 		bot_inform.sent_to_atknin_bot('ok3', 'v')
 		try:
 			bot_inform.sent_to_atknin_bot('sttart: '+str(dTeta_start)+'; stop: '+str(dTeta_end)+'; shag: '+str(shag), 'v')
