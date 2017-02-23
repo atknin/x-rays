@@ -33,7 +33,6 @@
           -webkit-appearance: none;
           margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
       }
-      #myCanvas{border:1px solid red;}
     </style>
   {% endblock %}
 
@@ -64,7 +63,17 @@
         </div>
       </div>
       <div class="row" style="text-align: center; margin-bottom: 20px;">
-        <img src="{% static "polarizability/img/asym.png"%}" height="200" width="200">
+        <div class="row">
+          <img src="{% static "polarizability/img/asym.png"%}" height="200" width="200">
+        </div>
+        <div class="row">
+          <label class="radio-inline">
+            <input type="radio" name="assym_alfa_then_beta" id="inlineRadio1" value="option1">  &#945; > &#945;
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="assym_alfa_then_beta" id="inlineRadio2" value="option2"> &#945; < &#945;
+          </label>
+        </div>
       </div>
 
       <div class="row" style="overflow:auto; height: 300px; margin-left: 10px; overflow-y:scroll;">
