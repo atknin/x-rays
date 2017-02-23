@@ -211,8 +211,8 @@ def compute(request):
 			s10_surface = 1
 
 		fi = math.degrees( math.acos( s10_surface ) ) #проверка
-		bot_inform.sent_to_atknin_bot('ok', 'v')
-		
+		bot_inform.sent_to_atknin_bot('ok2', 'v')
+
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
 		gamma_h = math.sin(math.radians(90-fi) - tetaprmtr)
@@ -298,6 +298,7 @@ def compute(request):
 		# Расчет поляризуемостей-------------------------------
 		Relectron = 2.8179403267 * math.pow(10,-15) # радиус электрона в метрах
 		Navogadro =  6.02214129 * math.pow(10,23)
+		bot_inform.sent_to_atknin_bot('ok3', 'v')
 
 		X0r = - Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
 		X0i =  Relectron*Navogadro*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*rho*StructFactor0/math.pi/SumOcupAtomWeight
@@ -334,6 +335,7 @@ def compute(request):
 		shag = (delta/point_for_curve)*math.pi/180/3600
 		dTeta = sdvig*math.pi/180/3600 - 5*delta*math.pi/180/3600
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
+		bot_inform.sent_to_atknin_bot('ok4', 'v')
 
 		while dTeta<dTeta_end:
 			dTeta+=shag
@@ -360,6 +362,7 @@ def compute(request):
 
 		y = epslist[From_:To_:1]	
 		x = x_epslist[From_:To_:1]
+		bot_inform.sent_to_atknin_bot('ok5', 'v')
 		
 		message['status'] = "ok"
 		message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
