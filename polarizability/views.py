@@ -40,7 +40,7 @@ def add_crystal(request):
 	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 	if request.is_ajax():
 		message = {}
-		if request.POST['edit']:
+		if 'edit' in request.POST:
 			edit = polarizability_models.crystals.objects.get(pk = request.POST['crystal_id'])
 			edit.name = request.POST['id_name']
 			edit.short_name = request.POST['id_short_name']
@@ -91,6 +91,7 @@ def add_crystal(request):
 				message['status'] = e
 
 		return JsonResponse(message)
+
 	elif request.method == 'POST':
 		args = {}
 		crystal_id = request.POST['edit_crystal']
