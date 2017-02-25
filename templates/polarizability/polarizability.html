@@ -69,11 +69,11 @@
         <div class="row" style="margin-top: 20px;">
           <label class="radio-inline">
             <input type="radio" name="assym_alfa_then_beta" id="inlineRadio1" value="-1" checked="true">  
-            <span class="label label-primary">положительный</span>
+            <span class="label label-primary">синий луч</span>
           </label>
           <label class="radio-inline">
             <input type="radio" name="assym_alfa_then_beta" id="inlineRadio2" value="1">
-              <span class="label label-danger">отрицательный</span>
+              <span class="label label-danger">красный луч</span>
           </label>
         </div>
       </div>
@@ -230,7 +230,7 @@
       $('#myModal_forsure').modal('hide');  
       $.post("delete/", delelete ,function(data) {
         alert(data.status);
-        location.reload()
+        location.reload();
       });
     });
 
