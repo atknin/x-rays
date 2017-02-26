@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django.shortcuts import render
 from general import models as general_models
+from polarizability import models as polarizability_models
 from django.contrib import auth
 from django.http import JsonResponse
 import random
@@ -31,8 +32,10 @@ def index(request):
 			message['status'] = "error"
 		return JsonResponse(message)
 	else:
+		arg = {}
+		arg['total_crystal'] = len(polarizability_models.crystals.objects.all())
 	 	return render(
-		 	request, 'general/index.html',
+		 	request, 'general/index.html', arg
 		 	)	
 
 
