@@ -212,7 +212,6 @@ $("#compute").click(function(){
 });
 
 $("#getX2, #getX1").click(function() {
-	console.log('compute');
   	var compute_dict_X = {};
   	var cryst_num = $(this).attr( "name" );
   	var flag = false
@@ -249,7 +248,6 @@ $("#getX2, #getX1").click(function() {
       $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
     }
 
-    console.log('assym',$('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val())
     compute_dict_X["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val();
 
     compute_dict_X["h_surface"] = $('#h_index_surface_'+cryst_num).val();
