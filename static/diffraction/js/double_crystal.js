@@ -216,7 +216,6 @@ $("#getX2, #getX1").click(function() {
   	var cryst_num = $(this).attr( "name" );
   	var flag = false
  
-
    if (!$.isNumeric($('#select_crystal'+cryst_num).val())){ // проверка, выбран ли источник
     flag = true;   
     $("#check_crystal"+cryst_num).addClass("has-error");

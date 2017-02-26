@@ -105,7 +105,6 @@
     {% block content %}
     <div class="col-lg-3"><!-- слева минюшка -->
       <ul class="nav nav-pills nav-stacked">
-
         <li role="presentation" style="background: #D5D5D5;">
         <a href="/polarizability/" style="color: #555; ">
           <h4 class="list-group-item-heading">Поляризумость   &#967; <sub>0,h</sub>  </h4> <br> 
@@ -129,10 +128,13 @@
     </div><!-- / слева минюшка -->
 
 
-     <div class="col-lg-9" style="padding: 50px;">
-     Ваши права:  {% for group in user.groups.all %} [{{group}}] {%endfor%}
-     <br>
-      
+     <div class="col-lg-4" style="padding: 50px;">
+       Ваши права:  {% for group in user.groups.all %} [{{group}}] {%endfor%}
+       <br>
+    </div>
+
+    <div class="col-lg-3" style="padding: 50px;">
+       Колличество кристаллов в базе
     </div>
   {% endblock %}
 </div><!-- / основное тело -->
