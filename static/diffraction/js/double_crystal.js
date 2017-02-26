@@ -130,11 +130,13 @@ $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
   if(this.checked) {
   	console.log('ok')
   	var nnn = $(this).attr('name')
-    $('#h_index'+nnn+'_surface,#k_index'+nnn+'_surface,#l_index'+nnn+'_surface').prop( "disabled", true );
-    $('#h_index'+nnn+'_surface,#k_index'+nnn+'_surface,#l_index'+nnn+'_surface').val('');
+    $('#h_index_surface_'+nnn,'#k_index_surface_'+nnn,'#l_index_surface_'+nnn,).prop( "disabled", true );
+    $('#h_index_surface_'+nnn,'#k_index_surface_'+nnn,'#l_index_surface_'+nnn,).val('');
+    $('#id_assym_img_'+nnn).hide();
   }
   else{
-    $('#h_index'+nnn+'_surface,#k_index'+nnn+'_surface,#l_index'+nnn+'_surface').prop( "disabled", false );
+    $('#h_index_surface_'+nnn,'#k_index_surface_'+nnn,'#l_index_surface_'+nnn,).prop( "disabled", false );
+    $('#id_assym_img_'+nnn).show();
   };
 });
 $("#check_symmetric_case_1, #check_symmetric_case_2").change();
