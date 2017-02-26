@@ -34,9 +34,9 @@ def index(request):
 	else:
 		arg = {}
 		arg['total_crystal'] = len(polarizability_models.crystals.objects.all())
-	 	return render(
-		 	request, 'general/index.html', arg
-		 	)	
+		return render(
+			request, 'general/index.html', arg
+			)	
 
 
 def about(request):
