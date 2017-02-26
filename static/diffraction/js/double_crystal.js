@@ -250,7 +250,7 @@ $("#getX2, #getX1").click(function() {
     }
 
     console.log('assym',$('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val())
-    compute_dict["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val();
+    compute_dict_X["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val();
 
     compute_dict_X["h_surface"] = $('#h_index_surface_'+cryst_num).val();
     compute_dict_X["k_surface"] = $('#k_index_surface_'+cryst_num).val();
@@ -259,7 +259,7 @@ $("#getX2, #getX1").click(function() {
     compute_dict_X["crystal_id"] = $('#select_crystal'+cryst_num).val();
 
     compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
-
+    
     $.post("/polarizability/compute/", compute_dict_X ,function(data) {
       $('#X0_'+cryst_num).val(data.X0_real + " + "+data.X0_imag+"j");
       $('#Xh_'+cryst_num).val(data.Xh_real + " + "+data.Xh_imag+"j");

@@ -289,7 +289,6 @@
         compute_dict["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta]').filter(':checked').val();
 
 
-
         $.post("compute/", compute_dict ,function(data) {
           if(data.error){
             var text_out = data.error;
