@@ -34,11 +34,11 @@
     .error {
         border-color: #d9534f !important;
       }
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        /* display: none; <- Crashes Chrome on hover */
-        -webkit-appearance: none;
-        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
     }
   </style>
   
@@ -159,13 +159,13 @@
                 <div class="row" style="margin-top: 5px;">
                  <label class="radio-inline">
                     <input type="radio" name="assym_alfa_then_beta" id="inlineRadio2" value="1">
-                      <span class="label label-danger">красный луч</span>
+                      <span class="label label-danger">красн луч</span>
                   </label>
                 </div>
               </div>  
 
               <div class="row" style="margin-top: 12px" id = "check_crystal1">
-                <select class="form-control" id ='select_crystal1' onchange="$('#getX1').click()" size="6" >
+                <select class="form-control" id ='select_crystal1' onchange="$('#getX1').click()" size="3" >
                 {% for crystal in crystals %}
                   <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
                 {% endfor %}
@@ -175,6 +175,7 @@
 
             <div class="col-md-8">
               <div class="row" >
+                <h6>индекс поверхности</h6>
                 <div class="col-md-4" id = "inputgroup_check_h_index1_surface">
                   <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index1_surface" >
                 </div>
@@ -188,6 +189,7 @@
               </div>
 
               <div class="row" style="margin-top: 10px;">
+                <h6>индекс отраж. плоскости</h6>
                 <div class="col-md-4" id = "inputgroup_check_h_index1">
                   <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index1" >
                 </div>
