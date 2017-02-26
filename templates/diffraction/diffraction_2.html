@@ -146,17 +146,24 @@
         </div>
             <div class="col-md-4">
 
-              <div class="row" style="height: 35px">
-                <div class="input-group" >
-                  <span class="input-group-addon" ><small>Surface indices</small></span>
+              <div class="row" id = "id_assym_img" style="text-align: center; margin-bottom: 20px;">
+                <div class="row">
+                  <img src="{% static "polarizability/img/asym.png"%}" height="80" width="80">
                 </div>
-              </div>
+                <div class="row" style="margin-top: 5px;">
+                  <label class="radio-inline">
+                    <input type="radio" name="assym_alfa_then_beta" id="inlineRadio1" value="-1" checked="true">  
+                    <span class="label label-primary">синий луч</span>
+                  </label>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                 <label class="radio-inline">
+                    <input type="radio" name="assym_alfa_then_beta" id="inlineRadio2" value="1">
+                      <span class="label label-danger">красный луч</span>
+                  </label>
+                </div>
+              </div>  
 
-              <div class="row" style="height: 35px" style="margin-top: 30px;">
-                <div class="input-group">
-                  <span class="input-group-addon" ><small>Miller Indices</small></span>
-                </div>
-              </div>
               <div class="row" style="margin-top: 12px" id = "check_crystal1">
                 <select class="form-control" id ='select_crystal1' onchange="$('#getX1').click()" size="6" >
                 {% for crystal in crystals %}
