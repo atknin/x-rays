@@ -127,10 +127,8 @@ function ok(e){
   	$(e).removeClass('error');
 };
 $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
+  var nnn = $(this).attr('name');
   if(this.checked) {
-  	var nnn = $(this).attr('name');
-    console.log(nnn);
-
     $('#h_index_surface_'+nnn+',#k_index_surface_'+nnn+',#l_index_surface_'+nnn).prop( "disabled", true );
     $('#h_index_surface_'+nnn+',#k_index_surface_'+nnn+',#l_index_surface_'+nnn).val('');
     $('#id_assym_img_'+nnn).hide();
