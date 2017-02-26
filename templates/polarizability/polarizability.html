@@ -14,13 +14,12 @@
 
     <style type="text/css">
       .loader { 
-          background-image: url('http://smallenvelop.com/wp-content/uploads/2014/08/Preloader_8.gif');
-          background-repeat: no-repeat;
-          background-position: 50% 50%; 
-          background-size: 100;
-          color: transparent;
-          background-color: transparent;
-
+        background-image: url("{% static "loader/loader-128x/Preloader_3.gif"%}");
+        background-repeat: no-repeat;
+        background-position: 50% 50%; 
+        background-size: 100%;
+        color: transparent;
+        background-color: transparent;
       }
       .check_danger{
         background-color: #d9534f; 
@@ -113,11 +112,14 @@
      <div class="col-md-4 " style="margin-left: 10px;" > <!-- Вторая колонка -->
 
         <div class="row"> 
-
-          <label>
+        <div class="row">
+            <label style="float: left;">
             <input type="checkbox" value="" id = "check_symmetric_case" checked>
             симметричное отражение
           </label>
+          <div id="loader_addon" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
+        </div>
+          
           <hr>
 
           <div class="col-md-6">
@@ -183,7 +185,7 @@
                   <div class="input-group-btn">
                     <button type="button" id="compute" class="btn btn-default" style="width: 100%;">Compute...</button>
                   </div>
-                  <span class="input-group-addon " id="loader_addon" style="background-color: transparent;"></span>
+              
                 </div>
               </dir>
               
