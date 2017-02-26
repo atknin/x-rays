@@ -203,7 +203,7 @@
         $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", true );
         $('#h_index_surface,#k_index_surface,#l_index_surface').val('');
         $('#id_assym_img').hide();
-        
+
       }
       else{
         $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", false );
@@ -272,9 +272,6 @@
         var compute_dict = {};
         compute_dict["wavelength"] = $('#wavelength').val();
 
-        compute_dict["h_surface"] = $('#h_index_surface').val();
-        compute_dict["k_surface"] = $('#k_index_surface').val();
-        compute_dict["l_surface"] = $('#l_index_surface').val();
         if (!$.isNumeric($('#l_index_surface').val()) || !$.isNumeric($('#k_index_surface').val()) || !$.isNumeric($('#l_index_surface').val()) ) {
           console.log('индекс surface не задан')
           $('#h_index_surface').val($('#h_index').val());

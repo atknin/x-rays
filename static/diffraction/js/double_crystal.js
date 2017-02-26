@@ -143,20 +143,6 @@ $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
 });
 $("#check_symmetric_case_1, #check_symmetric_case_2").change();
 
-$('#input_l_slit1, #input_l_slit2').keyup(function() {
-  if( parseFloat($(this).val()) < 2 && parseFloat($(this).val()) > 0){ok(this);}
-  else{error(this);}
-});
-
-$('#input_size_slit1, #input_size_slit2').keyup(function() {
-  if( parseFloat($(this).val()) < 100 && parseFloat($(this).val()) > 0){ok(this);}
-  else{error(this);}
-});
-
-$('#source_divergence_arc').change(function() {
-  if( parseFloat($(this).val()) < 2000 && parseFloat($(this).val()) > 0){ok(this);}
-  else{error(this);}
-});
 
 $('#x0_1,#xh_1,#x0_2,#xh_2').change(function() {
 	var X = $(this).val().split('+');
@@ -213,6 +199,7 @@ $("#compute").click(function(){
 		compute_dict['Xh_2'] = $('#Xh_2').val();
 		compute_dict['scan'] = $('input[name=schem_radio]').filter(':checked').val()
 
+    
 
 		
 		$.post("/diffraction/compute/", compute_dict)
@@ -249,9 +236,24 @@ $("#getX2, #getX1").click(function() {
     compute_dict_X["h"] = $('#h_index'+cryst_num).val();
     compute_dict_X["k"] = $('#k_index'+cryst_num).val();
     compute_dict_X["l"] = $('#l_index'+cryst_num).val();
-    compute_dict_X["h_surface"] = $('#h_index'+cryst_num+'_surface').val();
-    compute_dict_X["k_surface"] = $('#k_index'+cryst_num+'_surface').val();
-   	compute_dict_X["l_surface"] = $('#l_index'+cryst_num+'_surface').val();
+    
+    if ($("#check_symmetric_case_"+cryst_num).is(":checked")){
+      $('#h_index_surface_'+cryst_num).val($('#h_index'+cryst_num).val());
+      $('#k_index_surface_'+cryst_num).val($('#k_index'+cryst_num).val());
+      $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
+    }
+    else if(!$.isNumeric($('#l_index_surface').val()) || !$.isNumeric($('#k_index_surface').val()) || !$.isNumeric($('#l_index_surface').val()) ) {
+      console.log('индекс surface не задан')
+      $('#h_index_surface_'+cryst_num).val($('#h_index'+cryst_num).val());
+      $('#k_index_surface_'+cryst_num).val($('#k_index'+cryst_num).val());
+      $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
+    }
+
+    compute_dict["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val();
+
+    compute_dict_X["h_surface"] = $('#h_index_surface_'+cryst_num).val();
+    compute_dict_X["k_surface"] = $('#k_index_surface_'+cryst_num).val();
+    compute_dict_X["l_surface"] = $('#l_index_surface_'+cryst_num).val();
 
     compute_dict_X["crystal_id"] = $('#select_crystal'+cryst_num).val();
 
