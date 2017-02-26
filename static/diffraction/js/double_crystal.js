@@ -128,8 +128,9 @@ function ok(e){
 };
 $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
   if(this.checked) {
-  	console.log('ok')
   	var nnn = $(this).attr('name')
+    console.log(nnn)
+    
     $('#h_index_surface_'+nnn,'#k_index_surface_'+nnn,'#l_index_surface_'+nnn,).prop( "disabled", true );
     $('#h_index_surface_'+nnn,'#k_index_surface_'+nnn,'#l_index_surface_'+nnn,).val('');
     $('#id_assym_img_'+nnn).hide();
