@@ -347,13 +347,11 @@
       <div class="col-md-4">
         <div class="row" >
           <div class="alert alert-danger" style="margin-left: 40px;"  role="alert" id='id_alert_message'>
-            
           </div>
         </div>
           {% if user.is_authenticated %}
             <div class="row" style="margin-left: 50px;"> 
               <p class="lead"> Параметры расчета:</p> 
-              <div class=" col-md-5">
                 <div class="row">
                   <div class="form-group">
                     <label for="scan_theta">тип сканирования:</label>
@@ -364,23 +362,13 @@
                       <input type="radio" name="schem_radio" id="scan_omega" value="omega"> &omega;
                     </label>
                   </div>
-                  
-                 
                 </div>
-
                 <div class="row">
-                  
                   <div class="form-group">
                     <label for="step_detail">коэффициент детализации сетки</label>
                     <input type="number" class="form-control" id="step_detail" placeholder="1" value="1">
                   </div> 
                 </div>
-
-              </div>
-              <div class=" col-md-6">
-                
-              </div>
-
               
               
             </div>
@@ -394,9 +382,6 @@
           {% else %}
           <span class="label label-default">Только зарегистрированным пользователям</span>
           {% endif %}
-
-        
-        
       </div>
 
       <div class="col-md-8"></div>
