@@ -18,7 +18,6 @@
       color: transparent;
       background-color: transparent;
     }
-
     .settings{
       margin-top: 30px;
       margin: 20px;
@@ -383,17 +382,29 @@
       </div>
 
       <div class="col-md-8">
-        <div class="col-md-3">
-          <div style="float: right;">
-            <input type="number" style="width: 30%;" class="form-control input-sm" id="lamba_end" placeholder="1" value="1">
+        <div class="col-md-2">
+          <div >
+            <input type="number" class="form-control input-sm" id="lamba_end" placeholder="1" value="1">
           </div>
-          <div style="float: right; margin-top: 140px;">
-            <input type="number" style="width: 30%;" class="form-control input-sm" id="lamba_start" placeholder="1" value="1">
+          <div style="margin-top: 140px;">
+            <input type="number" class="form-control input-sm" id="lamba_start" placeholder="1" value="1">
           </div>
           
         </div>
         <div class="col-md-8">
-          <img style="height: 200px;" src="{% static 'diffraction/img/calc_examp.png'%}">
+          <div class="row">
+            <img style="height: 200px;" src="{% static 'diffraction/img/calc_examp.png'%}">
+          </div>
+          <div class="row">
+            <div>
+              <input type="number" class="form-control input-sm" id="teta_start" placeholder="1" value="1">
+            </div>
+            <div style="float: right;">
+              <input type="number" class="form-control input-sm" id="teta_end" placeholder="1" value="1">
+            </div>
+          </div>
+
+          
         </div>
       </div>
       {% else %}
