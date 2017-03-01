@@ -255,6 +255,7 @@ $("#getX2, #getX1").click(function() {
 
     compute_dict_X["crystal_id"] = $('#select_crystal'+cryst_num).val();
 
+
     compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
     
     $.post("/polarizability/compute/", compute_dict_X ,function(data) {
