@@ -397,15 +397,26 @@
           </div>
           <div class="row">
             <div class="col-md-6">
-              <input type="number" style="width: 70px;" class="form-control input-sm" id="teta_start" placeholder="1" value="1">
+              <input type="number" style="width: 70px;" class="form-control input-sm" id="teta_start" placeholder="1" value="-80">
             </div>
             <div class="col-md-6">
-              <input type="number" style="margin-left: 50px;  width: 70px;" class="form-control input-sm" id="teta_end" placeholder="1" value="1">
+              <input type="number" style="margin-left: 50px;  width: 70px;" class="form-control input-sm" id="teta_end" placeholder="1" value="80">
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <p class="lead"> дополнительно</p>
+            <div class="row"> 
+              <img style="height: 100px;" src="{% static 'diffraction/img/2xKDO.png'%}">
+            </div>
+            <div class="row">
+              <div class="checkbox">
+                КДО
+                <label>
+                  <input type="checkbox"> Логарифмическая шкала
+                </label>
+              </div>
+            </div>
         </div>
       </div>
       {% else %}
