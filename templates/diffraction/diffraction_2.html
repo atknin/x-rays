@@ -384,9 +384,13 @@
 
       <div class="col-md-8">
         <div class="col-md-3">
-          <input type="number" style="width: 30%;" class="form-control input-sm" id="lamba_end" placeholder="1" value="1">
-
-          <input type="number" style="width: 30%; position: relative; bottom: 0; right: 0;" class="form-control input-sm" id="lamba_start" placeholder="1" value="1">
+          <div style="position: relative; bottom: 0; right: 0;">
+            <input type="number" style="width: 30%;" class="form-control input-sm" id="lamba_end" placeholder="1" value="1">
+          </div>
+          <div style="position: relative; bottom: 0; right: 0;">
+            <input type="number" style="width: 30%;" class="form-control input-sm" id="lamba_start" placeholder="1" value="1">
+          </div>
+          
         </div>
         <div class="col-md-8">
           <img style="height: 200px;" src="{% static 'diffraction/img/calc_examp.png'%}">
