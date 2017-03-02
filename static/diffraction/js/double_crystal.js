@@ -256,6 +256,7 @@ $("#compute").click(function(){
 		});
 	};
 });
+
 // ------------------------------Расчет поляризуемости
 $("#getX2, #getX1").click(function() {
   	var compute_dict_X = {};
