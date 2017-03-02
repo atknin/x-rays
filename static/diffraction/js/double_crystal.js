@@ -198,7 +198,7 @@ $('#id_alert_message').hide();
 
 // ------------------------------отправка расчта в Телеграмм
 $("#compute").click(function(){
-  $("#loader_addon"+cryst_num).addClass("loader"); //анимациая загрузки
+  $("#loader_addon").addClass("loader"); //анимациая загрузки
 	$('#getX1').click();
 	$('#getX2').click();
 	$("#compute").prop( "disabled", true );
@@ -252,7 +252,7 @@ $("#compute").click(function(){
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
 			alert( msg.status);
-       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
+       $("#loader_addon").removeClass("loader");//убрать анимациая загрузки
 		});
 	};
 });
