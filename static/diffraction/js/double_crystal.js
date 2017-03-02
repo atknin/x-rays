@@ -113,8 +113,21 @@ canvas.on('mouse:down', function(options) {
 		$('#div_settings_'+options.target.class).show();
 	};
 });
-var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'id_source':true,'X0_1':false,'Xh_1':false,'X0_2':false,'Xh_2':false}
+// ---------------------------------------------------------------------
+var check_array = {'X0_1':false,'Xh_1':false,'X0_2':false,'Xh_2':false}
 
+check_array['input_l_slit1'] = true;
+check_array['step_detail'] = true;
+check_array['input_l_slit2'] = true;
+check_array['input_size_slit1'] = true;
+check_array['input_size_slit2'] = true;
+
+check_array['source_divergence_arc'] = true;
+check_array['id_source'] = true;
+
+check_array['teta_start'] = true;
+check_array['teta_end'] = true;
+// ---------------------------------------------------------------------
 
 function error(e){
 	check_array[$(e).attr('id')] = false;
@@ -126,6 +139,9 @@ function ok(e){
   	// console.log($(e).attr('id'),check_array[$(e).attr('id')]);
   	$(e).removeClass('error');
 };
+
+// ---------------ПРОВЕРКА---------------------------------------------
+// Ассиметрия
 $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
   var nnn = $(this).attr('name');
   if(this.checked) {
@@ -133,7 +149,6 @@ $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
     $('#h_index_surface_'+nnn+',#k_index_surface_'+nnn+',#l_index_surface_'+nnn).val('');
     $('#id_assym_img_'+nnn).hide();
     $('#select_crystal'+nnn).attr('size', 10);
-
   }
   else{
     $('#h_index_surface_'+nnn+',#k_index_surface_'+nnn+',#l_index_surface_'+nnn).prop( "disabled", false );
@@ -141,8 +156,16 @@ $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
     $('#id_assym_img_'+nnn).show();
   };
 });
-$("#check_symmetric_case_1, #check_symmetric_case_2").change();
 
+$("#check_symmetric_case_1, #check_symmetric_case_2").change();
+// '\ Ассиметрия
+
+$('#step_detail').change(function() {
+  if ( $.isNumeric($('#step_detail'+cryst_num).val()) ){
+    ok(this);}
+  else{error(this);}
+ 
+});
 
 $('#x0_1,#xh_1,#x0_2,#xh_2').change(function() {
 	var X = $(this).val().split('+');
@@ -156,12 +179,26 @@ $('#id_source').change(function() {
     $('#xh_1').val('');
     $('#x0_2').val('');
     $('#xh_2').val('');
-
 });
-var compute_dict = {};
+$('#teta_start').change(function() {
+  if ($('#teta_start').val()<$('#teta_end').val()){ok(this);}
+  else{error(this);}
+});
+$('#teta_end').change(function() {
+  if ($('#teta_start').val()<$('#teta_end').val()){ok(this);}
+    else{error(this);}
+});
 
+
+
+// --------\\-------ПРОВЕРКА---------------------------------------------
+
+var compute_dict = {};
 $('#id_alert_message').hide();
+
+// ------------------------------отправка расчта в Телеграмм
 $("#compute").click(function(){
+  $("#loader_addon"+cryst_num).addClass("loader"); //анимациая загрузки
 	$('#getX1').click();
 	$('#getX2').click();
 	$("#compute").prop( "disabled", true );
@@ -190,6 +227,7 @@ $("#compute").click(function(){
 			csrfmiddlewaretoken: $('#abracadabraa').val()
 		}});
 
+
 		compute_dict['schem'] = 'double_crystal';
 		compute_dict['id_email'] = $('#id_email').val();
 		compute_dict['X0_1'] = $('#X0_1').val();
@@ -197,20 +235,28 @@ $("#compute").click(function(){
 
 		compute_dict['X0_2'] = $('#X0_2').val();
 		compute_dict['Xh_2'] = $('#Xh_2').val();
-		compute_dict['scan'] = $('input[name=schem_radio]').filter(':checked').val()
+		compute_dict['scan'] = $('input[name=schem_radio]').filter(':checked').val();
 
-    
+    compute_dict['step_detail'] = $('#step_detail').val();
+    compute_dict['teta_start'] = $('#teta_start').val();
+    compute_dict['teta_end'] = $('#teta_end').val();
+
+    if(document.getElementById('logarifm_scale').checked) {
+        compute_dict['logarifm_scale'] = 'log';
+    } else {
+        compute_dict['logarifm_scale'] = 'Nonlog';
+    };
+
 
 		
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
 			alert( msg.status);
+       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
 		});
 	};
-
-
 });
-
+// ------------------------------Расчет поляризуемости
 $("#getX2, #getX1").click(function() {
   	var compute_dict_X = {};
   	var cryst_num = $(this).attr( "name" );
