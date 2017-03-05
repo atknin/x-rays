@@ -66,8 +66,8 @@ def compute(request):
 			pc = request.GET['check']
 			no_calc = diffraction_models.list_of_calcs.objects.filter(status=False)
 			if len(no_calc) == 0:
-				output_data['status'] = 'No data'
-				
+				output_data['status'] = 'Nodata'
+				JsonResponse(output_data)
 			else:
 				output_data['status'] = 'There is a data, but not for this computer'
 
