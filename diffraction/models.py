@@ -47,7 +47,7 @@ class PC(models.Model):
 	def get_time_diff(self):
 		now = datetime.datetime.utcnow().replace(tzinfo=utc)  # Needed to convert time to a datetime object
 		timediff = now - self.date_here
-		seconds = timediff.total_seconds() % 60
+		seconds = timediff.total_seconds()
 		if seconds>3600:
 			return u'занят или отсутсвует'
 		else:
