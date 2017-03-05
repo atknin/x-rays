@@ -10,7 +10,7 @@
 {% block content %}
   {% for update in update_list %}
     <hr>
-    <p class="lead"> Версия: {{update.version}}. <sub> {{update.date}} </sub>. {{ update.what_is |safe }}</p>
+    <p class="lead"> Версия: {{update.version}}. <sub> {{update.date|timezone:"Europe/Moscow"}} </sub>. {{ update.what_is |safe }}</p>
    
    
 
