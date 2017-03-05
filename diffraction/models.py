@@ -47,7 +47,12 @@ class PC(models.Model):
 	def get_time_diff(self):
 		now = datetime.datetime.utcnow().replace(tzinfo=utc)  # Needed to convert time to a datetime object
 		timediff = now - self.date_here
-		return timediff
+		seconds = timediff.total_seconds() % 60
+		if seconds>3600:
+			return u'занят или отсутсвует'
+		else:
+			return u'в работе'
+		 
 
 class list_of_calcs(models.Model):
 	JSON = models.CharField(max_length=1000)
