@@ -32,6 +32,7 @@ class PC(models.Model):
 	name = models.CharField(max_length=20)
 	auto_increment_id = models.AutoField(primary_key=True)
 	ip = models.CharField(max_length=50, null=True, blank = True)
+	date_here = models.DateTimeField(auto_now_add=True)
 
 	class Meta:
 		verbose_name = u'Компьютер'

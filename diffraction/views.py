@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from polarizability import models as polarizability_models
 from diffraction import models as diffraction_models
-
+from datetime import datetime
 # Create your views here.
 from django.http import HttpResponse
 import general.bot_inform as bot_inform
@@ -64,6 +64,10 @@ def compute(request):
 	elif request.method == 'GET':
 		if 'check' in request.GET:
 			pc = request.GET['check']
+			update = diffraction_models.PC.objects.get(pk = int(pc))
+			update.date_here = datetime.now()
+			update.save()
+
 			no_calc = diffraction_models.list_of_calcs.objects.filter(status=False)
 			if len(no_calc) == 0:
 				output_data['status'] = 'Nodata'
@@ -88,6 +92,10 @@ def compute(request):
 				JsonResponse(output_data)
 		elif 'complited' in request.GET:
 			pc = request.GET['pc']
+			update = diffraction_models.PC.objects.get(pk = int(pc))
+			update.date_here = datetime.now()
+			update.save()
+			
 			try:
 				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['complited']))
 				complited.status = True
