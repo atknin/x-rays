@@ -63,12 +63,14 @@ def compute(request):
 	elif request.method == 'GET':
 		if 'check' in request.GET:
 			pc = request.GET['check']
-			bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
 			no_calc = diffraction_models.list_of_calcs.objects.filter(status=False)
+			bot_inform.sent_to_atknin_bot('67', 'v')
 			if len(no_calc) == 0:
 				output_data['status'] = 'No data'
 			else:
 				output_data['There is a data, but not for this computer'] 
+				bot_inform.sent_to_atknin_bot('72', 'v')
+
 				for i in no_calc:
 					if not i.PC is None: 
 						if no_calc.PC.ip == int(pc):
