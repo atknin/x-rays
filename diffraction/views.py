@@ -63,6 +63,7 @@ def compute(request):
 	elif request.method == 'GET':
 		if 'check' in request.GET:
 			pc = request.GET['check']
+			bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
 			no_calc = diffraction_models.list_of_calcs.objects.filter(status=False)
 			if len(no_calc) == 0:
 				output_data['status'] = 'No data'
