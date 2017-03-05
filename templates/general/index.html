@@ -134,8 +134,15 @@
     </div>
 
     <div class="col-lg-3" style="text-align: center;">
-       <h1>0000{{total_crystal}}</h1>
+      <div class="row">
+        <h1>0000{{total_crystal}}</h1>
        <h5>кристаллов в базе</h5>
+      </div>
+      <div class="row">
+        {%for c in PC%}
+        <h2>{{c.name}}</h2> {{ c.date_here|timeuntil }} <br>
+        {%endfor%}
+      </div>
 
     </div>
   {% endblock %}
