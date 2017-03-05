@@ -26,4 +26,33 @@ class anod(models.Model):
 		verbose_name_plural = u'Аноды' 
 
 	def __unicode__(self):
-		return self.name.encode('utf-8')	
+		return self.name.encode('utf-8')
+
+class PC(models.Model):
+	name = models.CharField(max_length=20)
+	auto_increment_id = models.AutoField(primary_key=True)
+	ip = models.CharField(max_length=50, null=True, blank = True)
+
+	class Meta:
+		verbose_name = u'Компьютер'
+		verbose_name_plural = u'Компьютеры' 
+
+	def __unicode__(self):
+		return self.name.encode('utf-8')
+
+
+class list_of_calcs(models.Model):
+	JSON = models.CharField(max_length=1000)
+	status = models.BooleanField(default=False)
+	email = models.EmailField(max_length=100)
+	data_start = models.DateTimeField(auto_now_add=True, blank=True)
+	progress = models.PositiveSmallIntegerField(default=0)
+	PC = models.ForeignKey(PC)
+
+	class Meta:
+		verbose_name = u'Расчет'
+		verbose_name_plural = u'Расчеты' 
+
+	def __unicode__(self):
+		return self.name.encode('utf-8')
+			

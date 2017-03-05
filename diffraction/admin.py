@@ -11,5 +11,13 @@ class anod_admin(admin.ModelAdmin):
 class wavelength_admin(admin.ModelAdmin):
 	list_display = (u'name', u'wavelength')
 
+class list_of_calcs_admin(admin.ModelAdmin):
+	list_display = (u'PC', u'email', u'status', u'progress')
+
+class PC_admin(admin.ModelAdmin):
+	list_display = (u'auto_increment_id', u'name', u'ip')
+
 admin.site.register(models.anod, anod_admin)
 admin.site.register(models.wavelength, wavelength_admin)
+admin.site.register(models.list_of_calcs, list_of_calcs_admin)
+admin.site.register(models.PC, PC_admin)
