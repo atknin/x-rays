@@ -87,7 +87,7 @@ def compute(request):
 				JsonResponse(output_data)
 		elif 'complited' in request.GET:
 			pc = request.GET['check']
-			comlited = diffraction_models.list_of_calcs.objects.get(pk=int(request.GET['complited']))
+			comlited = diffraction_models.list_of_calcs.objects.get(pk=request.GET['complited'])
 			complited.status = True
 			complited.save()
 	else:
