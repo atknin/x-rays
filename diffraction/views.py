@@ -58,6 +58,7 @@ def compute(request):
 		sender.send_msg("Atknin", str(input_data))
 		bot_inform.sent_to_atknin_bot(str(input_data), 'n') # проинформируем в telegramm bot
 		db_calc = diffraction_models.list_of_calcs.objects.create(JSON = str(input_data))
+		db_calc.email = input_data ['email']
 		db_calc.save()
 
 	elif request.method == 'GET':
