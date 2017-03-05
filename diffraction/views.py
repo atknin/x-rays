@@ -100,6 +100,7 @@ def compute(request):
 			try:
 				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['complited']))
 				complited.status = True
+				complited.progress = 100
 				complited.save()
 				output_data['status'] = "complited"
 			except Exception as e:
