@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {% load static %}
+    {% load humanize %}
     <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"> <!-- НЕ ЗАБЫТЬ УБРАТЬ -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -140,7 +141,7 @@
       </div>
       <div class="row">
         {%for c in PC%}
-        <h2>{{c.name}}</h2> {{ c.get_time_diff }} <!-- {{ c.date_here|timeuntil }} ({{ c.date_here|date:'Y-m-d H:i' }}) --> <br>
+        <h2>{{c.name}}</h2> {{ c.get_time_diff|time:"H:i" }} <!-- {{ c.date_here|timeuntil }} ({{ c.date_here|date:'Y-m-d H:i' }}) --> <br>
         {%endfor%}
       </div>
 

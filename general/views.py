@@ -9,7 +9,7 @@ from django.contrib import auth
 from django.http import JsonResponse
 import random
 import general.bot_inform as bot_inform
-import datetime
+
 
 
 # Create your views here. dsds
@@ -38,6 +38,7 @@ def index(request):
 	else:
 		arg = {}
 		arg['total_crystal'] = len(polarizability_models.crystals.objects.all())
+		# arg['time_now'] = datetime.datetime.now()
 		arg['PC'] = diffraction_models.PC.objects.all()
 		return render(
 			request, 'general/index.html', arg

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 # Create your models here.
 import datetime
+from django.utils.timezone import utc
 
 class wavelength(models.Model):
 	name = models.CharField(max_length=20)
@@ -44,9 +45,9 @@ class PC(models.Model):
 		return self.name.encode('utf-8')
 
 	def get_time_diff(self):
-		now = datetime.datetime.now()  # Needed to convert time to a datetime object
+		now = datetime.datetime.utcnow().replace(tzinfo=utc)  # Needed to convert time to a datetime object
 		timediff = now - self.date_here
-		return timediff.total_seconds()
+		return timediff
 
 class list_of_calcs(models.Model):
 	JSON = models.CharField(max_length=1000)
