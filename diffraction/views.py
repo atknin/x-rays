@@ -59,10 +59,35 @@ def compute(request):
 		bot_inform.sent_to_atknin_bot(str(input_data), 'n') # проинформируем в telegramm bot
 		db_calc = diffraction_models.list_of_calcs.objects.create(JSON = str(input_data))
 		db_calc.save()
-		
+
 	elif request.method == 'GET':
-		bot_inform.sent_to_atknin_bot(str(request.GET), 'v')
-		output_data['status'] = 'ok_ans'
+		if 'check' in request.GET:
+			pc = request.GET['check']
+			no_calc = diffraction_models.list_of_calcs.objects.filter(status=False)
+			if len(no_calc) == 0:
+				output_data['status'] = 'No data'
+			else:
+				output_data['There is a data, but not for this computer'] 
+				for i in no_calc:
+					if not i.PC is None: 
+						if no_calc.PC.ip == int(pc):
+							output_data['status'] = 'ok'
+							output_data['JSON'] = i.JSON
+							bot_inform.sent_to_atknin_bot('PC (по запросу): '+ pc, 'v')
+							JsonResponse(output_data)
+				for i in no_calc:
+					if i.PC is None:
+						output_data['status'] = 'ok'
+						output_data['JSON'] = i.JSON
+						output_data['pk'] = i.pk
+						bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
+						JsonResponse(output_data)
+				JsonResponse(output_data)
+		elif 'complited' in request.GET:
+			pc = request.GET['complited']
+			comlited = diffraction_models.list_of_calcs.objects.get(pk=request.GET['pk'])
+			complited.status = True
+			complited.save()
 	else:
 		output_data['status'] = "error"
 	return JsonResponse(output_data)
