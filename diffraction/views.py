@@ -58,7 +58,7 @@ def compute(request):
 		sender.send_msg("Atknin", str(input_data))
 		bot_inform.sent_to_atknin_bot(str(input_data), 'n') # проинформируем в telegramm bot
 
-	elif request.GET:
+	elif request.method == 'GET':
 		bot_inform.sent_to_atknin_bot('ok', 'v')
 		output_data['status'] = 'ok_ans'
 	else:
