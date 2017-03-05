@@ -90,6 +90,7 @@ def compute(request):
 			comlited = diffraction_models.list_of_calcs.objects.get(pk=request.GET['complited'])
 			complited.status = True
 			complited.save()
+			output_data['status'] = "complited"
 	else:
 		output_data['status'] = "error"
 	return JsonResponse(output_data)
