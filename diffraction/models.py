@@ -47,7 +47,7 @@ class list_of_calcs(models.Model):
 	email = models.EmailField(max_length=100)
 	data_start = models.DateTimeField(auto_now_add=True, blank=True)
 	progress = models.PositiveSmallIntegerField(default=0)
-	PC = models.ForeignKey(PC)
+	PC = models.ForeignKey(PC, blank = True, null = True)
 
 	class Meta:
 		verbose_name = u'Расчет'
