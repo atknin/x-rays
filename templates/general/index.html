@@ -140,7 +140,7 @@
       </div>
       <div class="row">
         {%for c in PC%}
-        <h2>{{c.name}}</h2> {{ c.date_here|timeuntil }} ({{ c.date_here|date:'Y-m-d H:i' }}) <br>
+        <h2>{{c.name}}</h2> {{ c.date_here|timesince:time_now }} <!-- {{ c.date_here|timeuntil }} ({{ c.date_here|date:'Y-m-d H:i' }}) --> <br>
         {%endfor%}
       </div>
 
