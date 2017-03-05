@@ -88,12 +88,21 @@ def compute(request):
 		elif 'complited' in request.GET:
 			pc = request.GET['pc']
 			bot_inform.sent_to_atknin_bot('...', 'v')
-			complited = diffraction_models.list_of_calcs.objects.get(id=int(request.GET['complited']))
-			bot_inform.sent_to_atknin_bot('compl: '+ complited.status, 'v')
+			try:
+				complited = diffraction_models.list_of_calcs.objects.get(id=int(request.GET['complited']))
+				complited.status = True
+				complited.save()
+				output_data['status'] = "complited"
+				bot_inform.sent_to_atknin_bot('compl: '+ complited.status, 'v')
+			except Exception as e:
+				output_data['status'] = "error in complited"
+				bot_inform.sent_to_atknin_bot('error: '+ str(e), 'v')
+			
+			
 
-			complited.status = True
-			complited.save()
-			output_data['status'] = "complited"
+			
+			
+			
 	else:
 		output_data['status'] = "error"
 	return JsonResponse(output_data)
