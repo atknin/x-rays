@@ -25,7 +25,7 @@ def diffraction(request):
 	args = {}
 	args['crystals'] = polarizability_models.crystals.objects.all()
 	args['anod'] = diffraction_models.anod.objects.all()
-	args['calculations'] = diffraction_models.list_of_calcs.objects.all()[:-10]
+	args['calculations'] = diffraction_models.list_of_calcs.objects.all()[:10:-1]
 	return render(
 	 	request, 'diffraction/diffraction.html', args
 	 	)
