@@ -2,6 +2,8 @@
 from __future__ import unicode_literals
 from django.db import models
 # Create your models here.
+import datetime
+
 class wavelength(models.Model):
 	name = models.CharField(max_length=20)
 	wavelength = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True, \
@@ -41,6 +43,10 @@ class PC(models.Model):
 	def __unicode__(self):
 		return self.name.encode('utf-8')
 
+	def get_time_diff(self):
+		now = datetime.datetime.now()  # Needed to convert time to a datetime object
+		timediff = now - self.date_here
+		return timediff.total_seconds()
 
 class list_of_calcs(models.Model):
 	JSON = models.CharField(max_length=1000)

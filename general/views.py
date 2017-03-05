@@ -38,7 +38,6 @@ def index(request):
 	else:
 		arg = {}
 		arg['total_crystal'] = len(polarizability_models.crystals.objects.all())
-		arg['time_now'] = datetime.datetime.now()
 		arg['PC'] = diffraction_models.PC.objects.all()
 		return render(
 			request, 'general/index.html', arg
