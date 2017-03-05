@@ -89,6 +89,7 @@ def compute(request):
 			pc = request.GET['pc']
 			bot_inform.sent_to_atknin_bot('...', 'v')
 			try:
+				bot_inform.sent_to_atknin_bot('pk: '+ request.GET['complited'], 'v')
 				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['complited']))
 				bot_inform.sent_to_atknin_bot('compl: '+ complited.status, 'v')
 				complited.status = True
