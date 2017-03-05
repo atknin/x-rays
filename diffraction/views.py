@@ -89,7 +89,7 @@ def compute(request):
 			pc = request.GET['pc']
 			bot_inform.sent_to_atknin_bot('...', 'v')
 			try:
-				complited = diffraction_models.list_of_calcs.objects.get(id=request.GET['complited'])
+				complited = diffraction_models.list_of_calcs.object.get(id = request.GET['complited'])
 				complited.status = True
 				complited.save()
 				output_data['status'] = "complited"
