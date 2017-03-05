@@ -88,6 +88,8 @@ def compute(request):
 		elif 'complited' in request.GET:
 			pc = request.GET['pc']
 			comlited = diffraction_models.list_of_calcs.objects.get(pk=request.GET['complited'])
+			bot_inform.sent_to_atknin_bot('PC: '+ comlited.status, 'v')
+
 			complited.status = True
 			complited.save()
 			output_data['status'] = "complited"
