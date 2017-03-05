@@ -67,9 +67,12 @@ def compute(request):
 			bot_inform.sent_to_atknin_bot('67', 'v')
 			if len(no_calc) == 0:
 				output_data['status'] = 'No data'
+				bot_inform.sent_to_atknin_bot('70', 'v')
+				
 			else:
+				bot_inform.sent_to_atknin_bot('73', 'v')
 				output_data['There is a data, but not for this computer'] 
-				bot_inform.sent_to_atknin_bot('72', 'v')
+				bot_inform.sent_to_atknin_bot('75', 'v')
 
 				for i in no_calc:
 					if not i.PC is None: 
