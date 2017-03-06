@@ -78,7 +78,7 @@ def compute(request):
 
 				for i in no_calc:
 					if not i.PC is None: 
-						if no_calc.PC.ip == int(pc):
+						if no_calc.PC.id == int(pc):
 							output_data['status'] = 'ok'
 							output_data['JSON'] = i.JSON
 							bot_inform.sent_to_atknin_bot('PC (по запросу): '+ pc, 'v')
@@ -88,7 +88,8 @@ def compute(request):
 						output_data['status'] = 'ok'
 						output_data['JSON'] = i.JSON
 						output_data['pk'] = i.pk
-						no_calc.PC.ip = int(pc)
+						no_calc.PC = diffraction_models.PC.objects.get(pk = int(pc))
+						no_calc.save()
 						bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
 						JsonResponse(output_data)
 				JsonResponse(output_data)
