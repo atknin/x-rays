@@ -44,6 +44,9 @@ class PC(models.Model):
 	def __unicode__(self):
 		return self.name.encode('utf-8')
 
+	def __str__(self):
+		return self.name
+
 	def get_time_diff(self):
 		now = datetime.datetime.utcnow().replace(tzinfo=utc)  # Needed to convert time to a datetime object
 		timediff = now - self.date_here
@@ -67,5 +70,5 @@ class list_of_calcs(models.Model):
 		verbose_name_plural = u'Расчеты' 
 
 	def __unicode__(self):
-		return self.name.encode('utf-8')
+		return self.email.encode('utf-8')
 			
