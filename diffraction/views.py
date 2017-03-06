@@ -85,11 +85,13 @@ def compute(request):
 							JsonResponse(output_data)
 				for i in no_calc:
 					if i.PC is None:
+						# bot_inform.sent_to_atknin_bot('88', 'v')
 						output_data['status'] = 'ok'
 						output_data['JSON'] = i.JSON
 						output_data['pk'] = i.pk
-						i.PC.add( diffraction_models.PC.objects.get(pk = int(pc)))
-						no_calc.save()
+						# bot_inform.sent_to_atknin_bot(str(i.PC), 'v')
+						i.PC = diffraction_models.PC.objects.get(pk = int(pc))
+						i.save()
 						bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
 						JsonResponse(output_data)
 				JsonResponse(output_data)
