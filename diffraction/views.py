@@ -25,7 +25,7 @@ def diffraction(request):
 	args = {}
 	args['crystals'] = polarizability_models.crystals.objects.all()
 	args['anod'] = diffraction_models.anod.objects.all()
-	args['calculations'] = diffraction_models.list_of_calcs.objects.all()[:10][::-1]
+	args['calculations'] = diffraction_models.list_of_calcs.objects.all()[::-1]
 	return render(
 	 	request, 'diffraction/diffraction.html', args
 	 	)
@@ -80,6 +80,7 @@ def compute(request):
 						if i.PC.pk == int(pc):
 							output_data['status'] = 'ok'
 							output_data['JSON'] = i.JSON
+							output_data['pk'] = i.pk
 							bot_inform.sent_to_atknin_bot('PC (по запросу): '+ pc, 'v')
 							JsonResponse(output_data)
 				for i in no_calc:
