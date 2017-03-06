@@ -88,6 +88,7 @@ def compute(request):
 						output_data['status'] = 'ok'
 						output_data['JSON'] = i.JSON
 						output_data['pk'] = i.pk
+						no_calc.PC.ip = int(pc)
 						bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
 						JsonResponse(output_data)
 				JsonResponse(output_data)
