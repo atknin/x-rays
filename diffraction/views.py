@@ -78,7 +78,7 @@ def compute(request):
 
 				for i in no_calc:
 					if not i.PC is None: 
-						if i.PC.id == int(pc):
+						if i.PC.pc == int(pc):
 							output_data['status'] = 'ok'
 							output_data['JSON'] = i.JSON
 							bot_inform.sent_to_atknin_bot('PC (по запросу): '+ pc, 'v')
