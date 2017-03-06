@@ -78,12 +78,13 @@
         {%for calc in calculations%}
           {% if calc.progress < 100 %}
             <div class="alert alert-warning">
-              <div class="skill-name">{{calc.email}}  <small>{{calc.data_start|date:"g:i a"}} {{calc.PC.name}}</small> </div> 
+              <div class="skill-name">{{calc.email}}  <small>{{calc.data_start|date:"g:i a"}} </small> </div> 
               <div class="progress progress-striped active progress-adjust">
                 <div class="progress-bar progress-bar-warning"  role="progressbar" aria-valuenow="{{calc.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{calc.progress}}%">
                 <span class="sr-only">{{calc.progress}}% Complete</span>
                 </div>
               </div>
+              <div class="skill-name">{{calc.PC.name}}</small> </div> 
             </div>
             {% else %}
             <div class="alert alert-success">
@@ -93,6 +94,7 @@
                 <span class="sr-only">{{calc.progress}}% Complete</span>
                 </div>
               </div>
+              <div class="skill-name">{{calc.PC.name}}</small> </div> 
             </div>
           {%endif%}
 
