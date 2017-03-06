@@ -88,7 +88,7 @@ def compute(request):
 						output_data['status'] = 'ok'
 						output_data['JSON'] = i.JSON
 						output_data['pk'] = i.pk
-						i.PC = diffraction_models.PC.objects.get(pk = int(pc))
+						i.PC.add( diffraction_models.PC.objects.get(pk = int(pc)))
 						no_calc.save()
 						bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
 						JsonResponse(output_data)
