@@ -74,8 +74,7 @@ def compute(request):
 				output_data['status'] = 'Nodata'
 				JsonResponse(output_data)
 			else:
-				output_data['status'] = 'There is a data, but not for this computer'
-
+				output_data['status'] = 'Nodata'
 				for i in no_calc:
 					if not i.PC is None: 
 						if i.PC.pk == int(pc):
