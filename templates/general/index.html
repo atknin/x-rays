@@ -139,12 +139,13 @@
       </div>
       {%for c in PC%}
         <div class="row">
+          <br>
           <div class = "col-md-6">{{c.name}}: </div>
             <div class = "col-md-6">
               {% if c.get_time_diff == 'No'%}
-               <img height="60px" src="{% static "icon/no.png" %}" alt="home">
+               <img height="30px" src="{% static "icon/no.png" %}" alt="home">
              {% else %}
-              <img height="60px" src="{% static "icon/yes.png" %}" alt="home">
+              <img height="30px" src="{% static "icon/yes.png" %}" alt="home">
              {% endif %}
             </div>
         </div>
