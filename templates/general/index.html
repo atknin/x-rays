@@ -75,7 +75,7 @@
 
       </ul>
     </nav>
-    <a href="/"> <img height="60px" src="{% static "icon/x_rays_sign_3.png" %}"" alt="home"> </a>
+    <a href="/"> <img height="60px" src="{% static 'icon/x_rays_sign_3.png' %}" alt="home"> </a>
     </div>
 
     <h1 style="display: none;">X-RAYS.WORLD</h1>
@@ -140,7 +140,13 @@
       {%for c in PC%}
         <div class="row">
           <div class = "col-md-6">{{c.name}}: </div>
-          <div class = "col-md-6">{{ c.get_time_diff }}</div>
+            <div class = "col-md-6">
+              {% if c.get_time_diff == 'No'%}
+               <img height="60px" src="{% static "icon/no.png" %}" alt="home">
+             {% else %}
+              <img height="60px" src="{% static "icon/yes.png" %}" alt="home">
+             {% endif %}
+            </div>
         </div>
       {%endfor%}
 

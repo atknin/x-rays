@@ -12,13 +12,13 @@ class wavelength(models.Model):
 	class Meta:
 		ordering = ('name',)
 		verbose_name = u'длина'
-		verbose_name_plural = u'длины' 
-		
+		verbose_name_plural = u'длины'
+
 	def __unicode__(self):
 		return self.name.encode('utf-8')
 
-	def __str__(self):            
-		return self.name		
+	def __str__(self):
+		return self.name
 
 class anod(models.Model):
 	name = models.CharField(max_length=20)
@@ -26,7 +26,7 @@ class anod(models.Model):
 
 	class Meta:
 		verbose_name = u'Анод'
-		verbose_name_plural = u'Аноды' 
+		verbose_name_plural = u'Аноды'
 
 	def __unicode__(self):
 		return self.name.encode('utf-8')
@@ -39,7 +39,7 @@ class PC(models.Model):
 
 	class Meta:
 		verbose_name = u'Компьютер'
-		verbose_name_plural = u'Компьютеры' 
+		verbose_name_plural = u'Компьютеры'
 
 	def __unicode__(self):
 		return self.name.encode('utf-8')
@@ -52,10 +52,10 @@ class PC(models.Model):
 		timediff = now - self.date_here
 		seconds = timediff.total_seconds()
 		if seconds>3600:
-			return u'занят или отсутсвует'
+			return u'No'
 		else:
-			return u'в работе'
-		 
+			return u'Yes'
+
 
 class list_of_calcs(models.Model):
 	JSON = models.CharField(max_length=1000)
@@ -67,8 +67,7 @@ class list_of_calcs(models.Model):
 
 	class Meta:
 		verbose_name = u'Расчет'
-		verbose_name_plural = u'Расчеты' 
+		verbose_name_plural = u'Расчеты'
 
 	def __unicode__(self):
 		return self.email.encode('utf-8')
-			
