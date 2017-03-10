@@ -10,10 +10,10 @@
 
   <link href="{% static "diffraction/css.css" %}" rel="stylesheet">
   <style type="text/css">
-    .loader { 
+    .loader {
       background-image: url("{% static "loader/loader-128x/Preloader_3.gif"%}");
       background-repeat: no-repeat;
-      background-position: 50% 50%; 
+      background-position: 50% 50%;
       background-size: 100%;
       color: transparent;
       background-color: transparent;
@@ -23,7 +23,7 @@
       margin: 20px;
 
     }
- 
+
 
     .panels{
         margin-top: 30px;
@@ -40,9 +40,9 @@
             margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
     }
   </style>
-  
+
   {% endblock %}
-    
+
   {% block content %}
 
     <input type='hidden' id='abracadabraa' value="{{ csrf_token }}" />
@@ -51,10 +51,10 @@
 
    <!-- Без кристаллов -->
     <div class="row" style="background-color: #FAFAFA; height: 360px; margin-top: 40px;" id = "div_zero_crystal">
-      
+
       <div class="col-md-7" style="margin-left: 20px;">
         <canvas class = 'panels' width=800 height=300 id="fabric"></canvas>
-        
+
         <div style="display: none;">
           <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
           <img src="{% static 'diffraction/img/source.png' %}" id="source">
@@ -63,12 +63,12 @@
         </div>
 
       </div>
-      
+
       <div class="col-md-4" style="margin-left: 20px;">
         <div class="panels" style="height: 300px; background-color: white;">
 
 <!-- ИСТОЧНИК -->
-          <div class="row settings" id="div_settings_source">  
+          <div class="row settings" id="div_settings_source">
             <span class="label label-primary">Параметры источника</span>
               <div class="form-group">
                 <label>Анод:</label>
@@ -76,7 +76,7 @@
                 {%for source in anod%}
                   <option value="{{source.id}}" name = "{{source.wavelength.all.0.wavelength }}"><small>{{source.name}}</small></option>
                 {% endfor %}
-                </select> 
+                </select>
               </div>
               <div class="form-group">
                 <label>Полуширина излучающего пятная, расходимость источника</label>
@@ -135,9 +135,9 @@
             </div>
 <!-- // ЩЕЛЬ 2 -->
 <!-- Кристалл 1 -->
-      <div class="row settings" id="div_settings_sample_1" name = "1" > 
+      <div class="row settings" id="div_settings_sample_1" name = "1" >
 
-        <div class='row'>  
+        <div class='row'>
           <p class="lead" style="float: left;">Параметры кристалла №1</p>
           <div id="loader_addon1" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
         </div>
@@ -156,7 +156,7 @@
                 </div>
                 <div class="row" style="margin-top: 5px;">
                   <label class="radio-inline">
-                    <input type="radio" name="assym_alfa_then_beta_1" id="inlineRadio1" value="-1" checked="true">  
+                    <input type="radio" name="assym_alfa_then_beta_1" id="inlineRadio1" value="-1" checked="true">
                     <span class="label label-primary">синий луч</span>
                   </label>
                 </div>
@@ -166,14 +166,14 @@
                       <span class="label label-danger">красн луч</span>
                   </label>
                 </div>
-              </div>  
+              </div>
 
               <div class="row" style="margin-top: 5px" id = "check_crystal1">
                 <select class="form-control" id ='select_crystal1' onchange="$('#getX1').click()" size="10" >
                 {% for crystal in crystals %}
                   <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
                 {% endfor %}
-                </select>  
+                </select>
               </div>
             </div>
 
@@ -220,21 +220,21 @@
                   <div class="input-group" id = "inputgroup_check_x0_1">
                     <input type="text" class="form-control input-sm" name = 'Поляризуемость X0 для 1 кристалла' id ="X0_1"  placeholder="0.0000 + 0.0000j">
                     <span class="input-group-addon">&#967;<sub>0</sub>*10<sup>-7</sup></span>
-                  </div> 
+                  </div>
                   <div class="input-group" id = "inputgroup_check_xh_1" style="margin-top: 5px;">
                     <input type="text" id='Xh_1' name = 'Поляризуемость Xh для 1 кристалла' class="input-sm form-control" placeholder="0.0000 + 0.0000j" >
                     <span class="input-group-addon">&#967;<sub>h</sub>*10<sup>-7</sup></span>
                   </div>
                   <button type="button" name = "1" id="getX1" class="btn btn-default" style="width: 100%;  display: none;">get &#967;...</button>
                 </div>
-                
+
               </div>
             </div>
        </div>
 <!-- Кристалл 2 -->
-      <div class="row settings" id="div_settings_sample_2" name = "2" > 
+      <div class="row settings" id="div_settings_sample_2" name = "2" >
 
-        <div class='row'>  
+        <div class='row'>
           <p class="lead" style="float: left;">Параметры кристалла №2</p>
           <div id="loader_addon2" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
         </div>
@@ -253,7 +253,7 @@
                 </div>
                 <div class="row" style="margin-top: 5px;">
                   <label class="radio-inline">
-                    <input type="radio" name="assym_alfa_then_beta_2" id="inlineRadio2" value="-1" checked="true">  
+                    <input type="radio" name="assym_alfa_then_beta_2" id="inlineRadio2" value="-1" checked="true">
                     <span class="label label-primary">синий луч</span>
                   </label>
                 </div>
@@ -263,14 +263,14 @@
                       <span class="label label-danger">красн луч</span>
                   </label>
                 </div>
-              </div>  
+              </div>
 
               <div class="row" style="margin-top: 5px" id = "check_crystal2">
                 <select class="form-control" id ='select_crystal2' onchange="$('#getX2').click()" size="10" >
                 {% for crystal in crystals %}
                   <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
                 {% endfor %}
-                </select>  
+                </select>
               </div>
             </div>
 
@@ -317,14 +317,14 @@
                   <div class="input-group" id = "inputgroup_check_x0_2">
                     <input type="text" class="form-control input-sm" name = 'Поляризуемость X0 для 2 кристалла' id ="X0_2"  placeholder="0.0000 + 0.0000j">
                     <span class="input-group-addon">&#967;<sub>0</sub>*10<sup>-7</sup></span>
-                  </div> 
+                  </div>
                   <div class="input-group" id = "inputgroup_check_xh_2" style="margin-top: 5px;">
                     <input type="text" id='Xh_2' name = 'Поляризуемость Xh для 2 кристалла' class="input-sm form-control" placeholder="0.0000 + 0.0000j" >
                     <span class="input-group-addon">&#967;<sub>h</sub>*10<sup>-7</sup></span>
                   </div>
                   <button type="button" name = "2" id="getX2" class="btn btn-default" style="width: 100%;  display: none;">get &#967;...</button>
                 </div>
-                
+
               </div>
             </div>
        </div>
@@ -335,12 +335,12 @@
                 отсутсвуют
               </div>
 <!-- / настроить детектор -->
-          <p class="lead" id = 'sign_settings' style="margin: 30px;" >НАСТРОЙКА</p> 
+          <p class="lead" id = 'sign_settings' style="margin: 30px;" >НАСТРОЙКА</p>
 
         </div>
       </div>
-
     </div>
+
     <div class="row">
       <hr>
       {% if user.is_authenticated %}
@@ -349,15 +349,15 @@
           <div class="alert alert-danger" style="margin-left: 40px;"  role="alert" id='id_alert_message'>
           </div>
         </div>
-            <div class="row" style="margin-left: 50px;"> 
-              <p class="lead"> Параметры расчета:</p> 
+            <div class="row" style="margin-left: 50px;">
+              <p class="lead"> Параметры расчета:</p>
                 <div class="row">
                   <div class="form-group">
                     <label>тип сканирования:</label> <br>
-                    <label > 
+                    <label >
                       <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta">  &theta; - 2&theta;
                     </label>
-                    <label > 
+                    <label >
                       <input type="radio" name="schem_radio" id="scan_omega" value="omega"> &omega;
                     </label>
                   </div>
@@ -366,10 +366,10 @@
                   <div class="form-group">
                     <label for="step_detail">коэффициент детализации сетки  >= 0.4 </label>
                     <input type="number" style="width: 30%;" class="form-control input-sm" id="step_detail" placeholder="1" value="1" name="коэффициент детализации сетки">
-                  </div> 
+                  </div>
                 </div>
-              
-              
+
+
             </div>
             <div class="input-group" style="margin: 40px;" id = ''>
               <span class="input-group-btn">
@@ -389,7 +389,7 @@
           <div style="margin-top: 140px;">
             <input type="text" class="form-control input-sm" id="lamba_start" placeholder="1" value="ka1-d30%" disabled>
           </div>
-          
+
         </div>
         <div class="col-md-4">
           <div class="row">
@@ -406,7 +406,7 @@
         </div>
         <div class="col-md-4">
           <p class="lead"> дополнительно</p>
-            <div class="row"> 
+            <div class="row">
               <img style="height: 100px;" src="{% static 'diffraction/img/kdo.png'%}">
             </div>
             <div class="row">
@@ -423,7 +423,7 @@
       <span class="label label-danger">Только зарегистрированным пользователям</span>
       {% endif %}
     </div>
-    
+
 
 
 
