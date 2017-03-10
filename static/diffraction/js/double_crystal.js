@@ -114,7 +114,7 @@ canvas.on('mouse:down', function(options) {
 	};
 });
 // ---------------------------------------------------------------------
-var check_array = {'X0_1':false,'Xh_1':false,'X0_2':false,'Xh_2':false}
+var check_array = {'X0_1':false,'Xh_1':false,'X0_2':false,'Xh_2':false};
 
 check_array['input_l_slit1'] = true;
 check_array['step_detail'] = true;
@@ -164,7 +164,7 @@ $('#step_detail').change(function() {
   if ( $.isNumeric($('#step_detail'+cryst_num).val()) ){
     ok(this);}
   else{error(this);}
- 
+
 });
 
 $('#x0_1,#xh_1,#x0_2,#xh_2').change(function() {
@@ -248,7 +248,7 @@ $("#compute").click(function(){
     };
 
 
-		
+
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
 			alert( msg.status);
@@ -262,9 +262,9 @@ $("#getX2, #getX1").click(function() {
   	var compute_dict_X = {};
   	var cryst_num = $(this).attr( "name" );
   	var flag = false
- 
+
    if (!$.isNumeric($('#select_crystal'+cryst_num).val())){ // проверка, выбран ли источник
-    flag = true;   
+    flag = true;
     $("#check_crystal"+cryst_num).addClass("has-error");
   };
   if ($("#check_symmetric_case_"+cryst_num).is(":checked")){
@@ -273,7 +273,7 @@ $("#getX2, #getX1").click(function() {
       $('#l_index'+cryst_num+'_surface').val($('#l_index'+cryst_num).val());
     };
 
-  if (flag != true) { 
+  if (flag != true) {
     $("#loader_addon"+cryst_num).addClass("loader"); //анимациая загрузки
     $.ajaxSetup({data: {
     	csrfmiddlewaretoken: $('#abracadabraa').val()
@@ -281,7 +281,7 @@ $("#getX2, #getX1").click(function() {
     compute_dict_X["h"] = $('#h_index'+cryst_num).val();
     compute_dict_X["k"] = $('#k_index'+cryst_num).val();
     compute_dict_X["l"] = $('#l_index'+cryst_num).val();
-    
+
     if ($("#check_symmetric_case_"+cryst_num).is(":checked")){
       $('#h_index_surface_'+cryst_num).val($('#h_index'+cryst_num).val());
       $('#k_index_surface_'+cryst_num).val($('#k_index'+cryst_num).val());
@@ -304,7 +304,7 @@ $("#getX2, #getX1").click(function() {
 
 
     compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
-    
+
     $.post("/polarizability/compute/", compute_dict_X ,function(data) {
       $('#X0_'+cryst_num).val(data.X0_real + " + "+data.X0_imag+"j");
       $('#Xh_'+cryst_num).val(data.Xh_real + " + "+data.Xh_imag+"j");
@@ -312,10 +312,10 @@ $("#getX2, #getX1").click(function() {
       ok($('#Xh_'+cryst_num));
       compute_dict['bragg_'+cryst_num] = data.bragg;
       compute_dict['fi_'+cryst_num] = data.fi;
-      
+
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
     });
-  }; 
+  };
 
 });
 // как только мы прикаснемся к одному из .. окон удалится класс окрасски
@@ -325,6 +325,3 @@ $("#check_crystal1,#check_crystal2").click(function(){
 $("#new_compute").click(function(){
   $("#compute").prop( "disabled", false );
 });
-
-      
-

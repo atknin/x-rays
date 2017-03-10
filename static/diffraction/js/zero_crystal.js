@@ -84,8 +84,19 @@ canvas.on('mouse:down', function(options) {
 	};
 });
 
-var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'id_source':true}
+var check_array = {};
 
+check_array['input_l_slit1'] = true;
+check_array['step_detail'] = true;
+check_array['input_l_slit2'] = true;
+check_array['input_size_slit1'] = true;
+check_array['input_size_slit2'] = true;
+
+check_array['source_divergence_arc'] = true;
+check_array['id_source'] = true;
+
+check_array['teta_start'] = true;
+check_array['teta_end'] = true;
 
 function error(e){
 	check_array[$(e).attr('id')] = false;
@@ -115,8 +126,24 @@ $('#source_divergence_arc').change(function() {
 });
 $('#id_source').change(function() {
 	ok(this);
+});
+
+$('#teta_start').change(function() {
+  if ($('#teta_start').val()<$('#teta_end').val()){ok(this);}
+  else{error(this);}
+});
+$('#teta_end').change(function() {
+  if ($('#teta_start').val()<$('#teta_end').val()){ok(this);}
+    else{error(this);}
+});
+
+$('#step_detail').change(function() {
+  if ( $.isNumeric($('#step_detail'+cryst_num).val()) ){
+    ok(this);}
+  else{error(this);}
 
 });
+
 var compute_dict = {};
 
 $('#id_alert_message').hide();
@@ -148,7 +175,11 @@ $("#compute").click(function(){
 		}});
 		compute_dict['schem'] = 'zero_crystal'
 		compute_dict['id_email'] = $('#id_email').val()
-		
+
+    compute_dict['step_detail'] = $('#step_detail').val();
+    compute_dict['teta_start'] = $('#teta_start').val();
+    compute_dict['teta_end'] = $('#teta_end').val();
+
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
 			alert( msg.status);
