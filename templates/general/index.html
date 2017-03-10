@@ -140,15 +140,15 @@
       {%for c in PC%}
         <div class="row">
           <br>
-          <div class = "col-md-9">
-            <p style="margin: 20px;">{{c.name}}:</p>
-           </div>
             <div class = "col-md-3">
               {% if c.get_time_diff == 'No'%}
-               <img height="30px" src="{% static "icon/no.png" %}" alt="home">
+               <img style="margin: 5px !important;" height="30px" src="{% static "icon/no.png" %}" alt="home">
              {% else %}
-              <img height="30px" src="{% static "icon/yes.png" %}" alt="home">
+              <img style="margin: 5px !important;" height="30px" src="{% static "icon/yes.png" %}" alt="home">
              {% endif %}
+            </div>
+            <div class = "col-md-9">
+              <p style="margin: 5px;">{{c.name}}:</p>
             </div>
         </div>
       {%endfor%}
