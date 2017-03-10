@@ -34,7 +34,29 @@
       .not-active {
          pointer-events: none;
          cursor: default;
+
       }
+      .here {
+        background-image: url("{% static "icon/yes.png" %}");
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 100%;
+        color: transparent;
+        background-color: transparent;
+        min-width: 30px;
+        min-height: 30px;
+      }
+      .nohere{
+        background-image: url("{% static "icon/no.png" %}");
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 100%;
+        color: transparent;
+        background-color: transparent;
+        min-width: 30px;
+        min-height: 30px;
+      }
+
     </style>
 
   </head>
@@ -142,13 +164,13 @@
           <br>
             <div class = "col-md-3">
               {% if c.get_time_diff == 'No'%}
-               <img style="all: initial;" height="30px" src="{% static "icon/no.png" %}" alt="home">
+                <div class="nohere"></div>
              {% else %}
-              <img style="all: initial;" height="30px" src="{% static "icon/yes.png" %}" alt="home">
+              <div class="here"></div>
              {% endif %}
             </div>
             <div class = "col-md-9">
-              <p >{{c.name}}:</p>
+              <p style="margin: 5px;">{{c.name}}:</p>
             </div>
         </div>
       {%endfor%}
