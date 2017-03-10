@@ -138,7 +138,7 @@
         <h1>0000{{total_crystal}}</h1>
        <h5>кристаллов в базе</h5>
       </div>
-      <div class="row" style ="text-align:center;">
+      <div class="row" style ="text-align:left;">
         {%for c in PC%}
         {{c.name}}: {{ c.get_time_diff }} <br>
         {%endfor%}
