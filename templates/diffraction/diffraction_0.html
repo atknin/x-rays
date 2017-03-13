@@ -205,9 +205,12 @@
             <label>Компьютер:</label>
             <select class="form-control" name = 'Компьютер'  id ='id_pc' size="6">
               {%for PK in computer_online}
+
                 {%if PK.get_time_diff == 'Yes'%}
-                    <option value="{{PK.id}}"><small>{{PK.name}}</small></option>
+                  <option value="{{PK.id}}"><small>{{PK.name}}</small></option>
+                {%else%}
                 {%endif%}
+
               {%endfor%}
             </select>
         </div>
