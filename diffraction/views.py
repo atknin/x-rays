@@ -34,6 +34,7 @@ def diffraction_scheme(request,pk_num):
 	args = {}
 	args['crystals'] = polarizability_models.crystals.objects.all()
 	args['anod'] = diffraction_models.anod.objects.all()
+	args['computer_online']  = diffraction_models.PC.objects.all()
 	url = 'diffraction/diffraction_'+pk_num + '.html'
 	return render(
 	 	request, url, args
@@ -76,7 +77,7 @@ def compute(request):
 			else:
 				output_data['status'] = 'Nodata'
 				for i in no_calc:
-					if not i.PC is None: 
+					if not i.PC is None:
 						if i.PC.pk == int(pc):
 							output_data['status'] = 'ok'
 							output_data['JSON'] = i.JSON
@@ -100,7 +101,7 @@ def compute(request):
 			update = diffraction_models.PC.objects.get(pk = int(pc))
 			update.date_here = datetime.now()
 			update.save()
-			
+
 			try:
 				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['complited']))
 				complited.status = True
@@ -110,7 +111,7 @@ def compute(request):
 			except Exception as e:
 				output_data['status'] = "error in complited"
 				output_data['e'] = str(e)
-			
+
 	else:
 		output_data['status'] = "error"
 	return JsonResponse(output_data)
