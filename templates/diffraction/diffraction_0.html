@@ -202,14 +202,13 @@
         <div class="col-md-4">
           <p class="lead"> дополнительно</p>
             <!-- справа -->
-            <label>Анод:</label>
-            <select class="form-control" name = 'Источник'  id ='id_source' size="6">
+            <label>Компьютер:</label>
+            <select class="form-control" name = 'Компьютер'  id ='id_pc' size="6">
               {%for PK in computer_online}
-                {% if PK.get_time_diff == 'Yes'%}
-
+                {%if PK.get_time_diff == 'Yes'%}
                     <option value="{{PK.id}}"><small>{{PK.name}}</small></option>
-                {% endif %}
-              {% endfor %}
+                {%endif%}
+              {%endfor%}
             </select>
         </div>
       </div>
