@@ -180,7 +180,7 @@ $("#compute").click(function(){
     compute_dict['teta_start'] = $('#teta_start').val();
     compute_dict['teta_end'] = $('#teta_end').val();
 
-    compute_dict['PC'] = $('#id_pc').val();
+    compute_dict['PC'] = $('#id_pc opion:selected').val();
 
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
