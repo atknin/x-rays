@@ -62,7 +62,7 @@ def compute(request):
 		db_calc = diffraction_models.list_of_calcs.objects.create(JSON = str(input_data))
 		db_calc.email = input_data ['id_email']
 		try:
-			db_calc.PC = diffraction_models.PC.objects.get(name = request.POST['PC'])
+			db_calc.PC = diffraction_models.PC.objects.get(name = request.POST['computer_calculate'])
 		except Exception as e:
 			pass
 		db_calc.save()
