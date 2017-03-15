@@ -157,26 +157,27 @@
         </div>
         <div class="row" style="margin-left: 50px;">
           <p class="lead"> Параметры расчета:</p>
-            <input type="text" style="width: 100px;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок." name="комментарий" />
             <div class="row">
               <div class="form-group">
                 <label for="step_detail">коэффициент детализации сетки  >= 0.4 </label>
                 <input type="number" style="width: 30%;" class="form-control input-sm" id="step_detail" placeholder="1" value="1" name="коэффициент детализации сетки">
               </div>
             </div>
+            <div class="row">
+              <div class="form-group">
+                <label for="id_comment_calc">Комментарий</label>
+                <input type="text" maxlength="30" style="width: 100%;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок." name="комментарий" />
+              </div>
+            </div>
         </div>
-
-        <div class="row">
-          <div class="input-group" style="margin: 40px;" id = ''>
-            <span class="input-group-btn">
-              <button type="button" id = "compute" class="btn btn-success">Рассчитать</button>
-              <button type="button" id = "new_compute"  class="btn btn-default">new</button>
-            </span>
-            <input type="email" class="form-control" id="id_email" placeholder="Email" value = "{{user.email}}">
-          </div><!-- /input-group -->
-          <div id="loader_addon" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
-        </div>
-
+            <div class="input-group" style="margin: 40px;" id = ''>
+              <span class="input-group-btn">
+                <button type="button" id = "compute" class="btn btn-success">Рассчитать</button>
+                <button type="button" id = "new_compute"  class="btn btn-default">new</button>
+              </span>
+              <input type="email" class="form-control" id="id_email" placeholder="Email" value = "{{user.email}}">
+            </div><!-- /input-group -->
+            <div id="loader_addon" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
       </div>
 
       <div class="col-md-8">
@@ -214,7 +215,6 @@
             </select>
         </div>
       </div>
-
       {% else %}
       <span class="label label-danger">Только зарегистрированным пользователям</span>
       {% endif %}
