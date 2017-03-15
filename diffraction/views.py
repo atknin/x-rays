@@ -77,7 +77,7 @@ def compute(request):
 			no_calc = diffraction_models.list_of_calcs.objects.filter(status=False)
 			if len(no_calc) == 0:
 				output_data['status'] = 'Nodata'
-				JsonResponse(output_data)
+				return JsonResponse(output_data)
 			else:
 				output_data['status'] = 'Nodata'
 				for i in no_calc:
@@ -87,7 +87,7 @@ def compute(request):
 							output_data['JSON'] = i.JSON
 							output_data['pk'] = i.pk
 							bot_inform.sent_to_atknin_bot('PC (по запросу): '+ pc, 'v')
-							JsonResponse(output_data)
+							return JsonResponse(output_data)
 				for i in no_calc:
 					if i.PC is None:
 						# bot_inform.sent_to_atknin_bot('88', 'v')
@@ -98,8 +98,8 @@ def compute(request):
 						i.PC = diffraction_models.PC.objects.get(pk = int(pc))
 						i.save()
 						bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
-						JsonResponse(output_data)
-				JsonResponse(output_data)
+						return JsonResponse(output_data)
+				return JsonResponse(output_data)
 		elif 'complited' in request.GET:
 			pc = request.GET['pc']
 			update = diffraction_models.PC.objects.get(pk = int(pc))

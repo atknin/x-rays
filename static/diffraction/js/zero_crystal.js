@@ -178,7 +178,6 @@ $("#compute").click(function(){
     compute_dict['step_detail'] = $('#step_detail').val();
     compute_dict['teta_start'] = $('#teta_start').val();
     compute_dict['teta_end'] = $('#teta_end').val();
-    console.log($('#id_pc opion:selected').val());
     compute_dict['computer_calculate'] = $('#id_pc').val();
 
 		$.post("/diffraction/compute/", compute_dict)

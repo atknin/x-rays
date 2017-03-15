@@ -100,8 +100,23 @@ canvas.on('mouse:down', function(options) {
 		$('#div_settings_'+options.target.class).show();
 	};
 });
-var check_array = {'input_l_slit1':true,'input_l_slit2':true, 'input_size_slit1':true, 'input_size_slit2':true,'source_divergence_arc':true,'id_source':true,'X0':false,'Xh':false}
 
+
+// ---------------------------------------------------------------------
+var check_array = {'X0_1':false,'Xh_1':false};
+
+check_array['input_l_slit1'] = true;
+check_array['step_detail'] = true;
+check_array['input_l_slit2'] = true;
+check_array['input_size_slit1'] = true;
+check_array['input_size_slit2'] = true;
+
+check_array['source_divergence_arc'] = true;
+check_array['id_source'] = true;
+
+check_array['teta_start'] = true;
+check_array['teta_end'] = true;
+// ---------------------------------------------------------------------
 
 function error(e){
 	check_array[$(e).attr('id')] = false;
@@ -113,34 +128,35 @@ function ok(e){
   	// console.log($(e).attr('id'),check_array[$(e).attr('id')]);
   	$(e).removeClass('error');
 };
-$("#check_symmetric_case").change(function() {
+
+// ---------------ПРОВЕРКА---------------------------------------------
+// Ассиметрия
+$("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
+  var nnn = $(this).attr('name');
   if(this.checked) {
-  	console.log('ok')
-    $('#h_index1_surface,#k_index1_surface,#l_index1_surface').prop( "disabled", true );
-    $('#h_index1_surface,#k_index1_surface,#l_index1_surface').val('');
+    $('#h_index_surface_'+nnn+',#k_index_surface_'+nnn+',#l_index_surface_'+nnn).prop( "disabled", true );
+    $('#h_index_surface_'+nnn+',#k_index_surface_'+nnn+',#l_index_surface_'+nnn).val('');
+    $('#id_assym_img_'+nnn).hide();
+    $('#select_crystal'+nnn).attr('size', 10);
   }
   else{
-    $('#h_index1_surface,#k_index1_surface,#l_index1_surface').prop( "disabled", false );
-  }
+    $('#h_index_surface_'+nnn+',#k_index_surface_'+nnn+',#l_index_surface_'+nnn).prop( "disabled", false );
+    $('#select_crystal'+nnn).attr('size', 2);
+    $('#id_assym_img_'+nnn).show();
+  };
 });
-$("#check_symmetric_case").change();
 
-$('#input_l_slit1, #input_l_slit2').keyup(function() {
-  if( parseFloat($(this).val()) < 2 && parseFloat($(this).val()) > 0){ok(this);}
+$("#check_symmetric_case_1, #check_symmetric_case_2").change();
+// '\ Ассиметрия
+
+$('#step_detail').change(function() {
+  if ( $.isNumeric($('#step_detail'+cryst_num).val()) ){
+    ok(this);}
   else{error(this);}
+
 });
 
-$('#input_size_slit1, #input_size_slit2').keyup(function() {
-  if( parseFloat($(this).val()) < 100 && parseFloat($(this).val()) > 0){ok(this);}
-  else{error(this);}
-});
-
-$('#source_divergence_arc').change(function() {
-  if( parseFloat($(this).val()) < 2000 && parseFloat($(this).val()) > 0){ok(this);}
-  else{error(this);}
-});
-
-$('#X0,#Xh').change(function() {
+$('#x0_1,#xh_1,#x0_2,#xh_2').change(function() {
 	var X = $(this).val().split('+');
  	if(X.length == 2){ok(this);}
  	else{error(this);}
@@ -150,12 +166,30 @@ $('#id_source').change(function() {
 	ok(this);
 	$('#x0_1').val('');
     $('#xh_1').val('');
-
+    $('#x0_2').val('');
+    $('#xh_2').val('');
 });
-var compute_dict = {};
+$('#teta_start').change(function() {
+  if ($('#teta_start').val()<$('#teta_end').val()){ok(this);}
+  else{error(this);}
+});
+$('#teta_end').change(function() {
+  if ($('#teta_start').val()<$('#teta_end').val()){ok(this);}
+    else{error(this);}
+});
 
+
+
+// --------\\-------ПРОВЕРКА---------------------------------------------
+
+var compute_dict = {};
 $('#id_alert_message').hide();
+
+// ------------------------------отправка расчта в Телеграмм
 $("#compute").click(function(){
+  $("#loader_addon").addClass("loader"); //анимациая загрузки
+	$('#getX1').click();
+	$('#getX2').click();
 	$("#compute").prop( "disabled", true );
 	var flag = true;
 	var mes = '';
@@ -181,74 +215,102 @@ $("#compute").click(function(){
 		$.ajaxSetup({data: {
 			csrfmiddlewaretoken: $('#abracadabraa').val()
 		}});
+
+
 		compute_dict['schem'] = 'single_crystal';
 		compute_dict['id_email'] = $('#id_email').val();
-		compute_dict['X0'] = $('#X0').val();
-		compute_dict['Xh'] = $('#Xh').val();
-		compute_dict['scan'] = $('input[name=schem_radio]').filter(':checked').val()
+		compute_dict['X0_1'] = $('#X0_1').val();
+		compute_dict['Xh_1'] = $('#Xh_1').val();
+
+		compute_dict['X0_2'] = $('#X0_2').val();
+		compute_dict['Xh_2'] = $('#Xh_2').val();
+		compute_dict['scan'] = $('input[name=schem_radio]').filter(':checked').val();
+
+    compute_dict['step_detail'] = $('#step_detail').val();
+    compute_dict['teta_start'] = $('#teta_start').val();
+    compute_dict['teta_end'] = $('#teta_end').val();
+
+    if(document.getElementById('logarifm_scale').checked) {
+        compute_dict['logarifm_scale'] = 'log';
+    } else {
+        compute_dict['logarifm_scale'] = 'Nonlog';
+    };
 
 
-		
+
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
 			alert( msg.status);
+       $("#loader_addon").removeClass("loader");//убрать анимациая загрузки
 		});
 	};
-
-
 });
 
-$("#getX1").click(function() {
-	console.log('compute');
+// ------------------------------Расчет поляризуемости
+$("#getX2, #getX1").click(function() {
   	var compute_dict_X = {};
   	var cryst_num = $(this).attr( "name" );
   	var flag = false
- 
 
-   if (!$.isNumeric($('#select_crystal1').val())){ // проверка, выбран ли источник
-    flag = true;   
+   if (!$.isNumeric($('#select_crystal'+cryst_num).val())){ // проверка, выбран ли источник
+    flag = true;
     $("#check_crystal"+cryst_num).addClass("has-error");
   };
-  if ($("#check_symmetric_case").is(":checked")){
-      $('#h_index1_surface').val($('#h_index1').val());
-      $('#k_index1_surface').val($('#k_index1').val());
-      $('#l_index1_surface').val($('#l_index1').val());
+  if ($("#check_symmetric_case_"+cryst_num).is(":checked")){
+      $('#h_index'+cryst_num+'_surface').val($('#h_index'+cryst_num).val());
+      $('#k_index'+cryst_num+'_surface').val($('#k_index'+cryst_num).val());
+      $('#l_index'+cryst_num+'_surface').val($('#l_index'+cryst_num).val());
     };
 
-  if (flag != true) { 
+  if (flag != true) {
     $("#loader_addon"+cryst_num).addClass("loader"); //анимациая загрузки
     $.ajaxSetup({data: {
     	csrfmiddlewaretoken: $('#abracadabraa').val()
     }});
-    compute_dict_X["h"] = $('#h_index1').val();
-    compute_dict_X["k"] = $('#k_index1').val();
-    compute_dict_X["l"] = $('#l_index1').val();
-    compute_dict_X["h_surface"] = $('#h_index1_surface').val();
-    compute_dict_X["k_surface"] = $('#k_index1_surface').val();
-   	compute_dict_X["l_surface"] = $('#l_index1_surface').val();
+    compute_dict_X["h"] = $('#h_index'+cryst_num).val();
+    compute_dict_X["k"] = $('#k_index'+cryst_num).val();
+    compute_dict_X["l"] = $('#l_index'+cryst_num).val();
 
-    compute_dict_X["crystal_id"] = $('#select_crystal1').val();
+    if ($("#check_symmetric_case_"+cryst_num).is(":checked")){
+      $('#h_index_surface_'+cryst_num).val($('#h_index'+cryst_num).val());
+      $('#k_index_surface_'+cryst_num).val($('#k_index'+cryst_num).val());
+      $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
+    }
+    else if(!$.isNumeric($('#l_index_surface_'+cryst_num).val()) || !$.isNumeric($('#k_index_surface_'+cryst_num).val()) || !$.isNumeric($('#l_index_surface_'+cryst_num).val()) ) {
+      console.log('индекс surface не задан')
+      $('#h_index_surface_'+cryst_num).val($('#h_index'+cryst_num).val());
+      $('#k_index_surface_'+cryst_num).val($('#k_index'+cryst_num).val());
+      $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
+    }
+
+    compute_dict_X["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val();
+
+    compute_dict_X["h_surface"] = $('#h_index_surface_'+cryst_num).val();
+    compute_dict_X["k_surface"] = $('#k_index_surface_'+cryst_num).val();
+    compute_dict_X["l_surface"] = $('#l_index_surface_'+cryst_num).val();
+
+    compute_dict_X["crystal_id"] = $('#select_crystal'+cryst_num).val();
+
 
     compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
 
     $.post("/polarizability/compute/", compute_dict_X ,function(data) {
-      $('#X0').val(data.X0_real + " + "+data.X0_imag+"j");
-      $('#Xh').val(data.Xh_real + " + "+data.Xh_imag+"j");
-      compute_dict['bragg'] = data.bragg
-      ok($('#X0'));
-      ok($('#Xh'));
+      $('#X0_'+cryst_num).val(data.X0_real + " + "+data.X0_imag+"j");
+      $('#Xh_'+cryst_num).val(data.Xh_real + " + "+data.Xh_imag+"j");
+      ok($('#X0_'+cryst_num));
+      ok($('#Xh_'+cryst_num));
+      compute_dict['bragg_'+cryst_num] = data.bragg;
+      compute_dict['fi_'+cryst_num] = data.fi;
+
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
     });
-  }; 
+  };
 
 });
 // как только мы прикаснемся к одному из .. окон удалится класс окрасски
-$("#check_crystal1").click(function(){
+$("#check_crystal1,#check_crystal2").click(function(){
   $(this).removeClass("has-error");
 });
 $("#new_compute").click(function(){
   $("#compute").prop( "disabled", false );
 });
-
-      
-
