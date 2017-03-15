@@ -229,6 +229,7 @@ $("#compute").click(function(){
     compute_dict['step_detail'] = $('#step_detail').val();
     compute_dict['teta_start'] = $('#teta_start').val();
     compute_dict['teta_end'] = $('#teta_end').val();
+    compute_dict["id_comment_calc"] = ' ' + $('#id_comment_calc').val();
 
     if(document.getElementById('logarifm_scale').checked) {
         compute_dict['logarifm_scale'] = 'log';
@@ -290,7 +291,7 @@ $("#getX2, #getX1").click(function() {
     compute_dict_X["l_surface"] = $('#l_index_surface_'+cryst_num).val();
 
     compute_dict_X["crystal_id"] = $('#select_crystal'+cryst_num).val();
-    compute_dict_X["id_comment_calc"] = ' ' + $('#id_comment_calc').val();
+
 
 
 
