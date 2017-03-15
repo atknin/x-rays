@@ -290,8 +290,8 @@ $("#getX2, #getX1").click(function() {
     compute_dict_X["l_surface"] = $('#l_index_surface_'+cryst_num).val();
 
     compute_dict_X["crystal_id"] = $('#select_crystal'+cryst_num).val();
-    compute_dict_X["id_comment_calc"] = ''+$('#id_comment_calc').val();
-    
+    compute_dict_X["id_comment_calc"] = ' ' + $('#id_comment_calc').val();
+
 
 
     compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
