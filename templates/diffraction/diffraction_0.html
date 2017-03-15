@@ -165,7 +165,10 @@
             </div>
         </div>
         <div class="row">
-dasdas
+          <div class="form-group">
+            <label for="id_comment_calc">Комментарий</label>
+            <input type="text" maxlength="30" style="width: 100px;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок." name="комментарий"
+          </div>
         </div>
         <div class="row">
           <div class="input-group" style="margin: 40px;" id = ''>
@@ -215,12 +218,7 @@ dasdas
             </select>
         </div>
       </div>
-      <div class="row">
-        <div class="form-group">
-          <label for="id_comment_calc">Комментарий</label>
-          <input type="text" maxlength="30" style="width: 100px;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок." name="комментарий"
-        </div>
-      </div>
+
       {% else %}
       <span class="label label-danger">Только зарегистрированным пользователям</span>
       {% endif %}
