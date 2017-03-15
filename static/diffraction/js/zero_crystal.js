@@ -109,21 +109,6 @@ function ok(e){
   	$(e).removeClass('error');
 };
 
-
-$('#input_l_slit1, #input_l_slit2').keyup(function() {
-  if( parseFloat($(this).val()) < 2 && parseFloat($(this).val()) > 0){ok(this);}
-  else{error(this);}
-});
-
-$('#input_size_slit1, #input_size_slit2').keyup(function() {
-  if( parseFloat($(this).val()) < 100 && parseFloat($(this).val()) > 0){ok(this);}
-  else{error(this);}
-});
-
-$('#source_divergence_arc').change(function() {
-  if( parseFloat($(this).val()) < 2000 && parseFloat($(this).val()) > 0){ok(this);}
-  else{error(this);}
-});
 $('#id_source').change(function() {
 	ok(this);
 });
