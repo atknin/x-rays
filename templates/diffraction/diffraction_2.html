@@ -348,80 +348,82 @@
           <div class="alert alert-danger" style="margin-left: 40px;"  role="alert" id='id_alert_message'>
           </div>
         </div>
-            <div class="row" style="margin-left: 50px;">
-              <p class="lead"> Параметры расчета:</p>
-                <div class="row">
-                  <div class="form-group">
-                    <label>тип сканирования:</label> <br>
-                    <label >
-                      <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta">  &theta; - 2&theta;
-                    </label>
-                    <label >
-                      <input type="radio" name="schem_radio" id="scan_omega" value="omega"> &omega;
-                    </label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="form-group">
-                    <label for="step_detail">коэффициент детализации сетки  >= 0.4 </label>
-                    <input type="number" style="width: 30%;" class="form-control input-sm" id="step_detail" placeholder="1" value="1" name="коэффициент детализации сетки">
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="form-group">
-                    <label for="step_detail">Комментарий</label>
-                    <input type="text" maxlength="30" style="width: 60%;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Двухкристальная." name="комментарий"
-                  </div>
-                </div>
-
-
-            </div>
-            <div class="input-group" style="margin: 40px;" id = ''>
-              <span class="input-group-btn">
-                <button type="button" id = "compute" class="btn btn-success">Рассчитать</button>
-                <button type="button" id = "new_compute"  class="btn btn-default">new</button>
-              </span>
-              <input type="email" class="form-control" id="id_email" placeholder="Email" value = "{{user.email}}">
-            </div><!-- /input-group -->
-            <div id="loader_addon" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
-      </div>
-
-      <div class="col-md-7">
-        <div class="col-md-2">
-          <div >
-            <input type="text" class="form-control input-sm" id="lamba_end" placeholder="1" value="ka2+d30%" disabled>
-          </div>
-          <div style="margin-top: 140px;">
-            <input type="text" class="form-control input-sm" id="lamba_start" placeholder="1" value="ka1-d30%" disabled>
-          </div>
-
-        </div>
-        <div class="col-md-4">
-          <div class="row">
-            <img style="height: 200px;" src="{% static 'diffraction/img/calc_examp.png'%}">
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <input type="number" style="width: 70px;" class="form-control input-sm" id="teta_start" placeholder="1" value="-80" name="Угол начальной отстройки - Тета">
-            </div>
-            <div class="col-md-6">
-              <input type="number" style="margin-left: 50px;  width: 70px;" class="form-control input-sm" id="teta_end" placeholder="1" value="80" name="Угол конечной отстройки - Тета">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <p class="lead"> дополнительно</p>
+        <div class="row" style="margin-left: 50px;">
+          <p class="lead"> Параметры расчета:</p>
             <div class="row">
-              <img style="height: 100px;" src="{% static 'diffraction/img/kdo.png'%}">
-            </div>
-            <div class="row">
-            КДО
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox"  checked="true" id = "logarifm_scale" value="log" > Логарифмическая шкала
+              <div class="form-group">
+                <label>тип сканирования:</label> <br>
+                <label >
+                  <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta">  &theta; - 2&theta;
+                </label>
+                <label >
+                  <input type="radio" name="schem_radio" id="scan_omega" value="omega"> &omega;
                 </label>
               </div>
             </div>
+            <div class="row">
+              <div class="form-group">
+                <label for="step_detail">коэффициент детализации сетки  >= 0.4 </label>
+                <input type="number" style="width: 30%;" class="form-control input-sm" id="step_detail" placeholder="1" value="1" name="коэффициент детализации сетки">
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label for="step_detail">Комментарий</label>
+                <input type="text" maxlength="30" style="width: 60%;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Двухкристальная." name="комментарий"
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="input-group" style="margin: 40px;" id = ''>
+            <span class="input-group-btn">
+              <button type="button" id = "compute" class="btn btn-success">Рассчитать</button>
+              <button type="button" id = "new_compute"  class="btn btn-default">new</button>
+            </span>
+            <input type="email" class="form-control" id="id_email" placeholder="Email" value = "{{user.email}}">
+          </div><!-- /input-group -->
+          <div id="loader_addon" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-1">
+            <div >
+              <input type="text" class="form-control input-sm" id="lamba_end" placeholder="1" value="ka2+d30%" disabled>
+            </div>
+            <div style="margin-top: 140px;">
+              <input type="text" class="form-control input-sm" id="lamba_start" placeholder="1" value="ka1-d30%" disabled>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="row">
+              <img style="height: 200px;" src="{% static 'diffraction/img/calc_examp.png'%}">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="number" style="width: 70px;" class="form-control input-sm" id="teta_start" placeholder="1" value="-80" name="Угол начальной отстройки - Тета">
+              </div>
+              <div class="col-md-6">
+                <input type="number" style="margin-left: 50px;  width: 70px;" class="form-control input-sm" id="teta_end" placeholder="1" value="80" name="Угол конечной отстройки - Тета">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p class="lead"> дополнительно</p>
+              <div class="row">
+                <img style="height: 100px;" src="{% static 'diffraction/img/kdo.png'%}">
+              </div>
+              <div class="row">
+              КДО
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"  checked="true" id = "logarifm_scale" value="log" > Логарифмическая шкала
+                  </label>
+                </div>
+              </div>
+          </div>
         </div>
       </div>
       {% else %}
