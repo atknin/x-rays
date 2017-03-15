@@ -148,7 +148,6 @@
     </div>
 
     <div class="row">
-      {% include "diffraction/for_include_compute_settings.html" %}    
       <hr>
       {% if user.is_authenticated %}
       <div class="col-md-4">
@@ -162,12 +161,6 @@
               <div class="form-group">
                 <label for="step_detail">коэффициент детализации сетки  >= 0.4 </label>
                 <input type="number" style="width: 30%;" class="form-control input-sm" id="step_detail" placeholder="1" value="1" name="коэффициент детализации сетки">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group">
-                <label for="id_comment_calc">Комментарий</label>
-                <input type="text" maxlength="30" style="width: 60%;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок." name="комментарий"
               </div>
             </div>
         </div>
@@ -214,6 +207,12 @@
                 {%endif%}
               {%endfor%}
             </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="id_comment_calc">Комментарий</label>
+          <input type="text" maxlength="30" style="width: 100px;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок." name="комментарий"
         </div>
       </div>
       {% else %}
