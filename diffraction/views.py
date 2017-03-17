@@ -51,11 +51,11 @@ def compute(request):
 		for a in request.POST:
 			input_data[a] = request.POST[a]
 		del input_data['csrfmiddlewaretoken']
+		input_data['id_comment_calc'] = input_data['id_comment_calc'].replace(",", ".").replace(" ", "_")
 		i = 1;
 		for wave in diffraction_models.anod.objects.get(pk = request.POST['id_source']).wavelength.all():
 			input_data.update({'anod'+str(i): str(wave.wavelength)})
 			i+=1
-
 		output_data['status'] = "ok"
 		sender.send_msg("Atknin", str(input_data))
 		bot_inform.sent_to_atknin_bot(str(input_data), 'n') # проинформируем в telegramm bot
@@ -86,6 +86,7 @@ def compute(request):
 							output_data['status'] = 'ok'
 							output_data['JSON'] = i.JSON
 							output_data['pk'] = i.pk
+
 							bot_inform.sent_to_atknin_bot('PC (по запросу): '+ pc, 'v')
 							return JsonResponse(output_data)
 				for i in no_calc:
