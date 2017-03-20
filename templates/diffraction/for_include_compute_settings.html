@@ -287,9 +287,9 @@ $(document).ready(function() {
         });
 
 
-        update('step_shag_teta',5);
-        update('step_teta',1);
-        update('step_lambda',1);
+        update('step_shag_teta',  $("#slider_shag_teta"));
+        update('step_teta',$("#slider_teta"));
+        update('step_lambda',$("#slider_lambda"));
     });
 
 
@@ -302,6 +302,6 @@ $(document).ready(function() {
     function update(slider,ui) {
       //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
      $('#'+slider).val(ui.value);
-     $(ui).children().text(val);
+     $(ui).children().text(ui.value);
     }
 </script>
