@@ -2,6 +2,10 @@
 var myOpts = document.getElementById('id_source').options;
 $('#id_source').val(myOpts[1].value);
 var canvas = new fabric.Canvas('fabric');
+// Комментрарий в расчете со временем
+var dt = new Date();
+var time = dt.getHours() + "." + dt.getMinutes() + "." + dt.getSeconds();
+$('#id_comment_calc').val($.datepicker.formatDate('yy/mm/dd ', new Date())+ time);
 
 //--------- добавить источник --------------
 
