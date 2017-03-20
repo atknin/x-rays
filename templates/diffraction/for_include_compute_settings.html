@@ -265,7 +265,7 @@ $(document).ready(function() {
           max: 1,
           step: 0.1,
             slide: function(event, ui) {
-                update(ui.value,ui,'step_lambda'); //changed
+                update(ui.value,"#slider_lambda",'step_lambda'); //changed
             }
         });
         $("#slider_teta").slider({
@@ -275,7 +275,7 @@ $(document).ready(function() {
           max: 1,
           step: 0.1,
             slide: function(event, ui) {
-                update(ui.value,ui,'step_teta'); //changed
+                update(ui.value,"#slider_teta",'step_teta'); //changed
             }
         });
         $("#slider_shag_teta").slider({
@@ -285,15 +285,15 @@ $(document).ready(function() {
           max: 40,
           step: 0.5,
             slide: function(event, ui) {
-                update(ui.value,ui,'step_shag_teta'); //changed
+                update(ui.value,"#slider_shag_teta",'step_shag_teta'); //changed
             }
         });
-        update(5,  $("#slider_shag_teta"),'step_shag_teta');
-        update(1,$("#slider_teta"),'step_teta');
-        update(1,$("#slider_lambda"),'step_lambda');
+        update(5,  "#slider_shag_teta",'step_shag_teta');
+        update(1,"#slider_teta",'step_teta');
+        update(1,"#slider_lambda",'step_lambda');
         function update(val,ui,id) {
           $('#'+id).val(val);
-          $('#'+ui.attr('id')).children().text(val);
+          $(ui).children().text(val);
         };
     });
 
