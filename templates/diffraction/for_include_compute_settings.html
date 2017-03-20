@@ -23,7 +23,7 @@ margin-top: 4px;
 .ui-slider .ui-slider-handle {
 position: absolute;
 z-index: 2;
-width: 5.2em;
+width: 2.2em;
 height: 2.2em;
 cursor: default;
 margin: 0 -40px auto !important;
@@ -282,5 +282,7 @@ $(document).ready(function() {
     function update(slider,val) {
       //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
      $('#step_detail').val(val);
+    $('.ui-slider-handle').text(val);
+
     }
 </script>
