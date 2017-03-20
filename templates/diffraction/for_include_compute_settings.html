@@ -298,7 +298,8 @@ $(document).ready(function() {
     function update(val,ui,id) {
       console.log(val);
       $('#'+id).val(val);
-      console.log($(ui).children()[0]);
+      console.log($(ui).children());
+      console.log($('#slider_lambda').children());
       $(ui).children().text(val);
 
     }
