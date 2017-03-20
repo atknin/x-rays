@@ -255,15 +255,17 @@
         <div class="row">
           <div class="form-group">
             <p class="lead">тип сканирования:</p>
-              <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta">  Кристалл на месте, скан детектором
-              <input type="radio" name="schem_radio" id="scan_omega" value="omega"> Детектор на месте, скан кристаллом
+              <p>
+                <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta">  Кристалл на месте, скан детектором
+              </p>
+              <p>
+                <input type="radio" name="schem_radio" id="scan_omega" value="omega"> Детектор на месте, скан кристаллом
+              </p>
           </div>
         </div>
         <div class="row" style="margin-top:20px;">
           <p class="lead">Визуализировать в:</p>
-          <div class="checkbox">
-              <input type="checkbox"  checked="true" id = "logarifm_scale" value="log" > Логарифмическая шкала
-          </div>
+            <input type="checkbox"  checked="true" id = "logarifm_scale" value="log" > Логарифмическая шкала
         </div>
       </div>
       {% else %}
