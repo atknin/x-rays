@@ -296,11 +296,9 @@ $(document).ready(function() {
     });
 
     //changed. now with parameter
-    function update(slider,ui) {
-      console.log(ui.attr('id'));
-      console.log($(ui).children());
-      $(ui).children()[0].val(ui.value);
-      $(ui).children()[1].text(ui.value);
+    function update(val,ui) {
+      $('#'+ui.attr('id')).children()[0].val(val);
+      $('#'+ui.attr('id')).children()[1].text(val);
 
     }
 </script>
