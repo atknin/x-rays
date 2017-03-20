@@ -297,8 +297,10 @@ $(document).ready(function() {
 
     //changed. now with parameter
     function update(slider,ui) {
-      $(ui).children()[0].val(ui.value)
-      $(ui).children()[1].val(ui.value)
+      console.log(ui);
+      console.log($(ui).children());
+      $(ui).children()[0].val(ui.value);
+      $(ui).children()[1].text(ui.value);
 
     }
 </script>
