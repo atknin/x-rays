@@ -265,7 +265,7 @@ $(document).ready(function() {
           max: 1,
           step: 0.1,
             slide: function(event, ui) {
-                update('step_lambda',ui); //changed
+                update(ui.value,ui); //changed
             }
         });
         $("#slider_teta").slider({
@@ -275,7 +275,7 @@ $(document).ready(function() {
           max: 1,
           step: 0.1,
             slide: function(event, ui) {
-                update('step_teta',ui); //changed
+                update(ui.value,ui); //changed
             }
         });
         $("#slider_shag_teta").slider({
@@ -285,19 +285,19 @@ $(document).ready(function() {
           max: 40,
           step: 0.5,
             slide: function(event, ui) {
-                update('step_shag_teta',ui); //changed
+                update(ui.value,ui); //changed
             }
         });
 
 
-        update('step_shag_teta',  $("#slider_shag_teta"));
-        update('step_teta',$("#slider_teta"));
-        update('step_lambda',$("#slider_lambda"));
+        update(5,  $("#slider_shag_teta"));
+        update(1,$("#slider_teta"));
+        update(1,$("#slider_lambda"));
     });
 
     //changed. now with parameter
     function update(slider,ui) {
-      console.log(ui);
+      console.log(ui.attr('id'));
       console.log($(ui).children());
       $(ui).children()[0].val(ui.value);
       $(ui).children()[1].text(ui.value);
