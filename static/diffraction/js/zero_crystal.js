@@ -2,7 +2,10 @@
 var myOpts = document.getElementById('id_source').options;
 $('#id_source').val(myOpts[1].value);
 var canvas = new fabric.Canvas('fabric');
-
+// Комментрарий в расчете со временем
+var dt = new Date();
+var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+$('#id_comment_calc').val(time);
 
 //--------- добавить источник --------------
 
@@ -169,15 +172,7 @@ $("#compute").click(function(){
 		});
 	};
 
-  // Комментрарий в расчете со временем
-  var now = new Date();
-  var strDateTime = [[AddZero(now.getDate()),
-     AddZero(now.getMonth() + 1),
-     now.getFullYear()].join("/"),
-     [AddZero(now.getHours()),
-     AddZero(now.getMinutes())].join(":"),
-     now.getHours() >= 12 ? "PM" : "AM"].join(" ");
-  $('#id_comment_calc').val(strDateTime);
+
 
 });
 $("#new_compute").click(function(){
