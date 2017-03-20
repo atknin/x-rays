@@ -156,16 +156,18 @@ $("#compute").click(function(){
 	else {
 		$('#id_alert_message').hide();
 		$.ajaxSetup({data: {
-			csrfmiddlewaretoken: $('#abracadabraa').val()
+			csrfmiddlewaretoken: $('#abracadabraa').val();
 		}});
-		compute_dict['schem'] = 'zero_crystal'
-		compute_dict['id_email'] = $('#id_email').val()
-    compute_dict['step_detail'] = $('#step_detail').val();
+		compute_dict['schem'] = 'zero_crystal';
+		compute_dict['id_email'] = $('#id_email').val();
     compute_dict['teta_start'] = $('#teta_start').val();
     compute_dict['teta_end'] = $('#teta_end').val();
     compute_dict['computer_calculate'] = $('#id_pc').val();
     compute_dict["id_comment_calc"] = ' ' + $('#id_comment_calc').val();
 
+    compute_dict['step_shag_teta'] = $('#step_shag_teta').val();
+    compute_dict['step_teta'] = $('#step_teta').val();
+    compute_dict['step_lambda'] = $('#step_lambda').val();
 
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
