@@ -293,7 +293,7 @@ $(document).ready(function() {
         update(1,$("#slider_lambda"),'step_lambda');
         function update(val,ui,id) {
           $('#'+id).val(val);
-          $(ui).children().text(val);
+          $($("#slider_lambda")).children().text(val);
         };
     });
 
