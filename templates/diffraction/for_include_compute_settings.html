@@ -181,22 +181,25 @@ font-size: 21px;
         <div class="price-slider">
             <span style="margin-bottom:20px">детализация по длине волны</span>
             <div class="col-sm-12">
-              <div id="slider_lambda"></div>
-              <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_lambda" placeholder="1" value="1" name="коэффициент детализации сетки">
+              <div id="slider_lambda">
+                <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_lambda" placeholder="1" value="1" name="коэффициент детализации сетки">
+              </div>
             </div>
         </div>
         <div class="price-slider">
             <span style="margin-bottom:20px">детализация по углу</span>
             <div class="col-sm-12">
-              <div id="slider_teta"></div>
-              <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_teta" placeholder="1" value="1" name="коэффициент детализации сетки">
+              <div id="slider_teta">
+                <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_teta" placeholder="1" value="1" name="коэффициент детализации сетки">
+              </div>
             </div>
         </div>
         <div class="price-slider">
             <span style="margin-bottom:20px">шаг отстройки, угл.сек</span>
             <div class="col-sm-12">
-              <div id="slider_shag_teta"></div>
-              <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_shag_teta" placeholder="1" value="1" name="коэффициент детализации сетки">
+              <div id="slider_shag_teta">
+                <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_shag_teta" placeholder="1" value="1" name="коэффициент детализации сетки">
+              </div>
             </div>
         </div>
 
@@ -291,12 +294,6 @@ $(document).ready(function() {
         update('step_teta',$("#slider_teta"));
         update('step_lambda',$("#slider_lambda"));
     });
-
-
-
-
-
-
 
     //changed. now with parameter
     function update(slider,ui) {
