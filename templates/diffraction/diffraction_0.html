@@ -150,71 +150,7 @@
     <div class="row">
       <hr>
       {% if user.is_authenticated %}
-      <div class="col-md-4">
-        <div class="row" >
-          <div class="alert alert-danger" style="margin-left: 40px;"  role="alert" id='id_alert_message'>
-          </div>
-        </div>
-        <div class="row" style="margin-left: 50px;">
-          <p class="lead"> Параметры расчета:</p>
-            <div class="row">
-              <div class="form-group">
-                <label for="step_detail">коэффициент детализации сетки  >= 0.4 </label>
-                <input type="number" style="width: 30%;" class="form-control input-sm" id="step_detail" placeholder="1" value="1" name="коэффициент детализации сетки">
-              </div>
-            </div>
-            <div class="row">
-              <div class="form-group">
-                <label for="id_comment_calc">Комментарий</label>
-                <input type="text" maxlength="30" style="width: 100%;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок." name="комментарий" />
-              </div>
-            </div>
-        </div>
-            <div class="input-group" style="margin: 40px;" id = ''>
-              <span class="input-group-btn">
-                <button type="button" id = "compute" class="btn btn-success">Рассчитать</button>
-                <button type="button" id = "new_compute"  class="btn btn-default">new</button>
-              </span>
-              <input type="email" class="form-control" id="id_email" placeholder="Email" value = "{{user.email}}">
-            </div><!-- /input-group -->
-            <div id="loader_addon" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
-      </div>
-
-      <div class="col-md-8">
-        <div class="col-md-2">
-          <div >
-            <input type="text" class="form-control input-sm" id="lamba_end" placeholder="1" value="ka2+d30%" disabled>
-          </div>
-          <div style="margin-top: 140px;">
-            <input type="text" class="form-control input-sm" id="lamba_start" placeholder="1" value="ka1-d30%" disabled>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="row">
-            <img style="height: 200px;" src="{% static 'diffraction/img/calc_examp.png'%}">
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <input type="number" style="width: 70px;" class="form-control input-sm" id="teta_start" placeholder="1" value="-80" name="Угол начальной отстройки - Тета">
-            </div>
-            <div class="col-md-6">
-              <input type="number" style="margin-left: 50px;  width: 70px;" class="form-control input-sm" id="teta_end" placeholder="1" value="80" name="Угол конечной отстройки - Тета">
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <p class="lead"> дополнительно</p>
-            <!-- справа -->
-            <label>Компьютер:</label>
-            <select class="form-control" name = 'Компьютер'  id ='id_pc' size="6">
-              {%for PK in computer_online%}
-                {%if PK.get_time_diff == 'Yes'%}
-                  <option name = "{{PK.pc}}" ><small>{{PK.name}}</small></option>
-                {%endif%}
-              {%endfor%}
-            </select>
-        </div>
-      </div>
+      {% include “/diffraction/for_include_compute_settings.html" %}
       {% else %}
       <span class="label label-danger">Только зарегистрированным пользователям</span>
       {% endif %}
