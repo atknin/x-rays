@@ -182,24 +182,24 @@ font-size: 21px;
             <span style="margin-bottom:20px">детализация по длине волны</span>
             <div class="col-sm-12">
               <div id="slider_lambda">
-                <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_lambda" placeholder="1" value="1" name="коэффициент детализации сетки">
               </div>
+              <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_lambda" placeholder="1" value="1" name="коэффициент детализации сетки">
             </div>
         </div>
         <div class="price-slider">
             <span style="margin-bottom:20px">детализация по углу</span>
             <div class="col-sm-12">
               <div id="slider_teta">
-                <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_teta" placeholder="1" value="1" name="коэффициент детализации сетки">
               </div>
+              <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_teta" placeholder="1" value="1" name="коэффициент детализации сетки">
             </div>
         </div>
         <div class="price-slider">
             <span style="margin-bottom:20px">шаг отстройки, угл.сек</span>
             <div class="col-sm-12">
               <div id="slider_shag_teta">
-                <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_shag_teta" placeholder="1" value="1" name="коэффициент детализации сетки">
               </div>
+              <input  type="number" style="width: 30%; display: none;" class="form-control input-sm" id="step_shag_teta" placeholder="1" value="1" name="коэффициент детализации сетки">
             </div>
         </div>
 
@@ -264,6 +264,7 @@ $(document).ready(function() {
           min: 0.1,
           max: 1,
           step: 0.1,
+          name = 'step_lambda',
             slide: function(event, ui) {
                 update(ui.value,ui); //changed
             }
@@ -274,6 +275,7 @@ $(document).ready(function() {
           min: 0.1,
           max: 1,
           step: 0.1,
+          name: 'step_teta',
             slide: function(event, ui) {
                 update(ui.value,ui); //changed
             }
@@ -284,10 +286,13 @@ $(document).ready(function() {
           min: 0.5,
           max: 40,
           step: 0.5,
+          name = 'step_shag_teta',
             slide: function(event, ui) {
                 update(ui.value,ui); //changed
             }
         });
+
+
 
 
         update(5,  $("#slider_shag_teta"));
@@ -297,8 +302,8 @@ $(document).ready(function() {
 
     //changed. now with parameter
     function update(val,ui) {
-      $('#'+ui.attr('id')).children()[0].val(val);
-      $('#'+ui.attr('id')).children()[1].text(val);
+      $('#'+ui.attr('name')).val(val);
+      $('#'+ui.attr('id')).children().text(val);
 
     }
 </script>
