@@ -186,7 +186,7 @@ font-size: 21px;
             </div>
           </div>
       </div>
-      <div class="row">
+      <div class="row" style="padding-left:10px;">
         <div class="form-group">
           <label for="id_comment_calc">Комментарий</label>
           <input type="text" maxlength="30" style="width: 100%;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок." name="комментарий" />
@@ -262,7 +262,7 @@ $(document).ready(function() {
             }
         });
 
-        update();
+        update(1,0.1);
     });
 
     //changed. now with parameter
