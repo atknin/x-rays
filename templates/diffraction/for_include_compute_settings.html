@@ -207,7 +207,7 @@ font-size: 21px;
       <div class="row">
         <div class="price-slider">
           <span >комментарий</span>
-          <input type="text" size="3" maxlength="30" style="width: 100%;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок" name="комментарий" />
+          <input type="text" height="20px;" maxlength="30" style="width: 100%;" class="form-control input-sm" id="id_comment_calc" placeholder="Ваш коммент." value="Прямой пучок" name="комментарий" />
         </div>
       </div>
   </div>
@@ -236,7 +236,7 @@ font-size: 21px;
     </div>
     <div class="row">
       <div class="price-slider">
-        <span >комментарий</span>
+        <span style="margin-top:10px;">компьютер</span>
         <select class="form-control" name = 'Компьютер'  id ='id_pc' size="3">
           {%for PK in computer_online%}
             {%if PK.get_time_diff == 'Yes'%}
