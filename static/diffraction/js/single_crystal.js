@@ -106,7 +106,6 @@ canvas.on('mouse:down', function(options) {
 var check_array = {'X0_1':false,'Xh_1':false};
 
 check_array['input_l_slit1'] = true;
-check_array['step_detail'] = true;
 check_array['input_l_slit2'] = true;
 check_array['input_size_slit1'] = true;
 check_array['input_size_slit2'] = true;
@@ -149,12 +148,6 @@ $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
 $("#check_symmetric_case_1, #check_symmetric_case_2").change();
 // '\ Ассиметрия
 
-$('#step_detail').change(function() {
-  if ( $.isNumeric($('#step_detail'+cryst_num).val()) ){
-    ok(this);}
-  else{error(this);}
-
-});
 
 $('#x0_1,#xh_1,#x0_2,#xh_2').change(function() {
 	var X = $(this).val().split('+');
@@ -226,10 +219,14 @@ $("#compute").click(function(){
 		compute_dict['Xh_2'] = $('#Xh_2').val();
 		compute_dict['scan'] = $('input[name=schem_radio]').filter(':checked').val();
 
-    compute_dict['step_detail'] = $('#step_detail').val();
     compute_dict['teta_start'] = $('#teta_start').val();
     compute_dict['teta_end'] = $('#teta_end').val();
+    compute_dict['computer_calculate'] = $('#id_pc').val();
     compute_dict["id_comment_calc"] = ' ' + $('#id_comment_calc').val();
+
+    compute_dict['step_shag_teta'] = $('#step_shag_teta').val();
+    compute_dict['step_teta'] = $('#step_teta').val();
+    compute_dict['step_lambda'] = $('#step_lambda').val();
 
     if(document.getElementById('logarifm_scale').checked) {
         compute_dict['logarifm_scale'] = 'log';

@@ -87,7 +87,6 @@ canvas.on('mouse:down', function(options) {
 var check_array = {};
 
 check_array['input_l_slit1'] = true;
-check_array['step_detail'] = true;
 check_array['input_l_slit2'] = true;
 check_array['input_size_slit1'] = true;
 check_array['input_size_slit2'] = true;
@@ -122,12 +121,6 @@ $('#teta_end').change(function() {
     else{error(this);}
 });
 
-$('#step_detail').change(function() {
-  if ( $.isNumeric($('#step_detail'+cryst_num).val()) ){
-    ok(this);}
-  else{error(this);}
-
-});
 
 var compute_dict = {};
 
