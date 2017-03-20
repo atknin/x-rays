@@ -289,9 +289,6 @@ $(document).ready(function() {
             }
         });
 
-
-
-
         update(5,  $("#slider_shag_teta"),'step_shag_teta');
         update(1,$("#slider_teta"),'step_teta');
         update(1,$("#slider_lambda"),'step_lambda');
@@ -301,6 +298,7 @@ $(document).ready(function() {
     function update(val,ui,id) {
       console.log(val);
       $('#'+id).val(val);
+      console.log($(ui).children());
       $(ui).children().text(val);
 
     }
