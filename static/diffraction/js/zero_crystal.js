@@ -153,7 +153,7 @@ $("#compute").click(function(){
 	else {
 		$('#id_alert_message').hide();
 		$.ajaxSetup({data: {
-			csrfmiddlewaretoken: $('#abracadabraa').val();
+			csrfmiddlewaretoken: $('#abracadabraa').val()
 		}});
 		compute_dict['schem'] = 'zero_crystal';
 		compute_dict['id_email'] = $('#id_email').val();
