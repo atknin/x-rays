@@ -251,10 +251,10 @@
       <hr>
       {% if user.is_authenticated %}
       {% include "diffraction/for_include_compute_settings.html" %}
-      <div class="col-md-4">
+      <div class="col-md-4" style="padding-left:20px;">
         <div class="row">
           <div class="form-group">
-            <label>тип сканирования:</label> <br>
+            <span>тип сканирования:</span> <br>
             <label >
               <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta">  Кристалл на месте, скан детектором
             </label>
@@ -263,11 +263,8 @@
             </label>
           </div>
         </div>
-        <div class="row">
-          <img style="height: 100px;" src="{% static 'diffraction/img/kdo.png'%}">
-        </div>
-        <div class="row">
-        КДО
+        <div class="row" >
+          <span>Визуализировать в:</span> <br>
           <div class="checkbox">
             <label>
               <input type="checkbox"  checked="true" id = "logarifm_scale" value="log" > Логарифмическая шкала
