@@ -223,7 +223,7 @@ font-size: 21px;
 
 <div class="col-md-8">
   <div class="col-md-6" style="padding-left:70px;">
-    <div class="row">
+    <div class="row" style="text-align:center;">
       <img style="height: 200px;" src="{% static 'diffraction/img/calc_examp.png'%}">
     </div>
     <div class="row">
@@ -235,15 +235,16 @@ font-size: 21px;
       </div>
     </div>
     <div class="row">
-      <!-- справа -->
-      <label>Компьютер:</label>
-      <select class="form-control" name = 'Компьютер'  id ='id_pc' size="6">
-        {%for PK in computer_online%}
-          {%if PK.get_time_diff == 'Yes'%}
-            <option name = "{{PK.pc}}" ><small>{{PK.name}}</small></option>
-          {%endif%}
-        {%endfor%}
-      </select>
+      <div class="price-slider">
+        <span >комментарий</span>
+        <select class="form-control" name = 'Компьютер'  id ='id_pc' size="3">
+          {%for PK in computer_online%}
+            {%if PK.get_time_diff == 'Yes'%}
+              <option name = "{{PK.pc}}" ><small>{{PK.name}}</small></option>
+            {%endif%}
+          {%endfor%}
+        </select>
+      </div>
     </div>
   </div>
 </div>
