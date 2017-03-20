@@ -190,6 +190,7 @@ background: #2980b9;
             <span>Minimum $10 is required</span>
             <div class="col-sm-12">
               <div id="slider"></div>
+              <input type="number" style="width: 30%;" class="form-control input-sm" id="step_detail" placeholder="1" value="1" name="коэффициент детализации сетки">
             </div>
           </div>
           <!--
@@ -280,6 +281,6 @@ $(document).ready(function() {
     //changed. now with parameter
     function update(slider,val) {
       //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
-    $('#slider').text(val);
+     $('#step_detail').val(val);
     }
 </script>
