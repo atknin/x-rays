@@ -288,19 +288,15 @@ $(document).ready(function() {
                 update(ui.value,ui,'step_shag_teta'); //changed
             }
         });
-
         update(5,  $("#slider_shag_teta"),'step_shag_teta');
         update(1,$("#slider_teta"),'step_teta');
         update(1,$("#slider_lambda"),'step_lambda');
+        function update(val,ui,id) {
+          $('#'+id).val(val);
+          $(ui).children().text(val);
+        };
     });
 
     //changed. now with parameter
-    function update(val,ui,id) {
-      console.log(val);
-      $('#'+id).val(val);
-      console.log($(ui).children());
-      console.log($('#slider_lambda').children());
-      $(ui).children().text(val);
 
-    }
 </script>
