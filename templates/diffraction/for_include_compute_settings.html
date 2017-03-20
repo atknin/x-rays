@@ -297,8 +297,8 @@ $(document).ready(function() {
 
     //changed. now with parameter
     function update(slider,ui) {
-      //changed. Now, directly take value from ui.value. if not set (initial, will use current value.)
-     $('#'+slider).val(ui.value);
-     $(ui).children().text(ui.value);
+      $(ui).children()[0].val(ui.value)
+      $(ui).children()[1].val(ui.value)
+
     }
 </script>
