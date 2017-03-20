@@ -298,9 +298,9 @@ $(document).ready(function() {
     });
 
     //changed. now with parameter
-    function update(val,ui) {
-      $('#'+ui.attr('name')).val(val);
-      $('#'+ui.attr('id')).children().text(val);
+    function update(val,ui,id) {
+      $('#'+id).val(val);
+      $(ui).children().text(val);
 
     }
 </script>
