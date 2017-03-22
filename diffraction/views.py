@@ -114,9 +114,11 @@ def compute(request):
 				complited.progress = 100
 				complited.save()
 				output_data['status'] = "complited"
+				return JsonResponse(output_data)
 			except Exception as e:
 				output_data['status'] = "error in complited"
 				output_data['e'] = str(e)
+				return JsonResponse(output_data)
 # обработка ошибки расчета, если ошибка произошла после передечи параметров в функцию
 		elif 'error_during_compute' in request.GET:
 			pc = request.GET['pc']
@@ -125,13 +127,15 @@ def compute(request):
 			update.save()
 			try:
 				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['error_during_compute']))
-				complited.comment = request.GET['text_error']
+				complited.comment = str(request.GET['text_error'])
 				complited.save()
 				output_data['status'] = "error_during_compute"
+				return JsonResponse(output_data)
 			except Exception as e:
 				output_data['status'] = "error in say error"
 				output_data['e'] = str(e)
+				return JsonResponse(output_data)
 
 	else:
 		output_data['status'] = "error"
-	return JsonResponse(output_data)
+		return JsonResponse(output_data)
