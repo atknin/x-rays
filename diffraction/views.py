@@ -117,6 +117,22 @@ def compute(request):
 				output_data['status'] = "error in complited"
 				output_data['e'] = str(e)
 
+		elif 'error_during_compute' in request.GET:
+			pc = request.GET['pc']
+			update = diffraction_models.PC.objects.get(pk = int(pc))
+			update.date_here = datetime.now()
+			update.save()
+
+			try:
+				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['error_during_compute']))
+				complited.status = True
+				complited.progress = 100
+				complited.save()
+				output_data['status'] = "error_during_compute"
+			except Exception as e:
+				output_data['status'] = "error in say error"
+				output_data['e'] = str(e)
+
 	else:
 		output_data['status'] = "error"
 	return JsonResponse(output_data)

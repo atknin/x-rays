@@ -59,6 +59,7 @@ class PC(models.Model):
 
 class list_of_calcs(models.Model):
 	JSON = models.CharField(max_length=1000)
+	comment = models.CharField(max_length=500, null = True, blank = True)
 	status = models.BooleanField(default=False)
 	email = models.EmailField(max_length=100)
 	data_start = models.DateTimeField(auto_now_add=True, blank=True)
