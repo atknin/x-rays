@@ -78,7 +78,7 @@
 
         <button type="button" id = "example" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
         <script type="text/javascript">
-          $('#example').popover(trigger)
+          $('#example').popover('trigger')
         </script>
         {%for calc in calculations%}
           {% if calc.progress < 100 %}
