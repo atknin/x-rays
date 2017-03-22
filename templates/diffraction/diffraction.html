@@ -77,9 +77,11 @@
     <div class="row  pad-top">
       <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
 
-        <button type="button" id = "example" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+        <button type="button" id = "tooltip_id" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
         <script type="text/javascript">
-          $('#example').popover('trigger')
+         $(function() {
+           $('#tooltip_id').popover('trigger')
+         });
         </script>
         {%for calc in calculations%}
           {% if calc.progress < 100 %}

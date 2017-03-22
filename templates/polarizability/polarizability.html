@@ -2,27 +2,27 @@
   {% block title %}
   <title>Поляризуемость &#967; </title>
   {% load static %}
-  
+
     <script src="{% static "graph/plotly/plotly-latest.min.js"%}" ></script>
     <script src="{% static "bootstrap/js/popover.js"%}"></script>
     <script src="{% static "bootstrap/js/dropdown.js"%}"></script>
     <script src="{% static "bootstrap/js/modal.js"%}"></script>
 
-    
 
-  
+
+
 
     <style type="text/css">
-      .loader { 
+      .loader {
         background-image: url("{% static "loader/loader-128x/Preloader_3.gif"%}");
         background-repeat: no-repeat;
-        background-position: 50% 50%; 
+        background-position: 50% 50%;
         background-size: 100%;
         color: transparent;
         background-color: transparent;
       }
       .check_danger{
-        background-color: #d9534f; 
+        background-color: #d9534f;
 
       }
 
@@ -37,7 +37,7 @@
 
 {% block content %}
 
-  <div class="row" style="min-height: 500px">    
+  <div class="row" style="min-height: 500px">
     <div class="col-md-3">  <!-- Первая колонка -->
       <div class="row" style="margin-left: 10px; margin-bottom: 25px;">
         <div class="btn-group">
@@ -54,7 +54,7 @@
         </div>
         <div class="row" style="margin-top: 20px;">
           <label class="radio-inline">
-            <input type="radio" name="assym_alfa_then_beta" id="inlineRadio1" value="-1" checked="true">  
+            <input type="radio" name="assym_alfa_then_beta" id="inlineRadio1" value="-1" checked="true">
             <span class="label label-primary">синий луч</span>
           </label>
           <label class="radio-inline">
@@ -76,7 +76,7 @@
                 <a data-toggle="tooltip" data-placement="right" title="{{crystal.short_name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{crystal.crystal_system}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a&nbsp;=&nbsp;{{crystal.a}}&nbsp;&#8491;; b&nbsp;=&nbsp;{{crystal.b}}&nbsp;&#8491;; c&nbsp;=&nbsp;{{crystal.c}}&nbsp;&#8491;; &#945;&nbsp;=&nbsp;{{crystal.alfa|floatformat:0}}&nbsp;&deg;; &beta;&nbsp;=&nbsp;{{crystal.beta|floatformat:0}}&nbsp;&deg;; &#947;&nbsp;=&nbsp;{{crystal.gamma|floatformat:0}}&nbsp;&deg;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &#961;&nbsp;&nbsp;=&nbsp;&nbsp;{{crystal.density}}" >
                   <span class="label label-info image">info</span>
                 </a>
-                  {% for group in user.groups.all %}                   
+                  {% for group in user.groups.all %}
                     {% if "user_admin" == group.name %}
                       <a class="btn_remove_crystal" name = "{{crystal.id}}" > <span class="label label-danger image">x</span></a>
                       <form method="POST"  action="add_crystal/">
@@ -85,8 +85,8 @@
                         <a href="#" onclick="$(this).closest('form').submit()" > <span class="label label-primary image">edit</span></a>
                       </form>
                     {% endif %}
-                  {%endfor%}      
-                
+                  {%endfor%}
+
               </td>
             </tr>
           {% endfor %}
@@ -108,7 +108,7 @@
           <div id="loader_addon" style="margin-right: 30px; width: 35px; height: 35px; background-color: transparent; float: right;">
           </div>
         </div>
-          
+
 
           <div class="col-md-6">
           <!-- surface index h -->
@@ -129,7 +129,7 @@
               {%for source in lab_source%}
                 <option value="{{source.wavelength}}"><small>{{source.name}}-{{source.wavelength|floatformat:3}} &#8491;</small></option>
               {% endfor %}
-              </select>  
+              </select>
             </div>
           </div>
 
@@ -162,21 +162,21 @@
                   <input type="number" class="form-control" tabindex="8"  id ="wavelength"  placeholder="wavelength" \
                   onChange="document.getElementById('energy_val').value = (12398/this.value).toFixed(4);document.getElementById('lab_source').value = 0;">
                   <span class="input-group-addon">&#8491;</span>
-                </div> 
+                </div>
                 <div class="input-group" id = "inputgroup_check_energy" style="margin-top: 5px;">
-                  <input type="number" id='energy_val' class="form-control" placeholder="energy" \ 
+                  <input type="number" id='energy_val' class="form-control" placeholder="energy" \
                   onChange="document.getElementById('wavelength').value = (12398/this.value).toFixed(4);document.getElementById('lab_source').value = 0;">
                   <span class="input-group-addon">eV</span>
                 </div>
                 <div class="input-group" style="margin-top: 10px;">
-                   
+
                   <div class="input-group-btn">
                     <button type="button" id="compute" class="btn btn-default" style="width: 100%;">Compute...</button>
                   </div>
-              
+
                 </div>
               </dir>
-              
+
             </div>
           </div>
 
@@ -191,7 +191,7 @@
       <div class="row" style="margin-left: 20px; margin-top: 10px;">
         <a id ="get_data" download="data.txt" style="display: none"><span class="label label-default image">data.txt</span></a>
       </div>
-      <div class="row" id="myDiv""><!-- Plotly chart will be drawn inside this DIV --></div>
+      <div class="row" id="myDiv"></div>
      </div>
   </div>
 
@@ -218,7 +218,7 @@
       $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
       }});
-      $('#myModal_forsure').modal('hide');  
+      $('#myModal_forsure').modal('hide');
       $.post("delete/", delelete ,function(data) {
         alert(data.status);
         location.reload();
@@ -244,8 +244,8 @@
       if (!$.isNumeric($('#wavelength').val())){ // проверка, длина волны это число или нет, если нет то покрасить красным input
         $("#inputgroup_check_wave").addClass("has-error");
         $("#inputgroup_check_energy").addClass("has-error");
-        flag = true;   
-        $("#loader_addon").removeClass("loader");    
+        flag = true;
+        $("#loader_addon").removeClass("loader");
       }
 
       if (!$('input[name=crystal]').is(':checked')){
@@ -264,7 +264,7 @@
       }
 
 
-      if (flag != true) { 
+      if (flag != true) {
         $.ajaxSetup({data: {
         csrfmiddlewaretoken: '{{ csrf_token }}'
         }});
@@ -294,35 +294,35 @@
             var text_out = data.error;
           }
           else if(data.forbidden) {
-            var text_out = 'ЗАПРЕЩЕННОЕ ОТРАЖЕНИЕ'+ '\n Угол Брегга = '+ data.bragg + ' град. \n' + 
+            var text_out = 'ЗАПРЕЩЕННОЕ ОТРАЖЕНИЕ'+ '\n Угол Брегга = '+ data.bragg + ' град. \n' +
             'межпл-ое,  d = ' + data.dprmtr + ' А \n' +
             'Глубина экстинкции: ' + data.extintion+ ' мкм' + '\n'+
-            'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +  
-            'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +  
+            'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +
+            'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +
             'коэффициент ассиметрии b: ' + data.b + ' \n';
           }
           else{
-            var text_out = 'Угол Брегга = '+ data.bragg + ' град. \n' + 
-            'X0 = (' +data.X0_real+ ' + i'+data.X0_imag+')E-7' + 
-            '\n' + 'Xh = (' + data.Xh_real+ ' + i'+data.Xh_imag+')E-7' + '\n' + 
+            var text_out = 'Угол Брегга = '+ data.bragg + ' град. \n' +
+            'X0 = (' +data.X0_real+ ' + i'+data.X0_imag+')E-7' +
+            '\n' + 'Xh = (' + data.Xh_real+ ' + i'+data.Xh_imag+')E-7' + '\n' +
             'Полуширина: ' + data.delta + ' сек \n' +
             'межпл-ое,  d = ' + data.dprmtr + ' А \n' +
             'Глубина экстинкции: ' + data.extintion+ ' мкм' + '\n'+
-            'Максимальный коэффициент отражения: ' + data.maximum + '\n' + 
-            'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +  
-            'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +  
+            'Максимальный коэффициент отражения: ' + data.maximum + '\n' +
+            'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +
+            'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +
             'коэффициент ассиметрии b: ' + data.b + ' \n';
            };
-  
+
           var  data_download = new Blob([data.for_downloading], {type: 'text/plain'});
           var textFile = null;
           textFile = window.URL.createObjectURL(data_download);
           $("#get_data").attr('href',textFile);
-          
+
           $('#output_data').val(text_out);
             var trace1 = {
-              x: data.x_darwin, 
-              y: data.y_darwin, 
+              x: data.x_darwin,
+              y: data.y_darwin,
               type: 'scatter'
             };
 
@@ -351,11 +351,11 @@
 
           $("#loader_addon").removeClass("loader");//убрать анимациая загрузки
           $("#get_data").show();//покажем кнопку для выгрузки
-          
+
         });
 
       };
-      
+
     });
 
     // как только мы прикаснемся к одному из .. окон удалится класс окрасски
@@ -390,8 +390,8 @@
       // \ как только мы прикаснемся к одному из .. окон удалится класс окрасски
 
       $(document).ready(function(){ // подсказка при наведении
-          $('[data-toggle="tooltip"]').tooltip();   
-      }); 
+          $('[data-toggle="tooltip"]').tooltip();
+      });
 
   });
 
