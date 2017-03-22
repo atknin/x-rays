@@ -229,7 +229,7 @@ $("#compute").click(function(){
     }
     else{
       compute_dict['schem'] = 'double_crystal';
-    }
+    };
 
 		compute_dict['id_email'] = $('#id_email').val();
 		compute_dict['X0_1'] = $('#X0_1').val();
