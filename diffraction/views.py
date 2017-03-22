@@ -68,6 +68,7 @@ def compute(request):
 		db_calc.save()
 
 	elif request.method == 'GET':
+# проверка на наличие расчетов в базе
 		if 'check' in request.GET:
 			pc = request.GET['check']
 			update = diffraction_models.PC.objects.get(pk = int(pc))
@@ -101,12 +102,12 @@ def compute(request):
 						bot_inform.sent_to_atknin_bot('PC: '+ pc, 'v')
 						return JsonResponse(output_data)
 				return JsonResponse(output_data)
+# обработка успешно обработанного расчета
 		elif 'complited' in request.GET:
 			pc = request.GET['pc']
 			update = diffraction_models.PC.objects.get(pk = int(pc))
 			update.date_here = datetime.now()
 			update.save()
-
 			try:
 				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['complited']))
 				complited.status = True
@@ -116,17 +117,15 @@ def compute(request):
 			except Exception as e:
 				output_data['status'] = "error in complited"
 				output_data['e'] = str(e)
-
+# обработка ошибки расчета, если ошибка произошла после передечи параметров в функцию
 		elif 'error_during_compute' in request.GET:
 			pc = request.GET['pc']
 			update = diffraction_models.PC.objects.get(pk = int(pc))
 			update.date_here = datetime.now()
 			update.save()
-
 			try:
 				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['error_during_compute']))
-				complited.status = True
-				complited.progress = 100
+				complited.comment = request.GET['text_error']
 				complited.save()
 				output_data['status'] = "error_during_compute"
 			except Exception as e:
