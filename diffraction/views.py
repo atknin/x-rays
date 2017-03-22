@@ -139,4 +139,4 @@ def compute(request):
 
 	else:
 		output_data['status'] = "error"
-		return JsonResponse(output_data)
+	return JsonResponse(output_data)
