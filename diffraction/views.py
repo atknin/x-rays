@@ -128,6 +128,7 @@ def compute(request):
 			try:
 				complited = diffraction_models.list_of_calcs.objects.get(pk = int(request.GET['error_during_compute']))
 				complited.comment = str(request.GET['text_error'])
+				complited.status = True
 				complited.save()
 				output_data['status'] = "error_during_compute"
 				return JsonResponse(output_data)
