@@ -72,3 +72,11 @@ class list_of_calcs(models.Model):
 
 	def __unicode__(self):
 		return self.email.encode('utf-8')
+
+	def to_dict(self):
+		dictt = {}
+		text_array = self.JSON.replace("'", "\"").replace("{", "").replace("}", "").replace('"', "").replace(' ', "").split(',')
+		for a in text_array:
+			b = a.split(':')
+			dictt[b[0]] = b[1]
+		return dictt
