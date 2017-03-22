@@ -79,9 +79,9 @@
 
         <button type="button" id = "tooltip_id" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
         <script type="text/javascript">
-         $(function() {
-           $('#tooltip_id').popover('trigger')
-         });
+        $(document).ready(function(){ // подсказка при наведении
+            $('[data-toggle="tooltip"]').tooltip();
+        });
         </script>
         {%for calc in calculations%}
           {% if calc.progress < 100 %}
