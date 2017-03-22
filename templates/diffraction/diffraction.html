@@ -88,10 +88,10 @@
                 </div>
               </div>
               <div class="skill-name"><small>{{calc.PC.name}}</small> <br> {{calc.comment}} <br>
-                  <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <a data-toggle="collapse" href="#collapseExample{{calc.id}}" aria-expanded="false" aria-controls="collapseExample{{calc.id}}">
                     <span class="label label-default">подробнее</span>
                   </a>
-                  <div class="collapse" id="collapseExample">
+                  <div class="collapse" id="collapseExample{{calc.id}}">
                     <div class="well">
                       {{calc.JSON}}
                     </div>
@@ -107,10 +107,10 @@
                 </div>
               </div>
               <div class="skill-name"><small>{{calc.PC.name}}</small>  <br>
-                  <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <a data-toggle="collapse" href="#collapseExample{{calc.id}}" aria-expanded="false" aria-controls="collapseExample{{calc.id}}">
                     <span class="label label-default">подробнее</span>
                   </a>
-                  <div class="collapse" id="collapseExample">
+                  <div class="collapse" id="collapseExample{{calc.id}}">
                     <div class="well">
                       {{calc.JSON}}
                     </div>
