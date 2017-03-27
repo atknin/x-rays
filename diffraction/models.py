@@ -5,6 +5,7 @@ from django.db import models
 import datetime
 from django.utils.timezone import utc
 
+
 class wavelength(models.Model):
 	name = models.CharField(max_length=20)
 	wavelength = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True, \
