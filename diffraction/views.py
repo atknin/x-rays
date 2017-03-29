@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from polarizability import models as polarizability_models
 from diffraction import models as diffraction_models
 from datetime import datetime
@@ -12,6 +13,7 @@ import sys, math, cmath, os, re#, scipy # re - для работы с регул
 from django.http import JsonResponse
 import numpy as np
 import time
+
 #------для телеграма------------
 from pytg import Telegram
 tg = Telegram(
@@ -20,7 +22,14 @@ tg = Telegram(
 receiver = tg.receiver
 sender = tg.sender
 #------для телеграма------------
+@csrf_exempt
+def API:
+	output_data = {}
+	output_data['status'] = 'ok'
 
+	return JsonResponse(output_data)
+
+	
 def diffraction(request):
 	args = {}
 	args['crystals'] = polarizability_models.crystals.objects.all()

@@ -256,6 +256,15 @@ $("#compute").click(function(){
         compute_dict['logarifm_scale'] = 'Nonlog';
     };
 
+    if(document.getElementById('apparatnaya').checked) {
+        compute_dict['apparatnaya'] = 'chuev';
+        compute_dict['schem'] = 'double_crystal_light';
+    } else {
+        compute_dict['apparatnaya'] = 'nope';
+    };
+
+
+
 
 
 		$.post("/diffraction/compute/", compute_dict)
