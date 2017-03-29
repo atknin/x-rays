@@ -23,13 +23,13 @@ receiver = tg.receiver
 sender = tg.sender
 #------для телеграма------------
 @csrf_exempt
-def API:
+def API(request):
 	output_data = {}
 	output_data['status'] = 'ok'
 
 	return JsonResponse(output_data)
 
-	
+
 def diffraction(request):
 	args = {}
 	args['crystals'] = polarizability_models.crystals.objects.all()
