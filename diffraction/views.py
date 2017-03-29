@@ -23,7 +23,7 @@ receiver = tg.receiver
 sender = tg.sender
 #------/для телеграма------------
 
-@csrf_exempt
+# @csrf_exempt
 def API(request):
 	output_data = {}
 	output_data['status'] = 'ok'
