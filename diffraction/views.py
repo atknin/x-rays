@@ -21,12 +21,12 @@ tg = Telegram(
 	pubkey_file="/home/atknin/tg/tg-server.pub")
 receiver = tg.receiver
 sender = tg.sender
-#------для телеграма------------
+#------/для телеграма------------
+
 @csrf_exempt
 def API(request):
 	output_data = {}
 	output_data['status'] = 'ok'
-
 	return JsonResponse(output_data)
 
 
