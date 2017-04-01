@@ -151,13 +151,13 @@
       <hr>
       {% if user.is_authenticated %}
       {% include "diffraction/for_include_compute_settings.html" %}
-      {% else %}
       <div class="col-md-4" style="padding-left:20px;">
         <div class="row" style="margin-top:20px;">
           <p class="lead">NEW SLITS:</p>
             <input type="checkbox"  checked="true" id = "slits_new" value="1" > Новые щели
         </div>
       </div>
+      {% else %}
       <span class="label label-danger">Только зарегистрированным пользователям</span>
       {% endif %}
     </div>
