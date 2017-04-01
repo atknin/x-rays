@@ -165,6 +165,11 @@ $("#compute").click(function(){
     compute_dict['step_shag_teta'] = $('#step_shag_teta').val();
     compute_dict['step_teta'] = $('#step_teta').val();
     compute_dict['step_lambda'] = $('#step_lambda').val();
+    if(document.getElementById('slits_new').checked) {
+        compute_dict['slits'] = 'new';
+    } else {
+        compute_dict['slits'] = 'old';
+    };
 
 		$.post("/diffraction/compute/", compute_dict)
 		.done(function(msg) {
