@@ -165,6 +165,8 @@ $("#compute").click(function(){
     compute_dict['step_shag_teta'] = $('#step_shag_teta').val();
     compute_dict['step_teta'] = $('#step_teta').val();
     compute_dict['step_lambda'] = $('#step_lambda').val();
+    compute_dict['source_divergence_mmetr'] = $('#source_divergence_mmetr').val();
+    
     if(document.getElementById('slits_new').checked) {
         compute_dict['slits'] = 'new';
     } else {
