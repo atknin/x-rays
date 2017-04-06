@@ -262,6 +262,8 @@ $("#compute").click(function(){
     } else {
         compute_dict['apparatnaya'] = 'nope';
     };
+    compute_dict['source_divergence_mmetr'] = $('#source_divergence_mmetr').val();
+    
 
 
 
