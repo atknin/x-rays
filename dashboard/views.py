@@ -6,8 +6,8 @@ import os
 import general.bot_inform as bot_inform
 from django.http import JsonResponse
 import subprocess, shlex
-import git 
-import time 
+import git
+import time
 # Create your views here.
 def books(request):
 	message = {}
@@ -15,7 +15,7 @@ def books(request):
 		book = dashboard_models.books.objects.get(pk = request.POST['id'])
 		path = '/home/atknin/env/xrays' + book.path
 
-		# git_cmd = 
+		# git_cmd =
 		kwargs = {}
 		kwargs['stdout'] = subprocess.PIPE
 		kwargs['stderr'] = subprocess.PIPE
@@ -24,8 +24,6 @@ def books(request):
 		proc = subprocess.Popen(['git','submodule update', '--remote'], **kwargs)
 
 		(stdout_str, stderr_str2) = proc.communicate()
-		# time.sleep(5)
-		# (stdout_str, stderr_str2) = proc.communicate(input=b'vfntvfnbrf43\n')
 		return_code = proc.wait()
 		info = str(return_code)
 		info += str(stderr_str2)
@@ -55,14 +53,14 @@ def books(request):
 		# git submodule update --remote
 		# a = subprocess.Popen(["git", "pull"], stdout=subprocess.PIPE, cwd=path)
 		# info += a.communicate('atknin')
-		# a.communicate('vfntvfnbrf43')
+		# a.communicate('пароль')
 		# info += str(subprocess.Popen(["gitbook build"], stdout=subprocess.PIPE, cwd=path))
 		# info += str(repo.git.pull())
 		# info = ''
 		# info += ' |gitbook build| '+path+' '
 		# info += str(os.system('gitbook build'))
 
-		# 
+		#
 
 		message['info']= str(info)
 		return JsonResponse(message)
@@ -73,7 +71,7 @@ def dashboard(request):
 		text = request.POST['text']
 		current_user = request.user
 		new = dashboard_models.task.objects.create(text=text)
-		new.user = current_user.id 
+		new.user = current_user.id
 		new.save()
 		message['status'] = 'success'
 		return JsonResponse(message)
@@ -88,4 +86,4 @@ def dashboard(request):
 	else:
 		return render(
 		 	request, 'general/index.html',
-		 	)	
+		 	)
