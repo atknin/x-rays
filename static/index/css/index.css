@@ -9,7 +9,7 @@ font: normal 22px/26px "Open Sans Condensed", sans-serif !important;
 -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
 -o-background-size: 100%; /* Opera 9.6+ */
 background-size: 100%; /* Современные браузеры */
-/*-webkit-filter: opacity(0.3);*/ 
+/*-webkit-filter: opacity(0.3);*/
 }
 
 .class_calc_index{
@@ -146,7 +146,7 @@ opacity: 1;
 }
 a {
   text-decoration: none !important;
-  color: #AB1214;
+  color: #50e3c2;
 }
 a:hover {
   cursor: pointer;
@@ -169,7 +169,7 @@ h2 {
 
 footer{
 
-  font: normal 15px/26px "Lato", sans-serif !important;
+  /*font: normal 15px/26px "Lato", sans-serif !important;*/
   color: rgba(255, 255, 255, 0.5) !important;
   text-transform: uppercase !important;
   letter-spacing: 2px !important;
