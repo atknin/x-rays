@@ -13,7 +13,7 @@ background-size: 100%; /* Современные браузеры */
 }
 
 .class_calc_index{
-	background: -webkit-gradient(linear, top left, bottom left, from(#7baabe), to(#969ac6));
+	background: -webkit-gradient(linear, top left, bottom left, from(#292E32), to(#969ac6));
 	background: -webkit-linear-gradient(#292E32,#7BAABE,#7BAABE, #969AC6);
 	background: linear-gradient(#292E32,#7BAABE,#7BAABE,#969AC6);
 }
