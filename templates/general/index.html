@@ -113,24 +113,32 @@
     <footer class="footer hidden-xs">
           <p style="text-align: center;">&copy; 2017 ФНИЦ "Кристаллография и фотоника" | НИЦ "Курчатовский институт"
           <br>
-          <a href="">об авторах</a> | <a href="/updates/">обновления</a> | <a href="#">обратная связь</a>
+          <a href="">об авторах</a> | <a href="/updates/">обновления</a> | <a href="mailto:admin@x-rays.world">admin@x-rays.world</a>
           <br>
             Данный сайт разработан при поддержке РФФИ (проект №16-32-60045 мол_а_дк)
           <br>
           </p>
     </footer>
     <footer class="footer visible-xs-block" style = "display:none;" >
-      <p style="text-align: center;"> <small>РФФИ (проект №16-32-60045 мол_а_дк)</small></p>
+      <p style="text-align: center;">
+        <small>РФФИ (проект №16-32-60045 мол_а_дк)</small>
+        <br>
+        <small> <a href="mailto:admin@x-rays.world">admin@x-rays.world</a></small>
+      </p>
     </footer>
 
   </div>
 
   <div class="page class_calc_index" id="calculation" data-slidescroll-title-selector="h1"><!-- these elements hold each content page -->
   <h1> Calculations</h1>
-
-  <div class="row marketing" style="margin-left: 40px;"><!-- основное тело -->
+  <div class="row visible-xs-block visible-sm-block" style="display:none;">
+    <p style="text-align: center;"><small>
+      Данная страница не поддерживает мобильную версию, пожалуйста используйте для работы экран большего размера.
+    </small></p>
+  </div>
+  <div class="row marketing hidden-xs hidden-sm" style="margin-left: 40px;"><!-- основное тело -->
     {% block content %}
-    <div class="col-lg-3"><!-- слева минюшка -->
+    <div class="col-lg-3 col-md-3"><!-- слева минюшка -->
       <ul class="nav nav-pills nav-stacked">
         <li role="presentation" style="background: #D5D5D5;">
         <a href="/polarizability/" style="color: #555; ">
