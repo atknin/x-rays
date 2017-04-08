@@ -69,18 +69,14 @@
 
   <div class="page class_start_index" id="start" data-slidescroll-title-selector="h1" style='background: url("{% static "index/img/start.png"%}") no-repeat; background-size: cover;'>
     <div class="header clearfix">
-    <nav>
+    <nav class="hidden-xs">
       <ul class="nav nav-pills pull-right" style="margin-top: 15px;margin-right: 15px;" >
         {% if user.is_authenticated %}
-
         <span class="label label-default" style="margin-right: 5px;">{{user.username}}</span>
-
         <a type="button" id = 'btn_logout' data-toggle="tooltip" data-placement="bottom" title="выход"> <span class="glyphicon glyphicon-log-out"></span></a>
-
         <a href="\dashboard\">
           <span class="glyphicon glyphicon-user" style="margin-right: 30px;" aria-hidden="true"></span>
         </a>
-
         {% else %}
         <div class="form-inline">
           <div class="form-group">
@@ -94,7 +90,6 @@
           <button id = 'btn_login' class="btn btn-default">Войти</button>
         </div>
         {% endif %}
-
       </ul>
     </nav>
     <a href="/"> <img height="60px" src="{% static 'icon/x_rays_sign_3.png' %}" alt="home"> </a>
@@ -125,7 +120,7 @@
           </p>
     </footer>
     <footer class="footer visible-xs-block" style = "display:none;" >
-      <p > <small>РФФИ (проект №16-32-60045 мол_а_дк)</small></p>
+      <p style="text-align: center;"> <small>РФФИ (проект №16-32-60045 мол_а_дк)</small></p>
     </footer>
 
   </div>
