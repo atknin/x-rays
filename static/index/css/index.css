@@ -14,8 +14,8 @@ background-size: 100%; /* Современные браузеры */
 
 .class_calc_index{
 	background: -webkit-gradient(linear, top left, bottom left, from(#7baabe), to(#969ac6));
-	background: -webkit-linear-gradient(#292E32,#50E3C2,#50E3C2,#50E3C2,#50E3C2, #969AC6);
-	background: linear-gradient(#292E32,#50E3C2,#50E3C2,#50E3C2,#50E3C2,#969AC6);
+	background: -webkit-linear-gradient(#292E32,#7BAABE,#7BAABE,#7BAABE,#7BAABE, #969AC6);
+	background: linear-gradient(#292E32,#7BAABE,#7BAABE,#7BAABE,#7BAABE,#969AC6);
 }
 .class_school_index{
 	background: -webkit-gradient(linear, top left, bottom left, from(#969ac6), to(#636F8F));
