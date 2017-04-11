@@ -15,8 +15,8 @@ class wavelength_admin(admin.ModelAdmin):
 class list_of_calcs_admin(admin.ModelAdmin):
 	list_display = (u'PC', u'email', u'status', u'progress')
 	formfield_overrides = {
-		models.CharField: {'widget': TextInput(attrs={'size':'20'})},
-		models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})},}
+		models_django.CharField: {'widget': TextInput(attrs={'size':'20'})},
+		models_django.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})}}
 
 class PC_admin(admin.ModelAdmin):
 	list_display = (u'auto_increment_id', u'name', u'ip')
