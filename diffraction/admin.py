@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib import admin
-
+from django.forms import TextInput, Textarea
+from django.db import models as models_django
 from diffraction import models
 # Register your models here.
 
@@ -13,6 +14,10 @@ class wavelength_admin(admin.ModelAdmin):
 
 class list_of_calcs_admin(admin.ModelAdmin):
 	list_display = (u'PC', u'email', u'status', u'progress')
+	formfield_overrides = {
+		models.CharField: {'widget': TextInput(attrs={'size':'20'})},
+		models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})},
+	}
 
 class PC_admin(admin.ModelAdmin):
 	list_display = (u'auto_increment_id', u'name', u'ip')
