@@ -64,7 +64,7 @@ def add_crystal(request):
 		else:
 			try:
 				name = request.POST['id_name']
-				if not polarizability_models.crystals.objects.filter(name=name).exists():	
+				if not polarizability_models.crystals.objects.filter(name=name).exists():
 					new = polarizability_models.crystals.objects.create(name=name)
 					new.short_name = request.POST['id_short_name']
 					new.crystal_system = request.POST['syngony']
@@ -86,7 +86,7 @@ def add_crystal(request):
 					message['status'] = "Успешно добавлено в базу"
 				else:
 					message['status'] = "Такой кристалл уже существует"
-				
+
 			except Exception as e:
 				message['status'] = e
 
@@ -101,14 +101,14 @@ def add_crystal(request):
 		args['name'] = crystal.name
 		args['crystal_system'] = crystal.crystal_system
 		args['a'] = crystal.a
-		args['b'] = crystal.b 
-		args['c'] = crystal.c 
+		args['b'] = crystal.b
+		args['c'] = crystal.c
 		args['alfa'] = crystal.alfa
 		args['beta'] = crystal.beta
 		args['gamma'] = crystal.gamma
 		args['density'] = crystal.density
 		args['crystal_id'] = crystal_id
-		
+
 		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 		lines = open(path+"structure/"+crystal.name+'.dat', 'r').read().split('\n')
 		a = ''
@@ -131,13 +131,13 @@ def compute(request):
 		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 		cromer_man_file = open(path+'files_for_compute/f0_CromerMann.dat')
 		f1f2 = open(path+'files_for_compute/f1f2_Chantler.dat')
-		
+
 
 		hkl = request.POST['h'],request.POST['k'],request.POST['l']
 		crystal_id = request.POST['crystal_id']
 		crystal = polarizability_models.crystals.objects.get(pk = crystal_id)
 
-		
+
 		a_element= set() # множесто названий элементов
 		a_element_dict= {}
 		wavelength = float(request.POST['wavelength']) # длина волны падающего излучения в Ангстремах
@@ -163,7 +163,7 @@ def compute(request):
 		gammaprmtr = math.radians(float(crystal.gamma)) # угол гамма решетки
 
 		C=1 # в случае сигма поляризации, в случае пи()=cos(2*Тета_breg)
-		
+
 		StructFactorReal = 0
 		StructFactorImag=0 # обнуляем структурный фактор
 		StructFactor0 = 0
@@ -174,18 +174,18 @@ def compute(request):
 		except Exception as e:
 			message['error'] = "структура не найдена"
 			return JsonResponse(message)
-		
+
 		#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
 		V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
-		
+
 		# расчет межплоскостного расстояния ––––––––––––––––––
 		aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
 		bprmtr_ = cprmtr*aprmtr*math.sin(betaprmtr)/V
 		cprmtr_ = aprmtr*bprmtr*math.sin(gammaprmtr)/V
 
-		COSalfaprmtr_ =  ( math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr) )/( math.sin(betaprmtr)*math.sin(gammaprmtr) ) 
+		COSalfaprmtr_ =  ( math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr) )/( math.sin(betaprmtr)*math.sin(gammaprmtr) )
 		COSbetaprmtr_ =  ( math.cos(gammaprmtr)*math.cos(alfaprmtr)-math.cos(betaprmtr) )/( math.sin(gammaprmtr)*math.sin(alfaprmtr) )
-		COSgammaprmtr_ = ( math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr) )/( math.sin(alfaprmtr)*math.sin(betaprmtr)  ) 
+		COSgammaprmtr_ = ( math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr) )/( math.sin(alfaprmtr)*math.sin(betaprmtr)  )
 		s1 = math.pow( ( hInd * aprmtr_) ,2) + math.pow( ( kInd * bprmtr_) ,2) + math.pow( ( lInd * cprmtr_) ,2)
 		s2 = 2*hInd*kInd*aprmtr_*bprmtr_*COSgammaprmtr_
 		s3 = 2*kInd*lInd*COSalfaprmtr_
@@ -218,10 +218,10 @@ def compute(request):
 		fi = assym*math.degrees( math.acos( s10_surface ) ) #проверка
 
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
-		gamma_0 = math.sin(math.radians(90-fi) + tetaprmtr)
-		gamma_h = math.sin(math.radians(90-fi) - tetaprmtr)
+		gamma_0 = math.cos(math.radians(90-fi) + tetaprmtr)
+		gamma_h = math.cos(math.radians(90-fi) - tetaprmtr)
 		b=gamma_0/abs(gamma_h) # коэффициент ассиметрии брэговского отражения
-		
+
 		# ---------фактор Дебая - Валлера, по идее должен вычисляться для разных атомов по разному
 		B=8*math.pow((math.pi*0.08*math.pow(10,-10)), 2)
 		DedayFactor = math.exp(-B*math.pow((math.sin(tetaprmtr)/(wavelength*math.pow(10,-10))),2))
@@ -232,13 +232,13 @@ def compute(request):
 			if len(crystalGeom[i].split()) == 5:
 				NXYZocup = crystalGeom[i].split() # в файле геометрии бежим по строкам
 			else:
-				continue				
+				continue
 			f0=0# обнуляем коэффициен для следующего атома в ячейке
 			#___найти строку с элементом в cromerMan__________________________________________________________________________________________________________________________
 			while True:
 				line = cromer_man_file.readline()
 				if re.search(r'#S  '+NXYZocup[0], line): # нашли строку с элементом
-					cromer_man_file.readline() # две строки отступили 
+					cromer_man_file.readline() # две строки отступили
 					element_name = re.split(r'  ', line)[2]
 					cromer_man_file.readline() # третья будет наша с коэффициентами
 					line = cromer_man_file.readline() # строка в файле кромер мана с соответствующими индексами
@@ -250,22 +250,22 @@ def compute(request):
 
 				f0 = f0+float(abc[k])*math.exp(-float(abc[k+5])*math.pow((math.sin(tetaprmtr)/wavelength),2))# длинна волны в ангстремах
 			f0=f0+float(abc[4])
-			
+
 
 	    	#___найти строку с элементом в f1f2_Chantler.dat__________________________________________________________________________________________________________________________
 			while True:
 				line = f1f2.readline()
 				if re.search(r'#S  '+NXYZocup[0], line): # нашли строку с элементом
-					while True: # переберем еще строки 
+					while True: # переберем еще строки
 						line = f1f2.readline() # первая строка в файле f1f2_Chantler.dat по энергии
 						AtomicWeightLine = line
 						if re.search(r'#UO  Atomic weight =', line):
-							while True:	
+							while True:
 								line = f1f2.readline()
 								if re.search(r'#UO   keV', line):
 									while True:
 										f1f2_1 = line # это первая линия для интерполяции, но она str
-										line = f1f2.readline() 
+										line = f1f2.readline()
 										f1f2_2 = line.split()   # это вторая линия но уже разделеная
 										if float(f1f2_2[6]) < wavelength*math.pow(10,-1):
 											break
@@ -295,7 +295,7 @@ def compute(request):
 
 			StructFactor0 = StructFactor0 +float(NXYZocup[4])*(f1+f2*1j)
 			StructFactorReal = StructFactorReal + float(NXYZocup[4])*(f0+f1-float(NXYZocup[0]))*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor
-			StructFactorImag = StructFactorImag + float(NXYZocup[4])*f2*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor	
+			StructFactorImag = StructFactorImag + float(NXYZocup[4])*f2*cmath.exp(-2*1j*math.pi*(float(NXYZocup[1])*hInd+float(NXYZocup[2])*kInd+float(NXYZocup[3])*lInd))*DedayFactor
 			# --------стоит в знаменателе в поляризуемости падающей волны-------------
 			SumOcupAtomWeight = SumOcupAtomWeight + float(NXYZocup[4])*AtomicWeight
 
@@ -310,7 +310,7 @@ def compute(request):
 		Xhr = Relectron*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*StructFactorReal/math.pi/V/math.pow(10, -30)
 		Xhi = Relectron*wavelength*math.pow(10,-10)*wavelength*math.pow(10,-10)*StructFactorImag/math.pi/V/math.pow(10, -30)
 		Xh=abs(Xhr)+abs(Xhi)*1j
-		
+
 		# сравнение коэффициенто для Х0 и Хh
 		koef1=Navogadro*rho/SumOcupAtomWeight
 		koef2=1/V/math.pow(10, -30)
@@ -318,7 +318,7 @@ def compute(request):
 		# Глубина экстинкции
 		Ld = (wavelength*math.sqrt(abs(gamma_0)*abs(gamma_h)))/(math.pi*C*abs(Xh))
 
-		# Полуширина кривой 
+		# Полуширина кривой
 		delta = 2*math.degrees(abs(C*cmath.sqrt(Xh.real*Xh.real+Xh.imag*Xh.imag)/(cmath.sqrt(b) * math.sin(2*tetaprmtr))))*3600
 
 		# Смещение кривой
@@ -367,10 +367,10 @@ def compute(request):
 			To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
 
 
-			y = epslist[From_:To_:1]	
+			y = epslist[From_:To_:1]
 			x = x_epslist[From_:To_:1]
-			
-			
+
+
 			message['X0_real'] = str(round(X0.real*math.pow(10,7),4))
 			message['X0_imag'] = str(round(X0.imag*math.pow(10,7),4))
 			message['Xh_real'] = str(round(Xh.real*math.pow(10,7),4))
@@ -388,13 +388,13 @@ def compute(request):
 		message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 		message['b'] =  round(b,3)
 
-		
+
 
 	else:
 		message['error'] = "error"
 	return JsonResponse(message)
 
-	
+
 
 def polarizability(request):
 	args = {}
