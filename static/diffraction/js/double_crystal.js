@@ -256,14 +256,18 @@ $("#compute").click(function(){
         compute_dict['logarifm_scale'] = 'Nonlog';
     };
 
-    if(document.getElementById('apparatnaya').checked) {
-        compute_dict['apparatnaya'] = 'chuev';
-        compute_dict['schem'] = 'double_crystal_light';
-    } else {
+    compute_dict['apparatnaya'] = $('input[name=apparatnaya_radio]').filter(':checked').val();
+
+    if(compute_dict['apparatnaya'] == 'point') {
         compute_dict['apparatnaya'] = 'nope';
+        console.log('nope - apparatnaya');
+    } else {
+      compute_dict['schem'] = 'double_crystal_light';
+      console.log('double_crystal_light - apparatnaya');
     };
+
     compute_dict['source_divergence_mmetr'] = $('#source_divergence_mmetr').val();
-    
+
 
 
 

@@ -360,9 +360,19 @@
           <p class="lead">визуализировать в:</p>
             <input type="checkbox"  checked="true" id = "logarifm_scale" value="log" > Логарифмическая шкала
         </div>
-        <div class="row" style="margin-top:20px;">
-          <p class="lead">Аппаратная:</p>
-            <input type="checkbox" id = "apparatnaya" value="1" > функция щелей - Chuev
+        <div class="row"  style="margin-top:20px;">
+          <div class="form-group">
+            <p class="lead">Аппаратная:</p>
+              <p>
+                <input type="radio" name="apparatnaya_radio" id="apparatnaya_point" checked value="point">   точечный источник + визуализация
+              </p>
+              <p>
+                <input type="radio" name="apparatnaya_radio" id="apparatnaya_our" value="our"> протяженный источник - НАША
+              </p>
+              <p>
+                <input type="radio" name="apparatnaya_radio" id="apparatnaya_chuev" value="chuev"> Функция Чуева - бесконечный
+              </p>
+          </div>
         </div>
       </div>
       {% else %}
