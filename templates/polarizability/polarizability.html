@@ -292,6 +292,7 @@
         compute_dict["h"] = $('#h_index').val();
         compute_dict["k"] = $('#k_index').val();
         compute_dict["l"] = $('#l_index').val();
+        compute_dict["fi"] = $('#fi_prmtr').val();
         compute_dict["crystal_id"] = $('input[name=crystal]').filter(':checked').val();
         compute_dict["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta]').filter(':checked').val();
 
@@ -318,7 +319,7 @@
             'Максимальный коэффициент отражения: ' + data.maximum + '\n' +
             'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +
             'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +
-            'коэффициент ассиметрии b: ' + data.b + ' \n';
+            'коэффициент ассиметрии b: ' + data.b + ' \n' + data.status;
             $('#fi_prmtr').val(Math.abs(data.fi))
            };
 
