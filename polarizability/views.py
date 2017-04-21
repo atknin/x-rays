@@ -217,14 +217,13 @@ def compute(request):
 			s10_surface = 1
 
 		try:
-			if abs(math.radians(float(request.POST['fi_prmtr'])))>tetaprmtr:
-				fi = 0
-				message['status'] += ' Угол асимметрии больше угла Брегга!\n'
-			else:
-				fi = assym*abs(float(request.POST['fi_prmtr']))
+			fi = assym*abs(float(request.POST['fi_prmtr']))
 		except Exception as e:
 			fi = assym*math.degrees( math.acos( s10_surface ) ) #проверка
 
+		if abs(math.radians(fi))>=tetaprmtr:
+			fi = 0
+			message['status'] += ' Угол асимметрии больше угла Брегга!\n'
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
 		gamma_0 = math.sin(math.radians(fi) + tetaprmtr)
 		gamma_h = math.sin(math.radians(fi) - tetaprmtr)
