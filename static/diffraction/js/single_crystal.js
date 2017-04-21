@@ -308,11 +308,13 @@ $("#getX2, #getX1").click(function() {
       compute_dict['bragg_'+cryst_num] = data.bragg;
       // compute_dict['fi_'+cryst_num] = data.fi;
 
-      if (parseFloat(data.bragg) >= parseFloat( $('#fi_prmtr_'+cryst_num).val())){
-        compute_dict['fi_'+cryst_num] = $('#fi_prmtr_'+cryst_num).val();
+      if (parseFloat(data.bragg) > parseFloat($('#fi_prmtr_'+cryst_num).val())){
+        compute_dict['fi_'+cryst_num] = parseFloat($('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val()) * $('#fi_prmtr_'+cryst_num).val();
+        console.log(compute_dict['fi_'+cryst_num]);
       }
       else{
         compute_dict['fi_'+cryst_num] = 0;
+        console.log(compute_dict['fi_'+cryst_num]);
       }
 
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки

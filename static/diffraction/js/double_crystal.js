@@ -347,7 +347,6 @@ $("#getX2, #getX1").click(function() {
       ok($('#Xh_'+cryst_num));
       compute_dict['bragg_'+cryst_num] = data.bragg;
       // compute_dict['fi_'+cryst_num] = data.fi;
-      console.log( parseFloat($('#fi_prmtr_'+cryst_num).val()));
       if (parseFloat(data.bragg) > parseFloat($('#fi_prmtr_'+cryst_num).val())){
         compute_dict['fi_'+cryst_num] = parseFloat($('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val()) * $('#fi_prmtr_'+cryst_num).val();
         console.log(compute_dict['fi_'+cryst_num]);
