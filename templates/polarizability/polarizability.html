@@ -65,7 +65,7 @@
         <div class="row" style="margin-top: 20px;">
           <label class="radio-inline">
             <span class="label label-primary">угол асимм.</span>
-            <input  type="number"  style="text-align: center;" value="2" placeholder="фи" class="form-control" id="fi_prmtr" aria-describedby="basic-addon3">
+            <input  type="number" style="text-align: center; margin-top:10px;" placeholder="фи" class="form-control" id="fi_prmtr" aria-describedby="basic-addon3">
 
           </label>
         </div>
@@ -319,7 +319,7 @@
             'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +
             'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +
             'коэффициент ассиметрии b: ' + data.b + ' \n';
-            $('#fi_prmtr').val(abs(data.fi)) 
+            $('#fi_prmtr').val(Math.abs(data.fi))
            };
 
           var  data_download = new Blob([data.for_downloading], {type: 'text/plain'});
