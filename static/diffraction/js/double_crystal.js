@@ -244,6 +244,7 @@ $("#compute").click(function(){
     compute_dict['teta_start'] = $('#teta_start').val();
     compute_dict['teta_end'] = $('#teta_end').val();
 
+    compute_dict["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val();
     compute_dict['computer_calculate'] = $('#id_pc').val();
     compute_dict["id_comment_calc"] = ' ' + $('#id_comment_calc').val();
 
@@ -328,7 +329,6 @@ $("#getX2, #getX1").click(function() {
       }
     }
 
-    compute_dict_X["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val();
 
     compute_dict_X["h_surface"] = $('#h_index_surface_'+cryst_num).val();
     compute_dict_X["k_surface"] = $('#k_index_surface_'+cryst_num).val();
