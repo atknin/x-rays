@@ -315,7 +315,10 @@ $("#getX2, #getX1").click(function() {
     }
     else if(!$.isNumeric($('#l_index_surface_'+cryst_num).val()) || !$.isNumeric($('#k_index_surface_'+cryst_num).val()) || !$.isNumeric($('#l_index_surface_'+cryst_num).val()) ) {
       if ($.isNumeric($('#fi_prmtr_'+cryst_num).val()) ){
-        console.log("Fi = "+$('#fi_prmtr_'+cryst_num).val())
+        console.log("Fi = "+$('#fi_prmtr_'+cryst_num).val());
+        $('#h_index_surface_'+cryst_num).val($('#h_index'+cryst_num).val());
+        $('#k_index_surface_'+cryst_num).val($('#k_index'+cryst_num).val());
+        $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
       }
       else{
         console.log('индекс surface не задан')
@@ -336,7 +339,7 @@ $("#getX2, #getX1").click(function() {
 
 
     compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
-
+    console.log()
     $.post("/polarizability/compute/", compute_dict_X ,function(data) {
       $('#X0_'+cryst_num).val(data.X0_real + " + "+data.X0_imag+"j");
       $('#Xh_'+cryst_num).val(data.Xh_real + " + "+data.Xh_imag+"j");
@@ -344,7 +347,7 @@ $("#getX2, #getX1").click(function() {
       ok($('#Xh_'+cryst_num));
       compute_dict['bragg_'+cryst_num] = data.bragg;
       // compute_dict['fi_'+cryst_num] = data.fi;
-      if (parseFloat(data.bragg) < parseFloat($('#fi_prmtr_'+cryst_num).val())){
+      if (parseFloat(data.bragg) >= parseFloat($('#fi_prmtr_'+cryst_num).val())){
         compute_dict['fi_'+cryst_num] = $('#fi_prmtr_'+cryst_num).val();
         console.log(compute_dict['fi_'+cryst_num]);
       }
