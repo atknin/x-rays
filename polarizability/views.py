@@ -127,6 +127,7 @@ def add_crystal(request):
 
 def compute(request):
 	message = {}
+	message['status'] = ''
 	if request.is_ajax():
 		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 		cromer_man_file = open(path+'files_for_compute/f0_CromerMann.dat')
@@ -218,7 +219,7 @@ def compute(request):
 		try:
 			if abs(math.radians(float(request.POST['fi_prmtr'])))>tetaprmtr:
 				fi = 0
-				message['status'] = 'Угол асимметрии больше угла Брегга!'
+				message['status'] += ' Угол асимметрии больше угла Брегга!\n'
 			else:
 				fi = assym*abs(float(request.POST['fi_prmtr']))
 		except Exception as e:
@@ -347,10 +348,10 @@ def compute(request):
 		dTeta_end = sdvig*math.pi/180/3600 + 5*delta*math.pi/180/3600
 
 		if Xh.real < 1e-12:
-			message['status'] = "запрещенный рефлекс"
+			message['status'] += "запрещенный рефлекс \n"
 			message['forbidden'] = 1
 		else:
-			message['status'] = "ok"
+			message['status'] += "ok \n"
 			while dTeta<dTeta_end:
 				dTeta+=shag
 				alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
