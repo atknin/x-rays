@@ -153,14 +153,12 @@ $("#check_symmetric_case_1, #check_symmetric_case_2").change(function() {
     $('#id_assym_img_'+nnn).hide();
     $('#fi_surface_div_'+nnn).hide();
     $('#select_crystal'+nnn).attr('size', 10);
-    console.log('helloworld_hidden');
   }
   else{
     $('#h_index_surface_'+nnn+',#k_index_surface_'+nnn+',#l_index_surface_'+nnn).prop( "disabled", false );
     $('#select_crystal'+nnn).attr('size', 2);
     $('#id_assym_img_'+nnn).show();
     $('#fi_surface_div_'+nnn).show();
-    console.log('helloworld_showed')
   };
 });
 
