@@ -353,7 +353,7 @@ def compute(request):
 				else:
 					eps = prover
 				R=(2*eps*gamma_0-X0)/Xh/C
-				P = (gamma_h/gamma_0)*abs(R)*abs(R)
+				P = (abs(gamma_h)/gamma_0)*abs(R)*abs(R)
 				epslist.append(P)
 				x_epslist.append(dTeta*3600*180/math.pi)
 				for_downloading+= str(dTeta*3600*180/math.pi)+'   '+str(P) + '\n'
