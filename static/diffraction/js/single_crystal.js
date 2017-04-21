@@ -304,7 +304,13 @@ $("#getX2, #getX1").click(function() {
       ok($('#X0_'+cryst_num));
       ok($('#Xh_'+cryst_num));
       compute_dict['bragg_'+cryst_num] = data.bragg;
-      compute_dict['fi_'+cryst_num] = data.fi;
+      // compute_dict['fi_'+cryst_num] = data.fi;
+      if parseFloat(data.bragg)<parseFloat( $('#fi_prmtr_'+cryst_num).val()){
+        compute_dict['fi_'+cryst_num] = $('#fi_prmtr_'+cryst_num).val();
+      }
+      else{
+        compute_dict['fi_'+cryst_num] = 0;
+      }
 
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
     });
