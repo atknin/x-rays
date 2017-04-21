@@ -62,6 +62,13 @@
               <span class="label label-danger">красный луч</span>
           </label>
         </div>
+        <div class="row" style="margin-top: 20px;">
+          <label class="radio-inline">
+            <span class="label label-primary">угол асимм.</span>
+            <input  type="number"  style="text-align: center;" value="2" placeholder="фи" class="form-control" id="fi_prmtr" aria-describedby="basic-addon3">
+
+          </label>
+        </div>
       </div>
 
       <div class="row" style="overflow:auto; height: 300px; margin-left: 10px; overflow-y:scroll;">
@@ -113,13 +120,7 @@
           <div class="col-md-6">
           <!-- surface index h -->
           <div class="row">
-            <div class="input-group " id = "inputgroup_check_h_index_surface" >
-              <span class="input-group-addon" id="sizing-addon1"><small>Surface index &#966;</small></span>
-            </div>
-          </div>
-
-            <div class="row">
-              <div class="input-group " id = "inputgroup_check_h_index_surface" style="margin-top: 10px;">
+              <div class="input-group " id = "inputgroup_check_h_index_surface" >
                 <span class="input-group-addon" id="sizing-addon1"><small>Surface index</small></span>
                 <input tabindex="1" type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control" id="h_index_surface" aria-describedby="basic-addon3">
               </div>
@@ -141,13 +142,7 @@
 
           <div class="col-md-6">
           <!-- k,l index - surface of crystal -->
-          <div class="row">
-            <div class="col-md-6" id = "inputgroup_check_k_index_surface">
-              <input type="number" tabindex="2"  style="text-align: center;" value="0" class="form-control" id="fi_prmtr" aria-describedby="basic-addon3">
-            </div>
-          </div>
-
-            <div class="row" style="margin-top: 10px;">
+            <div class="row">
               <div class="col-md-6" id = "inputgroup_check_k_index_surface">
                 <input type="number" tabindex="2"  style="text-align: center;" value="2" placeholder="k" class="form-control" id="k_index_surface" aria-describedby="basic-addon3">
               </div>
@@ -324,6 +319,7 @@
             'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +
             'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +
             'коэффициент ассиметрии b: ' + data.b + ' \n';
+            $('#fi_prmtr').val(abs(data.fi)) 
            };
 
           var  data_download = new Blob([data.for_downloading], {type: 'text/plain'});
