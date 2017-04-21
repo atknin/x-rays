@@ -314,10 +314,15 @@ $("#getX2, #getX1").click(function() {
       $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
     }
     else if(!$.isNumeric($('#l_index_surface_'+cryst_num).val()) || !$.isNumeric($('#k_index_surface_'+cryst_num).val()) || !$.isNumeric($('#l_index_surface_'+cryst_num).val()) ) {
-      console.log('индекс surface не задан')
-      $('#h_index_surface_'+cryst_num).val($('#h_index'+cryst_num).val());
-      $('#k_index_surface_'+cryst_num).val($('#k_index'+cryst_num).val());
-      $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
+      if ($.isNumeric($('#fi_prmtr_'+cryst_num).val()) ){
+        console.log("Fi = "+$('#fi_prmtr_'+cryst_num).val())
+      }
+      else{
+        console.log('индекс surface не задан')
+        $('#h_index_surface_'+cryst_num).val($('#h_index'+cryst_num).val());
+        $('#k_index_surface_'+cryst_num).val($('#k_index'+cryst_num).val());
+        $('#l_index_surface_'+cryst_num).val($('#l_index'+cryst_num).val());
+      }
     }
 
     compute_dict_X["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta_'+cryst_num+']').filter(':checked').val();
@@ -346,7 +351,7 @@ $("#getX2, #getX1").click(function() {
       else{
         compute_dict['fi_'+cryst_num] = 0;
         console.log(compute_dict['fi_'+cryst_num]);
-        
+
       }
 
       $("#loader_addon"+cryst_num).removeClass("loader");//убрать анимациая загрузки
