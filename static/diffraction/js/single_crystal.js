@@ -291,12 +291,12 @@ $("#getX2, #getX1").click(function() {
     compute_dict_X["k_surface"] = $('#k_index_surface_'+cryst_num).val();
     compute_dict_X["l_surface"] = $('#l_index_surface_'+cryst_num).val();
 
-    compute_dict_X["crystal_id"] = $('#select_crystal'+cryst_num).val();
 
 
 
 
     compute_dict_X["wavelength"] = $('#id_source').find('option:selected').attr("name");
+    console.log('индекс surface не задан')
 
     $.post("/polarizability/compute/", compute_dict_X ,function(data) {
       $('#X0_'+cryst_num).val(data.X0_real + " + "+data.X0_imag+"j");
