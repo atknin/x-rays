@@ -320,7 +320,7 @@
             'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +
             'Сдвиг центра кривой за счет преломления: ' + data.sdvig + ' сек. \n' +
             'коэффициент ассиметрии b: ' + data.b + ' \n' + data.status;
-            $('#fi_prmtr').val(Math.abs(data.fi))
+            $('#fi_prmtr').val($('input[name=assym_alfa_then_beta]').filter(':checked').val()*Math.abs(data.fi))
            };
 
           var  data_download = new Blob([data.for_downloading], {type: 'text/plain'});
