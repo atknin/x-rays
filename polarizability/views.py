@@ -225,8 +225,8 @@ def compute(request):
 			fi = 0
 			message['status'] += ' Угол асимметрии больше угла Брегга!\n'
 		#-----------Гамма 0 и Гамма h - направляющие косинусы---------
-		gamma_0 = math.sin(math.radians(fi) + tetaprmtr)
-		gamma_h = math.sin(math.radians(fi) - tetaprmtr)
+		gamma_0 = math.sin(math.radians(-fi) + tetaprmtr)
+		gamma_h = math.sin(math.radians(-fi) - tetaprmtr)
 		b=gamma_0/abs(gamma_h) # коэффициент ассиметрии брэговского отражения
 
 		# ---------фактор Дебая - Валлера, по идее должен вычисляться для разных атомов по разному
