@@ -257,25 +257,19 @@ def compute(request):
 			if min_rasst_ot_centra > abs(sdvig*math.pi/180/3600 - dTeta):
 				min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
 				min_rasst_ot_centra_which_point = len(epslist)
-
-		From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
-		To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
-
-
-		y = epslist[From_:To_:1]
-		x = x_epslist[From_:To_:1]
-
-
-		message['X0_real'] = str(round(X0.real*math.pow(10,7),4))
-		message['X0_imag'] = str(round(X0.imag*math.pow(10,7),4))
-		message['Xh_real'] = str(round(Xh.real*math.pow(10,7),4))
-		message['Xh_imag'] = str(round(Xh.imag*math.pow(10,7),4))
-		message['delta'] = str(round(delta,4))
-		message['maximum'] = str(round(max_pow_R,4))
-		message['x_darwin'] = x
-		message['y_darwin'] = y
-		message['for_downloading'] = for_downloading
-
+        From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
+        To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
+        y = epslist[From_:To_:1]
+        x = x_epslist[From_:To_:1]
+        message['X0_real'] = str(round(X0.real*math.pow(10,7),4))
+        message['X0_imag'] = str(round(X0.imag*math.pow(10,7),4))
+        message['Xh_real'] = str(round(Xh.real*math.pow(10,7),4))
+        message['Xh_imag'] = str(round(Xh.imag*math.pow(10,7),4))
+        message['delta'] = str(round(delta,4))
+        message['maximum'] = str(round(max_pow_R,4))
+        message['x_darwin'] = x
+        message['y_darwin'] = y
+        message['for_downloading'] = for_downloading
     message['dprmtr'] = str(round(dprmtr, 4))
     message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
     message['bragg'] = str(round(c, 4))
