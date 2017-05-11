@@ -18,7 +18,7 @@ def compute(request):
 	# bot_inform.sent_to_atknin_bot('ok', 'v') # проинформируем в telegramm bot
 	d14 = 4.7*math.pow(10,-12)
 	d11 =  6.5*math.pow(10,-12)
-	V_volt = 100000
+	V_volt = 1000000
 	D_pl = 0.5*math.pow(10,-3)
 	message = {}
 	message['status'] = ''
@@ -52,7 +52,7 @@ def compute(request):
 
 	alfaprmtr = math.radians(float(crystal.alfa)) # угол альфа решетки в радианах
 	betaprmtr = math.radians(float(crystal.beta)) # угол бета решетки
-	gammaprmtr = math.radians(float(crystal.gamma)) - d14*V_volt/D_pl # угол гамма решетки
+	gammaprmtr = math.radians(float(crystal.gamma)) - math.atan(d14*V_volt/D_pl) # угол гамма решетки
 
 	C=1 # в случае сигма поляризации, в случае пи()=cos(2*Тета_breg)
 
