@@ -241,7 +241,7 @@ def compute(request):
 		message['status'] += "запрещенный рефлекс \n"
 		message['forbidden'] = 1
 	else:
-		message['status'] += '; b = 'bprmtr+'; a = '+aprmtr+'; d14 = '+str(d14)+ '; d11 = ' + 	str(d11) +"; V = "+ str(V_volt) + '; d = ' +	str(D_pl) + " \n"
+		message['status'] += '; b = '+ bprmtr+'; a = '+aprmtr+'; d14 = '+str(d14)+ '; d11 = ' + 	str(d11) +"; V = "+ str(V_volt) + '; d = ' +	str(D_pl) + " \n"
 		while dTeta<dTeta_end:
 			dTeta+=shag
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
