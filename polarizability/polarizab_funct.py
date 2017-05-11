@@ -278,8 +278,11 @@ def compute(request):
 
 	message['dprmtr'] = str(round(dprmtr, 4))
 	message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
-	message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
+	message['bragg'] = str(round(c, 4))
 	message['sdvig'] = str(round(sdvig,4))
 	message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 	message['b'] =  round(b,3)
-	return JsonResponse(message)
+    message['bragg_precize'] = math.degrees(tetaprmtr)
+	message['dprmtr_precize'] = dprmtr
+
+	return message

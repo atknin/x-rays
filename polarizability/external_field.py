@@ -13,13 +13,14 @@ import numpy as np
 import time
 import os
 
+
 def compute(request):
 
 	# bot_inform.sent_to_atknin_bot('ok', 'v') # проинформируем в telegramm bot
 	d14 = 4.7*math.pow(10,-12)
 	d11 =  6.5*math.pow(10,-12)
-	V_volt = 1000
-	D_pl = 0.5*math.pow(10,-3)
+	V_volt = float(request.POST['volt'])
+	D_pl = float(request.POST['sample_width'])*math.pow(10,-3)
 	message = {}
 	message['status'] = ''
 	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
@@ -53,6 +54,21 @@ def compute(request):
 	alfaprmtr = math.radians(float(crystal.alfa)) # угол альфа решетки в радианах
 	betaprmtr = math.radians(float(crystal.beta)) # угол бета решетки
 	gammaprmtr = math.radians(float(crystal.gamma)) - math.atan(d14*V_volt/D_pl) # угол гамма решетки
+	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
+
+	# расчет межплоскостного расстояния ––––––––––––––––––
+	aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
+	bprmtr_ = cprmtr*aprmtr*math.sin(betaprmtr)/V
+	cprmtr_ = aprmtr*bprmtr*math.sin(gammaprmtr)/V
+
+	COSalfaprmtr_ =  ( math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr) )/( math.sin(betaprmtr)*math.sin(gammaprmtr) )
+	COSbetaprmtr_ =  ( math.cos(gammaprmtr)*math.cos(alfaprmtr)-math.cos(betaprmtr) )/( math.sin(gammaprmtr)*math.sin(alfaprmtr) )
+	COSgammaprmtr_ = ( math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr) )/( math.sin(alfaprmtr)*math.sin(betaprmtr)  )
+	s1 = math.pow( ( hInd * aprmtr_) ,2) + math.pow( ( kInd * bprmtr_) ,2) + math.pow( ( lInd * cprmtr_) ,2)
+	s2 = 2*hInd*kInd*aprmtr_*bprmtr_*COSgammaprmtr_
+	s3 = 2*kInd*lInd*COSalfaprmtr_
+	s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
+	dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
 
 	C=1 # в случае сигма поляризации, в случае пи()=cos(2*Тета_breg)
 
@@ -83,6 +99,7 @@ def compute(request):
 	s3 = 2*kInd*lInd*COSalfaprmtr_
 	s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
 	dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
+
 	predel_hkl = wavelength/2/dprmtr
 	if predel_hkl>1:
 		message['error'] = "Из условия Брегга, wavelength/2d > 1 ("+str(round(predel_hkl,4))+"): пробуйте меньшие hkl "
@@ -285,7 +302,7 @@ def compute(request):
 	message['sdvig'] = str(round(sdvig,4))
 	message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 	message['b'] =  round(b,3)
+	message['bragg_precize'] = math.degrees(tetaprmtr)
+	message['dprmtr_precize'] = dprmtr
 
-
-
-	return JsonResponse(message)
+	return message
