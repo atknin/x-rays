@@ -53,7 +53,7 @@ def compute(request):
 
 	alfaprmtr = math.radians(float(crystal.alfa)) # угол альфа решетки в радианах
 	betaprmtr = math.radians(float(crystal.beta)) # угол бета решетки
-	gammaprmtr = math.radians(float(crystal.gamma)) - math.atan(d14*V_volt/D_pl) # угол гамма решетки
+	gammaprmtr = math.radians(float(crystal.gamma)) + math.atan(d14*V_volt/D_pl) # угол гамма решетки
 	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 
 	# расчет межплоскостного расстояния ––––––––––––––––––
