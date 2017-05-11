@@ -15,8 +15,7 @@ import os
 
 
 def compute(request):
-
-	bot_inform.sent_to_atknin_bot(request.POST, 'v') # проинформируем в telegramm bot
+	bot_inform.sent_to_atknin_bot(str(request.POST), 'v') # проинформируем в telegramm bot
 	# d14 = 4.7*math.pow(10,-12)
 	# d11 =  6.5*math.pow(10,-12)
 	field_direction = float(request.POST['field_direction'])
