@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 import os, django
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myapp.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "polarizability.settings")
 django.setup()
 # now your code can go here...
 from django.shortcuts import render
