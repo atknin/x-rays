@@ -140,9 +140,9 @@ def compute(request):
 			mes_field['difference_sdvig'] = str(round((mes_normal['sdvig_precize'] - mes_field['sdvig_precize']),4))
 			mes_field['difference_extintion'] = str(round((mes_normal['extintion_precize'] - mes_field['extintion_precize']),4))
 			try:
-				mes_field['delta_extintion'] = str(round((mes_normal['delta_precize'] - mes_field['delta_precize']),4))
+				mes_field['difference_delta'] = str(round((mes_normal['delta_precize'] - mes_field['delta_precize']),4))
 			except Exception as e:
-				mes_field['delta_extintion'] = 'error'
+				mes_field['difference_delta'] = 'error'
 
 			return JsonResponse(mes_field)
 		else:
