@@ -106,41 +106,56 @@
           <input type="checkbox" value="" id = "external_field">
           Внешнее поле
         </label>
-
       </div>
-      <div class="row" style="text-align:center; margin-top:10px;">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-          <table class="table table-bordered table-condensed">
-            <tbody>
-              <tr>
-                <td><input type="number" id = '' placeholder="d11"  value="6.5" class="form-control" disabled="true" /></td>
-                <td><input type="number" id = '' placeholder="d12"  value="-13" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d13"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d14"  value="4.7" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d15"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d16"  value="0" class="form-control" disabled="true"/></td>
-              </tr>
-              <tr>
-                <td><input type="number" id = '' placeholder="d21"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d22"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d23"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d24"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d25"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d26"  value="0" class="form-control" disabled="true"/></td>
-              </tr>
-              <tr>
-                <td><input type="number" id = '' placeholder="d31"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d32"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d33"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d34"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d35"  value="0" class="form-control" disabled="true"/></td>
-                <td><input type="number" id = '' placeholder="d36"  value="0" class="form-control" disabled="true"/></td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="row" id = 'external_field_row'>
+        <div class="row" style=" margin-top:10px;">
+          <div class="input-group " id = "" >
+            <span class="input-group-addon" id="sizing-addon1"><small>V</small></span>
+            <input tabindex="" type="number"  style="text-align: center;" value="1000" placeholder="volt" class="form-control" id="volt" aria-describedby="basic-addon3">
+          </div>
+          <div class="input-group " style= 'margin-top:10px;' id = "" >
+            <span class="input-group-addon" id="sizing-addon1"><small>V</small></span>
+            <input tabindex="" type="number"  style="text-align: center;" value="0.5" placeholder="мм" class="form-control" id="volt" aria-describedby="basic-addon3">
+          </div>
         </div>
 
+        <div class="row" style="text-align:center; margin-top:10px;">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <table class="table table-bordered table-condensed">
+              <tbody>
+                <tr>
+                  <td><input type="number" id = '' placeholder="d11"  value="6,5" class="form-control" disabled="false" /></td>
+                  <td><input type="number" id = '' placeholder="d12"  value="-13" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d13"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d14"  value="4,7" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d15"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d16"  value="0" class="form-control" disabled="false"/></td>
+                </tr>
+                <tr>
+                  <td><input type="number" id = '' placeholder="d21"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d22"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d23"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d24"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d25"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d26"  value="0" class="form-control" disabled="false"/></td>
+                </tr>
+                <tr>
+                  <td><input type="number" id = '' placeholder="d31"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d32"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d33"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d34"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d35"  value="0" class="form-control" disabled="false"/></td>
+                  <td><input type="number" id = '' placeholder="d36"  value="0" class="form-control" disabled="false"/></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+        <div class="row" style="margin-top: 10px">
+          <textarea class="form-control" rows="7" id = "output_piezo_data"></textarea>
+        </div>
       </div>
     </div> <!-- Первая колонка -->
 
