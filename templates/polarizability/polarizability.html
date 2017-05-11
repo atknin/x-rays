@@ -261,6 +261,7 @@
 
 <!-- Передаем параметры в backend + проверка на вшивость src="{% static "polarizability/polarizability.js"%}"-->
 <script type="text/javascript">
+  $('#external_field_row').hide();
 
   $("#check_symmetric_case").change(function() {
       if(this.checked) {
@@ -277,12 +278,16 @@
 
   $("#external_field").change(function() {
       if(this.checked) {
+        $('#external_field_row').show();
+
         // $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", true );
         // $('#h_index_surface,#k_index_surface,#l_index_surface').val('');
         // $('#id_assym_img').hide();
 
       }
       else{
+        $('#external_field_row').hide();
+
         // $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", false );
         //  $('#id_assym_img').show();
       }
