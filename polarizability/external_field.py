@@ -23,7 +23,7 @@ def compute(request):
 	d11, d12, d13, d14, d15, d16 =  0,0,0,0,0,0
 	d21, d22, d23, d24, d25, d26 =  0,0,0,0,0,0
 	d31, d32, d33, d34, d35, d36 =  0,0,0,0,0,0
-	
+
 	if field_direction == 1:
 		d11 =  float(request.POST['d11'])
 		d12 =  float(request.POST['d12'])
@@ -64,8 +64,8 @@ def compute(request):
 	wavelength = float(request.POST['wavelength']) # длина волны падающего излучения в Ангстремах
 
 	aprmtr = float(crystal.a) * (1+d11*V_volt/D_pl)  * (1+d21*V_volt/D_pl)  * (1+d31*V_volt/D_pl)# параметр решетки a
-	bprmtr = float(crystal.b) * (1+d12*V_volt/D_pl) * (1+d22*V_volt/D_pl) * (1+d22*V_volt/D_pl) # параметр решетки b
-	cprmtr = float(crystal.c) * (1+d13*V_volt/D_pl) * (1+d23*V_volt/D_pl) * (1+d23*V_volt/D_pl)# параметр .cрешетки c
+	bprmtr = float(crystal.b) * (1+d12*V_volt/D_pl) * (1+d22*V_volt/D_pl) * (1+d32*V_volt/D_pl) # параметр решетки b
+	cprmtr = float(crystal.c) * (1+d13*V_volt/D_pl) * (1+d23*V_volt/D_pl) * (1+d33*V_volt/D_pl)# параметр .cрешетки c
 	rho = float(crystal.density)*math.pow(10,6)# плотночть соединения в г/м3
 	hInd = int(request.POST['h'], 10) # индекс миллера h
 	kInd = int(request.POST['k'], 10) # индекс миллера k
