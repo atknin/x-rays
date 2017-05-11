@@ -147,7 +147,7 @@ def compute(request):
 		f0=f0+float(abc[4])
 
 
-    	#___найти строку с элементом в f1f2_Chantler.dat__________________________________________________________________________________________________________________________
+		#___найти строку с элементом в f1f2_Chantler.dat__________________________________________________________________________________________________________________________
 		while True:
 			line = f1f2.readline()
 			if re.search(r'#S  '+NXYZocup[0], line): # нашли строку с элементом
@@ -253,30 +253,30 @@ def compute(request):
 			x_epslist.append(dTeta*3600*180/math.pi)
 			for_downloading+= str(dTeta*3600*180/math.pi)+'   '+str(P) + '\n'
 			if max_pow_R<(P):
-                max_pow_R = (P)
+				max_pow_R = (P)
 			if min_rasst_ot_centra > abs(sdvig*math.pi/180/3600 - dTeta):
-                min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
-                min_rasst_ot_centra_which_point = len(epslist)
+				min_rasst_ot_centra = abs(sdvig*math.pi/180/3600 - dTeta)
+				min_rasst_ot_centra_which_point = len(epslist)
 
-        From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
-        To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
-        y = epslist[From_:To_:1]
-        x = x_epslist[From_:To_:1]
-        message['X0_real'] = str(round(X0.real*math.pow(10,7),4))
-        message['X0_imag'] = str(round(X0.imag*math.pow(10,7),4))
-        message['Xh_real'] = str(round(Xh.real*math.pow(10,7),4))
-        message['Xh_imag'] = str(round(Xh.imag*math.pow(10,7),4))
-        message['delta'] = str(round(delta,4))
-        message['maximum'] = str(round(max_pow_R,4))
-        message['x_darwin'] = x
-        message['y_darwin'] = y
-        message['for_downloading'] = for_downloading
-    message['dprmtr'] = str(round(dprmtr, 4))
-    message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
-    message['bragg'] = str(round(c, 4))
-    message['sdvig'] = str(round(sdvig,4))
-    message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
-    message['b'] =  round(b,3)
-    message['bragg_precize'] = math.degrees(tetaprmtr)
-    message['dprmtr_precize'] = dprmtr
-    return message
+		From_ = min_rasst_ot_centra_which_point - int(1.5*point_for_curve)
+		To_ = min_rasst_ot_centra_which_point + int(1.5*point_for_curve)
+		y = epslist[From_:To_:1]
+		x = x_epslist[From_:To_:1]
+		message['X0_real'] = str(round(X0.real*math.pow(10,7),4))
+		message['X0_imag'] = str(round(X0.imag*math.pow(10,7),4))
+		message['Xh_real'] = str(round(Xh.real*math.pow(10,7),4))
+		message['Xh_imag'] = str(round(Xh.imag*math.pow(10,7),4))
+		message['delta'] = str(round(delta,4))
+		message['maximum'] = str(round(max_pow_R,4))
+		message['x_darwin'] = x
+		message['y_darwin'] = y
+		message['for_downloading'] = for_downloading
+	message['dprmtr'] = str(round(dprmtr, 4))
+	message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
+	message['bragg'] = str(round(c, 4))
+	message['sdvig'] = str(round(sdvig,4))
+	message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
+	message['b'] =  round(b,3)
+	message['bragg_precize'] = math.degrees(tetaprmtr)
+	message['dprmtr_precize'] = dprmtr
+	return message
