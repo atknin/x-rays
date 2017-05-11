@@ -1,8 +1,4 @@
 from __future__ import unicode_literals
-import os, django
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "polarizability.settings")
-django.setup()
-# now your code can go here...
 from django.shortcuts import render
 from django.core import serializers
 from polarizability import models as polarizability_models
@@ -15,6 +11,7 @@ import sys, math, cmath, os, re#, scipy # re - для работы с регул
 from django.http import JsonResponse
 import numpy as np
 import time
+import os
 
 def compute(request):
 	message = {}
@@ -22,28 +19,28 @@ def compute(request):
 	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/'
 	cromer_man_file = open(path+'files_for_compute/f0_CromerMann.dat')
 	f1f2 = open(path+'files_for_compute/f1f2_Chantler.dat')
-	hkl = request['h'],request['k'],request['l']
-	crystal_id = request['crystal_id']
+	hkl = request.POST['h'],request.POST['k'],request.POST['l']
+	crystal_id = request.POST['crystal_id']
 	crystal = polarizability_models.crystals.objects.get(pk = crystal_id)
 
 
 	a_element= set() # множесто названий элементов
 	a_element_dict= {}
-	wavelength = float(request['wavelength']) # длина волны падающего излучения в Ангстремах
+	wavelength = float(request.POST['wavelength']) # длина волны падающего излучения в Ангстремах
 
 	aprmtr = float(crystal.a) # параметр решетки a
 	bprmtr = float(crystal.b) # параметр решетки b
 	cprmtr = float(crystal.c) # параметр .cрешетки c
 	rho = float(crystal.density)*math.pow(10,6)# плотночть соединения в г/м3
-	hInd = int(request['h'], 10) # индекс миллера h
-	kInd = int(request['k'], 10) # индекс миллера k
-	lInd = int(request['l'], 10) # индекс миллера l
-	assym = int(request['assym_alfa_then_beta'])
+	hInd = int(request.POST['h'], 10) # индекс миллера h
+	kInd = int(request.POST['k'], 10) # индекс миллера k
+	lInd = int(request.POST['l'], 10) # индекс миллера l
+	assym = int(request.POST['assym_alfa_then_beta'])
 
 
-	hInd_surface = int(request['h_surface'], 10) # индекс миллера h
-	kInd_surface = int(request['k_surface'], 10) # индекс миллера k
-	lInd_surface = int(request['l_surface'], 10) # индекс миллера l
+	hInd_surface = int(request.POST['h_surface'], 10) # индекс миллера h
+	kInd_surface = int(request.POST['k_surface'], 10) # индекс миллера k
+	lInd_surface = int(request.POST['l_surface'], 10) # индекс миллера l
 
 
 
@@ -105,7 +102,7 @@ def compute(request):
 		s10_surface = 1
 
 	try:
-		fi = assym*abs(float(request['fi_prmtr']))
+		fi = assym*abs(float(request.POST['fi_prmtr']))
 	except Exception as e:
 		fi = assym*math.degrees( math.acos( s10_surface ) ) #проверка
 
@@ -285,9 +282,4 @@ def compute(request):
 
 
 
-	return print(message)
-
-if __name__ == '__main__':
-	request =  {'k_surface': ['2'], 'crystal_id': ['3'], 'csrfmiddlewaretoken': ['MZI5zLUqdGHllnfquZ0sq6CqqszHLkdvWSaUHGuDpI5Lif3VLRjo1yROt29aDHui'], 'k': ['2'], 'fi_prmtr': ['0'], 'l_surface': ['0'], 'l': ['0'], 'assym_alfa_then_beta': ['1'], 'h_surface': ['2'], 'h': ['2'], 'wavelength': ['0.709300']}
-
-	compute(request)
+	return JsonResponse(message)

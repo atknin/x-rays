@@ -13,6 +13,7 @@ from django.http import JsonResponse
 import numpy as np
 import time
 import os
+from polarizability import test1
 # bot_inform.sent_to_atknin_bot('wavelenght: ' + str(wavelength), 'v') # проинформируем в telegramm bot
 
 # Create your views here.
@@ -128,7 +129,9 @@ def add_crystal(request):
 def compute(request):
 	message = {}
 	message['status'] = ''
-	bot_inform.sent_to_atknin_bot(str(request.POST), 'v')
+	# bot_inform.sent_to_atknin_bot(str(request.POST), 'v')
+	return test1.compute(request)
+
 	if request.is_ajax():
 		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 		cromer_man_file = open(path+'files_for_compute/f0_CromerMann.dat')
