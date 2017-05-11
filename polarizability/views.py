@@ -133,8 +133,8 @@ def compute(request):
 	return test1.compute(request)
 
 	if request.is_ajax():
-		# return polarizab_funct.compute(request)
-		return test1.compute(request)
+		return polarizab_funct.compute(request)
+		# return test1.compute(request)
 
 	else:
 		message['error'] = "error"
