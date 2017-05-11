@@ -116,7 +116,7 @@
               <input tabindex="" type="number"  style="text-align: center;" value="1000" placeholder="volt" class="form-control" id="volt" aria-describedby="basic-addon3">
             </div>
             <div class="input-group " style= 'margin-top:10px;' id = "" >
-              <span class="input-group-addon" id="sizing-addon1"><small>V</small></span>
+              <span class="input-group-addon" id="sizing-addon1"><small>l</small></span>
               <input tabindex="" type="number"  style="text-align: center;" value="0.5" placeholder="мм" class="form-control" id="sample_width" aria-describedby="basic-addon3">
             </div>
           </div>
@@ -427,12 +427,12 @@
            };
 
            if(document.getElementById('external_field').checked) {
-             var a = 'Ниже приведена разность параметров: без поля минус(-) под полем \n' +
+             var a = 'Ниже приведена разность параметров: без поля минус(-) под полем. \n' +
              'Угловая отстройка: ' +  data.difference_bragg + ' угл. сек. \n' +
              'Изменение межпл.: ' + data.difference_dprmtr_percent + ' %. \n' +
-             'Изменение FWHM:'  + data.difference_delta + 'угл. сек. \n' +
-             'Изменение экстинкции:'  + data.difference_extintion + 'мкм \n' +
-             'Преломление:'  + data.difference_sdvig + 'угл. сек. \n';
+             'Изменение FWHM: '  + data.difference_delta + ' угл. сек. \n' +
+             'Изменение экстинкции: '  + data.difference_extintion + ' мкм \n' +
+             'Преломление: '  + data.difference_sdvig + ' угл. сек. \n';
              $('#output_piezo_data').val(a);
            }
 
