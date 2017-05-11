@@ -285,7 +285,7 @@ def compute(request):
 		message['status'] += "запрещенный рефлекс \n"
 		message['forbidden'] = 1
 	else:
-		message['status'] += 'ok'
+		message['status'] += 'под полем'
 		while dTeta<dTeta_end:
 			dTeta+=shag
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
