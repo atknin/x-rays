@@ -377,9 +377,6 @@
             compute_dict["volt"] = $('#volt').val();
             compute_dict["sample_width"] = $('#sample_width').val();
         }
-
-
-
         $.post("compute/", compute_dict ,function(data) {
           if(data.error){
             var text_out = data.error;
