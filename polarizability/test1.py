@@ -1,3 +1,7 @@
+import os, django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myapp.settings")
+django.setup()
+# now your code can go here...
 from __future__ import unicode_literals
 from django.shortcuts import render
 from django.core import serializers
@@ -11,7 +15,6 @@ import sys, math, cmath, os, re#, scipy # re - для работы с регул
 from django.http import JsonResponse
 import numpy as np
 import time
-import os
 
 def compute(request):
 	message = {}
