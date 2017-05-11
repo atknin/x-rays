@@ -14,6 +14,9 @@ import time
 import os
 
 def compute(request):
+
+	bot_inform.sent_to_atknin_bot('ok', 'v') # проинформируем в telegramm bot
+
 	message = {}
 	message['status'] = ''
 	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/'
