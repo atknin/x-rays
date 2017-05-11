@@ -339,7 +339,109 @@
               </div>
             </div>
        </div>
+ <!-- Кристалл 3 -->
+       <div class="row settings" id="div_settings_sample_3" name = "3" >
 
+         <div class='row'>
+           <p class="lead" style="float: left;">Параметры кристалла №3</p>
+           <div id="loader_addon2" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
+         </div>
+
+         <div class="row">
+           <label>
+             <input type="checkbox" value="" name = '3' id = "check_symmetric_case_3" checked>
+             симметричное отражение
+           </label>
+         </div>
+             <div class="col-md-4">
+
+               <div class="row" id = "id_assym_img_2" style="text-align: center; margin-bottom: 20px;">
+                 <div class="row">
+                   <img src="{% static "polarizability/img/asym.png"%}" height="80" width="80">
+                 </div>
+                 <div class="row" style="margin-top: 5px;">
+                   <label class="radio-inline">
+                     <input type="radio" name="assym_alfa_then_beta_3" id="inlineRadio3" value="-1" checked="true">
+                     <span class="label label-primary">синий луч</span>
+                   </label>
+                 </div>
+                 <div class="row" style="margin-top: 5px;">
+                  <label class="radio-inline">
+                     <input type="radio" name="assym_alfa_then_beta_3" id="inlineRadio3" value="1">
+                       <span class="label label-danger">красн луч</span>
+                   </label>
+                 </div>
+               </div>
+
+               <div class="row" style="margin-top: 5px" id = "check_crystal3">
+                 <select class="form-control" id ='select_crystal3' onchange="$('#getX3').click()" size="10" >
+                 {% for crystal in crystals %}
+                   <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
+                 {% endfor %}
+                 </select>
+               </div>
+             </div>
+
+             <div class="col-md-8">
+               <div class="row" style="margin-top: 5px" id = "fi_surface_div_3" >
+                 <div class="col-md-3">
+                   <button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
+                     <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                   </button>
+                 </div>
+                 <div class="col-md-6 input-group ">
+                     <span class="input-group-addon" id="sizing-addon3"><small>угол ассим.</small></span>
+                     <input type="number"  style="text-align: center;" placeholder="фи" class="form-control input-sm" id="fi_prmtr_3" >
+                 </div>
+
+                 <div class="col-md-3" id = "inputgroup_check_h_index3_surface" style="display:none;">
+                   <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control input-sm" id="h_index_surface_3" >
+                 </div>
+                 <div class="col-md-3" id = "inputgroup_check_k_index3_surface" style="display:none;">
+                   <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control input-sm" id="k_index_surface_3" >
+                 </div>
+
+                 <div class="col-md-3" id = "inputgroup_check_l_index3_surface" style="display:none;">
+                   <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control input-sm" id="l_index_surface_3" >
+                 </div>
+               </div>
+
+               <div class="row" style="margin-top: 3px;">
+
+                 <div class="col-md-3">
+                   <button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
+                     <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                   </button>
+                 </div>
+                 <div class="col-md-3" id = "inputgroup_check_h_index3">
+                   <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control input-sm" id="h_index3" >
+                 </div>
+                 <div class="col-md-3" id = "inputgroup_check_k_index3">
+                   <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control input-sm" id="k_index3" >
+                 </div>
+
+                 <div class="col-md-3" id = "inputgroup_check_l_index3">
+                   <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control input-sm" id="l_index3" >
+                 </div>
+               </div>
+
+               <div class="row" style="height: 35px; margin-top: 15px;">
+                 <div class="col-md-12">
+                   <div class="input-group" id = "inputgroup_check_x0_3">
+                     <input type="text" class="form-control input-sm" name = 'Поляризуемость X0 для 3 кристалла' id ="X0_3"  placeholder="0.0000 + 0.0000j">
+                     <span class="input-group-addon">&#967;<sub>0</sub>*10<sup>-7</sup></span>
+                   </div>
+                   <div class="input-group" id = "inputgroup_check_xh_3" style="margin-top: 5px;">
+                     <input type="text" id='Xh_3' name = 'Поляризуемость Xh для 3 кристалла' class="input-sm form-control" placeholder="0.0000 + 0.0000j" >
+                     <span class="input-group-addon">&#967;<sub>h</sub>*10<sup>-7</sup></span>
+                   </div>
+                   <button type="button" name = "3" id="getX3" class="btn btn-default" style="width: 100%;  display: none;">get &#967;...</button>
+                 </div>
+
+               </div>
+             </div>
+        </div>
+         <!-- Кристалл 3 end-->
  <!-- настроить детектор -->
               <div class="row settings" id="div_settings_detector" >
                 <div style="margin-bottom: 20px"><span class="label label-primary">Параметры детектора</span></div>
