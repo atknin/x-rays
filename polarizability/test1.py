@@ -16,7 +16,10 @@ import os
 def compute(request):
 
 	# bot_inform.sent_to_atknin_bot('ok', 'v') # проинформируем в telegramm bot
-
+	d14 = 4.7*math.pow(10,-12)
+	d11 =  6.5*math.pow(10,-12)
+	V_volt = 1000
+	D_pl = 0.5*math.pow(10,-3)
 	message = {}
 	message['status'] = ''
 	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
@@ -31,8 +34,8 @@ def compute(request):
 	a_element_dict= {}
 	wavelength = float(request.POST['wavelength']) # длина волны падающего излучения в Ангстремах
 
-	aprmtr = float(crystal.a) # параметр решетки a
-	bprmtr = float(crystal.b) # параметр решетки b
+	aprmtr = float(crystal.a) * (1+d11*V_volt/D_pl)# параметр решетки a
+	bprmtr = float(crystal.b)* (1-2*d11*V_volt/D_pl) # параметр решетки b
 	cprmtr = float(crystal.c) # параметр .cрешетки c
 	rho = float(crystal.density)*math.pow(10,6)# плотночть соединения в г/м3
 	hInd = int(request.POST['h'], 10) # индекс миллера h
@@ -49,7 +52,7 @@ def compute(request):
 
 	alfaprmtr = math.radians(float(crystal.alfa)) # угол альфа решетки в радианах
 	betaprmtr = math.radians(float(crystal.beta)) # угол бета решетки
-	gammaprmtr = math.radians(float(crystal.gamma)) # угол гамма решетки
+	gammaprmtr = math.radians(float(crystal.gamma)) + d14*V_volt/D_pl # угол гамма решетки
 
 	C=1 # в случае сигма поляризации, в случае пи()=cos(2*Тета_breg)
 
@@ -238,7 +241,7 @@ def compute(request):
 		message['status'] += "запрещенный рефлекс \n"
 		message['forbidden'] = 1
 	else:
-		message['status'] += "ok \n"
+		message['status'] += 'd14 = '+str(d14)+ 'd11 = ' + 	str(d11) +" V = "+ str(V_volt) + 'd = ' +	str(D_pl) + " \n"
 		while dTeta<dTeta_end:
 			dTeta+=shag
 			alfa = -4*math.sin(tetaprmtr)*(math.sin(tetaprmtr-dTeta)-math.sin(tetaprmtr)) # угловая отстройка падающего излучения от угла Брегга
