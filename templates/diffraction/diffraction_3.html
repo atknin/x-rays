@@ -1,0 +1,396 @@
+{% extends "general/index_old.html" %}
+  {% block title %}
+  <title>2x-Дифракция</title>
+  {% load static %}
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="{% static "konva/konva.min.js"%}" ></script>
+  <script src="{% static "fabric/fabric.min.js"%}" ></script>
+
+
+
+  <link href="{% static "diffraction/css.css" %}" rel="stylesheet">
+  <style type="text/css">
+    .loader {
+      background-image: url("{% static "loader/loader-128x/Preloader_3.gif"%}");
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: 100%;
+      color: transparent;
+      background-color: transparent;
+    }
+    .settings{
+      margin-top: 30px;
+      margin: 20px;
+
+    }
+
+
+    .panels{
+        margin-top: 30px;
+        margin-left: 5px;
+        border: 1px solid #eee;
+    }
+    .error {
+        border-color: #d9534f !important;
+      }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+  </style>
+
+  {% endblock %}
+
+  {% block content %}
+
+    <input type='hidden' id='abracadabraa' value="{{ csrf_token }}" />
+
+    <div class="row" style="margin-top: 50px;" id = "div_choose_howmanycrystals">
+
+   <!-- Без кристаллов -->
+    <div class="row" style="background-color: #FAFAFA; height: 360px; margin-top: 40px;" id = "div_zero_crystal">
+
+      <div class="col-md-7" style="margin-left: 20px;">
+        <canvas class = 'panels' width=800 height=300 id="fabric"></canvas>
+
+        <div style="display: none;">
+          <img src="{% static 'diffraction/img/detector.png' %}" id="detector" >
+          <img src="{% static 'diffraction/img/source.png' %}" id="source">
+          <img src="{% static 'diffraction/img/sample.png' %}" id="sample" >
+          <img src="{% static 'diffraction/img/slit.png' %}" id="slit" >
+        </div>
+
+      </div>
+
+      <div class="col-md-4" style="margin-left: 20px;">
+        <div class="panels" style="height: 300px; background-color: white;">
+
+<!-- ИСТОЧНИК -->
+          <div class="row settings" id="div_settings_source">
+            <span class="label label-primary">Параметры источника</span>
+              <div class="form-group">
+                <label>Анод:</label>
+                <select class="form-control" name = 'Источник'  id ='id_source' size="6">
+                {%for source in anod%}
+                  <option value="{{source.id}}" name = "{{source.wavelength.all.0.wavelength }}"><small>{{source.name}}</small></option>
+                {% endfor %}
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Полуширина излучающего пятная, расходимость источника</label>
+                <div class="col-md-6 ">
+                  <div class="input-group ">
+                    <input class="form-control" type="number" name = 'Расходимость источника' value = 0.5 id="source_divergence_mmetr">
+                  <div class="input-group-addon">mm</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                <div class="input-group">
+                  <input class="form-control" type="number" name = 'Расходимость источника' value="600" id="source_divergence_arc" >
+                  <div class="input-group-addon">arcsec</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+<!-- // ИСТОЧНИК -->
+<!-- ЩЕЛЬ 1 -->
+            <div class="row settings" id="div_settings_slit_1">
+              <span class="label label-primary">Параметры щели №1</span>
+              <div class="form-group">
+                <label>расстояние до источника</label>
+                  <div class="input-group ">
+                    <input class="form-control" type="number" name = 'Первая щель. Положение' value = 0.57 id="input_l_slit1">
+                  <div class="input-group-addon">m</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                <label>Размер щели</label>
+                  <div class="input-group ">
+                    <input class="form-control" type="number" name = 'Первая щель. Ширина' value = 0.02 id="input_size_slit1">
+                  <div class="input-group-addon">mm</div>
+                  </div>
+                </div>
+            </div>
+<!-- // ЩЕЛЬ 1 -->
+
+<!-- ЩЕЛЬ 2 -->
+            <div class="row settings" id="div_settings_slit_2">
+              <span class="label label-primary">Параметры щели №2</span>
+              <div class="form-group">
+                <label>расстояние до источника</label>
+                  <div class="input-group ">
+                    <input class="form-control" type="number" name = 'Вторая щель. Положение' value = 1.005 id="input_l_slit2">
+                  <div class="input-group-addon">m</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                <label>Размер щели</label>
+                  <div class="input-group ">
+                    <input class="form-control" type="number" name = 'Вторая щель. Ширина' value = 0.02 id="input_size_slit2">
+                  <div class="input-group-addon">mm</div>
+                  </div>
+                </div>
+            </div>
+<!-- // ЩЕЛЬ 2 -->
+<!-- Кристалл 1 -->
+      <div class="row settings" id="div_settings_sample_1" name = "1" >
+
+        <div class='row'>
+          <p class="lead" style="float: left;">Параметры кристалла №1</p>
+          <div id="loader_addon1" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
+        </div>
+
+        <div class="row">
+          <label>
+            <input type="checkbox" value="" name = '1' id = "check_symmetric_case_1" checked>
+            симметричное отражение
+          </label>
+        </div>
+            <div class="col-md-4">
+
+              <div class="row" id = "id_assym_img_1" style="text-align: center; margin-bottom: 20px;">
+                <div class="row">
+                  <img src="{% static "polarizability/img/asym.png"%}" height="80" width="80">
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                  <label class="radio-inline">
+                    <input type="radio" name="assym_alfa_then_beta_1" id="inlineRadio1" value="1" checked="true">
+                    <span class="label label-primary">синий луч</span>
+                  </label>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                 <label class="radio-inline">
+                    <input type="radio" name="assym_alfa_then_beta_1" id="inlineRadio2" value="-1">
+                      <span class="label label-danger">красн луч</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 5px" id = "check_crystal1">
+                <select class="form-control" id ='select_crystal1' onchange="$('#getX1').click()" size="10" >
+                {% for crystal in crystals %}
+                  <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
+                {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="row" style="margin-top: 5px" id = "fi_surface_div_1" >
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="col-md-6 input-group ">
+                    <span class="input-group-addon" id="sizing-addon1"><small>угол ассим.</small></span>
+                    <input type="number"  style="text-align: center;" placeholder="фи" class="form-control input-sm" id="fi_prmtr_1" >
+                </div>
+
+                <div class="col-md-3" id = "inputgroup_check_h_index1_surface" style="display:none;">
+                  <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control input-sm" id="h_index_surface_1" >
+                </div>
+
+                <div class="col-md-3" id = "inputgroup_check_k_index1_surface" style="display:none;">
+                  <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control input-sm" id="k_index_surface_1" >
+                </div>
+
+                <div class="col-md-3" id = "inputgroup_check_l_index1_surface" style="display:none;">
+                  <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control input-sm" id="l_index_surface_1" >
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 3px;">
+
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="col-md-3" id = "inputgroup_check_h_index1">
+                  <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control input-sm" id="h_index1" >
+                </div>
+                <div class="col-md-3" id = "inputgroup_check_k_index1">
+                  <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control input-sm" id="k_index1" >
+                </div>
+
+                <div class="col-md-3" id = "inputgroup_check_l_index1">
+                  <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control input-sm" id="l_index1" >
+                </div>
+              </div>
+
+              <div class="row" style="height: 35px; margin-top: 15px;">
+                <div class="col-md-12">
+                  <div class="input-group" id = "inputgroup_check_x0_1">
+                    <input type="text" class="form-control input-sm" name = 'Поляризуемость X0 для 1 кристалла' id ="X0_1"  placeholder="0.0000 + 0.0000j">
+                    <span class="input-group-addon">&#967;<sub>0</sub>*10<sup>-7</sup></span>
+                  </div>
+                  <div class="input-group" id = "inputgroup_check_xh_1" style="margin-top: 5px;">
+                    <input type="text" id='Xh_1' name = 'Поляризуемость Xh для 1 кристалла' class="input-sm form-control" placeholder="0.0000 + 0.0000j" >
+                    <span class="input-group-addon">&#967;<sub>h</sub>*10<sup>-7</sup></span>
+                  </div>
+                  <button type="button" name = "1" id="getX1" class="btn btn-default" style="width: 100%;  display: none;">get &#967;...</button>
+                </div>
+
+              </div>
+            </div>
+       </div>
+<!-- Кристалл 2 -->
+      <div class="row settings" id="div_settings_sample_2" name = "2" >
+
+        <div class='row'>
+          <p class="lead" style="float: left;">Параметры кристалла №2</p>
+          <div id="loader_addon2" style="width: 35px; height: 35px; background-color: transparent; float: right;"></div>
+        </div>
+
+        <div class="row">
+          <label>
+            <input type="checkbox" value="" name = '2' id = "check_symmetric_case_2" checked>
+            симметричное отражение
+          </label>
+        </div>
+            <div class="col-md-4">
+
+              <div class="row" id = "id_assym_img_2" style="text-align: center; margin-bottom: 20px;">
+                <div class="row">
+                  <img src="{% static "polarizability/img/asym.png"%}" height="80" width="80">
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                  <label class="radio-inline">
+                    <input type="radio" name="assym_alfa_then_beta_2" id="inlineRadio2" value="-1" checked="true">
+                    <span class="label label-primary">синий луч</span>
+                  </label>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                 <label class="radio-inline">
+                    <input type="radio" name="assym_alfa_then_beta_2" id="inlineRadio2" value="1">
+                      <span class="label label-danger">красн луч</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 5px" id = "check_crystal2">
+                <select class="form-control" id ='select_crystal2' onchange="$('#getX2').click()" size="10" >
+                {% for crystal in crystals %}
+                  <option value="{{crystal.id}}"><small>{{crystal.name}}</small></option>
+                {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div class="row" style="margin-top: 5px" id = "fi_surface_div_2" >
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="col-md-6 input-group ">
+                    <span class="input-group-addon" id="sizing-addon2"><small>угол ассим.</small></span>
+                    <input type="number"  style="text-align: center;" placeholder="фи" class="form-control input-sm" id="fi_prmtr_2" >
+                </div>
+
+                <div class="col-md-3" id = "inputgroup_check_h_index2_surface" style="display:none;">
+                  <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control input-sm" id="h_index_surface_2" >
+                </div>
+                <div class="col-md-3" id = "inputgroup_check_k_index2_surface" style="display:none;">
+                  <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control input-sm" id="k_index_surface_2" >
+                </div>
+
+                <div class="col-md-3" id = "inputgroup_check_l_index2_surface" style="display:none;">
+                  <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control input-sm" id="l_index_surface_2" >
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 3px;">
+
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-default btn-sm" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="col-md-3" id = "inputgroup_check_h_index2">
+                  <input type="number"  style="text-align: center;" value="2" placeholder="h" class="form-control input-sm" id="h_index2" >
+                </div>
+                <div class="col-md-3" id = "inputgroup_check_k_index2">
+                  <input type="number" style="text-align: center;" value="2" placeholder="k" class="form-control input-sm" id="k_index2" >
+                </div>
+
+                <div class="col-md-3" id = "inputgroup_check_l_index2">
+                  <input type="number" style="text-align: center;" value="0" placeholder="l"  class="form-control input-sm" id="l_index2" >
+                </div>
+              </div>
+
+              <div class="row" style="height: 35px; margin-top: 15px;">
+                <div class="col-md-12">
+                  <div class="input-group" id = "inputgroup_check_x0_2">
+                    <input type="text" class="form-control input-sm" name = 'Поляризуемость X0 для 2 кристалла' id ="X0_2"  placeholder="0.0000 + 0.0000j">
+                    <span class="input-group-addon">&#967;<sub>0</sub>*10<sup>-7</sup></span>
+                  </div>
+                  <div class="input-group" id = "inputgroup_check_xh_2" style="margin-top: 5px;">
+                    <input type="text" id='Xh_2' name = 'Поляризуемость Xh для 2 кристалла' class="input-sm form-control" placeholder="0.0000 + 0.0000j" >
+                    <span class="input-group-addon">&#967;<sub>h</sub>*10<sup>-7</sup></span>
+                  </div>
+                  <button type="button" name = "2" id="getX2" class="btn btn-default" style="width: 100%;  display: none;">get &#967;...</button>
+                </div>
+
+              </div>
+            </div>
+       </div>
+
+ <!-- настроить детектор -->
+              <div class="row settings" id="div_settings_detector" >
+                <div style="margin-bottom: 20px"><span class="label label-primary">Параметры детектора</span></div>
+                отсутсвуют
+              </div>
+<!-- / настроить детектор -->
+          <p class="lead" id = 'sign_settings' style="margin: 30px;" >НАСТРОЙКА</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <hr>
+      {% if user.is_authenticated %}
+      {% include "diffraction/for_include_compute_settings.html" %}
+      <div class="col-md-4" style="padding-left:20px;">
+        <div class="row">
+          <div class="form-group">
+            <p class="lead">тип сканирования:</p>
+              <p>
+                <input type="radio" name="schem_radio" id="scan_theta" checked value="2theta">   &theta; - 2&theta;
+              </p>
+              <p>
+                <input type="radio" name="schem_radio" id="scan_omega" value="omega"> &omega;
+              </p>
+          </div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+          <p class="lead">визуализировать в:</p>
+            <input type="checkbox"  checked="true" id = "logarifm_scale" value="log" > Логарифмическая шкала
+        </div>
+        <div class="row"  style="margin-top:20px;">
+          <div class="form-group">
+            <p class="lead">Аппаратная:</p>
+              <p>
+                <input type="radio" name="apparatnaya_radio" id="apparatnaya_point" checked value="point">   точечный источник + визуализация
+              </p>
+              <p>
+                <input type="radio" name="apparatnaya_radio" id="apparatnaya_our" value="our"> протяженный источник - НАША
+              </p>
+              <p>
+                <input type="radio" name="apparatnaya_radio" id="apparatnaya_chuev" value="chuev"> Функция Чуева - бесконечный
+              </p>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <span class="label label-danger">Только зарегистрированным пользователям</span>
+      {% endif %}
+    </div>
+    <!-- Без кристаллов скрипт-->
+    <script src="{% static "diffraction/js/triple_crystal.js"%}" > </script>
+
+{% endblock %}
