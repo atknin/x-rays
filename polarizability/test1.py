@@ -19,7 +19,7 @@ def compute(request):
 
 	message = {}
 	message['status'] = ''
-	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/'
+	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 	cromer_man_file = open(path+'files_for_compute/f0_CromerMann.dat')
 	f1f2 = open(path+'files_for_compute/f1f2_Chantler.dat')
 	hkl = request.POST['h'],request.POST['k'],request.POST['l']
