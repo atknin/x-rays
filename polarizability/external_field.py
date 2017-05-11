@@ -17,8 +17,36 @@ import os
 def compute(request):
 
 	# bot_inform.sent_to_atknin_bot('ok', 'v') # проинформируем в telegramm bot
-	d14 = 4.7*math.pow(10,-12)
-	d11 =  6.5*math.pow(10,-12)
+	# d14 = 4.7*math.pow(10,-12)
+	# d11 =  6.5*math.pow(10,-12)
+	field_direction = float(request.POST['field_direction'])
+	d11, d12, d13, d14, d15, d16 =  0,0,0,0,0,0
+	d21, d22, d23, d24, d25, d26 =  0,0,0,0,0,0
+	d31, d32, d33, d34, d35, d36 =  0,0,0,0,0,0
+	
+	if field_direction == 1:
+		d11 =  float(request.POST['d11'])
+		d12 =  float(request.POST['d12'])
+		d13 =  float(request.POST['d13'])
+		d14 =  float(request.POST['d14'])
+		d15 =  float(request.POST['d15'])
+		d16 =  float(request.POST['d16'])
+	elif field_direction == 2:
+		d21 =  float(request.POST['d21'])
+		d22 =  float(request.POST['d22'])
+		d23 =  float(request.POST['d23'])
+		d24 =  float(request.POST['d24'])
+		d25 =  float(request.POST['d25'])
+		d26 =  float(request.POST['d26'])
+	else:
+		d31 =  float(request.POST['d31'])
+		d32 =  float(request.POST['d32'])
+		d33 =  float(request.POST['d33'])
+		d34 =  float(request.POST['d34'])
+		d35 =  float(request.POST['d35'])
+		d36 =  float(request.POST['d36'])
+
+
 	V_volt = float(request.POST['volt'])
 	D_pl = float(request.POST['sample_width'])*math.pow(10,-3)
 	message = {}
@@ -35,9 +63,9 @@ def compute(request):
 	a_element_dict= {}
 	wavelength = float(request.POST['wavelength']) # длина волны падающего излучения в Ангстремах
 
-	aprmtr = float(crystal.a) * (1+d11*V_volt/D_pl)# параметр решетки a
-	bprmtr = float(crystal.b)* (1-2*d11*V_volt/D_pl) # параметр решетки b
-	cprmtr = float(crystal.c) # параметр .cрешетки c
+	aprmtr = float(crystal.a) * (1+d11*V_volt/D_pl)  * (1+d21*V_volt/D_pl)  * (1+d31*V_volt/D_pl)# параметр решетки a
+	bprmtr = float(crystal.b) * (1+d12*V_volt/D_pl) * (1+d22*V_volt/D_pl) * (1+d22*V_volt/D_pl) # параметр решетки b
+	cprmtr = float(crystal.c) * (1+d13*V_volt/D_pl) * (1+d23*V_volt/D_pl) * (1+d23*V_volt/D_pl)# параметр .cрешетки c
 	rho = float(crystal.density)*math.pow(10,6)# плотночть соединения в г/м3
 	hInd = int(request.POST['h'], 10) # индекс миллера h
 	kInd = int(request.POST['k'], 10) # индекс миллера k
@@ -51,9 +79,9 @@ def compute(request):
 
 
 
-	alfaprmtr = math.radians(float(crystal.alfa)) # угол альфа решетки в радианах
-	betaprmtr = math.radians(float(crystal.beta)) # угол бета решетки
-	gammaprmtr = math.radians(float(crystal.gamma)) + math.atan(d14*V_volt/D_pl) # угол гамма решетки
+	alfaprmtr = math.radians(float(crystal.alfa))+ math.atan(d16*V_volt/D_pl)  + math.atan(d26*V_volt/D_pl) + math.atan(d36*V_volt/D_pl)# угол альфа решетки в радианах
+	betaprmtr = math.radians(float(crystal.beta)) + math.atan(d15*V_volt/D_pl)  + math.atan(d25*V_volt/D_pl) + math.atan(d35*V_volt/D_pl)# угол бета решетки
+	gammaprmtr = math.radians(float(crystal.gamma)) + math.atan(d14*V_volt/D_pl)  + math.atan(d24*V_volt/D_pl) + math.atan(d34*V_volt/D_pl)# угол гамма решетки
 	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 
 	# расчет межплоскостного расстояния ––––––––––––––––––

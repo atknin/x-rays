@@ -126,28 +126,31 @@
             <table class="table table-bordered table-condensed">
               <tbody>
                 <tr>
-                  <td><input type="number" id = '' placeholder="d11"  value="6.5" class="form-control"  /></td>
-                  <td><input type="number" id = '' placeholder="d12"  value="-13" class="form-control"/></td>
-                  <td><input type="number" id = '' placeholder="d13"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d14"  value="4.7" class="form-control"/></td>
-                  <td><input type="number" id = '' placeholder="d15"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d16"  value="0" class="form-control" /></td>
+                  <td><input type="radio" name="field_direction" id = "1"></td>
+                  <td><input type="number" id = 'd11' placeholder="d11"  value="6.5" class="form-control"  /></td>
+                  <td><input type="number" id = 'd12' placeholder="d12"  value="-13" class="form-control"/></td>
+                  <td><input type="number" id = 'd13' placeholder="d13"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd14' placeholder="d14"  value="4.7" class="form-control"/></td>
+                  <td><input type="number" id = 'd15' placeholder="d15"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd16' placeholder="d16"  value="0" class="form-control" /></td>
                 </tr>
                 <tr>
-                  <td><input type="number" id = '' placeholder="d21"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d22"  value="0" class="form-control"/></td>
-                  <td><input type="number" id = '' placeholder="d23"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d24"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d25"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d26"  value="0" class="form-control" /></td>
+                  <td><input type="radio" name="field_direction" id = "2"></td>
+                  <td><input type="number" id = 'd21' placeholder="d21"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd22' placeholder="d22"  value="0" class="form-control"/></td>
+                  <td><input type="number" id = 'd23' placeholder="d23"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd24' placeholder="d24"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd25' placeholder="d25"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd26' placeholder="d26"  value="0" class="form-control" /></td>
                 </tr>
                 <tr>
-                  <td><input type="number" id = '' placeholder="d31"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d32"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d33"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d34"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d35"  value="0" class="form-control" /></td>
-                  <td><input type="number" id = '' placeholder="d36"  value="0" class="form-control" /></td>
+                  <td><input type="radio" name="field_direction" id = "3"></td>
+                  <td><input type="number" id = 'd31' placeholder="d31"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd32' placeholder="d32"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd33' placeholder="d33"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd34' placeholder="d34"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd35' placeholder="d35"  value="0" class="form-control" /></td>
+                  <td><input type="number" id = 'd36' placeholder="d36"  value="0" class="form-control" /></td>
                 </tr>
               </tbody>
             </table>
@@ -370,7 +373,27 @@
         compute_dict["l"] = $('#l_index').val();
         compute_dict["fi_prmtr"] = $('#fi_prmtr').val();
         compute_dict["crystal_id"] = $('input[name=crystal]').filter(':checked').val();
+        compute_dict["field_direction"] = $('input[name=field_direction]').filter(':checked').val();
         compute_dict["assym_alfa_then_beta"] = $('input[name=assym_alfa_then_beta]').filter(':checked').val();
+
+        compute_dict["d11"] = $('#d11').val();
+        compute_dict["d12"] = $('#d12').val();
+        compute_dict["d13"] = $('#d13').val();
+        compute_dict["d14"] = $('#d14').val();
+        compute_dict["d15"] = $('#d15').val();
+        compute_dict["d16"] = $('#d16').val();
+        compute_dict["d21"] = $('#d21').val();
+        compute_dict["d22"] = $('#d22').val();
+        compute_dict["d23"] = $('#d23').val();
+        compute_dict["d24"] = $('#d24').val();
+        compute_dict["d25"] = $('#d25').val();
+        compute_dict["d26"] = $('#d26').val();
+        compute_dict["d31"] = $('#d31').val();
+        compute_dict["d32"] = $('#d32').val();
+        compute_dict["d33"] = $('#d33').val();
+        compute_dict["d34"] = $('#d34').val();
+        compute_dict["d35"] = $('#d35').val();
+        compute_dict["d36"] = $('#d36').val();
 
         if(document.getElementById('external_field').checked) {
             compute_dict['external_field'] = 'yes';
