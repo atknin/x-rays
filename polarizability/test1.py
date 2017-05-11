@@ -18,7 +18,7 @@ def compute(request):
 	# bot_inform.sent_to_atknin_bot('ok', 'v') # проинформируем в telegramm bot
 	d14 = 4.7*math.pow(10,-12)
 	d11 =  6.5*math.pow(10,-12)
-	V_volt = 1000
+	V_volt = 100000
 	D_pl = 0.5*math.pow(10,-3)
 	message = {}
 	message['status'] = ''
