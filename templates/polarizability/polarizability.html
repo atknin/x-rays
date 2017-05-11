@@ -99,6 +99,29 @@
           {% endfor %}
         </table>
       </div>
+
+
+      <div class="row">
+        <label style="float: left; margin-left: 20px;">
+          <input type="checkbox" value="" id = "external_field">
+          Внешнее поле
+        </label>
+
+      </div>
+      <div class="row" style="text-align:center; width: 80%;">
+        <table class="table table-bordered table-condensed">
+          <tbody>
+            <tr>
+              <td><input type="text" class="form-control" /></td>
+              <td><input type="text" class="form-control" /></td>
+              <td><input type="text" class="form-control" /></td>
+              <td><input type="text" class="form-control" /></td>
+              <td><input type="text" class="form-control" /></td>
+              <td><input type="text" class="form-control" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div> <!-- Первая колонка -->
 
 
@@ -217,6 +240,20 @@
          $('#id_assym_img').show();
       }
   });
+
+  $("#external_field").change(function() {
+      if(this.checked) {
+        // $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", true );
+        // $('#h_index_surface,#k_index_surface,#l_index_surface').val('');
+        // $('#id_assym_img').hide();
+
+      }
+      else{
+        // $('#h_index_surface,#k_index_surface,#l_index_surface').prop( "disabled", false );
+        //  $('#id_assym_img').show();
+      }
+  });
+
   $("#check_symmetric_case").change();
  var flag_delete;
  $(function() {
