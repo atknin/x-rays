@@ -1,8 +1,8 @@
+from __future__ import unicode_literals
 import os, django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "myapp.settings")
 django.setup()
 # now your code can go here...
-from __future__ import unicode_literals
 from django.shortcuts import render
 from django.core import serializers
 from polarizability import models as polarizability_models
