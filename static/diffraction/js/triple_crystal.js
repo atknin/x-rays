@@ -47,6 +47,19 @@ var slit_a = new fabric.Rect({
     top: 135,
     fill: '#949494',
 });
+var sample3 = new fabric.Image(document.getElementById('sample'), {
+    left: 135,
+    top: 120,
+    // angle: 30,
+    opacity: 0.85,
+  	selectable: false,
+    shadow: 'rgba(0,0,0,0.3) 5px 5px 5px',
+    class: 'sample_3'
+  });
+
+  sample3.scale(0.5);
+  sample3.hasControls = sample3.hasBorders = false;
+  canvas.add(sample3);
 
 var sample2 = new fabric.Image(document.getElementById('sample'), {
     left: 186,
@@ -97,15 +110,6 @@ var slit_1 = new fabric.Group([ slit_a, slit_b ], {
 });
 canvas.add(slit_1);
 
-var slit_2 = new fabric.Group([ slit_a, slit_b ], {
-	left: 120,
-	top: 120,
-	angle: 15,
-	selectable: false,
-	class: 'slit_2',
-	shadow: 'rgba(0,0,0,0.3) 1px 2px 5px',
-});
-canvas.add(slit_2);
 
 
 
