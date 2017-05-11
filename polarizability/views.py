@@ -138,7 +138,6 @@ def compute(request):
 			mes_normal = polarizab_funct.compute(request)
 			mes_field['difference_bragg'] = str(round((mes_normal['bragg_precize'] - mes_field['bragg_precize'])*3600),4)
 			mes_field['difference_dprmtr_percent'] = str(round(100*(mes_normal['dprmtr_precize'] - mes_field['dprmtr_precize'])/mes_normal['dprmtr_precize']),2)
-
 			return JsonResponse(mes_field)
 		else:
 			return JsonResponse(polarizab_funct.compute(request))

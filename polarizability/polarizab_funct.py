@@ -276,12 +276,12 @@ def compute(request):
 		message['y_darwin'] = y
 		message['for_downloading'] = for_downloading
 
-	message['dprmtr'] = str(round(dprmtr, 4))
-	message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
-	message['bragg'] = str(round(c, 4))
-	message['sdvig'] = str(round(sdvig,4))
-	message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
-	message['b'] =  round(b,3)
+    message['dprmtr'] = str(round(dprmtr, 4))
+    message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
+    message['bragg'] = str(round(c, 4))
+    message['sdvig'] = str(round(sdvig,4))
+    message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
+    message['b'] =  round(b,3)
     message['bragg_precize'] = math.degrees(tetaprmtr)
     message['dprmtr_precize'] = dprmtr
-	return message
+    return message

@@ -304,5 +304,4 @@ def compute(request):
 	message['b'] =  round(b,3)
 	message['bragg_precize'] = math.degrees(tetaprmtr)
 	message['dprmtr_precize'] = dprmtr
-
 	return message
