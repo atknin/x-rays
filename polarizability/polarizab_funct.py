@@ -273,7 +273,7 @@ def compute(request):
 		message['for_downloading'] = for_downloading
 	message['dprmtr'] = str(round(dprmtr, 4))
 	message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
-	message['bragg'] = str(round(c, 4))
+	message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
 	message['sdvig'] = str(round(sdvig,4))
 	message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 	message['b'] =  round(b,3)
