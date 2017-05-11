@@ -25,7 +25,7 @@ canvas.add(source);
 // --------- добавть детектор ---------------
 var detector = new fabric.Image(document.getElementById('detector'), {
   left: 20,
-  top: 130,
+  top: 150,
   angle: -25,
   width: 100,
   height: 30,
