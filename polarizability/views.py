@@ -137,6 +137,13 @@ def compute(request):
 			mes_normal = polarizab_funct.compute(request)
 			mes_field['difference_bragg'] = str(round((mes_normal['bragg_precize'] - mes_field['bragg_precize'])*3600,4))
 			mes_field['difference_dprmtr_percent'] = str(round(100*(mes_normal['dprmtr_precize'] - mes_field['dprmtr_precize'])/mes_normal['dprmtr_precize'],4))
+			mes_field['difference_sdvig'] = str(round((mes_normal['sdvig_precize'] - mes_field['sdvig_precize']),4))
+			mes_field['difference_extintion'] = str(round((mes_normal['extintion_precize'] - mes_field['extintion_precize']),4))
+			try:
+				mes_field['delta_extintion'] = str(round((mes_normal['delta_precize'] - mes_field['delta_precize']),4))
+			except Exception as e:
+				mes_field['delta_extintion'] = 'error'
+
 			return JsonResponse(mes_field)
 		else:
 			return JsonResponse(polarizab_funct.compute(request))

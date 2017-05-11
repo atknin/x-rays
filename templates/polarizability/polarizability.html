@@ -427,8 +427,14 @@
            };
 
            if(document.getElementById('external_field').checked) {
-             var a = 'Угловая отстройка: ' +  data.difference_bragg + ' сек. \n' +
-             'Изменение межпл.: ' + data.difference_dprmtr_percent + ' %. \n'
+             var a = ' нормально - под полем \n'
+             'Угловая отстройка: ' +  data.difference_bragg + ' угл. сек. \n' +
+             'Изменение межпл.: ' + data.difference_dprmtr_percent + ' %. \n' +
+             'Изменение FWHM:'  + data.difference_delta + 'угл. сек. \n' +
+             'Изменение экстинкции:'  + data.difference_extintion + 'мкм \n' +
+             'Преломление:'  + data.difference_sdvig + 'угл. сек. \n' +
+
+
              $('#output_piezo_data').val(a);
            }
 

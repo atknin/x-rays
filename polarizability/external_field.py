@@ -37,7 +37,7 @@ def compute(request):
 		d24 =  float(request.POST['d24'])*math.pow(10,-12)
 		d25 =  float(request.POST['d25'])*math.pow(10,-12)
 		d26 =  float(request.POST['d26'])*math.pow(10,-12)
-	else:
+	elif field_direction == 3:
 		d31 =  float(request.POST['d31'])*math.pow(10,-12)
 		d32 =  float(request.POST['d32'])*math.pow(10,-12)
 		d33 =  float(request.POST['d33'])*math.pow(10,-12)
@@ -323,6 +323,8 @@ def compute(request):
 		message['y_darwin'] = y
 		message['for_downloading'] = for_downloading
 
+		message['delta_precize'] = delta
+
 	message['dprmtr'] = str(round(dprmtr, 4))
 	message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 	message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
@@ -331,4 +333,7 @@ def compute(request):
 	message['b'] =  round(b,3)
 	message['bragg_precize'] = math.degrees(tetaprmtr)
 	message['dprmtr_precize'] = dprmtr
+
+	message['extintion_precize'] = Ld*1e-4 # микроны
+	message['sdvig_precize'] = sdvig
 	return message
