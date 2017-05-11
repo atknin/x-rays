@@ -283,6 +283,5 @@ def compute(request):
 	message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 	message['b'] =  round(b,3)
     message['bragg_precize'] = math.degrees(tetaprmtr)
-	message['dprmtr_precize'] = dprmtr
-
+    message['dprmtr_precize'] = dprmtr
 	return message
