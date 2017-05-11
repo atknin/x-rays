@@ -282,7 +282,4 @@ def compute(request):
 	message['sdvig'] = str(round(sdvig,4))
 	message['fi'] = round(fi,1) # угол между плоскостью и поверхностью
 	message['b'] =  round(b,3)
-
-
-
 	return JsonResponse(message)
