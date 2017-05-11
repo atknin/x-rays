@@ -133,8 +133,6 @@ def compute(request):
 		path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 		cromer_man_file = open(path+'files_for_compute/f0_CromerMann.dat')
 		f1f2 = open(path+'files_for_compute/f1f2_Chantler.dat')
-
-
 		hkl = request.POST['h'],request.POST['k'],request.POST['l']
 		crystal_id = request.POST['crystal_id']
 		crystal = polarizability_models.crystals.objects.get(pk = crystal_id)
