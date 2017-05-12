@@ -408,7 +408,7 @@
           }
           else if(data.forbidden) {
             var text_out = 'ЗАПРЕЩЕННОЕ ОТРАЖЕНИЕ'+ '\n Угол Брегга = '+ data.bragg + ' град. \n' +
-            data.V + 'e-30 м3. \n' +
+              'объем,  М = ' +data.V + 'e-30 м3. \n' +
             'межпл-ое,  d = ' + data.dprmtr + ' А \n' +
             'Глубина экстинкции: ' + data.extintion+ ' мкм' + '\n'+
             'Угол между отражающей плоскостью и поверхностью: ' + data.fi + ' град. \n' +
@@ -417,7 +417,7 @@
           }
           else{
             var text_out = 'Угол Брегга = '+ data.bragg + ' град. \n' +
-            data.V + 'e-30 м3. \n' +
+              'объем,  М = ' + data.V + 'e-30 м3. \n' +
             'X0 = (' +data.X0_real+ ' + i'+data.X0_imag+')E-7' +
             '\n' + 'Xh = (' + data.Xh_real+ ' + i'+data.Xh_imag+')E-7' + '\n' +
             'Полуширина: ' + data.delta + ' сек \n' +
