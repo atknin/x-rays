@@ -76,7 +76,7 @@ def compute(request):
 	kInd_surface = int(request.POST['k_surface'], 10) # индекс миллера k
 	lInd_surface = int(request.POST['l_surface'], 10) # индекс миллера l
 
-	
+
 
 	alfaprmtr = math.radians(float(crystal.alfa))+ math.atan(d16*V_volt/D_pl)  + math.atan(d26*V_volt/D_pl) + math.atan(d36*V_volt/D_pl)# угол альфа решетки в радианах
 	betaprmtr = math.radians(float(crystal.beta)) + math.atan(d15*V_volt/D_pl)  + math.atan(d25*V_volt/D_pl) + math.atan(d35*V_volt/D_pl)# угол бета решетки
@@ -326,6 +326,7 @@ def compute(request):
 		message['delta_precize'] = delta
 
 	message['dprmtr'] = str(round(dprmtr, 4))
+	message['V'] = str(round(V, 4))
 	message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 	message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
 	message['sdvig'] = str(round(sdvig,4))

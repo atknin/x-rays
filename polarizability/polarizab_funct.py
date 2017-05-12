@@ -273,6 +273,7 @@ def compute(request):
 		message['for_downloading'] = for_downloading
 		message['delta_precize'] = delta
 
+	message['V'] = str(round(V, 4))
 	message['dprmtr'] = str(round(dprmtr, 4))
 	message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 	message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
