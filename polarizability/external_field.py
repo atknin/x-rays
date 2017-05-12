@@ -326,7 +326,7 @@ def compute(request):
 		message['delta_precize'] = delta
 
 	message['dprmtr'] = str(round(dprmtr, 4))
-	message['V'] = str(round(V*math.pow(10,30), 4))
+	message['V'] = str(round(V, 4))
 	message['extintion'] = str(round(Ld*1e-4, 3)) # микроны
 	message['bragg'] = str(round(math.degrees(tetaprmtr), 4))
 	message['sdvig'] = str(round(sdvig,4))
