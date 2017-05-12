@@ -258,11 +258,7 @@ $("#compute").click(function(){
     compute_dict['step_lambda'] = $('#step_lambda').val();
 
 
-    if(document.getElementById('logarifm_scale').checked) {
-        compute_dict['logarifm_scale'] = 'log';
-    } else {
-        compute_dict['logarifm_scale'] = 'Nonlog';
-    };
+    compute_dict['logarifm_scale'] = 'Nonlog';
 
 
     compute_dict['apparatnaya'] = 'nope';
