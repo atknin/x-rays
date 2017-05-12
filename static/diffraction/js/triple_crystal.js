@@ -233,12 +233,7 @@ $("#compute").click(function(){
 			csrfmiddlewaretoken: $('#abracadabraa').val()
 		}});
 
-    if ($('#step_teta').val()<0.4 || $('#step_lambda').val()<0.4) {
-      compute_dict['schem'] = 'double_crystal_light';
-    }
-    else{
-      compute_dict['schem'] = 'double_crystal';
-    };
+    compute_dict['schem'] = 'triple_crystal';
 
 		compute_dict['id_email'] = $('#id_email').val();
 		compute_dict['X0_1'] = $('#X0_1').val();
