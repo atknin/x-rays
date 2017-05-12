@@ -67,16 +67,9 @@ def compute(request):
 	#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
 	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 
-	# расчет межплоскостного расстояния ––––––––––––––––––
-	aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
-	bprmtr_ = cprmtr*aprmtr*math.sin(betaprmtr)/V
-	cprmtr_ = aprmtr*bprmtr*math.sin(gammaprmtr)/V
-
-
-
-	s1 =  bprmtr_ * cprmtr_ * math.sin(alfaprmtr)/V
-	s2 =  cprmtr_ * aprmtr_ * math.sin(betaprmtr)/V
-	s3 =  aprmtr_ * bprmtr_ * math.sin(gammaprmtr)/V
+	s1 =  aprmtr * cprmtr * math.sin(alfaprmtr)/V
+	s2 =  cprmtr * aprmtr * math.sin(betaprmtr)/V
+	s3 =  aprmtr * bprmtr * math.sin(gammaprmtr)/V
 
 	dprmtr = 1/(hInd*s1+kInd*s2+lInd*s3) # *10^-10
 
@@ -88,10 +81,15 @@ def compute(request):
 	tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
 	#-----------Угол между поверхностью и плоскостью---------
 
+	# расчет межплоскостного расстояния ––––––––––––––––––
+	aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
+	bprmtr_ = cprmtr*aprmtr*math.sin(betaprmtr)/V
+	cprmtr_ = aprmtr*bprmtr*math.sin(gammaprmtr)/V
+
 	COSalfaprmtr_ =  ( math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr) )/( math.sin(betaprmtr)*math.sin(gammaprmtr) )
 	COSbetaprmtr_ =  ( math.cos(gammaprmtr)*math.cos(alfaprmtr)-math.cos(betaprmtr) )/( math.sin(gammaprmtr)*math.sin(alfaprmtr) )
 	COSgammaprmtr_ = ( math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr) )/( math.sin(alfaprmtr)*math.sin(betaprmtr)  )
-	
+
 	s1_surface = math.pow( ( hInd_surface * aprmtr_) ,2) + math.pow( ( kInd_surface * bprmtr_) ,2) + math.pow( ( lInd_surface * cprmtr_) ,2)
 	s2_surface = 2*hInd_surface*kInd_surface*aprmtr_*bprmtr_*COSgammaprmtr_
 	s3_surface = 2*kInd_surface*lInd_surface*COSalfaprmtr_

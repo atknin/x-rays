@@ -83,19 +83,14 @@ def compute(request):
 	gammaprmtr = math.radians(float(crystal.gamma)) + math.atan(d14*V_volt/D_pl)  + math.atan(d24*V_volt/D_pl) + math.atan(d34*V_volt/D_pl)# угол гамма решетки
 	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 
-	# расчет межплоскостного расстояния ––––––––––––––––––
-	aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
-	bprmtr_ = cprmtr*aprmtr*math.sin(betaprmtr)/V
-	cprmtr_ = aprmtr*bprmtr*math.sin(gammaprmtr)/V
+	s1 =  aprmtr * cprmtr * math.sin(alfaprmtr)/V
+	s2 =  cprmtr * aprmtr * math.sin(betaprmtr)/V
+	s3 =  aprmtr * bprmtr * math.sin(gammaprmtr)/V
 
-	COSalfaprmtr_ =  ( math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr) )/( math.sin(betaprmtr)*math.sin(gammaprmtr) )
-	COSbetaprmtr_ =  ( math.cos(gammaprmtr)*math.cos(alfaprmtr)-math.cos(betaprmtr) )/( math.sin(gammaprmtr)*math.sin(alfaprmtr) )
-	COSgammaprmtr_ = ( math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr) )/( math.sin(alfaprmtr)*math.sin(betaprmtr)  )
-	s1 = math.pow( ( hInd * aprmtr_) ,2) + math.pow( ( kInd * bprmtr_) ,2) + math.pow( ( lInd * cprmtr_) ,2)
-	s2 = 2*hInd*kInd*aprmtr_*bprmtr_*COSgammaprmtr_
-	s3 = 2*kInd*lInd*COSalfaprmtr_
-	s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
-	dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
+	dprmtr = 1/(hInd*s1+kInd*s2+lInd*s3) # *10^-10
+
+	# расчет межплоскостного расстояния ––––––––––––––––––
+
 
 	C=1 # в случае сигма поляризации, в случае пи()=cos(2*Тета_breg)
 
@@ -111,7 +106,15 @@ def compute(request):
 		return JsonResponse(message)
 
 	#––––––––––––––––––––объем элементарной ячейки* 10^-30–––––––––––––––––––––
-	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
+
+
+	predel_hkl = wavelength/2/dprmtr
+	if predel_hkl>1:
+		message['error'] = "Из условия Брегга, wavelength/2d > 1 ("+str(round(predel_hkl,4))+"): пробуйте меньшие hkl "
+		return JsonResponse(message)
+	# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
+	tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
+	#-----------Угол между поверхностью и плоскостью---------
 
 	# расчет межплоскостного расстояния ––––––––––––––––––
 	aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
@@ -121,19 +124,6 @@ def compute(request):
 	COSalfaprmtr_ =  ( math.cos(betaprmtr)*math.cos(gammaprmtr)-math.cos(alfaprmtr) )/( math.sin(betaprmtr)*math.sin(gammaprmtr) )
 	COSbetaprmtr_ =  ( math.cos(gammaprmtr)*math.cos(alfaprmtr)-math.cos(betaprmtr) )/( math.sin(gammaprmtr)*math.sin(alfaprmtr) )
 	COSgammaprmtr_ = ( math.cos(alfaprmtr)*math.cos(betaprmtr)-math.cos(gammaprmtr) )/( math.sin(alfaprmtr)*math.sin(betaprmtr)  )
-	s1 = math.pow( ( hInd * aprmtr_) ,2) + math.pow( ( kInd * bprmtr_) ,2) + math.pow( ( lInd * cprmtr_) ,2)
-	s2 = 2*hInd*kInd*aprmtr_*bprmtr_*COSgammaprmtr_
-	s3 = 2*kInd*lInd*COSalfaprmtr_
-	s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
-	dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
-
-	predel_hkl = wavelength/2/dprmtr
-	if predel_hkl>1:
-		message['error'] = "Из условия Брегга, wavelength/2d > 1 ("+str(round(predel_hkl,4))+"): пробуйте меньшие hkl "
-		return JsonResponse(message)
-	# #––––––––––––––––––расчет Тета угла Брегга----–––––––––––––––––––––––
-	tetaprmtr = math.asin(wavelength/2/dprmtr) # в радианах
-	#-----------Угол между поверхностью и плоскостью---------
 
 	s1_surface = math.pow( ( hInd_surface * aprmtr_) ,2) + math.pow( ( kInd_surface * bprmtr_) ,2) + math.pow( ( lInd_surface * cprmtr_) ,2)
 	s2_surface = 2*hInd_surface*kInd_surface*aprmtr_*bprmtr_*COSgammaprmtr_
