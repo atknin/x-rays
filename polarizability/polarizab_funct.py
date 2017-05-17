@@ -83,8 +83,8 @@ def compute(request):
 	s2 = 2*hInd*kInd*aprmtr_*bprmtr_*COSgammaprmtr_
 	s3 = 2*kInd*lInd*COSalfaprmtr_
 	s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
-	# dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
-	dprmtr = functions.dprmtr_def(hInd,kInd,lInd,aprmtr,bprmtr,cprmtr,alfaprmtr,betaprmtr,gammaprmtr)
+	dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
+	# dprmtr = functions.dprmtr_def(hInd,kInd,lInd,aprmtr,bprmtr,cprmtr,alfaprmtr,betaprmtr,gammaprmtr)
 
 	predel_hkl = wavelength/2/dprmtr
 	if predel_hkl>1:
