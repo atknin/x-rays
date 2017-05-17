@@ -69,7 +69,7 @@ def compute(request):
 
 
 	aprmtr = float(crystal.a) * (1+d11) # параметр решетки a
-	bprmtr = float(crystal.b) * math.sqrt(1+ 2 * d12 * math.pow( math.sin(gammaprmtr_0) , 2 ) )  # параметр решетки b
+	bprmtr = float(crystal.b) * math.sqrt(1 + 2 * d12 * math.pow( math.sin(gammaprmtr_0) , 2 ) )  # параметр решетки b
 	cprmtr = float(crystal.c) * (1+d14*math.sin(betaprmtr_0))# параметр .cрешетки c
 
 	rho = float(crystal.density)*math.pow(10,6)# плотночть соединения в г/м3
