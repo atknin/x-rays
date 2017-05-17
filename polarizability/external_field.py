@@ -86,8 +86,7 @@ def compute(request):
 
 	alfaprmtr = alfaprmtr_0 # угол альфа решетки в радианах
 
-	betaprmtr = betaprmtr_0 + d14 * math.pow(math.sin(betaprmtr_0))/(1+d14*math.sin(betaprmtr_0))# угол бета решетки
-	bot_inform.sent_to_atknin_bot(str(90), 'v')
+	betaprmtr = betaprmtr_0 + d14 * math.pow( math.sin(betaprmtr_0),2) / (1+d14*math.sin(betaprmtr_0))# угол бета решетки
 	gammaprmtr =gammaprmtr_0 + ( (d12 * math.cos( gammaprmtr_0 )* math.sin( gammaprmtr_0 )) / math.sqrt((2*d12+math.pow(d12))*math.pow(math.sin( gammaprmtr_0 ),2) + 1) )# угол гамма решетки
 
 
