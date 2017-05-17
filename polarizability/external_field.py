@@ -15,7 +15,7 @@ import os
 
 
 def compute(request):
-	bot_inform.sent_to_atknin_bot(str(request.POST), 'v') # проинформируем в telegramm bot
+	 # проинформируем в telegramm bot
 	# d14 = 4.7*math.pow(10,-12)
 	# d11 =  6.5*math.pow(10,-12)
 	field_direction = float(request.POST['field_direction'])
@@ -77,7 +77,7 @@ def compute(request):
 	kInd = int(request.POST['k'], 10) # индекс миллера k
 	lInd = int(request.POST['l'], 10) # индекс миллера l
 	assym = int(request.POST['assym_alfa_then_beta'])
-
+	bot_inform.sent_to_atknin_bot(str(80), 'v')
 
 	hInd_surface = int(request.POST['h_surface'], 10) # индекс миллера h
 	kInd_surface = int(request.POST['k_surface'], 10) # индекс миллера k
