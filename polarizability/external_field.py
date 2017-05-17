@@ -22,32 +22,32 @@ def compute(request):
 	d11, d12, d13, d14, d15, d16 =  0,0,0,0,0,0
 	d21, d22, d23, d24, d25, d26 =  0,0,0,0,0,0
 	d31, d32, d33, d34, d35, d36 =  0,0,0,0,0,0
-
-	if field_direction == 1:
-		d11 =  float(request.POST['d11'])*math.pow(10,-12)
-		d12 =  float(request.POST['d12'])*math.pow(10,-12)
-		d13 =  float(request.POST['d13'])*math.pow(10,-12)
-		d14 =  float(request.POST['d14'])*math.pow(10,-12)
-		d15 =  float(request.POST['d15'])*math.pow(10,-12)
-		d16 =  float(request.POST['d16'])*math.pow(10,-12)
-	elif field_direction == 2:
-		d21 =  float(request.POST['d21'])*math.pow(10,-12)
-		d22 =  float(request.POST['d22'])*math.pow(10,-12)
-		d23 =  float(request.POST['d23'])*math.pow(10,-12)
-		d24 =  float(request.POST['d24'])*math.pow(10,-12)
-		d25 =  float(request.POST['d25'])*math.pow(10,-12)
-		d26 =  float(request.POST['d26'])*math.pow(10,-12)
-	elif field_direction == 3:
-		d31 =  float(request.POST['d31'])*math.pow(10,-12)
-		d32 =  float(request.POST['d32'])*math.pow(10,-12)
-		d33 =  float(request.POST['d33'])*math.pow(10,-12)
-		d34 =  float(request.POST['d34'])*math.pow(10,-12)
-		d35 =  float(request.POST['d35'])*math.pow(10,-12)
-		d36 =  float(request.POST['d36'])*math.pow(10,-12)
-
-
 	V_volt = float(request.POST['volt'])
 	D_pl = float(request.POST['sample_width'])*math.pow(10,-3)
+	if field_direction == 1:
+		d11 =  float(request.POST['d11'])*math.pow(10,-12)*V_volt/D_pl
+		d12 =  float(request.POST['d12'])*math.pow(10,-12)*V_volt/D_pl
+		d13 =  float(request.POST['d13'])*math.pow(10,-12)*V_volt/D_pl
+		d14 =  float(request.POST['d14'])*math.pow(10,-12)*V_volt/D_pl
+		d15 =  float(request.POST['d15'])*math.pow(10,-12)*V_volt/D_pl
+		d16 =  float(request.POST['d16'])*math.pow(10,-12)*V_volt/D_pl
+	elif field_direction == 2:
+		d21 =  float(request.POST['d21'])*math.pow(10,-12)*V_volt/D_pl
+		d22 =  float(request.POST['d22'])*math.pow(10,-12)*V_volt/D_pl
+		d23 =  float(request.POST['d23'])*math.pow(10,-12)*V_volt/D_pl
+		d24 =  float(request.POST['d24'])*math.pow(10,-12)*V_volt/D_pl
+		d25 =  float(request.POST['d25'])*math.pow(10,-12)*V_volt/D_pl
+		d26 =  float(request.POST['d26'])*math.pow(10,-12)*V_volt/D_pl
+	elif field_direction == 3:
+		d31 =  float(request.POST['d31'])*math.pow(10,-12)*V_volt/D_pl
+		d32 =  float(request.POST['d32'])*math.pow(10,-12)*V_volt/D_pl
+		d33 =  float(request.POST['d33'])*math.pow(10,-12)*V_volt/D_pl
+		d34 =  float(request.POST['d34'])*math.pow(10,-12)*V_volt/D_pl
+		d35 =  float(request.POST['d35'])*math.pow(10,-12)*V_volt/D_pl
+		d36 =  float(request.POST['d36'])*math.pow(10,-12)*V_volt/D_pl
+
+
+
 	message = {}
 	message['status'] = ''
 	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
@@ -62,9 +62,16 @@ def compute(request):
 	a_element_dict= {}
 	wavelength = float(request.POST['wavelength']) # длина волны падающего излучения в Ангстремах
 
-	aprmtr = float(crystal.a) * (1+d11*V_volt/D_pl)  * (1+d21*V_volt/D_pl)  * (1+d31*V_volt/D_pl)# параметр решетки a
-	bprmtr = float(crystal.b) * (1+d12*V_volt/D_pl) * (1+d22*V_volt/D_pl) * (1+d32*V_volt/D_pl) # параметр решетки b
-	cprmtr = float(crystal.c) * (1+d13*V_volt/D_pl) * (1+d23*V_volt/D_pl) * (1+d33*V_volt/D_pl)# параметр .cрешетки c
+	alfaprmtr_0 = math.radians(float(crystal.alfa))# угол альфа решетки в радианах не измененный
+	betaprmtr_0 = math.radians(float(crystal.beta))# угол бета решетки в радианах не измененный
+
+	gammaprmtr_0 = math.radians(float(crystal.gamma)) # угол гамма решетки в радианах не измененный
+
+
+	aprmtr = float(crystal.a) * (1+d11) # параметр решетки a
+	bprmtr = float(crystal.b) * math.sqrt(1+ 2 * d12 * math.pow( math.sin(gammaprmtr_0) , 2 ) )  # параметр решетки b
+	cprmtr = float(crystal.c) * (1+d14*math.sin(betaprmtr_0))# параметр .cрешетки c
+
 	rho = float(crystal.density)*math.pow(10,6)# плотночть соединения в г/м3
 	hInd = int(request.POST['h'], 10) # индекс миллера h
 	kInd = int(request.POST['k'], 10) # индекс миллера k
@@ -78,9 +85,10 @@ def compute(request):
 
 
 
-	alfaprmtr = math.radians(float(crystal.alfa))+ math.atan(d16*V_volt/D_pl)  + math.atan(d26*V_volt/D_pl) + math.atan(d36*V_volt/D_pl)# угол альфа решетки в радианах
-	betaprmtr = math.radians(float(crystal.beta)) + math.atan(d15*V_volt/D_pl)  + math.atan(d25*V_volt/D_pl) + math.atan(d35*V_volt/D_pl)# угол бета решетки
-	gammaprmtr = math.radians(float(crystal.gamma)) + math.atan(d14*V_volt/D_pl)  + math.atan(d24*V_volt/D_pl) + math.atan(d34*V_volt/D_pl)# угол гамма решетки
+	alfaprmtr = alfaprmtr_0 # угол альфа решетки в радианах
+	betaprmtr = betaprmtr_0 + d14 * math.pow(math.sin(betaprmtr_0))/(1+d14*math.sin(betaprmtr_0))# угол бета решетки
+	gammaprmtr =gammaprmtr_0 + ( (d12 * math.cos( gammaprmtr_0 )* math.sin( gammaprmtr_0 )) / math.sqrt((2*d12+math.pow(d12))*math.pow(math.sin( gammaprmtr_0 ),2) + 1) )# угол гамма решетки
+
 	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 
 	# расчет межплоскостного расстояния ––––––––––––––––––
