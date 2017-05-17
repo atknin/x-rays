@@ -83,12 +83,11 @@ def compute(request):
 	kInd_surface = int(request.POST['k_surface'], 10) # индекс миллера k
 	lInd_surface = int(request.POST['l_surface'], 10) # индекс миллера l
 
-
-
+	bot_inform.sent_to_atknin_bot(str(86), 'v')
 	alfaprmtr = alfaprmtr_0 # угол альфа решетки в радианах
 	betaprmtr = betaprmtr_0 + d14 * math.pow(math.sin(betaprmtr_0))/(1+d14*math.sin(betaprmtr_0))# угол бета решетки
-	gammaprmtr =gammaprmtr_0 #+ ( (d12 * math.cos( gammaprmtr_0 )* math.sin( gammaprmtr_0 )) / math.sqrt((2*d12+math.pow(d12))*math.pow(math.sin( gammaprmtr_0 ),2) + 1) )# угол гамма решетки
-	bot_inform.sent_to_atknin_bot(str(91), 'v')
+	gammaprmtr =gammaprmtr_0 + ( (d12 * math.cos( gammaprmtr_0 )* math.sin( gammaprmtr_0 )) / math.sqrt((2*d12+math.pow(d12))*math.pow(math.sin( gammaprmtr_0 ),2) + 1) )# угол гамма решетки
+
 
 	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 
