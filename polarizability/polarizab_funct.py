@@ -12,6 +12,8 @@ from django.http import JsonResponse
 import numpy as np
 import time
 import os
+from polarizability import functions
+
 
 def compute(request):
 
@@ -68,6 +70,8 @@ def compute(request):
 	V = aprmtr*bprmtr*cprmtr*math.sqrt(1-math.pow(math.cos(alfaprmtr),2)-math.pow(math.cos(betaprmtr),2)-math.pow(math.cos(gammaprmtr),2)+2*math.cos(alfaprmtr)*math.cos(betaprmtr)*math.cos(gammaprmtr))
 
 	# расчет межплоскостного расстояния ––––––––––––––––––
+
+
 	aprmtr_ = bprmtr*cprmtr*math.sin(alfaprmtr)/V
 	bprmtr_ = cprmtr*aprmtr*math.sin(betaprmtr)/V
 	cprmtr_ = aprmtr*bprmtr*math.sin(gammaprmtr)/V
@@ -79,7 +83,9 @@ def compute(request):
 	s2 = 2*hInd*kInd*aprmtr_*bprmtr_*COSgammaprmtr_
 	s3 = 2*kInd*lInd*COSalfaprmtr_
 	s4 = 2*hInd*lInd*aprmtr_*cprmtr_*COSbetaprmtr_
-	dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
+	# dprmtr = math.sqrt(1/(s1+s2+s3+s4)) # *10^-10
+	dprmtr = functions.dprmtr_def(hInd,kInd,lInd,aprmtr,bprmtr,cprmtr,alfaprmtr,betaprmtr,gammaprmtr)
+
 	predel_hkl = wavelength/2/dprmtr
 	if predel_hkl>1:
 		message['error'] = "Из условия Брегга, wavelength/2d > 1 ("+str(round(predel_hkl,4))+"): пробуйте меньшие hkl "
