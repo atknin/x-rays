@@ -29,6 +29,7 @@ def api(request):
 		arg = {}
 		db_calc = diffraction_models.list_of_calcs.objects.create(JSON = request.POST['data'])
 		db_calc.email = request.POST['id_email']
+		db_calc.save()
 		arg['status'] = 'ok'
 		return render(
 		 	request, arg
