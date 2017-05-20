@@ -13,7 +13,7 @@ import sys, math, cmath, os, re#, scipy # re - для работы с регул
 from django.http import JsonResponse
 import numpy as np
 import time
-
+from django.views.decorators.csrf import csrf_exempt
 #------для телеграма------------
 from pytg import Telegram
 tg = Telegram(
@@ -23,11 +23,11 @@ receiver = tg.receiver
 sender = tg.sender
 #------/для телеграма------------
 
-# @csrf_exempt
+@csrf_exempt
 def API(request):
-	output_data = {}
-	output_data['status'] = 'ok'
-	return JsonResponse(output_data)
+	db_calc = diffraction_models.list_of_calcs.objects.create(JSON = str(request.POST))
+	db_calc.email = input_data ['id_email']
+	return
 
 
 def diffraction(request):
@@ -48,7 +48,6 @@ def diffraction_scheme(request,pk_num):
 	return render(
 	 	request, url, args
 	 	)
-
 
 
 def compute(request):
