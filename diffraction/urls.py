@@ -6,5 +6,6 @@ from diffraction import views
 urlpatterns = [
 	url(r'^([0-9]{1})/$', views.diffraction_scheme),
 	url(r'^$', views.diffraction),
-    url(r'^compute/$', views.compute), 
+    url(r'^compute/$', views.compute),
+    url(r'^api/$', views.api), 
 ]

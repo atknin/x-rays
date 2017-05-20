@@ -25,8 +25,8 @@ sender = tg.sender
 
 @csrf_exempt
 def API(request):
-	db_calc = diffraction_models.list_of_calcs.objects.create(JSON = str(request.POST))
-	db_calc.email = input_data ['id_email']
+	db_calc = diffraction_models.list_of_calcs.objects.create(JSON = request.POST['data'])
+	db_calc.email = request.POST['id_email']
 	return 1
 
 
