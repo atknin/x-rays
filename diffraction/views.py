@@ -24,7 +24,7 @@ sender = tg.sender
 #------/для телеграма------------
 
 @csrf_exempt
-def API(request):
+def api(request):
 	if request.method == 'GET':
 		db_calc = diffraction_models.list_of_calcs.objects.create(JSON = request.POST['data'])
 		db_calc.email = request.POST['id_email']
