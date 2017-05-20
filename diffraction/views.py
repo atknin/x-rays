@@ -31,7 +31,7 @@ def api(request):
 		return 1
 	else:
 		return render(
-		 	request, 'diffraction/diffraction.html', args
+		 	request, 'diffraction/diffraction.html'
 		 	)
 
 
