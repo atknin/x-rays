@@ -29,6 +29,10 @@ def api(request):
 		arg = {}
 		db_calc = diffraction_models.list_of_calcs.objects.create(JSON = request.POST['data'])
 		db_calc.email = request.POST['id_email']
+		try:
+			db_calc.PC = diffraction_models.PC.objects.get(name = request.POST['computer_calculate'])
+		except Exception as e:
+			pass
 		db_calc.save()
 		arg['status'] = 'ok'
 		return render(
