@@ -27,7 +27,7 @@ sender = tg.sender
 def API(request):
 	db_calc = diffraction_models.list_of_calcs.objects.create(JSON = str(request.POST))
 	db_calc.email = input_data ['id_email']
-	return
+	return 1
 
 
 def diffraction(request):
