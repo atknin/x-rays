@@ -26,9 +26,13 @@ sender = tg.sender
 @csrf_exempt
 def api(request):
 	if request.method == 'POST':
+		arg = {}
 		db_calc = diffraction_models.list_of_calcs.objects.create(JSON = request.POST['data'])
 		db_calc.email = request.POST['id_email']
-		return 1
+		arg['status'] = 'ok'
+		return render(
+		 	request, arg
+		 	)
 	else:
 		return render(
 		 	request, 'diffraction/diffraction.html'
