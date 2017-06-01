@@ -35,7 +35,6 @@ def index(request):
 			message['status'] = "error"
 		return JsonResponse(message)
 	elif str( request.META['HTTP_HOST']) =='x-rays.world':
-		bot_inform.sent_to_atknin_bot( 'ok', 'v')
 		return HttpResponseRedirect('http://xrayd.ru/')
 	else:
 		arg = {}
