@@ -9,7 +9,7 @@ from django.contrib import auth
 from django.http import JsonResponse
 import random
 import general.bot_inform as bot_inform
-
+from django.http import HttpResponseRedirect
 
 
 # Create your views here. dsds
@@ -34,13 +34,14 @@ def index(request):
 		else:
 			message['status'] = "error"
 		return JsonResponse(message)
+	elif str( request.META['HTTP_HOST']) =='x-rays.world':
+		bot_inform.sent_to_atknin_bot( 'ok', 'v')
+		return HttpResponseRedirect('http://xrayd.ru/')
 	else:
 		arg = {}
 		arg['total_crystal'] = len(polarizability_models.crystals.objects.all())
 		# arg['time_now'] = datetime.datetime.now()
 		arg['PC'] = diffraction_models.PC.objects.all()
-		bot_inform.sent_to_atknin_bot( str( request.META['HTTP_HOST'] ), 'v')
-		bot_inform.sent_to_atknin_bot( 'ok', 'v')
 		return render(
 			request, 'general/index.html', arg
 			)
