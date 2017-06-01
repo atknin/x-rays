@@ -17,8 +17,6 @@ import general.bot_inform as bot_inform
 
 
 def index(request):
-	bot_inform.sent_to_atknin_bot( str( request.META['HTTP_HOST'] ), 'v')
-
 	if request.is_ajax():
 		message = {}
 		if 'logout' in request.POST:
@@ -41,6 +39,8 @@ def index(request):
 		arg['total_crystal'] = len(polarizability_models.crystals.objects.all())
 		# arg['time_now'] = datetime.datetime.now()
 		arg['PC'] = diffraction_models.PC.objects.all()
+		bot_inform.sent_to_atknin_bot( str( request.META['HTTP_HOST'] ), 'v')
+		bot_inform.sent_to_atknin_bot( 'ok', 'v')
 		return render(
 			request, 'general/index.html', arg
 			)
