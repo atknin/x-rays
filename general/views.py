@@ -17,18 +17,19 @@ import general.bot_inform as bot_inform
 
 
 def index(request):
-		
+	bot_inform.sent_to_atknin_bot( str( request.META['HTTP_HOST'] ), 'v')
+
 	if request.is_ajax():
 		message = {}
-		if 'logout' in request.POST: 
+		if 'logout' in request.POST:
 			auth.logout(request)
 			message['status'] = "logouted"
 			return JsonResponse(message)
-		
+
 		login = request.POST['login']
 		password = request.POST['password']
 		user = auth.authenticate(username=login, password=password)
-		
+
 		if user is not None:
 			message['status'] = "ok"
 			auth.login(request, user)
@@ -42,7 +43,7 @@ def index(request):
 		arg['PC'] = diffraction_models.PC.objects.all()
 		return render(
 			request, 'general/index.html', arg
-			)	
+			)
 
 
 def about(request):
@@ -90,7 +91,7 @@ def converter(request):
 					if float(k)<find_x_min:
 						find_x_min = float(k)
 			find_shag = abs(float(data['x' + str(0)][0]) - float(data['x' + str(0)][1]))
-			
+
 			for i in range(sam_dlinny):
 				out.write('%14.8f' % find_x_min)
 				for k in range(j):
@@ -110,4 +111,4 @@ def converter(request):
 	else:
 	 	return render(
 		 	request, 'general/converter.html',
-		 	)	
+		 	)
