@@ -9,7 +9,7 @@ class tags_admin(admin.ModelAdmin):
 	list_display = (u'text',)
 
 class author_admin(admin.ModelAdmin):
-	list_display = (u'last_name',)
+	list_display = (u'last_name_rus',u'last_name_eng',)
 
 admin.site.register(models.labrary, labrary_admin)
 admin.site.register(models.Tag, tags_admin)
