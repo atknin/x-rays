@@ -6,12 +6,19 @@ class Tag(models.Model):
     def __str__(self):
         return 'Tag[id: {id}, text: {text}]'.format(
             id=self.id, text=self.text)
+    class Meta:
+        verbose_name = u'tag'
+        verbose_name_plural = u'tags'
 
 class author(models.Model):
     last_name = models.CharField(max_length=40)
     def __str__(self):
         return 'Tag[id: {id}, text: {text}]'.format(
             id=self.id, text=self.author)
+        
+    class Meta:
+        verbose_name = u'автор'
+        verbose_name_plural = u'авторы'
 
 class labrary(models.Model):
     title = models.CharField(max_length=200)
