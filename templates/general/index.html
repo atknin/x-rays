@@ -213,10 +213,12 @@
       <div class="row">
         {% for book in library %}
         <div class="col-sm-3 col-md-2" >
-          <div class="thumbnail" style="height: 200px;">
-            <div class="caption">
-              <h4>{{book.title}}</h4>
-              <h6>{{book.annotation}}</h6>
+          <div class="thumbnail" >
+            <div class="caption" style="height: 200px;">
+              <div class="">
+                <h4>{{book.title}}</h4>
+                <h6>{{book.annotation}}</h6>
+              </div>
               {%if book.file_f.url %}
                <p><a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a></p>  <!--<a href="#" class="btn btn-default" role="button">Button</a> -->
               {%endif%}
