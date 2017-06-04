@@ -10,14 +10,13 @@ class Tag(models.Model):
             id=self.id, text=self.text)
 
 class labrary(models.Model):
-	title = models.CharField(max_length=200)
-    # name = models.SlugField(max_length=200,unique=True)
-
+    title = models.CharField(max_length=200)
     annotation = models.CharField(max_length=1000, null = True, blank = True)
     reference = models.CharField(max_length=1000, null = True, blank = True)
     url = models.URLField(blank = True)
     tags = models.ManyToManyField(Tag, related_name='libraries')
     file_f = models.FileField(upload_to='books/library/', blank = True)
+    # name = models.SlugField(max_length=200,unique=True)
 
     def __str__(self):
         return 'Library[id: {id}, name: {name}]'.format(
