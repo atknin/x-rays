@@ -2,12 +2,16 @@ from django.db import models
 
 # Create your models here.
 class Tag(models.Model):
-
     text = models.CharField(max_length=64, unique=True)
-
     def __str__(self):
         return 'Tag[id: {id}, text: {text}]'.format(
             id=self.id, text=self.text)
+
+class author(models.Model):
+    last_name = models.CharField(max_length=40)
+    def __str__(self):
+        return 'Tag[id: {id}, text: {text}]'.format(
+            id=self.id, text=self.author)
 
 class labrary(models.Model):
     title = models.CharField(max_length=200)
@@ -16,6 +20,7 @@ class labrary(models.Model):
     url = models.URLField(blank = True)
     tags = models.ManyToManyField(Tag, related_name='libraries')
     file_f = models.FileField(upload_to='books/library/', blank = True)
+    authors = models.ManyToManyField(author, related_name='author')
     # name = models.SlugField(max_length=200,unique=True)
 
     def __str__(self):
