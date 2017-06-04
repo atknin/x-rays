@@ -12,6 +12,7 @@ class Tag(models.Model):
 class labrary(models.Model):
 	title = models.CharField(max_length=200)
     # name = models.SlugField(max_length=200,unique=True)
+
     annotation = models.CharField(max_length=1000, null = True, blank = True)
     reference = models.CharField(max_length=1000, null = True, blank = True)
     url = models.URLField(blank = True)
