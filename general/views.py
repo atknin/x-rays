@@ -4,6 +4,7 @@ from django.shortcuts import render
 from general import models as general_models
 from polarizability import models as polarizability_models
 from diffraction import models as diffraction_models
+from library import models as library_models
 
 from django.contrib import auth
 from django.http import JsonResponse
@@ -41,6 +42,7 @@ def index(request):
 		arg['total_crystal'] = len(polarizability_models.crystals.objects.all())
 		# arg['time_now'] = datetime.datetime.now()
 		arg['PC'] = diffraction_models.PC.objects.all()
+		arg['library'] = library_models.labrary.objects.all()
 		return render(
 			request, 'general/index.html', arg
 			)
