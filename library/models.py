@@ -4,7 +4,7 @@ from django.db import models
 class Tag(models.Model):
     text = models.CharField(max_length=64, unique=True)
     def __str__(self):
-        return 'Tag[id: {id}, text: {text}]'.format(
+        return 'tag {id}. {text}]'.format(
             id=self.id, text=self.text)
     class Meta:
         verbose_name = u'tag'
@@ -13,10 +13,10 @@ class Tag(models.Model):
 class author(models.Model):
     last_name_eng = models.CharField(max_length=40)
     last_name_rus = models.CharField(max_length=40)
-    
+
     def __str__(self):
-        return 'Tag[id: {id}, text: {text}]'.format(
-            id=self.id, text=self.author)
+        return 'auth {id}. {text}]'.format(
+            id=self.id, text=self.last_name_rus.encode('utf-8'))
 
     class Meta:
         verbose_name = u'автор'
@@ -33,7 +33,7 @@ class labrary(models.Model):
     # name = models.SlugField(max_length=200,unique=True)
 
     def __str__(self):
-        return 'Library[id: {id}, name: {name}]'.format(
+        return 'id. {name}]'.format(
             id=self.id, name=self.title.encode('utf-8'))
     class Meta:
         verbose_name = u'Литературу'
