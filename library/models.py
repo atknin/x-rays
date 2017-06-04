@@ -19,10 +19,10 @@ class labrary(models.Model):
     # name = models.SlugField(max_length=200,unique=True)
 
     def __str__(self):
-        return 'Library[id: {id}, name: {name}]'.format(id=self.id, name=self.title.encode('utf-8'))
+        return 'Library[id: {id}, name: {name}]'.format(
+            id=self.id, name=self.title.encode('utf-8'))
     class Meta:
         verbose_name = u'Литературу'
         verbose_name_plural = u'Литература'
-
-	def __unicode__(self):
-		return self.title.encode('utf-8')
+    def __unicode__(self):
+        return self.title.encode('utf-8')
