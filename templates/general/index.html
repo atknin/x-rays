@@ -216,16 +216,24 @@
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Поиск">
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button" disabled="true">Go!</button>
+              <div class="btn-group">
+                <button type="button" class="btn btn-danger">Action</button>
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                </ul>
+              </div>
             </span>
           </div><!-- /input-group -->
         </div><!-- /.col-lg-6 -->
         <div class="col-lg-3">
-          <nav aria-label="...">
-            <ul class="pager">
-              <li><a href="#">добавить</a></li>
-            </ul>
-          </nav>
         </div><!-- /.col-lg-3 -->
       </div><!-- /.row -->
       <hr>
