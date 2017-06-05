@@ -38,5 +38,6 @@ class labrary(models.Model):
     class Meta:
         verbose_name = u'Литературу'
         verbose_name_plural = u'Литература'
+        ordering = ["-id"]
     def __unicode__(self):
         return self.title.encode('utf-8')
