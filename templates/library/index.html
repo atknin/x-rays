@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE"> <!-- НЕ ЗАБЫТЬ УБРАТЬ -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="atknin">
+
+    <link rel="icon" href="{% static "icon/icon.png" %}">
+
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <!-- <link href="{% static "bootstrap/css/jumbotron-narrow.css" %}" rel="stylesheet"> -->
+    <!-- <link href="{% static "bootstrap/css/own1.css" %}" rel="stylesheet"> -->
+    <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
+    <script src="{% static "bootstrap/js/tooltip.js"%}"></script>
+    <script src="{% static "bootstrap/js/dropdown.js"%}"></script>
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:300|Open+Sans+Condensed:300" rel="stylesheet" type="text/css">
+    <link href="{% static "index/css/index.css" %}" rel="stylesheet">
+    <script src="{% static "index/js/index_modernizr.js"%}"></script>
+
+
+    {% block title%}
+    <title>library</title>
+    {% endblock %}
+    <style media="screen">
+    .background_gradient{
+      background: -webkit-gradient(linear, top left, bottom left, from(#969ac6), to(#636F8F));
+      background: -webkit-linear-gradient(#969AC6, #636F8F);
+      background: linear-gradient(#969AC6,#636F8F);
+      height: 100%;
+      font: normal 22px/26px "Open Sans Condensed", sans-serif !important;
+    }
+    h1 {
+      font: normal 29px/38px "Lato", sans-serif !important;
+      color: rgba(255, 255, 255, 0.5) !important;
+      text-align: center;
+      margin-top: 40px;
+    }
+    h2 {
+      margin-top: 50px !important;
+      margin-bottom: 20px !important;
+      font: normal 15px/26px "Lato", sans-serif !important;
+      color: rgba(255, 255, 255, 0.5) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 2px !important;
+    }
+    </style>
+
+  </head>
+
+
+  <body>
+
+
+    <div class="container">
+      <div class="row background_gradient">
+        
+        <div class="row">
+          {% for book in library %}
+          <div class="col-sm-3 col-md-2" >
+            <div class="thumbnail" >
+              <div class="caption" >
+                <div class="" style="height: 200px;">
+                  <h4>{{book.title}}</h4>
+                  <h6>{{book.annotation}}</h6>
+                </div>
+                {%if book.file_f.url %}
+                 <p><a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a> <a href="#" class="btn btn-default" role="button">ГОСТ</a> </p>  <!-- -->
+                {%endif%}
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
