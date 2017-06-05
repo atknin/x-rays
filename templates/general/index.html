@@ -286,9 +286,17 @@
                 <h4>{{book.title}}</h4>
                 <h6>{{book.annotation}}</h6>
                 {%if book.file_f.url %}
-                 <a style="all: none !important;" href="{{book.file_f.url}}"  role="button">скачать</a>
-                 <a style="all: none !important;" href="#"  role="button">ГОСТ</a>
+                 <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
                 {%endif%}
+                 <a href="#" class="btn btn-default" role="button">ГОСТ</a>
+            </div>
+            <div class="caption" >
+                <h4>{{book.title}}</h4>
+                <h6>{{book.annotation}}</h6>
+                {%if book.file_f.url %}
+                 <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
+                {%endif%}
+                 <a href="#" class="btn btn-default" role="button">ГОСТ</a>
             </div>
           </div>
         </div>
