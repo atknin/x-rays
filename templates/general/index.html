@@ -267,26 +267,6 @@
         </div>
       </div>
       <hr>
-      <!-- <div class="row" style="height:40%; overflow-y:scroll;">
-        <div class="col-md-12" style="margin:15px;">
-          {% for book in library %}
-            <div class="media">
-              <div class="media-left media-middle">
-                {%if book.file_f.url %}
-                  <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
-                {%endif%}
-                <a href="#" class="btn btn-default" role="button">ГОСТ</a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">{{book.title}}</h4>
-                  {{book.annotation}}
-              </div>
-            </div>
-          {%endfor%}
-        </div>
-
-      </div> -->
-
       <div class="row">
 
         <div class="col-sm-6 col-md-6" style="padding-right:20px;padding-left:20px; position: absolute; top: 300px; bottom: 30px;">
@@ -295,7 +275,7 @@
               <div class="caption" >
                 <div class="row">
                   <div class="col-md-8">
-                    <h4><b>{{book.title}}</b></h4>
+                    <h4><b>{{book.id}}.{{book.title}}</b></h4>
                     <h5>{{book.annotation}}</h5>
                   </div>
                   <div class="col-md-4">
