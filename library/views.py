@@ -5,7 +5,7 @@ from library import models as library_models
 def index(request):
     arg = {}
     arg['library'] = library_models.labrary.objects.all()
-    return render(request, 'library/index.html', arg )
+    return render( request, 'library/index.html', arg )
 
 def add(request):
  	return render(
