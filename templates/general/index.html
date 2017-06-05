@@ -283,20 +283,21 @@
         <div class="col-sm-6 col-md-6" style="padding-right:20px;padding-left:20px;">
           <div class="thumbnail" style="height:400px; overflow-y:scroll;">
             {% for book in library %}
-              <hr style="border-top: 1px solid #ccc;">
               <div class="caption" >
-                <div class="col-md-8">
-                  <h4>{{book.title}}</h4>
-                  <h6>{{book.annotation}}</h6>
-                </div>
-                <div class="col-md-4">
-                  {%if book.file_f.url %}
-                   <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
-                  {%endif%}
-                   <a href="#" class="btn btn-default" role="button">ГОСТ</a>
+                <div class="row">
+                  <div class="col-md-8">
+                    <h4>{{book.title}}</h4>
+                    <h6>{{book.annotation}}</h6>
+                  </div>
+                  <div class="col-md-4">
+                    {%if book.file_f.url %}
+                     <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
+                    {%endif%}
+                     <a href="#" class="btn btn-default" role="button">ГОСТ</a>
+                  </div>
                 </div>
               </div>
-
+              <hr style="border-top: 1px solid #ccc;">
             {%endfor%}
           </div>
         </div>
