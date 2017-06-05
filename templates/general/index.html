@@ -259,7 +259,18 @@
       </div>
       <hr>
       <div class="row" style="height:80%; overflow-y:scroll;">
-
+          {% for book in library %}
+            <div class="media">
+              <div class="media-left media-middle">
+                  <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
+                  <a href="#" class="btn btn-default" role="button">ГОСТ</a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">{{book.title}}</h4>
+                  {{book.annotation}}
+              </div>
+            </div>
+          {%endfor%}
       </div>
 
       <!-- <hr>
