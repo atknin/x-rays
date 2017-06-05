@@ -279,28 +279,20 @@
       </div> -->
 
       <div class="row">
-        {% for book in library %}
         <div class="col-sm-12 col-md-12" style="padding-right:20px;padding-left:20px;">
-          <div class="thumbnail" >
-            <div class="caption" >
-                <h4>{{book.title}}</h4>
-                <h6>{{book.annotation}}</h6>
-                {%if book.file_f.url %}
-                 <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
-                {%endif%}
-                 <a href="#" class="btn btn-default" role="button">ГОСТ</a>
-            </div>
-            <div class="caption" >
-                <h4>{{book.title}}</h4>
-                <h6>{{book.annotation}}</h6>
-                {%if book.file_f.url %}
-                 <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
-                {%endif%}
-                 <a href="#" class="btn btn-default" role="button">ГОСТ</a>
-            </div>
+          <div class="thumbnail" style="height:40%; overflow-y:scroll;">
+            {% for book in library %}
+              <div class="caption" >
+                  <h4>{{book.title}}</h4>
+                  <h6>{{book.annotation}}</h6>
+                  {%if book.file_f.url %}
+                   <a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a>
+                  {%endif%}
+                   <a href="#" class="btn btn-default" role="button">ГОСТ</a>
+              </div>
+            {%endfor%}
           </div>
         </div>
-        {%endfor%}
       </div>
       <!-- <div style="widows: 100%; text-align: center; margin-top: 50px;">
           <h2 style="text-align: center;" >"Курчатовский проект"</h2>
