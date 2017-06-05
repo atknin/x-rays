@@ -283,13 +283,12 @@
         <div class="col-sm-12 col-md-12" style="padding-right:20px;padding-left:20px;">
           <div class="thumbnail" >
             <div class="caption" >
-              <div class="">
                 <h4>{{book.title}}</h4>
                 <h6>{{book.annotation}}</h6>
-              </div>
-              {%if book.file_f.url %}
-               <p><a href="{{book.file_f.url}}" class="btn btn-primary" role="button">скачать</a> <a href="#" class="btn btn-default" role="button">ГОСТ</a> </p>
-              {%endif%}
+                {%if book.file_f.url %}
+                 <a href="{{book.file_f.url}}"  role="button">скачать</a>
+                <a href="#"  role="button">ГОСТ</a>
+                {%endif%}
             </div>
           </div>
         </div>
