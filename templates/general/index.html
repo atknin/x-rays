@@ -279,7 +279,11 @@
                   </div>
                   <div class="col-md-8">
                     <h4><b>{{book.title}}</b></h4>
+                    {%if book.file_f.url %}
                     <h5>{{book.annotation}}</h5>
+                    {%else%}
+                    <a href="#" class="btn btn-default" role="button">добавить описание</a>
+                    {%endif%}
                   </div>
                   <div class="col-md-3">
                     {%if book.file_f.url %}
