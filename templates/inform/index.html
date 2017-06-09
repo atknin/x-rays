@@ -7,7 +7,6 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     {%load static%}
-    
 
     <title>ИК РАН info</title>
 
@@ -24,16 +23,25 @@
     <div class="container">
 
       <form class="form-signin">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
+        <h2 class="form-signin-heading">Регистрация</h2>
+        <label for="inputLastName" class="sr-only">Фамилия</label>
+        <input type="text" id="inputLastName" class="form-control" placeholder="Фамилия" required autofocus>
+        <label for="inputName" class="sr-only">Имя</label>
+        <input type="text" id="inputName" class="form-control" placeholder="Имя" required autofocus>
+
+
+        <label for="inputEmail" class="sr-only">Email</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
+
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-outline-success active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> Муж.
+          </label>
+          <label class="btn btn-outline-info">
+            <input type="radio" name="options" id="option2" autocomplete="off"> Жен.
           </label>
         </div>
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
