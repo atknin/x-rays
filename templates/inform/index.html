@@ -24,22 +24,24 @@
 
       <form class="form-signin">
         <h2 class="form-signin-heading">Регистрация</h2>
-        <label for="inputLastName" class="sr-only">Фамилия</label>
-        <input type="text" id="inputLastName" class="form-control" placeholder="Фамилия" required autofocus>
-        <label for="inputName" class="sr-only">Имя</label>
-        <input type="text" id="inputName" class="form-control" placeholder="Имя" required autofocus>
 
+        <div class="form-group">
+          <label for="inputLastName">Фамилия</label>
+          <input type="text" class="form-control" id="inputLastName" placeholder="Медведев">
+        </div>
+        <div class="form-group">
+          <label for="inputName">Имя</label>
+          <input type="text" class="form-control" id="inputName" placeholder="Дмитрий">
+        </div>
 
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <div class="form-group">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="medvedev@yandex.ru">
+        </div>
 
-        <div class="btn-group" data-toggle="buttons">
-          <label class="btn btn-outline-success active">
-            <input type="radio" name="options" id="option1" autocomplete="off" checked> Муж.
-          </label>
-          <label class="btn btn-outline-info">
-            <input type="radio" name="options" id="option2" autocomplete="off"> Жен.
-          </label>
+        <div class="form-group">
+          <label for="inputTel">Имя</label>
+          <input type="tel"" class="form-control" id="inputTel" placeholder="1-(555)-555-5555>
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
