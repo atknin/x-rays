@@ -36,7 +36,7 @@ def api(request):
 			return JsonResponse(mes_field)
 		else:
 			return JsonResponse(polarizab_funct.compute(request))
-			
+
 	else:
 		message['error'] = "error"
 		return JsonResponse(message)
@@ -155,7 +155,7 @@ def add_crystal(request):
 def compute(request):
 	message = {}
 	message['status'] = ''
-	bot_inform.sent_to_atknin_bot(str(request.POST), 'v')
+	# bot_inform.sent_to_atknin_bot(str(request.POST), 'v')
 
 	if request.is_ajax():
 		if 'external_field' in request.POST:
