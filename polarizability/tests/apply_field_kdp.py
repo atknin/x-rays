@@ -35,7 +35,6 @@ def cli_progress_test(end_val, bar_length=20):
 def my_request(data):
 	c = Client()
 	r = c.post('/polarizability/api/', data)
-    r = views.api(data)
     status = r.status_code
     js = r.json()
     real_struct = complex(js['StructFactorReal'])
