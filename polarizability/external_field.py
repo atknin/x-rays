@@ -346,8 +346,8 @@ def compute(request):
 
 	message['extintion_precize'] = Ld*1e-4 # микроны
 	message['sdvig_precize'] = sdvig
-	# message['StructFactor0'] = StructFactor0
-	# message['StructFactorReal'] = StructFactorReal
-	# message['StructFactorImag'] = StructFactorImag
+	message['StructFactor0'] = str(StructFactor0)
+	message['StructFactorReal'] = str(StructFactorReal)
+	message['StructFactorImag'] = str(StructFactorImag)
 
 	return message
