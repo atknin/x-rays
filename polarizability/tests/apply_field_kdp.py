@@ -72,10 +72,10 @@ while v<=10000:
                     # print(h,k,l)
                 else:
                     # time.sleep(0.01)
-                    data['h_surface'] = data['h'] = h
-                    data['k_surface'] = data['k'] = k
-                    data['l_surface'] = data['l'] = l
-                    data['volt'] = v
+                    data['h_surface'] = data['h'] = str(h)
+                    data['k_surface'] = data['k'] = str(k)
+                    data['l_surface'] = data['l'] = str(l)
+                    data['volt'] = str(v)
                     txt = '{}   {}  {}  {:10.4f}\n'.format(h,k,l, my_request(data))
                     f.write(txt)
     v+=100
