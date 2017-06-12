@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^compute/', views.compute),
     url(r'^add_crystal/', views.add_crystal),
     url(r'^delete/', views.delete),
- 
+    url(r'^api/', views.api),
+
 ]
