@@ -3,8 +3,9 @@
 from __future__ import unicode_literals
 import requests
 import time
+import sys
 sys.path.append('/home/atknin/env/xrays')
-import os, django,sys
+import os, django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "xrays.settings")
 django.setup()
 from polarizability import external_field, polarizab_funct
