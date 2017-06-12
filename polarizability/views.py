@@ -155,7 +155,7 @@ def add_crystal(request):
 def compute(request):
 	message = {}
 	message['status'] = ''
-	# bot_inform.sent_to_atknin_bot(str(request.POST), 'v')
+	bot_inform.sent_to_atknin_bot(str(request), 'v')
 	if request.is_ajax():
 		if 'external_field' in request.POST:
 			try:

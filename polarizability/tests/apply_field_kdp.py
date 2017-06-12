@@ -37,6 +37,7 @@ def cli_progress_test(end_val, bar_length=20):
 
 def my_request(data):
 	c = Client()
+	views.api(data)
 	r = c.post('/polarizability/api/', data)
 	status = r.status_code
 	js = r.json()
