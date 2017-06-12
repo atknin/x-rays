@@ -157,7 +157,7 @@ def compute(request):
 	message['status'] = ''
 	bot_inform.sent_to_atknin_bot(str(request), 'v')
 	if request.is_ajax():
-		input_data = request.POST
+		input_data = request.POST.dict()
 		if 'external_field' in request.POST:
 			try:
 				mes_field = external_field.compute(input_data)
