@@ -61,7 +61,7 @@ def my_request(data):
 # print(squared)
 v = 0
 while v<=10000:
-    f = open('data/{}'.format(v),'w')
+    f = open('polarizability/tests/data/{}'.format(v),'w')
     cli_progress_test(v/100)
     for h in range(9):
         cli_progress_test(h/9*100)
