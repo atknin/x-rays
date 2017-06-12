@@ -36,11 +36,11 @@ def my_request(data):
 
 	c = Client()
 	r = c.post('/polarizability/api/', data)
-    status = r.status_code
-    js = r.json()
-    real_struct = complex(js['StructFactorReal'])
-    imag_struct = complex(js['StructFactorImag'])
-    squared = real_struct.real**2 + imag_struct.imag**2
+	status = r.status_code
+	js = r.json()
+	real_struct = complex(js['StructFactorReal'])
+	imag_struct = complex(js['StructFactorImag'])
+	squared = real_struct.real**2 + imag_struct.imag**2
     if status == 200:
         return squared
     else:
