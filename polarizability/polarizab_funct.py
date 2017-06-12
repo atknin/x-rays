@@ -24,28 +24,28 @@ def compute(request):
 	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 	cromer_man_file = open(path+'files_for_compute/f0_CromerMann.dat')
 	f1f2 = open(path+'files_for_compute/f1f2_Chantler.dat')
-	hkl = request.POST['h'],request.POST['k'],request.POST['l']
-	crystal_id = request.POST['crystal_id']
+	hkl = request['h'],request['k'],request['l']
+	crystal_id = request['crystal_id']
 	crystal = polarizability_models.crystals.objects.get(pk = crystal_id)
 
 
 	a_element= set() # множесто названий элементов
 	a_element_dict= {}
-	wavelength = float(request.POST['wavelength']) # длина волны падающего излучения в Ангстремах
+	wavelength = float(request['wavelength']) # длина волны падающего излучения в Ангстремах
 
 	aprmtr = float(crystal.a) # параметр решетки a
 	bprmtr = float(crystal.b) # параметр решетки b
 	cprmtr = float(crystal.c) # параметр .cрешетки c
 	rho = float(crystal.density)*math.pow(10,6)# плотночть соединения в г/м3
-	hInd = int(request.POST['h'], 10) # индекс миллера h
-	kInd = int(request.POST['k'], 10) # индекс миллера k
-	lInd = int(request.POST['l'], 10) # индекс миллера l
-	assym = int(request.POST['assym_alfa_then_beta'])
+	hInd = int(request['h'], 10) # индекс миллера h
+	kInd = int(request['k'], 10) # индекс миллера k
+	lInd = int(request['l'], 10) # индекс миллера l
+	assym = int(request['assym_alfa_then_beta'])
 
 
-	hInd_surface = int(request.POST['h_surface'], 10) # индекс миллера h
-	kInd_surface = int(request.POST['k_surface'], 10) # индекс миллера k
-	lInd_surface = int(request.POST['l_surface'], 10) # индекс миллера l
+	hInd_surface = int(request['h_surface'], 10) # индекс миллера h
+	kInd_surface = int(request['k_surface'], 10) # индекс миллера k
+	lInd_surface = int(request['l_surface'], 10) # индекс миллера l
 
 
 
@@ -111,7 +111,7 @@ def compute(request):
 		s10_surface = 1
 
 	try:
-		fi = assym*abs(float(request.POST['fi_prmtr']))
+		fi = assym*abs(float(request['fi_prmtr']))
 	except Exception as e:
 		fi = assym*math.degrees( math.acos( s10_surface ) ) #проверка
 

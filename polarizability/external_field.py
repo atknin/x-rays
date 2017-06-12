@@ -18,33 +18,33 @@ def compute(request):
 	 # проинформируем в telegramm bot
 	# d14 = 4.7*math.pow(10,-12)
 	# d11 =  6.5*math.pow(10,-12)
-	field_direction = float(request.POST['field_direction'])
+	field_direction = float(request['field_direction'])
 	d11, d12, d13, d14, d15, d16 =  0,0,0,0,0,0
 	d21, d22, d23, d24, d25, d26 =  0,0,0,0,0,0
 	d31, d32, d33, d34, d35, d36 =  0,0,0,0,0,0
-	V_volt = float(request.POST['volt'])
-	D_pl = float(request.POST['sample_width'])*math.pow(10,-3)
+	V_volt = float(request['volt'])
+	D_pl = float(request['sample_width'])*math.pow(10,-3)
 	if field_direction == 1:
-		d11 =  float(request.POST['d11'])*math.pow(10,-12)*V_volt/D_pl
-		d12 =  float(request.POST['d12'])*math.pow(10,-12)*V_volt/D_pl
-		d13 =  float(request.POST['d13'])*math.pow(10,-12)*V_volt/D_pl
-		d14 =  float(request.POST['d14'])*math.pow(10,-12)*V_volt/D_pl
-		d15 =  float(request.POST['d15'])*math.pow(10,-12)*V_volt/D_pl
-		d16 =  float(request.POST['d16'])*math.pow(10,-12)*V_volt/D_pl
+		d11 =  float(request['d11'])*math.pow(10,-12)*V_volt/D_pl
+		d12 =  float(request['d12'])*math.pow(10,-12)*V_volt/D_pl
+		d13 =  float(request['d13'])*math.pow(10,-12)*V_volt/D_pl
+		d14 =  float(request['d14'])*math.pow(10,-12)*V_volt/D_pl
+		d15 =  float(request['d15'])*math.pow(10,-12)*V_volt/D_pl
+		d16 =  float(request['d16'])*math.pow(10,-12)*V_volt/D_pl
 	elif field_direction == 2:
-		d21 =  float(request.POST['d21'])*math.pow(10,-12)*V_volt/D_pl
-		d22 =  float(request.POST['d22'])*math.pow(10,-12)*V_volt/D_pl
-		d23 =  float(request.POST['d23'])*math.pow(10,-12)*V_volt/D_pl
-		d24 =  float(request.POST['d24'])*math.pow(10,-12)*V_volt/D_pl
-		d25 =  float(request.POST['d25'])*math.pow(10,-12)*V_volt/D_pl
-		d26 =  float(request.POST['d26'])*math.pow(10,-12)*V_volt/D_pl
+		d21 =  float(request['d21'])*math.pow(10,-12)*V_volt/D_pl
+		d22 =  float(request['d22'])*math.pow(10,-12)*V_volt/D_pl
+		d23 =  float(request['d23'])*math.pow(10,-12)*V_volt/D_pl
+		d24 =  float(request['d24'])*math.pow(10,-12)*V_volt/D_pl
+		d25 =  float(request['d25'])*math.pow(10,-12)*V_volt/D_pl
+		d26 =  float(request['d26'])*math.pow(10,-12)*V_volt/D_pl
 	elif field_direction == 3:
-		d31 =  float(request.POST['d31'])*math.pow(10,-12)*V_volt/D_pl
-		d32 =  float(request.POST['d32'])*math.pow(10,-12)*V_volt/D_pl
-		d33 =  float(request.POST['d33'])*math.pow(10,-12)*V_volt/D_pl
-		d34 =  float(request.POST['d34'])*math.pow(10,-12)*V_volt/D_pl
-		d35 =  float(request.POST['d35'])*math.pow(10,-12)*V_volt/D_pl
-		d36 =  float(request.POST['d36'])*math.pow(10,-12)*V_volt/D_pl
+		d31 =  float(request['d31'])*math.pow(10,-12)*V_volt/D_pl
+		d32 =  float(request['d32'])*math.pow(10,-12)*V_volt/D_pl
+		d33 =  float(request['d33'])*math.pow(10,-12)*V_volt/D_pl
+		d34 =  float(request['d34'])*math.pow(10,-12)*V_volt/D_pl
+		d35 =  float(request['d35'])*math.pow(10,-12)*V_volt/D_pl
+		d36 =  float(request['d36'])*math.pow(10,-12)*V_volt/D_pl
 
 
 
@@ -53,14 +53,14 @@ def compute(request):
 	path = os.path.realpath(os.path.dirname(sys.argv[0]))+'/polarizability/'
 	cromer_man_file = open(path+'files_for_compute/f0_CromerMann.dat')
 	f1f2 = open(path+'files_for_compute/f1f2_Chantler.dat')
-	hkl = request.POST['h'],request.POST['k'],request.POST['l']
-	crystal_id = request.POST['crystal_id']
+	hkl = request['h'],request['k'],request['l']
+	crystal_id = request['crystal_id']
 	crystal = polarizability_models.crystals.objects.get(pk = crystal_id)
 
 
 	a_element= set() # множесто названий элементов
 	a_element_dict= {}
-	wavelength = float(request.POST['wavelength']) # длина волны падающего излучения в Ангстремах
+	wavelength = float(request['wavelength']) # длина волны падающего излучения в Ангстремах
 
 	alfaprmtr_0 = math.radians(float(crystal.alfa))# угол альфа решетки в радианах не измененный
 	betaprmtr_0 = math.radians(float(crystal.beta))# угол бета решетки в радианах не измененный
@@ -73,15 +73,15 @@ def compute(request):
 	cprmtr = float(crystal.c) * (1+d14*math.sin(betaprmtr_0))# параметр .cрешетки c
 
 	rho = float(crystal.density)*math.pow(10,6)# плотночть соединения в г/м3
-	hInd = int(request.POST['h'], 10) # индекс миллера h
-	kInd = int(request.POST['k'], 10) # индекс миллера k
-	lInd = int(request.POST['l'], 10) # индекс миллера l
-	assym = int(request.POST['assym_alfa_then_beta'])
+	hInd = int(request['h'], 10) # индекс миллера h
+	kInd = int(request['k'], 10) # индекс миллера k
+	lInd = int(request['l'], 10) # индекс миллера l
+	assym = int(request['assym_alfa_then_beta'])
 
 
-	hInd_surface = int(request.POST['h_surface'], 10) # индекс миллера h
-	kInd_surface = int(request.POST['k_surface'], 10) # индекс миллера k
-	lInd_surface = int(request.POST['l_surface'], 10) # индекс миллера l
+	hInd_surface = int(request['h_surface'], 10) # индекс миллера h
+	kInd_surface = int(request['k_surface'], 10) # индекс миллера k
+	lInd_surface = int(request['l_surface'], 10) # индекс миллера l
 
 
 	alfaprmtr = alfaprmtr_0 # угол альфа решетки в радианах
@@ -161,7 +161,7 @@ def compute(request):
 		s10_surface = 1
 
 	try:
-		fi = assym*abs(float(request.POST['fi_prmtr']))
+		fi = assym*abs(float(request['fi_prmtr']))
 	except Exception as e:
 		fi = assym*math.degrees( math.acos( s10_surface ) ) #проверка
 
