@@ -7,9 +7,7 @@ import sys, os
 sys.path.append('/home/atknin/env/xrays')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'xrays.settings'
 from django.conf import settings
-from django.test import Client
-from StringIO import StringIO
-from django.core.handlers.wsgi import WSGIRequest
+from polarizability import external_field, polarizab_funct
 
 data = {}
 data['d11'], data['d12'], data['d13'], data['d14'], data['d15'], data['d16'] =  0,0,0,1.5,0,0
@@ -37,17 +35,11 @@ def cli_progress_test(end_val, bar_length=20):
 	sys.stdout.flush()
 
 def my_request(data):
-	views.api(data)
-	status = r.status_code
-	js = r.json()
+	js = polarizab_funct.compute(input_data)
 	real_struct = complex(js['StructFactorReal'])
 	imag_struct = complex(js['StructFactorImag'])
 	squared = real_struct.real**2 + imag_struct.imag**2
-	if status == 200:
-		return squared
-	else:
-		print('status: ',status)
-		my_request(data)
+	return squared
 
 # print(my_request(data))
 # r = requests.post('http://xrayd.ru/polarizability/api/', data = data).json()
