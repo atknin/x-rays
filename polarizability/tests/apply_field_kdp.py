@@ -4,9 +4,8 @@ from __future__ import unicode_literals
 import requests
 import time
 import sys, os
-import sys, os
 sys.path.append('/home/atknin/env/xrays')
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'xrays.settings'
 from django.conf import settings
 from django.test import Client
 
