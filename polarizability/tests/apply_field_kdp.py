@@ -33,6 +33,7 @@ def cli_progress_test(end_val, bar_length=20):
 	sys.stdout.flush()
 
 def my_request(data):
+
 	c = Client()
 	r = c.post('/polarizability/api/', data)
     status = r.status_code
