@@ -21,10 +21,11 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def api(request):
 	if request.method == 'POST':
+		input_data = request.POST
 		if 'external_field' in request.POST:
 			try:
-				mes_field = external_field.compute(request)
-				mes_normal = polarizab_funct.compute(request)
+				mes_field = external_field.compute(input_data)
+				mes_normal = polarizab_funct.compute(input_data)
 				mes_field['difference_delta'] = str(round((mes_normal['delta_precize'] - mes_field['delta_precize']),4))
 				mes_field['difference_bragg'] = str(round((mes_normal['bragg_precize'] - mes_field['bragg_precize'])*3600,4))
 				mes_field['difference_dprmtr_percent'] = str(round(100*(mes_normal['dprmtr_precize'] - mes_field['dprmtr_precize'])/mes_normal['dprmtr_precize'],4))
@@ -35,7 +36,7 @@ def api(request):
 
 			return JsonResponse(mes_field)
 		else:
-			return JsonResponse(polarizab_funct.compute(request))
+			return JsonResponse(polarizab_funct.compute(input_data))
 
 	else:
 		message['error'] = "error"
@@ -155,9 +156,9 @@ def add_crystal(request):
 def compute(request):
 	message = {}
 	message['status'] = ''
-	bot_inform.sent_to_atknin_bot(str(request), 'v')
+	bot_inform.sent_to_atknin_bot(str(request.POST), 'v')
 	if request.is_ajax():
-		input_data = request.POST.dict()
+		input_data = request.POST
 		if 'external_field' in request.POST:
 			try:
 				mes_field = external_field.compute(input_data)
