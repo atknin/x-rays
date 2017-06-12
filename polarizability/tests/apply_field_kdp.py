@@ -37,7 +37,7 @@ def cli_progress_test(end_val, bar_length=20):
 	sys.stdout.flush()
 
 def my_request(data):
-	js = polarizab_funct.compute(data)
+	js = external_field.compute(data)
 	real_struct = complex(js['StructFactorReal'])
 	imag_struct = complex(js['StructFactorImag'])
 	squared = real_struct.real**2 + imag_struct.imag**2
