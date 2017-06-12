@@ -9,6 +9,7 @@ import os, django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "xrays.settings")
 django.setup()
 from polarizability import external_field, polarizab_funct
+os.chdir('/home/atknin/env/xrays')
 
 data = {}
 data['d11'], data['d12'], data['d13'], data['d14'], data['d15'], data['d16'] =  0,0,0,1.5,0,0
