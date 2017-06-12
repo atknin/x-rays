@@ -41,11 +41,11 @@ def my_request(data):
 	real_struct = complex(js['StructFactorReal'])
 	imag_struct = complex(js['StructFactorImag'])
 	squared = real_struct.real**2 + imag_struct.imag**2
-    if status == 200:
-        return squared
-    else:
-        print('status: ',status)
-        my_request(data)
+	if status == 200:
+		return squared
+	else:
+		print('status: ',status)
+		my_request(data)
 
 # print(my_request(data))
 # r = requests.post('http://xrayd.ru/polarizability/api/', data = data).json()
