@@ -8,6 +8,7 @@ sys.path.append('/home/atknin/env/xrays')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'xrays.settings'
 from django.conf import settings
 from django.test import Client
+from polarizability import views
 
 data = {}
 data['d11'], data['d12'], data['d13'], data['d14'], data['d15'], data['d16'] =  0,0,0,1.5,0,0
@@ -35,7 +36,6 @@ def cli_progress_test(end_val, bar_length=20):
 	sys.stdout.flush()
 
 def my_request(data):
-
 	c = Client()
 	r = c.post('/polarizability/api/', data)
 	status = r.status_code
