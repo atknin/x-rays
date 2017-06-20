@@ -6,16 +6,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
+
     {%load static%}
 
     <title>ИК РАН info</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "bootstrap_4/css/bootstrap.min.css" %}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="{% static "bootstrap_4/dist/signin.css" %}" rel="stylesheet">
 
+    <script src="{% static "BootstrapFormHelpers/js/bootstrap-formhelpers-phone.js"%}"></script>
+
+    </script>
   </head>
 
   <body>
@@ -41,7 +44,7 @@
 
         <div class="form-group">
           <label for="inputTel">Телефон</label>
-          <input type="text" class="input-medium bfh-phone" data-format="+1 (ddd) ddd-dddd">
+          <input type="text" class="form-control input-medium bfh-phone" data-format="+1 (ddd) ddd-dddd">
           <!-- <input type="tel" class="form-control" id="inputTel" placeholder="+79151322437"> -->
         </div>
 
