@@ -15,7 +15,8 @@
     <!-- Custom styles for this template -->
     <link href="{% static "bootstrap_4/dist/signin.css" %}" rel="stylesheet">
 
-    <!-- <script src="{% static "BootstrapFormHelpers/js/bootstrap-formhelpers-phone.js"%}"></script> -->
+    <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
+    <script src="{% static "bootstrap-validator-master/js/validator.js"%}"></script>
 
     </script>
   </head>
@@ -38,7 +39,7 @@
 
         <div class="form-group">
           <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="inputEmail" placeholder="medvedev@yandex.ru">
+          <input type="email" class="form-control" id="inputEmail" placeholder="medvedev@yandex.ru" data-error="проверьте правильность" required>
         </div>
 
         <div class="form-group">
