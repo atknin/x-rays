@@ -16,6 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static "bootstrap_4/dist/signin.css" %}" rel="stylesheet">
     <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
+    <script src="{% static "bootstrap_4/js/jquery.maskedinput.js"%}"></script>
   </head>
 
   <body>
@@ -42,7 +43,7 @@
 
         <div class="form-group">
           <label for="inputTel">Телефон</label>
-          <input type="text" class="form-control" name="phone" required>
+          <input type="text" placeholder="(845)555-1212" class="form-control" id="phone" name="phone" required>
 
            <!-- <input name="phone" placeholder="(845)555-1212" class="form-control" type="text"> -->
         </div>
@@ -53,7 +54,18 @@
     </div> <!-- /container -->
 
     <script type="text/javascript">
+    $("#phone").mask("(99) 9999?9-9999");
+    $("#phone").on("blur", function() {
+      var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
 
+      if( last.length == 3 ) {
+          var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
+          var lastfour = move + last;
+
+          var first = $(this).val().substr( 0, 9 );
+
+          $(this).val( first + '-' + lastfour );
+      }
     </script>
 
   </body>
