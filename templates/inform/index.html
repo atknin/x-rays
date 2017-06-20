@@ -48,7 +48,7 @@
            <!-- <input name="phone" placeholder="(845)555-1212" class="form-control" type="text"> -->
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">отправить</button>
+        <button class="btn btn-lg btn-primary btn-block" id = "submit">отправить</button>
       </form>
 
     </div> <!-- /container -->
@@ -62,13 +62,17 @@
               if( last.length == 3 ) {
                   var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
                   var lastfour = move + last;
-
                   var first = $(this).val().substr( 0, 9 );
-
                   $(this).val( first + '-' + lastfour );
               }
-              console.log(last)
           });
+
+          $( "#submit" ).click(function() {
+            // alert( "Handler for .click() called." );
+            var phone = $("phone").val();
+            console.log(phone)
+          });
+
         });
     </script>
 
