@@ -38,7 +38,6 @@
         <div class="form-group">
           <label for="inputEmail">Email</label>
           <input type="text" class="form-control" name="email" id="inputEmail" placeholder="medvedev@yandex.ru" required>
-
         </div>
 
         <div class="form-group">
@@ -55,6 +54,11 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+          function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+          }
+
           $("#phone").mask("(999) 999-9999");
           $("#phone").on("blur", function() {
               var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
@@ -66,10 +70,17 @@
                   $(this).val( first + '-' + lastfour );
               }
           });
-          $("#inputEmail").mask("*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]");
-          
+
           $( "#submit" ).click(function() {
-            // alert( "Handler for .click() called." );
+            var flag = true;
+            if (validateEmail(email)) {
+              $("#inputEmail").removeClass("form-control-danger");
+              // ok
+            } else {
+              flag = false;
+              $("#inputEmail").addClass("form-control-danger");
+            }
+
             var phone = '7'
             phone += $("#phone").val().replace("(","").replace(")","").replace("-","").replace(" ","");
             console.log(phone)
