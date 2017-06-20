@@ -76,10 +76,12 @@
             var email = $("#inputEmail").val();
             if (validateEmail(email)) {
               $("#inputEmail").removeClass("form-control-danger");
+              console.log('email ok');
               // ok
             } else {
               flag = false;
               $("#inputEmail").addClass("form-control-danger");
+              console.log('email fail');
             }
 
             var phone = '7'
