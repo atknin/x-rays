@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {%load static%}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    {%load static%}
     <link rel="icon" href="{% static "icon/informata.png" %}">
 
     <title>ИК РАН info</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static "bootstrap_4/css/bootstrap.min.css" %}" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="{% static "bootstrap_4/dist/signin.css" %}" rel="stylesheet">
 
-    <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
-    <script src="{% static "bootstrap-validator-master/js/validator.js"%}"></script>
-
-    </script>
   </head>
 
   <body>
@@ -39,13 +36,13 @@
 
         <div class="form-group">
           <label for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="inputEmail" placeholder="medvedev@yandex.ru" data-error="проверьте правильность" required>
-          <div class="help-block with-errors"></div>
+          <input type="email" class="form-control" id="inputEmail" placeholder="medvedev@yandex.ru">
         </div>
 
         <div class="form-group">
           <label for="inputTel">Телефон</label>
-           <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
+           <span class="input-group-addon" id="basic-addon1">+7</span>
+          <input type="tel" class="form-control" id="inputTel" placeholder="9151322437">
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">отправить</button>
