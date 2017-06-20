@@ -47,7 +47,7 @@
            <!-- <input name="phone" placeholder="(845)555-1212" class="form-control" type="text"> -->
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" id = "submit" type="button" >отправить</button>
+        <button class="btn btn-lg btn-primary btn-block" id = "submit" type="button" >ok</button>
       </form>
 
     </div> <!-- /container -->
@@ -91,7 +91,7 @@
             var phone = '7'
             phone += $("#phone").val().replace("(","").replace(")","").replace("-","").replace(" ","");
             console.log(phone)
-            
+
             if (phone == '7') {
               flag = false;
               $("#phone").addClass("form-control-danger");
