@@ -86,6 +86,15 @@
               $("#inputEmail").parent().addClass("has-danger");
               console.log('email fail');
             }
+            if (phone == '7') {
+              flag = false;
+              $("#phone").addClass("form-control-danger");
+              $("#phone").parent().addClass("has-danger");
+            }
+            else {
+              $("#phone").removeClass("form-control-danger");
+              $("#phone").parent().removeClass("has-danger");
+            }
 
             var phone = '7'
             phone += $("#phone").val().replace("(","").replace(")","").replace("-","").replace(" ","");
