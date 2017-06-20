@@ -73,6 +73,7 @@
 
           $( "#submit" ).click(function() {
             var flag = true;
+            var email = $("#inputEmail").val();
             if (validateEmail(email)) {
               $("#inputEmail").removeClass("form-control-danger");
               // ok
