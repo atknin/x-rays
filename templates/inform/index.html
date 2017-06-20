@@ -76,11 +76,14 @@
             var email = $("#inputEmail").val();
             if (validateEmail(email)) {
               $("#inputEmail").removeClass("form-control-danger");
+              $("#inputEmail").parent().removeClass("has-danger");
+
               console.log('email ok');
               // ok
             } else {
               flag = false;
               $("#inputEmail").addClass("form-control-danger");
+              $("#inputEmail").parent().addClass("has-danger");
               console.log('email fail');
             }
 
