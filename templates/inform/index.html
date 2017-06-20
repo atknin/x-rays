@@ -69,7 +69,7 @@
 
           $( "#submit" ).click(function() {
             // alert( "Handler for .click() called." );
-            var phone = $("#phone").val();
+            var phone = $("#phone").val().replace("(","").replace(")","").replace("-","");
             console.log(phone)
           });
 
