@@ -97,13 +97,11 @@
               flag = false;
               $("#inputEmail").addClass("form-control-danger");
               $("#inputEmail").parent().addClass("has-danger");
-              console.log('email fail');
             }
 
 
             var phone = '7'
             phone += $("#phone").val().replace("(","").replace(")","").replace("-","").replace(" ","");
-            console.log(phone)
 
             if (phone == '7') {
               flag = false;
@@ -114,10 +112,11 @@
               $("#phone").removeClass("form-control-danger");
               $("#phone").parent().removeClass("has-danger");
             }
+
             var Name = $("#inputName");
             var LastName = $("#inputLastName");
 
-            if (Name=="") {
+            if (Name==null || Name=="") {
               $("#inputName").addClass("form-control-danger");
               $("#inputName").parent().addClass("has-danger");
             }
@@ -126,7 +125,7 @@
               $("#inputName").parent().removeClass("has-danger");
             }
 
-            if (LastName=="") {
+            if (LastName==null || LastName=="") {
               $("#inputLastName").addClass("form-control-danger");
               $("#inputLastName").parent().addClass("has-danger");
             }
@@ -136,6 +135,7 @@
             }
 
             if (flag) {
+              console.log(Name,LastName,phone,email)
               $("#main").hide();
               $("#load").show();
               $("#load").height($( window ).height());
