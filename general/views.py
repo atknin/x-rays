@@ -37,7 +37,7 @@ def index(request):
 		return JsonResponse(message)
 	elif str( request.META['HTTP_HOST']) =='x-rays.world':
 		return HttpResponseRedirect('http://xrayd.ru/')
-	elif str( request.META['HTTP_HOST']) =='6bot.ru' or str( request.META['HTTP_HOST']) =='www.6bot.ru' :
+	elif str( request.META['HTTP_HOST']) =='uysc.ru' or str( request.META['HTTP_HOST']) =='www.uysc.ru' :
 		return HttpResponseRedirect('http://xrayd.ru/inform/')
 	else:
 		arg = {}
