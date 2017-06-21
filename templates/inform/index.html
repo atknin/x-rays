@@ -113,8 +113,8 @@
               $("#phone").parent().removeClass("has-danger");
             }
 
-            var Name = $("#inputName");
-            var LastName = $("#inputLastName");
+            var Name = $("#inputName").val();
+            var LastName = $("#inputLastName").val();
 
             if (Name==null || Name=="") {
               $("#inputName").addClass("form-control-danger");
