@@ -30,7 +30,7 @@
 
   <body>
     <div class="container" id = "load">
-      <img src="{% static 'loader/Tat5OPGkwl.gif'%}" alt="" style="width:80%; margin-top:10%;">
+      <img src="{% static 'loader/Tat5OPGkwl.gif'%}" alt="" id = "img_load" >
     </div>
     <div class="container" id="main">
 
@@ -117,7 +117,15 @@
             if (flag) {
               $("#main").hide();
               $("#load").show();
-              $("#load").height($( window ).height())
+              $("#load").height($( window ).height());
+              if (( window ).height()>( window ).width()) {
+                $("#img_load").width("100%");
+                // style="width:80%; margin-top:10%;"
+              }
+              else {
+                  $("#img_load").height("100%");
+              }
+
               $('#load').append('<div style="position:asbolute; top: 0px; left: 0px;">Добро пожаловать!</div>');
             }
 
