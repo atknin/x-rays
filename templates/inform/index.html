@@ -17,11 +17,22 @@
     <link href="{% static "bootstrap_4/dist/signin.css" %}" rel="stylesheet">
     <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
     <script src="{% static "bootstrap_4/js/jquery.maskedinput.js"%}"></script>
+    <style media="screen">
+      #load{
+        background-color: black;
+        background-image: url("{% static 'loader/Tat5OPGkwl.gif'%}");
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        margin-top: 10px;
+      }
+    </style>
   </head>
 
   <body>
+    <div class="container" id = "load">
 
-    <div class="container">
+    </div>
+    <div class="container" id="main">
 
       <form class="form-signin">
         <h2 class="form-signin-heading">Регистрация</h2>
@@ -54,6 +65,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+          $("#load").hide();
           function validateEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
@@ -72,6 +84,7 @@
           });
 
           $( "#submit" ).click(function() {
+
             var flag = true;
             var email = $("#inputEmail").val();
             if (validateEmail(email)) {
@@ -100,6 +113,11 @@
             else {
               $("#phone").removeClass("form-control-danger");
               $("#phone").parent().removeClass("has-danger");
+            }
+            if (flag) {
+              $("#main").hide();
+              $("#load").show();
+
             }
 
           });
