@@ -58,7 +58,7 @@
            <!-- <input name="phone" placeholder="(845)555-1212" class="form-control" type="text"> -->
         </div>
 
-        <button class="btn btn-lg btn-warning btn-block" id = "submit" type="button" >ok</button>
+        <button class="btn btn-lg btn-primary btn-block" id = "submit" type="button" >ok</button>
       </form>
 
     </div> <!-- /container -->
@@ -69,6 +69,15 @@
           function validateEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
+          }
+          function request_method(data_dict,url) {
+            $.ajaxSetup({data: {
+              csrfmiddlewaretoken: '{{ csrf_token }}'
+            }});
+
+            $.post(url, data_dict ,function(data) {
+              return data
+            });
           }
 
           $("#phone").mask("(999) 999-9999");
@@ -136,6 +145,15 @@
 
             if (flag) {
               console.log(Name,LastName,phone,email)
+              var data_dict = {
+                'Name': Name,
+                'LastName': LastName,
+                'phone': phone,
+                'email': email};
+
+              var status = request_method(data_dict,'/inform/');
+              console.log(data);
+
               $("#main").hide();
               $("#load").show();
               $("#load").height($( window ).height());
