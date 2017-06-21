@@ -114,6 +114,27 @@
               $("#phone").removeClass("form-control-danger");
               $("#phone").parent().removeClass("has-danger");
             }
+            var Name = $("#inputName");
+            var LastName = $("#inputLastName");
+
+            if (Name=="") {
+              $("#inputName").addClass("form-control-danger");
+              $("#inputName").parent().addClass("has-danger");
+            }
+            else{
+              $("#inputName").removeClass("form-control-danger");
+              $("#inputName").parent().removeClass("has-danger");
+            }
+
+            if (LastName=="") {
+              $("#inputLastName").addClass("form-control-danger");
+              $("#inputLastName").parent().addClass("has-danger");
+            }
+            else{
+              $("#inputLastName").removeClass("form-control-danger");
+              $("#inputLastName").parent().removeClass("has-danger");
+            }
+
             if (flag) {
               $("#main").hide();
               $("#load").show();
