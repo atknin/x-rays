@@ -172,9 +172,11 @@
               setTimeout(
                 function()
                 {
-                  $("#regTitle").html('<button type="button" id = "to_qustions" class="btn btn-outline-secondary">ОПРОС</button>');
+                  $('#welcome').hide();
+                  $("#welcome").html('<button type="button" id = "to_qustions" class="btn btn-outline-secondary">ОПРОС</button>');
                 }, 8000);
-
+                
+                $('#welcome').show(1000);
 
             }
 
