@@ -32,7 +32,7 @@ class question_choose(models.Model):
 
 class questions(models.Model):
 	text = models.CharField(max_length=300)
-	choose = models.ManyToManyField(question_choose,null=True)
+	choose = models.ManyToManyField(question_choose,blank=True)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
 	class Meta:
 		verbose_name = u'Вопрос'
