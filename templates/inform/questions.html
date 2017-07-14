@@ -47,7 +47,9 @@
                 <label for="inputLastName">{{question.text}}</label>
                 <hr>
                 {%if question.types.text == "number"%}
+                <div class="col-3">
                   <input type="number" class="form-control" id="" name = "vopros_{{question.id}}">
+                </div>
                 {%else%}
                     {%for variant in question.choose.all%}
                       <label class="form-check-label">
