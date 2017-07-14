@@ -31,7 +31,7 @@
   <body>
     <div class="container" id="main">
 
-      <form class="form-signin">
+      <form >
         <div class="card card-inverse" style="background-color: #333; border-color: #333; margin-bottom:20px;">
           <div class="card-block">
             <h3 class="card-title">Вопросы</h3>
@@ -47,35 +47,24 @@
                 <label for="inputLastName">{{question.text}}</label>
                 <hr>
                 {%if question.types.text == "number"%}
-                  <input type="number" class="form-control" id="" name = "">
+                  <input type="number" class="form-control" id="" name = "vopros_{{question.id}}">
                 {%else%}
                     {%for variant in question.choose.all%}
                       <label class="form-check-label">
-                       <input class="form-check-input" type="radio" name="vopros_{{question.id}}" value="otvet_{{variant.id}}" checked>
-                     {{variant.id}}.{{variant.text}}
+                       <input class="form-check-input" type="radio" name="vopros_{{question.id}}" value="otvet_{{variant.id}}">
+                     {{variant.text}}
                      </label>
-                    <!-- <div class="btn-group mr-1" role="group" aria-label="First group">
-                      <label class="btn btn-primary">
-                       <input type="radio" name="options" id="option2" autocomplete="off">
-                     </label>
-                    </div> -->
                     {%endfor%}
                 {%endif%}
               </fieldset>
             </blockquote>
           </div>
         </div>
-
-
-
         {%endfor%}
-
-
         <button class="btn btn-lg btn-primary btn-block" id = "submit" type="button" >ok</button>
       </form>
 
     </div> <!-- /container -->
-
 
   </body>
 </html>
