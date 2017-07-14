@@ -14,7 +14,12 @@ class question_choose_admin(admin.ModelAdmin):
 class answers_admin(admin.ModelAdmin):
 	list_display = (u'user', u'questions',u'question_choose','DateTime')
 
+class types_question_admin(admin.ModelAdmin):
+	list_display = (u'text', )
+
+
 admin.site.register(models.participants, participants_admin)
 admin.site.register(models.questions, questions_admin)
 admin.site.register(models.question_choose, question_choose_admin)
 admin.site.register(models.answers, answers_admin)
+admin.site.register(models.types_question, types_question_admin)
