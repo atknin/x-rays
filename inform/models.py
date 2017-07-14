@@ -39,6 +39,7 @@ class questions(models.Model):
 	types = models.ForeignKey(types_question, blank=True, null = True)
 	choose = models.ManyToManyField(question_choose, blank=True)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
+	DateTime.editable=True
 	class Meta:
 		verbose_name = u'Вопрос'
 		verbose_name_plural = u'Вопросы'
