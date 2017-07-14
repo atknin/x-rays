@@ -45,15 +45,14 @@
             <blockquote class="card-blockquote">
               <fieldset class="form-group row">
                 <label for="inputLastName">{{question.text}}</label>
-                {{question.id}}
                 <hr>
                 {%if question.types.text == "number"%}
                   <input type="number" class="form-control" id="" name = "">
                 {%else%}
                     {%for variant in question.choose.all%}
                       <label class="form-check-label">
-                       <input class="form-check-input" type="radio" name="vopros_{{question.id}}" id="gridRadios1" value="option1" checked>
-                     {{variant.text}}
+                       <input class="form-check-input" type="radio" name="vopros_{{question.id}}" value="otvet_{{variant.id}}" checked>
+                     {{variant.id}}.{{variant.text}}
                      </label>
                     <!-- <div class="btn-group mr-1" role="group" aria-label="First group">
                       <label class="btn btn-primary">
