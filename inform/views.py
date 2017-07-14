@@ -29,8 +29,7 @@ def index(request):
 def questions(request):
     argv = {}
     today = date.today()
-    argv['questions'] = inform_models.questions.objects.filter(DateTime__year=today.year,
-                                                               DateTime__month=today.month)
+    argv['questions'] = inform_models.questions.objects.filter(DateTime__date=today.today())
     return render(
         request, 'inform/questions.html',argv
         )
