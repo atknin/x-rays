@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from inform import models as inform_models
-from datetime import date
+import datetime
 from django.utils import timezone
 # Create your views here.
 def index(request):
@@ -29,10 +29,10 @@ def index(request):
     	 	)
 def questions(request):
     argv = {}
-    today = date.today()
+    # today = date.today()
     today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
     today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
-    argv['questions'] = inform_models..objects.get(DateTime__range=(today_min, today_max))
+    argv['questions'] = inform_models.questions.objects.filter(DateTime__range=(today_min, today_max))
     return render(
         request, 'inform/questions.html',argv
         )
