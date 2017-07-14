@@ -32,7 +32,12 @@
     <div class="container" id="main">
 
       <form class="form-signin">
-        <h2 class="form-signin-heading">Вопросы</h2>
+        <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+          <div class="card-block">
+            <h3 class="card-title">Вопросы</h3>
+            <p class="card-text">количество: </p>
+          </div>
+        </div>
 
         {%for question in questions%}
         <div class="form-group">
