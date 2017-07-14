@@ -43,6 +43,7 @@
         <div class="card card-outline-primary mb-3 text-center">
           <div class="card-block">
             <blockquote class="card-blockquote">
+              <fieldset class="form-group row">
                 <label for="inputLastName">{{question.text}}</label>
                 {%if question.types.text == "number"%}
                   <input type="number" class="form-control" id="" name = "">
@@ -64,6 +65,7 @@
                     {%endfor%}
                   </div>
                 {%endif%}
+              </fieldset>
             </blockquote>
           </div>
         </div>
