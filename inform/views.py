@@ -30,8 +30,7 @@ def questions(request):
     argv = {}
     today = date.today()
     argv['questions'] = inform_models.questions.objects.filter(DateTime__year=today.year,
-                                                                       DateTime__month=today.month,
-                                                                       DateTime__day=today.day)
+                                                               DateTime__month=today.month)
     return render(
         request, 'inform/questions.html',argv
         )
