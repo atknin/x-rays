@@ -38,7 +38,7 @@
         <div class="form-group">
           <label for="inputLastName">{{question.text}}</label>
           {%if question.types.text == "number"%}
-            <input type="text" class="form-control" id="inputLastName" placeholder="Медведев">
+            <input type="number" class="form-control" id="inputLastName" placeholder="Медведев">
           {%else%}
             {%for variant in question.choose.all%}
             <input type="text" class="form-control" id="inputLastName" placeholder="{{variant.text}}">
