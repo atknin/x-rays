@@ -6,7 +6,7 @@ class participants(models.Model):
 	email = models.EmailField(max_length=50)
 	phone = models.CharField(max_length=11)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
-	ip = models.GenericIPAddressField(protocol='IPv4',blank=True)
+	ip = models.GenericIPAddressField(protocol='IPv4',blank=True,null=True)
 	# client_ip = request.META['REMOTE_ADDR']
 
 	class Meta:
@@ -31,7 +31,7 @@ class question_choose(models.Model):
 class questions(models.Model):
 	text = models.CharField(max_length=300)
 	choose = models.ManyToManyField(question_choose)
-	DateTime = models.DateTimeField(auto_now_add=True)
+	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
 	class Meta:
 		verbose_name = u'Вопрос'
 		verbose_name_plural = u'Вопросы'
@@ -43,7 +43,7 @@ class answers(models.Model):
 	user = models.ForeignKey(participants, blank=True)
 	questions = models.ForeignKey(questions)
 	question_choose = models.ForeignKey(question_choose)
-	DateTime = models.DateTimeField(auto_now_add=True, null=True)
+	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
 	class Meta:
 		verbose_name = u'Ответ'
 		verbose_name_plural = u'Ответы'
