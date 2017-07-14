@@ -46,15 +46,27 @@
               <div class="form-group">
                 <label for="inputLastName">{{question.text}}</label>
                 {%if question.types.text == "number"%}
-                  <input type="number" class="form-control" id="inputLastName" placeholder="Медведев">
+                  <input type="number" class="form-control" id="" name = "">
                 {%else%}
                   <div class="btn-group-vertical">
                     {%for variant in question.choose.all%}
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+                            <input type="checkbox" aria-label="Checkbox for following text input">
+                          </span>
+                          <!-- <span class="input-group-addon">$</span> -->
+                          <span class="badge badge-default badge-pill"> {{variant.text}}</span>
+                          <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
+                        </div>
+                      </div>
+
+                    <!-- <div class="btn-group mr-1" role="group" aria-label="First group">
                       <label class="btn btn-primary">
                        <input type="radio" name="options" id="option2" autocomplete="off"> {{variant.text}}
                      </label>
-                    </div>
+                    </div> -->
                     {%endfor%}
                   </div>
                 {%endif%}
