@@ -6,6 +6,8 @@ class participants(models.Model):
 	email = models.EmailField(max_length=50)
 	phone = models.CharField(max_length=11)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
+	ip = models.GenericIPAddressField(protocol='IPv4',blank=True)
+	# client_ip = request.META['REMOTE_ADDR']
 
 	class Meta:
 		verbose_name = u'Участник лекции'
@@ -14,3 +16,18 @@ class participants(models.Model):
 
 	def __unicode__(self):
 		return self.name.LastName('utf-8')
+
+
+class question_choose(models.Model):
+	text = models.CharField(max_length=300)
+
+class questions(models.Model):
+	text = models.CharField(max_length=300)
+	choose = models.ManyToManyField(question_choose, blank = True, null = True)
+	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
+
+class answers(models.Model):
+	user = models.ForeignKey(participants, blank=True)
+	questions = models.ForeignKey(questions)
+	question_choose = models.ForeignKey(question_choose)
+	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
