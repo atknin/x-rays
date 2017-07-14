@@ -15,19 +15,38 @@ class participants(models.Model):
 		ordering = ['-DateTime']
 
 	def __unicode__(self):
-		return self.name.LastName('utf-8')
+		return self.LastName.encode('utf-8')
 
 
 class question_choose(models.Model):
 	text = models.CharField(max_length=300)
+	class Meta:
+		verbose_name = u'Вариант ответа'
+		verbose_name_plural = u'Варианты ответа'
+
+	def __unicode__(self):
+		return self.text.encode('utf-8')
+
 
 class questions(models.Model):
 	text = models.CharField(max_length=300)
 	choose = models.ManyToManyField(question_choose, blank = True, null = True)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
+	class Meta:
+		verbose_name = u'Вопрос'
+		verbose_name_plural = u'Вопросы'
+
+	def __unicode__(self):
+		return self.text.encode('utf-8')
 
 class answers(models.Model):
 	user = models.ForeignKey(participants, blank=True)
 	questions = models.ForeignKey(questions)
 	question_choose = models.ForeignKey(question_choose)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
+	class Meta:
+		verbose_name = u'Ответ'
+		verbose_name_plural = u'Ответы'
+
+	def __unicode__(self):
+		return self.questions.text.encode('utf-8')
