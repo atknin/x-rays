@@ -40,9 +40,16 @@
           {%if question.types.text == "number"%}
             <input type="number" class="form-control" id="inputLastName" placeholder="Медведев">
           {%else%}
-            {%for variant in question.choose.all%}
-            <input type="text" class="form-control" id="inputLastName" placeholder="{{variant.text}}">
-            {%endfor%}
+            <div class="btn-group-vertical">
+              {%for variant in question.choose.all%}
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <label class="btn btn-primary">
+                 <input type="radio" name="options" id="option2" autocomplete="off"> {{variant.text}}
+               </label>
+              </div>
+              <input type="text" class="form-control" id="inputLastName" placeholder="{{variant.text}}">
+              {%endfor%}
+            </div>
           {%endif%}
 
 
