@@ -26,6 +26,8 @@ class question_choose(models.Model):
 
 	def __unicode__(self):
 		return self.text.encode('utf-8')
+	def __str__(self):
+		return self.text
 
 
 class questions(models.Model):
