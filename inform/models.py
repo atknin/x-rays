@@ -43,7 +43,7 @@ class answers(models.Model):
 	user = models.ForeignKey(participants, blank=True)
 	questions = models.ForeignKey(questions)
 	question_choose = models.ForeignKey(question_choose)
-	DateTime = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+	DateTime = models.DateTimeField(auto_now_add=True, null=True)
 	class Meta:
 		verbose_name = u'Ответ'
 		verbose_name_plural = u'Ответы'
