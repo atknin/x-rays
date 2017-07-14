@@ -45,6 +45,7 @@
             <blockquote class="card-blockquote">
               <fieldset class="form-group row">
                 <label for="inputLastName">{{question.text}}</label>
+                <hr>
                 {%if question.types.text == "number"%}
                   <input type="number" class="form-control" id="" name = "">
                 {%else%}
@@ -53,7 +54,6 @@
                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
                      {{variant.text}}
                      </label>
-                      <br>
                     <!-- <div class="btn-group mr-1" role="group" aria-label="First group">
                       <label class="btn btn-primary">
                        <input type="radio" name="options" id="option2" autocomplete="off">
