@@ -7,6 +7,7 @@ class participants_admin(admin.ModelAdmin):
 
 class questions_admin(admin.ModelAdmin):
 	list_display = (u'text', 'DateTime')
+	readonly_fields = ('DateTime',)
 
 class question_choose_admin(admin.ModelAdmin):
 	list_display = (u'text', )
