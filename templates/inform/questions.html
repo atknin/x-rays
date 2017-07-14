@@ -32,7 +32,7 @@
     <div class="container" id="main">
 
       <form class="form-signin">
-        <div class="card card-inverse" style="background-color: #333; border-color: #333;">
+        <div class="card card-inverse" style="background-color: #333; border-color: #333; margin-bottom:20px;">
           <div class="card-block">
             <h3 class="card-title">Вопросы</h3>
             <p class="card-text">количество: </p>
@@ -40,24 +40,31 @@
         </div>
 
         {%for question in questions%}
-        <div class="form-group">
-          <label for="inputLastName">{{question.text}}</label>
-          {%if question.types.text == "number"%}
-            <input type="number" class="form-control" id="inputLastName" placeholder="Медведев">
-          {%else%}
-            <div class="btn-group-vertical">
-              {%for variant in question.choose.all%}
-              <div class="btn-group mr-2" role="group" aria-label="First group">
-                <label class="btn btn-primary">
-                 <input type="radio" name="options" id="option2" autocomplete="off"> {{variant.text}}
-               </label>
+        <div class="card card-outline-primary mb-3 text-center">
+          <div class="card-block">
+            <blockquote class="card-blockquote">
+              <div class="form-group">
+                <label for="inputLastName">{{question.text}}</label>
+                {%if question.types.text == "number"%}
+                  <input type="number" class="form-control" id="inputLastName" placeholder="Медведев">
+                {%else%}
+                  <div class="btn-group-vertical">
+                    {%for variant in question.choose.all%}
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                      <label class="btn btn-primary">
+                       <input type="radio" name="options" id="option2" autocomplete="off"> {{variant.text}}
+                     </label>
+                    </div>
+                    {%endfor%}
+                  </div>
+                {%endif%}
               </div>
-              {%endfor%}
-            </div>
-          {%endif%}
-
-
+            </blockquote>
+          </div>
         </div>
+
+
+
         {%endfor%}
 
 
