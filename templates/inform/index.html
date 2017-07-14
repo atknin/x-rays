@@ -173,9 +173,13 @@
                 function()
                 {
                   $('#welcome').hide();
-                  $("#welcome").html('<button style ="margin-top:10px;" type="button" id = "to_qustions" class="btn btn-outline-secondary">ОПРОС</button>');
+                  $("#welcome").html('<button style ="margin-top:10px;" type="button" id = "to_qustions" class="btn btn-outline-secondary">Ok</button>');
                   $('#welcome').show(1000);
                 }, 8000);
+
+                $( "#to_qustions" ).click(function() {
+                  window.location = "http://www.xrayd.ru/inform/questions/";
+                });
 
 
 

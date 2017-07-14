@@ -29,10 +29,15 @@ class question_choose(models.Model):
 	def __str__(self):
 		return self.text
 
+class types_for_question(models.Model):
+	text = models.CharField(max_length=300)
+	def __str__(self):
+		return self.text
 
 class questions(models.Model):
 	text = models.CharField(max_length=300)
-	choose = models.ManyToManyField(question_choose,blank=True)
+	types = models.ForeignKey(types_for_question)
+	choose = models.ManyToManyField(question_choose, blank=True)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
 	class Meta:
 		verbose_name = u'Вопрос'
