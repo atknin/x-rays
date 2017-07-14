@@ -28,7 +28,6 @@ def index(request):
     	 	)
 def questions(request):
     argv = {}
-    yesterday = datetime.date.today() - datetime.timedelta(days=1)
     argv['questions'] = inform_models.questions.objects.objects.filter(DateTime=timezone.now())
     return render(
         request, 'inform/questions.html',argv
