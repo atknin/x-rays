@@ -31,7 +31,7 @@
   <body>
     <div class="container" id="main">
 
-      <form >
+      <form action = "/inform/questions/" method="POST">
         <div class="card card-inverse" style="background-color: #333; border-color: #333; margin-bottom:20px;">
           <div class="card-block">
             <h3 class="card-title">Вопросы</h3>
@@ -63,7 +63,7 @@
           </div>
         </div>
         {%endfor%}
-        <button class="btn btn-lg btn-primary btn-block" id = "submit" type="button" >ok</button>
+        <button class="btn btn-lg btn-primary btn-block" id = "submit" type="submit" >ok</button>
       </form>
 
     </div> <!-- /container -->
