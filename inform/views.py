@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from inform import models as inform_models
-from django.utils import timezone
+from datetime import date
 # Create your views here.
 def index(request):
     if request.is_ajax():
@@ -28,7 +28,10 @@ def index(request):
     	 	)
 def questions(request):
     argv = {}
-    argv['questions'] = inform_models.questions.objects.objects.filter(DateTime=timezone.now())
+    today = date.today()
+    argv['questions'] = inform_models.questions.objects.filter(DateTime__year=today.year,
+                                                                       DateTime__month=today.month,
+                                                                       DateTime__day=today.day)
     return render(
         request, 'inform/questions.html',argv
         )
