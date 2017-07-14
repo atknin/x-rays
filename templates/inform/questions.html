@@ -48,22 +48,21 @@
                 {%if question.types.text == "number"%}
                   <input type="number" class="form-control" id="" name = "">
                 {%else%}
-                  <div class="btn-group-vertical">
+                  <div class="row">
                     {%for variant in question.choose.all%}
                     <div class="row">
-                      <div class="col-lg-6">
-                        <div class="input-group">
-                          <span class="input-group-addon">
-                            <input type="checkbox" aria-label="Checkbox for following text input">
-                          </span>
-                          <span class="input-group-addon"> {{variant.text}}</span>
-                          <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"> -->
-                        </div>
+                      <div class="custom-controls-stacked">
+                        <label class="custom-control custom-radio">
+                          <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input">
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">{{variant.text}}</span>
+                        </label>
+
                       </div>
 
                     <!-- <div class="btn-group mr-1" role="group" aria-label="First group">
                       <label class="btn btn-primary">
-                       <input type="radio" name="options" id="option2" autocomplete="off"> {{variant.text}}
+                       <input type="radio" name="options" id="option2" autocomplete="off"> 
                      </label>
                     </div> -->
                     {%endfor%}
