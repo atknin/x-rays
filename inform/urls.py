@@ -5,4 +5,6 @@ from inform import views
 
 urlpatterns = [
     url(r'^$', views.index),
+    url(r'^questions/$', views.questions), 
+
 ]
