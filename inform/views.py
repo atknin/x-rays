@@ -43,10 +43,7 @@ def questions(request):
             otv_bd = inform_models.answers.objects.create(questions = question,
                                                           question_choose = question_choose)
             try:
-                try:
-                    user = inform_models.participants.objects.filter(ip=request.META['REMOTE_ADDR'])[-1]
-                except Exception as e:
-                    user = inform_models.participants.objects.filter(ip=request.META['REMOTE_ADDR']) 
+                user = inform_models.participants.objects.filter(ip=request.META['REMOTE_ADDR']).reverse()[0]
                 otv_bd.user = user
                 otv_bd.save()
             except Exception as e:
