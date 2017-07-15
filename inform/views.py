@@ -53,8 +53,9 @@ def questions(request):
                 # bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
                 otv_bd.save()
         # bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
+        argv['time'] = timezone.localtime(timezone.now())
         return render(
-            request, 'inform/questions.html',argv
+            request, 'inform/bye.html',argv
             )
     else:
         today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
