@@ -9,7 +9,6 @@
     <link rel="icon" href="{% static "icon/informata.png" %}">
 
     <title>ИНФО СМУ</title>
-
     <!-- Bootstrap core CSS -->
     <link href="{% static "bootstrap_4/css/bootstrap.min.css" %}" rel="stylesheet">
 
@@ -17,6 +16,7 @@
     <link href="{% static "bootstrap_4/dist/signin.css" %}" rel="stylesheet">
     <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
     <script src="{% static "bootstrap_4/js/jquery.maskedinput.js"%}"></script>
+    <script src="{% static "graph/plotly/plotly-latest.min.js"%}" ></script>
     <style media="screen">
       #load{
         background-color: black;
@@ -37,16 +37,14 @@
             <h3 class="card-title">Результаты на сегодня</h3>
           </div>
         </div>
-        <!-- <form action = "/inform/questions/" method="POST">
-          {% csrf_token %}
-        {%for question in questions%}
+        {%for result in results%}
         <div class="card card-outline-primary mb-3">
           <div class="card-block">
             <blockquote class="card-blockquote">
               <fieldset class="form-group row">
-                <label for="inputLastName">{{question.text}}</label>
+                <label for="inputLastName">{{result.text}}</label>
                 <hr>
-                {%if question.types.text == "number"%}
+                <!-- {%if question.types.text == "number"%}
                 <div class="col-5">
                   <input type="number" class="form-control" id="" name = "voprosnum_{{question.id}}">
                 </div>
@@ -57,14 +55,12 @@
                      {{variant.text}}
                      </label>
                     {%endfor%}
-                {%endif%}
+                {%endif%} -->
               </fieldset>
             </blockquote>
           </div>
         </div>
         {%endfor%}
-        <button class="btn btn-lg btn-primary btn-block" id = "submit" type="submit" >ok</button>
-      </form> -->
 
     </div> <!-- /container -->
 

@@ -71,9 +71,7 @@ def questions_results(request):
     result = inform_models.answers.objects.filter(DateTime__range=(today_min, today_max))
     argv['total_answers'] = len(result)
     argv['results'] = {}
-    argv['meta'] = {}
     for i in result:
-        argv['meta'][i.questions.id] = i.questions
         if str(i.questions.types.text) == 'number':
             if i.questions in argv['results']:
                 argv['results'][i.questions]['result'] += i.number
