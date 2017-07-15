@@ -46,9 +46,9 @@ def questions(request):
             try:
                 user = inform_models.questions.objects.filter(ip=request.META['REMOTE_ADDR'])[-1]
                 otv_bd.user = user
-                user.save()
+                otv_bd.save()
             except Exception as e:
-                user.save()
+                otv_bd.save()
         bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
         return render(
             request, 'inform/questions.html',argv
