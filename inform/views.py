@@ -83,11 +83,14 @@ def questions_results(request):
                 argv['results'][i.questions.id]['result'] = i.number
                 argv['results'][i.questions.id]['N'] = 1
         else:
-            if i.question_choose.id in argv['results'][i.questions.id]:
-                argv['results'][i.questions.id][i.question_choose.id] += 1
+            if i.questions.id in argv['results']:
+                if i.question_choose.id in argv['results'][i.questions.id]:
+                    argv['results'][i.questions.id][i.question_choose.id] += 1
+                else:
+                    argv['results'][i.questions.id] = {}
+                    argv['results'][i.questions.id][i.question_choose.id] = 1
             else:
                 argv['results'][i.questions.id] = {}
-                argv['results'][i.questions.id][i.question_choose.id] = 1
 
     bot_inform.sent_to_atknin_bot(str(argv['results']), 'v') # проинформируем в telegramm bot
     return render(
