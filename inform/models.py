@@ -51,6 +51,7 @@ class questions(models.Model):
 		return self.text
 
 class answers(models.Model):
+	text = models.CharField(max_length=300, blank=True, null = True)
 	user = models.ForeignKey(participants, blank=True, null = True)
 	questions = models.ForeignKey(questions)
 	question_choose = models.ForeignKey(question_choose)
