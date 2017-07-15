@@ -38,12 +38,12 @@
             <h3 class="card-title">Результаты на сегодня</h3>
           </div>
         </div>
-        {%for key, values in results.items%}
+        {%for key in results%}
         <div class="card card-outline-primary mb-3">
           <div class="card-block">
             <blockquote class="card-blockquote">
               <fieldset class="form-group row">
-                <!-- <label for="inputLastName">{{key.text}}</label> -->
+                <label for="inputLastName">{{key.text}}</label>
                 <hr>
                 <!-- {{key}} -->
                 <!-- {{values}} -->
@@ -74,6 +74,13 @@
         {%endfor%}
 
     </div> <!-- /container -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+      a = "{{results}}"
+      console.log(a)
+    });
+
+    </script>
 
   </body>
 </html>
