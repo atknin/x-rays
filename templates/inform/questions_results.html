@@ -66,6 +66,11 @@
                   </div>
                   <script type="text/javascript">
                     var elements = $('#myDiv{{akey.id}}').children();
+                    $('#myDiv{{akey.id}}').children().each(function(i) {
+                        console.log($(this).attr('name');)
+                        console.log($(this).val();)
+                        console.log('-----')
+                    });
                     for (var i = 0; i < elements.length; i++) {
                       console.log(elements.val()[i])
                       // console.log(elements[i].val())
