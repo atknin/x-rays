@@ -16,6 +16,8 @@ class participants(models.Model):
 
 	def __unicode__(self):
 		return self.LastName.encode('utf-8')
+	def __str__(self):
+		return self.LastName
 
 
 class question_choose(models.Model):
