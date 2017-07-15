@@ -55,12 +55,10 @@
                 {%if akey.types.text == "number"%}
                   Среднее: {{avalues.result|div:avalues.N}}
                 {%else%}
-                  <div class="row">
-                      <div id="myDiv{{akey.id}}">
-                        {%for nameresult, resultvalue in avalues.items%}
-                          <input type="text" name="{{nameresult.text}}" value="{{resultvalue}}" style='display:none;'>
-                        {%endfor%}
-                      </div>
+                  <div id="myDiv{{akey.id}}">
+                    {%for nameresult, resultvalue in avalues.items%}
+                      <input type="text" name="{{nameresult.text}}" value="{{resultvalue}}" style='display:none;'>
+                    {%endfor%}
                   </div>
                   <script type="text/javascript">
                     var sign = [];
