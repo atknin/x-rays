@@ -45,9 +45,11 @@ class questions(models.Model):
 
 	def __unicode__(self):
 		return self.text.encode('utf-8')
+	def __str__(self):
+		return self.text
 
 class answers(models.Model):
-	user = models.ForeignKey(participants, blank=True, null = True)
+	user = models.ForeignKey(participants, blank=True, null = True,verbose_name)
 	questions = models.ForeignKey(questions)
 	question_choose = models.ForeignKey(question_choose)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)

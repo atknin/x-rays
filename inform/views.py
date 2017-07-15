@@ -34,7 +34,6 @@ def questions(request):
         otvet = dict(request.POST)
         del otvet['csrfmiddlewaretoken']
         for key in otvet:
-            bot_inform.sent_to_atknin_bot(str(key)+ '//'+str(otvet[key]), 'v') # проинформируем в telegramm bot
 
             num_vopros = int(str(key).split('_')[1])
             num_otvet = int(str(otvet[key][0]).split('_')[1])
