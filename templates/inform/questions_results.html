@@ -49,7 +49,17 @@
                 {%if akey.types.text == "number"%}
                   Среднее: {{avalues.result|div:avalues.N}}
                 {%else%}
-                  <div id="myDiv{{akey.id}}"></div>
+                  <div class="row">
+                    <div class="col-2">
+
+                    </div>
+                    <div class="col-8">
+                      <div id="myDiv{{akey.id}}"></div>
+                    </div>
+                    <div class="col-2">
+
+                    </div>
+                  </div>
                   <script type="text/javascript">
                   var data = [
                       {
@@ -59,24 +69,24 @@
                       }
                     ];
                     var layout = {
-                      title: 'Darwin curve for perfect crystals',
-                      bgcolorsrc: 'rgb(238, 238, 238)',
-                      xaxis: {
-                        title: 'deviation from the Bragg angle',
-                        titlefont: {
-                          family: 'Courier New, monospace',
-                          size: 18,
-                          color: '#7f7f7f'
-                        }
-                      },
-                      yaxis: {
-                        title: '|R|',
-                        titlefont: {
-                          family: 'Courier New, monospace',
-                          size: 18,
-                          color: '#7f7f7f'
-                        }
-                      }
+                      title: '{{akey.text}}',
+                      // bgcolorsrc: 'rgb(238, 238, 238)',
+                      // xaxis: {
+                      //   title: 'deviation from the Bragg angle',
+                      //   titlefont: {
+                      //     family: 'Courier New, monospace',
+                      //     size: 18,
+                      //     color: '#7f7f7f'
+                      //   }
+                      // },
+                      // yaxis: {
+                      //   title: '|R|',
+                      //   titlefont: {
+                      //     family: 'Courier New, monospace',
+                      //     size: 18,
+                      //     color: '#7f7f7f'
+                      //   }
+                      // }
                     };
 
                     Plotly.newPlot('myDiv{{akey.id}}', data,layout);
