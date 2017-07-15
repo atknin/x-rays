@@ -38,12 +38,12 @@
             <h3 class="card-title">Результаты на сегодня</h3>
           </div>
         </div>
-        {%for key in results%}
+        {%for a in results%}
         <div class="card card-outline-primary mb-3">
           <div class="card-block">
             <blockquote class="card-blockquote">
               <fieldset class="form-group row">
-                <label for="inputLastName">{{key.text}}</label>
+                <label for="inputLastName">{{a.text}}</label>
                 <hr>
                 <!-- {{key}} -->
                 <!-- {{values}} -->
