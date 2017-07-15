@@ -38,16 +38,16 @@
             <h3 class="card-title">Результаты на сегодня</h3>
           </div>
         </div>
-        {%for result in results%}
+        {%for key, values in results.items%}
         <div class="card card-outline-primary mb-3">
           <div class="card-block">
             <blockquote class="card-blockquote">
               <fieldset class="form-group row">
-                <label for="inputLastName">{{result.text}}</label>
+                <label for="inputLastName">{{key.text}}</label>
                 <hr>
                 {%if result.types.text == "number"%}
-                  Среднее: {{result}}
-                  {{ result|get_item:result }}
+                  Среднее: {{values}}
+                  <!-- {{ result|get_item:result }} -->
 
                 {%else%}
                   График
