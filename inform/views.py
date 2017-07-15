@@ -76,12 +76,12 @@ def questions_results(request):
         argv['meta'][i.questions.id] = i.questions
         if str(i.questions.types.text) == 'number':
             if i.questions.id in argv['results']:
-                argv['results'][i.questions.id]['result'] += i.number
-                argv['results'][i.questions.id]['N'] += 1
+                argv['results'][i.questions]['result'] += i.number
+                argv['results'][i.questions]['N'] += 1
             else:
-                argv['results'][i.questions.id] = {}
-                argv['results'][i.questions.id]['result'] = i.number
-                argv['results'][i.questions.id]['N'] = 1
+                argv['results'][i.questions] = {}
+                argv['results'][i.questions]['result'] = i.number
+                argv['results'][i.questions]['N'] = 1
         else:
             if i.questions.id in argv['results']:
                 if i.question_choose.id in argv['results'][i.questions.id]:
