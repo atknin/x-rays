@@ -74,7 +74,7 @@ def questions_results(request):
     argv['meta'] = {}
     for i in result:
         argv['meta'][i.questions.id] = i.questions
-        bot_inform.sent_to_atknin_bot(str(i.questions.text), 'v') # проинформируем в telegramm bot
+        bot_inform.sent_to_atknin_bot(str(i.questions.types.text), 'v') # проинформируем в telegramm bot
         if str(i.questions.types.text) == 'number':
             if i.questions.id in argv['results']:
                 argv['results'][i.questions.id]['result'] += i.number
