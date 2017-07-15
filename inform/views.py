@@ -37,7 +37,7 @@ def questions(request):
             bot_inform.sent_to_atknin_bot(str(key)+ '//'+str(otvet[key]), 'v') # проинформируем в telegramm bot
 
             num_vopros = int(str(key).split('_')[1])
-            num_otvet = int(str(otvet[key]).split('_')[1])
+            num_otvet = int(str(otvet[key][0]).split('_')[1])
 
             question = inform_models.questions.objects.get(id=num_vopros)
             question_choose = inform_models.question_choose.objects.get(id=num_otvet)
