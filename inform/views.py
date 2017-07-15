@@ -87,7 +87,6 @@ def questions_results(request):
                 if i.question_choose.id in argv['results'][i.questions.id]:
                     argv['results'][i.questions.id][i.question_choose.id] += 1
                 else:
-                    argv['results'][i.questions.id] = {}
                     argv['results'][i.questions.id][i.question_choose.id] = 1
             else:
                 argv['results'][i.questions.id] = {}
