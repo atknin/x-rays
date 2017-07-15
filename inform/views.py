@@ -32,9 +32,10 @@ def questions(request):
     argv = {}
     if request.method == 'POST':
         otvet = dict(request.POST)
+        bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
         del otvet['csrfmiddlewaretoken']
         for key in otvet:
-
+            # if str(key).split('_')
             num_vopros = int(str(key).split('_')[1])
             num_otvet = int(str(otvet[key][0]).split('_')[1])
 
