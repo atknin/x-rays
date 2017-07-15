@@ -32,6 +32,7 @@
     <div class="container" id="main">
 
       <form action = "/inform/questions/" method="POST">
+        {{ csrf_token }}
         <div class="card card-inverse" style="background-color: #333; border-color: #333; margin-bottom:20px;">
           <div class="card-block">
             <h3 class="card-title">Вопросы</h3>

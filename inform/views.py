@@ -4,6 +4,7 @@ from inform import models as inform_models
 import datetime
 from django.utils import timezone
 # Create your views here.
+import general.bot_inform as bot_inform
 def index(request):
     if request.is_ajax():
         out_data = {}
@@ -29,10 +30,12 @@ def index(request):
     	 	)
 def questions(request):
     argv = {}
-    # today = date.today()
-    today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
-    today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
-    argv['questions'] = inform_models.questions.objects.filter(DateTime__range=(today_min, today_max))
-    return render(
-        request, 'inform/questions.html',argv
-        )
+    if request.method == 'POST':
+        bot_inform.sent_to_atknin_bot(str(request.POST), 'v') # проинформируем в telegramm bot
+    else:
+        today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
+        today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
+        argv['questions'] = inform_models.questions.objects.filter(DateTime__range=(today_min, today_max))
+        return render(
+            request, 'inform/questions.html',argv
+            )
