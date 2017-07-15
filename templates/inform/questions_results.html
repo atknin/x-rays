@@ -31,15 +31,14 @@
   <body>
     <div class="container" id="main">
 
-      <form action = "/inform/questions/" method="POST">
-        {% csrf_token %}
+
         <div class="card card-inverse" style="background-color: #333; border-color: #333; margin-bottom:20px;">
           <div class="card-block">
-            <h3 class="card-title">Вопросы</h3>
-            <p class="card-text">количество: {{ questions|length }}</p>
+            <h3 class="card-title">Результаты на сегодня</h3>
           </div>
         </div>
-
+        <!-- <form action = "/inform/questions/" method="POST">
+          {% csrf_token %}
         {%for question in questions%}
         <div class="card card-outline-primary mb-3">
           <div class="card-block">
@@ -65,7 +64,7 @@
         </div>
         {%endfor%}
         <button class="btn btn-lg btn-primary btn-block" id = "submit" type="submit" >ok</button>
-      </form>
+      </form> -->
 
     </div> <!-- /container -->
 

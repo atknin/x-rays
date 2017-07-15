@@ -32,7 +32,6 @@ def questions(request):
     argv = {}
     if request.method == 'POST':
         otvet = dict(request.POST)
-        bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
         del otvet['csrfmiddlewaretoken']
         for key in otvet:
             num_vopros = int(str(key).split('_')[1])
@@ -51,9 +50,9 @@ def questions(request):
                 otv_bd.user = user
                 otv_bd.save()
             except Exception as e:
-                bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
+                # bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
                 otv_bd.save()
-        bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
+        # bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
         return render(
             request, 'inform/questions.html',argv
             )
@@ -64,3 +63,30 @@ def questions(request):
         return render(
             request, 'inform/questions.html',argv
             )
+
+def questions_results(request):
+    argv = {}
+    today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
+    today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
+    result = inform_models.answers.objects.filter(DateTime__range=(today_min, today_max))
+    argv['total_answers'] = len(result)
+    argv['results'] = {}
+    argv['meta'] = {}
+    for i in result:
+        argv['meta'][i.questions.id] = i.questions
+        if i.questions.types.text == 'number':
+            if i.questions.id in argv['results']:
+                argv['results'][i.questions.id]['result'] += i.number
+                argv['results'][i.questions.id]['N'] += 1
+            else:
+                argv['results'][i.questions.id] = {}
+                argv['results'][i.questions.id]['result'] = i.number
+                argv['results'][i.questions.id]['N'] = 1
+        else:
+            if i.questions.id in argv['results']:
+                argv['results'][i.questions.id] += 1
+            else:
+                argv['results'][i.questions.id] = 1
+    return render(
+        request, 'inform/questions_results.html',argv
+        )
