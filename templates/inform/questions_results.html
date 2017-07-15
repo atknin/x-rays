@@ -61,6 +61,11 @@
                     </div>
                   </div>
                   <script type="text/javascript">
+                  var dd =  "{{avalues}}";
+                  for (var i = 0; i < dd.length; i++) {
+                    console.log(dd[i])
+                  };
+
                   var data = [
                       {
                         x: ['giraffes', 'orangutans', 'monkeys'],
@@ -69,7 +74,7 @@
                       }
                     ];
                     var layout = {
-                      title: '{{akey.text}}',
+                      title: 'Результат',
                       // bgcolorsrc: 'rgb(238, 238, 238)',
                       // xaxis: {
                       //   title: 'deviation from the Bragg angle',
