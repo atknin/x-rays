@@ -66,8 +66,11 @@
                   </div>
                   <script type="text/javascript">
                     var elements = $('#myDiv{{akey.id}}').children();
-                    console.log(elements);
-
+                    for (var i = 0; i < elements.length; i++) {
+                      console.log(elements[i].attr('name'))
+                      console.log(elements[i].val())
+                      console.log('-----')
+                    }
                   var data = [
                       {
                         x: ['giraffes', 'orangutans', 'monkeys'],
@@ -98,8 +101,6 @@
 
                     Plotly.newPlot('myDiv{{akey.id}}', data,layout);
                   </script>
-                  График
-                  {{avalues}}
                 {%endif%}
                 <!-- {%if question.types.text == "number"%}
                 <div class="col-5">
