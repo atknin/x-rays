@@ -35,7 +35,7 @@ def questions(request):
         del otvet['csrfmiddlewaretoken']
         for key in otvet:
             num_vopros = int(str(key).split('_')[1])
-            num_otvet = int(str(otvet['otvet']).split('_')[1])
+            num_otvet = int(str(otvet[key]).split('_')[1])
             question = inform_models.questions.objects.get(id=num_vopros)
             question_choose = inform_models.question_choose.objects.get(id=num_otvet)
             otv_bd = inform_models.answers.objects.create(questions = question,
