@@ -31,9 +31,8 @@ def index(request):
 def questions(request):
     argv = {}
     if request.method == 'POST':
-        otvety = request.POST
-        del otvety['csrfmiddlewaretoken']
-        bot_inform.sent_to_atknin_bot(str(otvety), 'v') # проинформируем в telegramm bot
+        request.session.pop('csrfmiddlewaretoken')
+        bot_inform.sent_to_atknin_bot(str(request.POST), 'v') # проинформируем в telegramm bot
         return render(
             request, 'inform/questions.html',argv
             )
