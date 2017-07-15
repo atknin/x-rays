@@ -56,19 +56,11 @@
                   Среднее: {{avalues.result|div:avalues.N}}
                 {%else%}
                   <div class="row">
-                    <div class="col-2">
-
-                    </div>
-                    <div class="col-8">
                       <div id="myDiv{{akey.id}}">
                         {%for nameresult, resultvalue in avalues.items%}
                           <input type="text" name="{{nameresult.text}}" value="{{resultvalue}}" style='display:none;'>
                         {%endfor%}
                       </div>
-                    </div>
-                    <div class="col-2">
-
-                    </div>
                   </div>
                   <script type="text/javascript">
                     var sign = [];
