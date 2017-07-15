@@ -52,9 +52,10 @@ class questions(models.Model):
 
 class answers(models.Model):
 	text = models.CharField(max_length=300, blank=True, null = True)
+	number = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True)
 	user = models.ForeignKey(participants, blank=True, null = True)
 	questions = models.ForeignKey(questions)
-	question_choose = models.ForeignKey(question_choose)
+	question_choose = models.ForeignKey(question_choose, blank=True, null = True)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
 	class Meta:
 		verbose_name = u'Ответ'

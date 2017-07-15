@@ -35,14 +35,17 @@ def questions(request):
         bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
         del otvet['csrfmiddlewaretoken']
         for key in otvet:
-            # if str(key).split('_')
             num_vopros = int(str(key).split('_')[1])
-            num_otvet = int(str(otvet[key][0]).split('_')[1])
-
             question = inform_models.questions.objects.get(id=num_vopros)
-            question_choose = inform_models.question_choose.objects.get(id=num_otvet)
-            otv_bd = inform_models.answers.objects.create(questions = question,
-                                                          question_choose = question_choose)
+            if str(key).split('_')[0]=='voprosnum':
+                num_otvet = str(otvet[key][0])
+                otv_bd = inform_models.answers.objects.create(questions = question,
+                                                              number = float(num_otvet))
+            else:
+                num_otvet = int(str(otvet[key][0]).split('_')[1])
+                question_choose = inform_models.question_choose.objects.get(id=num_otvet)
+                otv_bd = inform_models.answers.objects.create(questions = question,
+                                                              question_choose = question_choose)
             try:
                 user = inform_models.participants.objects.filter(ip=request.META['REMOTE_ADDR']).reverse()[0]
                 otv_bd.user = user
