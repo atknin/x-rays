@@ -33,6 +33,19 @@ def questions(request):
     if request.method == 'POST':
         otvet = dict(request.POST)
         del otvet['csrfmiddlewaretoken']
+        for key in otvet:
+            num_vopros = int(str(key).split('_')[1])
+            num_otvet = int(str(otvet['otvet']).split('_')[1])
+            question = inform_models.questions.objects.get(id=num_vopros)
+            question_choose = inform_models.question_choose.objects.get(id=num_otvet)
+            otv_bd = inform_models.answers.objects.create(questions = question,
+                                                          question_choose = question_choose)
+            try:
+                user = inform_models.questions.objects.filter(ip=request.META['REMOTE_ADDR'])[-1]
+                otv_bd.user = user
+                user.save()
+            except Exception as e:
+                user.save()
         bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
         return render(
             request, 'inform/questions.html',argv
