@@ -31,7 +31,7 @@ def index(request):
 def questions(request):
     argv = {}
     if request.method == 'POST':
-        otvet = dict(request.POST.iterlists())
+        otvet = dict(request.POST)
         del otvet['csrfmiddlewaretoken']
         bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
         return render(
