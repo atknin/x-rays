@@ -47,15 +47,15 @@
                 <hr>
 
                 <!-- {{key}} -->
-                {{avalues}}
-                <!-- {%if key.types.text == "number"%}
-                  Среднее: {{values}}
-                  {{ result|get_item:result }}
+
+                {%if key.types.text == "number"%}
+                  Среднее: {{values.result|div:values.N}}
+                  <!-- {{ result|get_item:result }} -->
 
                 {%else%}
                   График
-                  {{result}}
-                {%endif%} -->
+                  {{avalues}}
+                {%endif%}
                 <!-- {%if question.types.text == "number"%}
                 <div class="col-5">
                   <input type="number" class="form-control" id="" name = "voprosnum_{{question.id}}">
