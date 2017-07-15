@@ -45,9 +45,10 @@
                 <label for="inputLastName">{{result.text}}</label>
                 <hr>
                 {%if result.types.text == "number"%}
-                  Среднее: {{result.result}}
+                  Среднее: {{result}}
                 {%else%}
                   График
+                  {{result}}
                 {%endif%}
                 <!-- {%if question.types.text == "number"%}
                 <div class="col-5">
