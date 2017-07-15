@@ -49,6 +49,18 @@
                 {%if akey.types.text == "number"%}
                   Среднее: {{avalues.result|div:avalues.N}}
                 {%else%}
+                  <div class="row" id="myDiv{{akey.id}}"></div>
+                  <script type="text/javascript">
+                  var data = [
+                      {
+                        x: ['giraffes', 'orangutans', 'monkeys'],
+                        y: [20, 14, 23],
+                        type: 'bar'
+                      }
+                    ];
+
+                    Plotly.newPlot('myDiv{{akey.id}}', data);
+                  </script>
                   График
                   {{avalues}}
                 {%endif%}
