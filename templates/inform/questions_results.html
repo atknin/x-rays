@@ -65,17 +65,17 @@
                     </div>
                   </div>
                   <script type="text/javascript">
-                    var elements = $('#myDiv{{akey.id}}').children();
+                    var sign = [];
+                    var dat = [];
                     $('#myDiv{{akey.id}}').children().each(function(i) {
-                        console.log($(this).attr('name'));
-                        console.log($(this).val());
-                        console.log('-----');
+                        sign.push($(this).attr('name'));
+                        dat.push($(this).val());
                     });
 
                   var data = [
                       {
-                        x: ['giraffes', 'orangutans', 'monkeys'],
-                        y: [20, 14, 23],
+                        x: sign,
+                        y: dat,
                         type: 'bar'
                       }
                     ];
