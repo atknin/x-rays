@@ -58,8 +58,27 @@
                         type: 'bar'
                       }
                     ];
+                    var layout = {
+                      title: 'Darwin curve for perfect crystals',
+                      xaxis: {
+                        title: 'deviation from the Bragg angle',
+                        titlefont: {
+                          family: 'Courier New, monospace',
+                          size: 18,
+                          color: '#7f7f7f'
+                        }
+                      },
+                      yaxis: {
+                        title: '|R|',
+                        titlefont: {
+                          family: 'Courier New, monospace',
+                          size: 18,
+                          color: '#7f7f7f'
+                        }
+                      }
+                    };
 
-                    Plotly.newPlot('myDiv{{akey.id}}', data);
+                    Plotly.newPlot('myDiv{{akey.id}}', data,layout);
                   </script>
                   График
                   {{avalues}}
