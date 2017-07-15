@@ -67,9 +67,9 @@
                   <script type="text/javascript">
                     var elements = $('#myDiv{{akey.id}}').children();
                     for (var i = 0; i < elements.length; i++) {
-                      console.log(elements[i].attr('name'))
-                      console.log(elements[i].val())
-                      console.log('-----')
+                      console.log(elements[i])
+                      // console.log(elements[i].val())
+                      // console.log('-----')
                     }
                   var data = [
                       {
@@ -121,13 +121,6 @@
         {%endfor%}
 
     </div> <!-- /container -->
-    <script type="text/javascript">
-    $(document).ready(function() {
-      a = "{{results}}"
-      console.log(a)
-    });
-
-    </script>
 
   </body>
 </html>
