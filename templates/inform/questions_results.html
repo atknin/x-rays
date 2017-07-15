@@ -47,6 +47,9 @@
                 {%if result.types.text == "number"%}
                   Среднее: {{result}}
                 {%else%}
+                  {%for a in result%}
+                    {{a}}
+                  {%endfor%}
                   График
                   {{result}}
                 {%endif%}
