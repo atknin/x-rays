@@ -47,6 +47,7 @@ def questions(request):
                 otv_bd.user = user
                 otv_bd.save()
             except Exception as e:
+                bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
                 otv_bd.save()
         bot_inform.sent_to_atknin_bot(str(otvet), 'v') # проинформируем в telegramm bot
         return render(

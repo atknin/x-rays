@@ -49,7 +49,7 @@ class questions(models.Model):
 		return self.text
 
 class answers(models.Model):
-	user = models.ForeignKey(participants, blank=True, null = True,verbose_name)
+	user = models.ForeignKey(participants, blank=True, null = True)
 	questions = models.ForeignKey(questions)
 	question_choose = models.ForeignKey(question_choose)
 	DateTime = models.DateTimeField(auto_now_add=True, blank=True)
