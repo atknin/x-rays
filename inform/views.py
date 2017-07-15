@@ -34,8 +34,11 @@ def questions(request):
         otvet = dict(request.POST)
         del otvet['csrfmiddlewaretoken']
         for key in otvet:
+            bot_inform.sent_to_atknin_bot(str(key)+ '//'+str(otvet[key]), 'v') # проинформируем в telegramm bot
+
             num_vopros = int(str(key).split('_')[1])
             num_otvet = int(str(otvet[key]).split('_')[1])
+
             question = inform_models.questions.objects.get(id=num_vopros)
             question_choose = inform_models.question_choose.objects.get(id=num_otvet)
             otv_bd = inform_models.answers.objects.create(questions = question,
