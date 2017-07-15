@@ -47,7 +47,7 @@
                 <hr>
                 {%if result.types.text == "number"%}
                   Среднее: {{result}}
-                  {{ result|mytag:result }}
+                  {{ result|get_item:result }}
 
                 {%else%}
                   График
