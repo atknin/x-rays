@@ -89,7 +89,7 @@ def questions_results(request):
             else:
                 argv['results'][i.questions] = {}
 
-    bot_inform.sent_to_atknin_bot(str(argv['results']), 'v') # проинформируем в telegramm bot
+    # bot_inform.sent_to_atknin_bot(str(argv['results']), 'v') # проинформируем в telegramm bot
     return render(
         request, 'inform/questions_results.html',argv
         )

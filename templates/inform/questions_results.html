@@ -44,6 +44,11 @@
               <fieldset class="form-group row">
                 <label for="inputLastName">{{result.text}}</label>
                 <hr>
+                {%if result.types.text == "number"%}
+                  Среднее: {{result.result}}
+                {%else%}
+                  График
+                {%endif%}
                 <!-- {%if question.types.text == "number"%}
                 <div class="col-5">
                   <input type="number" class="form-control" id="" name = "voprosnum_{{question.id}}">
