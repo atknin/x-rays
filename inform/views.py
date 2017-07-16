@@ -3,6 +3,9 @@ from django.http import JsonResponse
 from inform import models as inform_models
 import datetime
 from django.utils import timezone
+from django.core.mail import send_mail
+from django.conf import settings
+
 # Create your views here.
 import general.bot_inform as bot_inform
 def index(request):
@@ -99,6 +102,8 @@ def manage(request):
     if request.is_ajax():
         if 'email' in request.POST:
             bot_inform.sent_to_atknin_bot(str('email'), 'v') # проинформируем в telegramm bot
+            send_mail(' ЛЕТНИЙ КОНКУРС. ОШИБКА', str('email'), settings.EMAIL_HOST_USER, ['ivan@atknin.ru'])
+
         elif 'sms' in request.POST:
             bot_inform.sent_to_atknin_bot(str('sms'), 'v') # проинформируем в telegramm bot
     argv = {}
