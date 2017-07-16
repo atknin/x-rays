@@ -6,6 +6,7 @@ from inform import views
 urlpatterns = [
     url(r'^$', views.index),
     url(r'^questions/$', views.questions),
-    url(r'^questions/results/$', views.questions_results), 
+    url(r'^questions/results/$', views.questions_results),
+    url(r'^manage/$', views.manage), 
 
 ]

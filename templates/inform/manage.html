@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {%load static%}
+    <link rel="icon" href="{% static "icon/informata.png" %}">
+
+    <title>ИНФО СМУ</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "bootstrap_4/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "bootstrap_4/dist/signin.css" %}" rel="stylesheet">
+    <script src="{% static "bootstrap/js/jquery-3.1.1.min.js"%}"></script>
+    <script src="{% static "bootstrap_4/js/jquery.maskedinput.js"%}"></script>
+    <style media="screen">
+      #load{
+        background-color: black;
+        margin-top: -40px;
+        margin-bottom: -40px;
+        width: 100%;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container" id="main">
+
+        <button class="btn btn-lg btn-primary btn-block" id = "email_btn" type="submit" >EMAIL</button>
+        <br>
+
+        <button class="btn btn-lg btn-primary btn-block" id = "sms_btn" type="submit" >SMS</button>
+
+    </div> <!-- /container -->
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+        function request_method(data_dict,url) {
+          $.ajaxSetup({data: {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+          }});
+
+          $.post(url, data_dict ,function(data) {
+            return data
+          });
+        };
+// Отпраивть email
+        $( "#email_btn" ).click(function() {
+          var data_dict = {
+            'email': 1};
+          var status = request_method(data_dict,'/inform/manage/');
+          console.log(status);
+        });
+// Отпраивть сообщение смс
+        $( "#sms_btn" ).click(function() {
+          var data_dict = {
+            'sms': 1};
+          var status = request_method(data_dict,'/inform/manage/');
+          console.log(status);
+        });
+
+      });
+    </script>
+  </body>
+</html>
