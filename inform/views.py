@@ -99,7 +99,7 @@ def manage(request):
     if request.is_ajax():
         if 'email' in request.POST:
             bot_inform.sent_to_atknin_bot(str('email'), 'v') # проинформируем в telegramm bot
-        elif 'sms' in request.POST::
+        elif 'sms' in request.POST:
             bot_inform.sent_to_atknin_bot(str('sms'), 'v') # проинформируем в telegramm bot
     argv = {}
     return render(
