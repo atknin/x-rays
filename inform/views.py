@@ -109,7 +109,7 @@ def manage(request):
             html_message = loader.render_to_string('templates/inform/email.html',
                                                    {'user_name': name}
         )
-            send_mail(topic, body, settings.EMAIL_HOST_USER, ['ivan@atknin.ru'],html_message=html_content)
+            send_mail(topic, body, settings.EMAIL_HOST_USER, ['ivan@atknin.ru'],html_message=html_message)
 
         elif 'sms' in request.POST:
             bot_inform.sent_to_atknin_bot(str('sms'), 'v') # проинформируем в telegramm bot
