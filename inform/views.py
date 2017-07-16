@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.conf import settings
 from django.template import loader
-
+import time
 # Create your views here.
 import general.bot_inform as bot_inform
 def index(request):
@@ -103,15 +103,22 @@ def manage(request):
     if request.is_ajax():
         if 'email' in request.POST:
             topic = 'СМУ ФНИЦ КиФ'
-            body = str('email')
             name = 'Иван'
-            try:
-                html_message = loader.render_to_string('inform/email.html',
-                                                       {'user_name': name})
-                send_mail(topic, body, settings.EMAIL_HOST_USER, ['ivan@atknin.ru'],html_message=html_message)
-            except Exception as e:
-                bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
+            today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
+            today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
+            users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
+            for user in users:
+                body = '''Привет {}, 18 августа состоиться СОБРАНИЕ молодых ученых института. До начала 10 дней.
+                 УБЕДИТЕЛЬНАЯ ПРОСЬБА к молодым сотрудникам - не игнорировать данный курс лекций и
+                 уважать труд лекторов!!! С Уважением, Наша Команда'''.format(users.Name)
+                try:
+                    html_message = loader.render_to_string('inform/email.html',
+                                                           {'user_name': users.Name})
+                    send_mail(topic, body, settings.EMAIL_HOST_USER, [users.email],html_message=html_message)
+                except Exception as e:
+                    bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
 
+                time.sleep(0.5)
         elif 'sms' in request.POST:
             bot_inform.sent_to_atknin_bot(str('sms'), 'v') # проинформируем в telegramm bot
     argv = {}
