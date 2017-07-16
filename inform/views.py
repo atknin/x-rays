@@ -5,6 +5,7 @@ import datetime
 from django.utils import timezone
 from django.core.mail import send_mail
 from django.conf import settings
+from django.template import loader
 
 # Create your views here.
 import general.bot_inform as bot_inform
@@ -102,7 +103,13 @@ def manage(request):
     if request.is_ajax():
         if 'email' in request.POST:
             bot_inform.sent_to_atknin_bot(str('email'), 'v') # проинформируем в telegramm bot
-            send_mail(' ЛЕТНИЙ КОНКУРС. ОШИБКА', str('email'), settings.EMAIL_HOST_USER, ['ivan@atknin.ru'])
+            topic = 'СМУ ФНИЦ КиФ'
+            body = str('email')
+            html_message = loader.render_to_string('path/to/your/htm_file.html',
+                                                   {'user_name': user.name,
+                                                    'subject':  topic}
+        )
+            send_mail(topic, body, settings.EMAIL_HOST_USER, ['ivan@atknin.ru'],html_message=html_content)
 
         elif 'sms' in request.POST:
             bot_inform.sent_to_atknin_bot(str('sms'), 'v') # проинформируем в telegramm bot
