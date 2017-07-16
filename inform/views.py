@@ -121,6 +121,7 @@ def manage(request):
                     bot_inform.sent_to_atknin_bot('Ошибка: '+user.email+'. '+str(e), 'v') # проинформируем в telegramm bot
                 time.sleep(0.5)
         elif 'sms' in request.POST:
+            bot_inform.sent_to_atknin_bot('sms', 'v') # проинформируем в telegramm bot
             today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
             today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
             users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
