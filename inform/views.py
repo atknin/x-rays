@@ -110,12 +110,11 @@ def manage(request):
                 body = '''Привет {}, 18 августа состоиться СОБРАНИЕ молодых ученых института. До начала 10 дней.
                  УБЕДИТЕЛЬНАЯ ПРОСЬБА к молодым сотрудникам - не игнорировать данный курс лекций и
                  уважать труд лекторов!!! С Уважением, Наша Команда'''.format(user.Name)
-                bot_inform.sent_to_atknin_bot('Готов к отправке для '+ user.Name, 'v') # проинформируем в telegramm bot
                 try:
                     html_message = loader.render_to_string('inform/email.html',
                                                            {'user_name': user.Name})
-                    send_mail(topic, body, settings.EMAIL_HOST_USER, [user.email],html_message=html_message)
-                    bot_inform.sent_to_atknin_bot('Успешно', 'v') # проинформируем в telegramm bot
+                    send_mail(topic, body, settings.EMAIL_HOST_USER, user.email,html_message=html_message)
+                    bot_inform.sent_to_atknin_bot('Успешно' +user.email , 'v') # проинформируем в telegramm bot
                 except Exception as e:
                     bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
 
