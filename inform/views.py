@@ -102,11 +102,12 @@ def questions_results(request):
 def manage(request):
     if request.is_ajax():
         if 'email' in request.POST:
-            topic = 'СМУ ФНИЦ КиФ'
+
             today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
             today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
             users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
             for user in users:
+                topic = 'СМУ ФНИЦ КиФ: {}:)'.format(user.Name)
                 body = '''Привет {}, 18 августа состоиться СОБРАНИЕ молодых ученых института. До начала 10 дней.
                  УБЕДИТЕЛЬНАЯ ПРОСЬБА к молодым сотрудникам - не игнорировать данный курс лекций и
                  уважать труд лекторов!!! С Уважением, Наша Команда'''.format(user.Name)
