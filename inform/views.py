@@ -109,8 +109,8 @@ def manage(request):
             for user in users:
                 body = '''Привет {}, 18 августа состоиться СОБРАНИЕ молодых ученых института. До начала 10 дней.
                  УБЕДИТЕЛЬНАЯ ПРОСЬБА к молодым сотрудникам - не игнорировать данный курс лекций и
-                 уважать труд лекторов!!! С Уважением, Наша Команда'''.format(str(users.Name))
-                bot_inform.sent_to_atknin_bot('Готов к отправке для '+ str(user.Name), 'v') # проинформируем в telegramm bot
+                 уважать труд лекторов!!! С Уважением, Наша Команда'''.format(user.Name)
+                bot_inform.sent_to_atknin_bot('Готов к отправке для '+ user.Name, 'v') # проинформируем в telegramm bot
                 try:
                     html_message = loader.render_to_string('inform/email.html',
                                                            {'user_name': users.Name})
