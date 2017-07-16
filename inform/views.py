@@ -125,8 +125,8 @@ def manage(request):
             today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
             today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
             users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
-            bot_inform.sent_to_atknin_bot('sms', 'v') # проинформируем в telegramm bot
             for user in users:
+                bot_inform.sent_to_atknin_bot('Отправка ('+user.Name+'). ', 'v') # проинформируем в telegramm bot
                 try:
                     smsc = SMSC()
                     bot_inform.sent_to_atknin_bot('Отправка ('+user.Name+'). ', 'v') # проинформируем в telegramm bot
