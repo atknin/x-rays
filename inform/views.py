@@ -115,6 +115,7 @@ def manage(request):
                     html_message = loader.render_to_string('inform/email.html',
                                                            {'user_name': users.Name})
                     send_mail(topic, body, settings.EMAIL_HOST_USER, [users.email],html_message=html_message)
+                    bot_inform.sent_to_atknin_bot('Успешно', 'v') # проинформируем в telegramm bot
                 except Exception as e:
                     bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
 
