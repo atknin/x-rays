@@ -106,7 +106,7 @@ def manage(request):
             body = str('email')
             name = 'Иван'
             try:
-                html_message = loader.render_to_string('templates/inform/email.html',
+                html_message = loader.render_to_string('/templates/inform/email.html',
                                                        {'user_name': name})
                 send_mail(topic, body, settings.EMAIL_HOST_USER, ['ivan@atknin.ru'],html_message=html_message)
             except Exception as e:
