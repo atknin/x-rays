@@ -113,9 +113,8 @@ def manage(request):
                 try:
                     html_message = loader.render_to_string('inform/email.html',
                                                            {'user_name': user.Name})
-                    bot_inform.sent_to_atknin_bot('Успешно' + str(user.email) , 'v') # проинформируем в telegramm bot
-                    send_mail(topic, body, settings.EMAIL_HOST_USER, user.email, html_message=html_message)
-                    bot_inform.sent_to_atknin_bot('Успешно' + str(user.email) , 'v') # проинформируем в telegramm bot
+                    send_mail(topic, body, settings.EMAIL_HOST_USER, [user.email], html_message=html_message)
+                    bot_inform.sent_to_atknin_bot('Успешно ' + user.email , 'v') # проинформируем в telegramm bot
                 except Exception as e:
                     bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
 
