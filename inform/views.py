@@ -7,6 +7,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.template import loader
 import time
+from smsc_api import *
+
 # Create your views here.
 import general.bot_inform as bot_inform
 def index(request):
@@ -102,7 +104,6 @@ def questions_results(request):
 def manage(request):
     if request.is_ajax():
         if 'email' in request.POST:
-
             today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
             today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
             users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
@@ -117,11 +118,41 @@ def manage(request):
                     send_mail(topic, body, settings.EMAIL_HOST_USER, [user.email], html_message=html_message)
                     bot_inform.sent_to_atknin_bot('Успешно ' + user.email , 'v') # проинформируем в telegramm bot
                 except Exception as e:
-                    bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
-
+                    bot_inform.sent_to_atknin_bot('Ошибка: '+user.email+'. '+str(e), 'v') # проинформируем в telegramm bot
                 time.sleep(0.5)
         elif 'sms' in request.POST:
-            bot_inform.sent_to_atknin_bot(str('sms'), 'v') # проинформируем в telegramm bot
+            today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
+            today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
+            users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
+            smsc = SMSC()
+            for user in users:
+                try:
+                    r = smsc.send_sms('+'+user.phone, "{}, завтра состоится мероприятие в 506 к. в 16:00. Ваш СМУ".format(user.Name))
+                    balance = smsc.get_balance()
+                    bot_inform.sent_to_atknin_bot("Успешно для "+user.Name+'. Баланс: ' + str(balance), 'v') # проинформируем в telegramm bot
+                except Exception as e:
+                    bot_inform.sent_to_atknin_bot('Ошибка sms('+user.Name+'). ' + str(e), 'v') # проинформируем в telegramm bot
+
+                time.sleep(0.5)
+
+            # print(r)
+            # print(balance)
+            # # ...
+            # r = smsc.send_sms("79999999999", "http://smsc.ru\nSMSC.RU", query="maxsms=3")
+            # ...
+            # r = smsc.send_sms("79999999999", "0605040B8423F0DC0601AE02056A0045C60C036D79736974652E72750001036D7973697465000101", format=5)
+            # ...
+            # r = smsc.send_sms("79999999999", "", format=3)
+            # ...
+            # r = smsc.get_sms_cost("79999999999", "Вы успешно зарегистрированы!")
+            # ...
+            # r = smsc.get_status(12345, "79999999999")
+            # ...
+            # balance = smsc.get_balance()
+            # ...
+            # # отправка SMS через e-mail
+            # smsc.send_sms_mail("79999999999", "Ваш пароль: 123")
+
     argv = {}
     return render(
         request, 'inform/manage.html',argv
