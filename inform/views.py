@@ -105,9 +105,9 @@ def manage(request):
             bot_inform.sent_to_atknin_bot(str('email'), 'v') # проинформируем в telegramm bot
             topic = 'СМУ ФНИЦ КиФ'
             body = str('email')
-            html_message = loader.render_to_string('path/to/your/htm_file.html',
-                                                   {'user_name': user.name,
-                                                    'subject':  topic}
+            name = 'Иван'
+            html_message = loader.render_to_string('templates/inform/email.html',
+                                                   {'user_name': name}
         )
             send_mail(topic, body, settings.EMAIL_HOST_USER, ['ivan@atknin.ru'],html_message=html_content)
 
