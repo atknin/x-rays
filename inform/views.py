@@ -102,7 +102,6 @@ def questions_results(request):
 def manage(request):
     if request.is_ajax():
         if 'email' in request.POST:
-            bot_inform.sent_to_atknin_bot(str('email'), 'v') # проинформируем в telegramm bot
             topic = 'СМУ ФНИЦ КиФ'
             body = str('email')
             name = 'Иван'
@@ -110,7 +109,7 @@ def manage(request):
                                                    {'user_name': name}
         )
             send_mail(topic, body, settings.EMAIL_HOST_USER, ['ivan@atknin.ru'],html_message=html_message)
-
+            bot_inform.sent_to_atknin_bot(str('email'), 'v') # проинформируем в telegramm bot
         elif 'sms' in request.POST:
             bot_inform.sent_to_atknin_bot(str('sms'), 'v') # проинформируем в telegramm bot
     argv = {}
