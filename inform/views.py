@@ -127,6 +127,7 @@ def manage(request):
             smsc = SMSC()
             for user in users:
                 try:
+                    bot_inform.sent_to_atknin_bot('Отправка ('+user.Name+'). ', 'v') # проинформируем в telegramm bot
                     r = smsc.send_sms('+'+user.phone, "{}, завтра состоится мероприятие в 506 к. в 16:00. Ваш СМУ".format(user.Name))
                     balance = smsc.get_balance()
                     bot_inform.sent_to_atknin_bot("Успешно для "+user.Name+'. Баланс: ' + str(balance), 'v') # проинформируем в telegramm bot
