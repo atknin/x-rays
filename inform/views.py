@@ -106,7 +106,7 @@ def manage(request):
             today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
             today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
             users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
-            bot_inform.sent_to_atknin_bot('Количество: ', 'v')
+            bot_inform.sent_to_atknin_bot('Количество: ' + str(len(users)), 'v')
             for user in users:
                 body = '''Привет {}, 18 августа состоиться СОБРАНИЕ молодых ученых института. До начала 10 дней.
                  УБЕДИТЕЛЬНАЯ ПРОСЬБА к молодым сотрудникам - не игнорировать данный курс лекций и
