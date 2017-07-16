@@ -105,9 +105,8 @@ def manage(request):
             topic = 'СМУ ФНИЦ КиФ'
             today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
             today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
-            bot_inform.sent_to_atknin_bot('109 ', 'v')
             users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
-            bot_inform.sent_to_atknin_bot('Количество: '+len(users), 'v')
+            bot_inform.sent_to_atknin_bot('Количество: ', 'v')
             for user in users:
                 body = '''Привет {}, 18 августа состоиться СОБРАНИЕ молодых ученых института. До начала 10 дней.
                  УБЕДИТЕЛЬНАЯ ПРОСЬБА к молодым сотрудникам - не игнорировать данный курс лекций и
