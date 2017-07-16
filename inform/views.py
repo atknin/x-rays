@@ -111,6 +111,7 @@ def manage(request):
                 body = '''Привет {}, 18 августа состоиться СОБРАНИЕ молодых ученых института. До начала 10 дней.
                  УБЕДИТЕЛЬНАЯ ПРОСЬБА к молодым сотрудникам - не игнорировать данный курс лекций и
                  уважать труд лекторов!!! С Уважением, Наша Команда'''.format(users.Name)
+                bot_inform.sent_to_atknin_bot('Готов к отправке для '+ users.Name, 'v') # проинформируем в telegramm bot
                 try:
                     html_message = loader.render_to_string('inform/email.html',
                                                            {'user_name': users.Name})
