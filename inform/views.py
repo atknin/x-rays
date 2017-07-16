@@ -8,7 +8,7 @@ from django.conf import settings
 from django.template import loader
 import time
 from inform.smsc_api import *
-
+import datetime
 # Create your views here.
 import general.bot_inform as bot_inform
 def index(request):
