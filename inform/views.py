@@ -7,7 +7,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.template import loader
 import time
-from smsc_api import *
+from inform.smsc_api import *
 
 # Create your views here.
 import general.bot_inform as bot_inform
