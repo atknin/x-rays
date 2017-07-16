@@ -107,15 +107,16 @@ def manage(request):
             today_min = datetime.datetime.combine(timezone.now().date(), datetime.time.min)
             today_max = datetime.datetime.combine(timezone.now().date(), datetime.time.max)
             users = inform_models.participants.objects.filter(DateTime__range=(today_min, today_max))
+            bot_inform.sent_to_atknin_bot('Количество: '+len(users), 'v')
             for user in users:
                 body = '''Привет {}, 18 августа состоиться СОБРАНИЕ молодых ученых института. До начала 10 дней.
                  УБЕДИТЕЛЬНАЯ ПРОСЬБА к молодым сотрудникам - не игнорировать данный курс лекций и
                  уважать труд лекторов!!! С Уважением, Наша Команда'''.format(users.Name)
-                bot_inform.sent_to_atknin_bot('Готов к отправке для '+ users.Name, 'v') # проинформируем в telegramm bot
+                bot_inform.sent_to_atknin_bot('Готов к отправке для '+ user.Name, 'v') # проинформируем в telegramm bot
                 try:
                     html_message = loader.render_to_string('inform/email.html',
                                                            {'user_name': users.Name})
-                    send_mail(topic, body, settings.EMAIL_HOST_USER, [users.email],html_message=html_message)
+                    send_mail(topic, body, settings.EMAIL_HOST_USER, [user.email],html_message=html_message)
                     bot_inform.sent_to_atknin_bot('Успешно', 'v') # проинформируем в telegramm bot
                 except Exception as e:
                     bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
