@@ -133,30 +133,9 @@ def manage(request):
                         bot_inform.sent_to_atknin_bot("Успешно для "+user.Name+'. Баланс: ' + str(balance), 'v') # проинформируем в telegramm bot
                     except Exception as e:
                         bot_inform.sent_to_atknin_bot('Ошибка sms('+user.Name+'). ' + str(e), 'v') # проинформируем в telegramm bot
-                    time.sleep(0.5)
+                    time.sleep(1)
         except Exception as e:
             bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
-
-
-
-            # print(r)
-            # print(balance)
-            # # ...
-            # r = smsc.send_sms("79999999999", "http://smsc.ru\nSMSC.RU", query="maxsms=3")
-            # ...
-            # r = smsc.send_sms("79999999999", "0605040B8423F0DC0601AE02056A0045C60C036D79736974652E72750001036D7973697465000101", format=5)
-            # ...
-            # r = smsc.send_sms("79999999999", "", format=3)
-            # ...
-            # r = smsc.get_sms_cost("79999999999", "Вы успешно зарегистрированы!")
-            # ...
-            # r = smsc.get_status(12345, "79999999999")
-            # ...
-            # balance = smsc.get_balance()
-            # ...
-            # # отправка SMS через e-mail
-            # smsc.send_sms_mail("79999999999", "Ваш пароль: 123")
-
     argv = {}
     return render(
         request, 'inform/manage.html',argv
