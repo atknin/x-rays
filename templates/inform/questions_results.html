@@ -72,6 +72,17 @@
                           return data
                         });
                       }
+                    function random_rgba() {
+                        var o = Math.round, r = Math.random, s = 255;
+                        return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + r().toFixed(1) + ')';
+                    }
+                    function colors(array){
+                      var resa = []
+                      for (var i = 0; i < array.length; i++) {
+                        resa[i] = random_rgba;
+                      }
+                      return resa
+                    };
                     function load_result(time) {
                       var sign = [];
                       var dat = [];
@@ -86,9 +97,10 @@
                           y: sign,
                           type: 'bar',
                           orientation: 'h',
-                          line: {
-                            color: 'rgb(128,0,128)'
-                          },
+                          marker: {
+                            color: colors(sign),
+                            width: 3
+                          }
                         }
                       ];
                       var layout = {
