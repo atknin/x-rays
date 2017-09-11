@@ -82,6 +82,7 @@ def questions_results(request):
     result = inform_models.answers.objects.filter(DateTime__range=(today_min, today_max))
     argv['total_answers'] = len(result)
     argv['results'] = {}
+    json_data = {}
     for i in result:
         if str(i.questions.types.text) == 'number':
             if i.questions in argv['results']:
@@ -101,17 +102,17 @@ def questions_results(request):
                 argv['results'][i.questions] = {}
 
     # bot_inform.sent_to_atknin_bot(str(argv['results']), 'v') # проинформируем в telegramm bot
-    if request.is_ajax():
-        # bot_inform.sent_to_atknin_bot('ds', 'v') # проинформируем в telegramm bot
-        try:
-            bot_inform.sent_to_atknin_bot(str(argv['results'][0]), 'v') # проинформируем в telegramm bot
-            return JsonResponse(argv['results'],safe=False)
-        except Exception as e:
-            bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
-    else:
-        return render(
-            request, 'inform/questions_results.html',argv
-            )
+    # if request.is_ajax():
+    #     # bot_inform.sent_to_atknin_bot('ds', 'v') # проинформируем в telegramm bot
+    #     try:
+    #         bot_inform.sent_to_atknin_bot(str(argv['results']), 'v') # проинформируем в telegramm bot
+    #         return JsonResponse(argv['results'],safe=False)
+    #     except Exception as e:
+    #         bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
+    # else:
+    return render(
+        request, 'inform/questions_results.html',argv
+        )
 
 def manage(request):
     if request.is_ajax():
