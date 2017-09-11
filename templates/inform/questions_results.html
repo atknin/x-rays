@@ -63,7 +63,12 @@
                     {%endfor%}
                   </div>
                   <script type="text/javascript">
-                    
+                    function request(url) {
+                      $.get(url, function(data, status){
+                          return data;
+                      });
+                    }
+
                     function load_result(time) {
                       var sign = [];
                       var dat = [];
@@ -89,9 +94,10 @@
                     load_result(); // This will run on page load
 
                     setInterval(function(){
-                        location.reload();
+                        // location.reload();
+                        console.log(request('/inform/questions/results/'))
                         // load_result() // this will run after every 1 seconds
-                    }, 1000);
+                    }, 10000);
 
                   </script>
                 {%endif%}
