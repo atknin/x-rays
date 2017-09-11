@@ -89,7 +89,7 @@
 
                     setInterval(function(){
                         // location.reload();
-                        $.get(url, function(data, status){
+                        $.get("/inform/questions/results/", function(data, status){
                             console.log(status,data)
                         });
                         // load_result() // this will run after every 1 seconds
