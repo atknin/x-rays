@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http import JsonResponse
 from inform import models as inform_models
@@ -97,9 +99,12 @@ def questions_results(request):
                 argv['results'][i.questions] = {}
 
     # bot_inform.sent_to_atknin_bot(str(argv['results']), 'v') # проинформируем в telegramm bot
-    return render(
-        request, 'inform/questions_results.html',argv
-        )
+    if request.is_ajax():
+        return JsonResponse(argv)
+    else:
+        return render(
+            request, 'inform/questions_results.html',argv
+            )
 
 def manage(request):
     if request.is_ajax():
