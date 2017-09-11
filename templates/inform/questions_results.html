@@ -63,42 +63,34 @@
                     {%endfor%}
                   </div>
                   <script type="text/javascript">
-                    var sign = [];
-                    var dat = [];
-                    $('#myDiv{{akey.id}}').children().each(function(i) {
-                        sign.push($(this).attr('name'));
-                        dat.push($(this).val());
-                    });
+                    
+                    function load_result(time) {
 
-                  var data = [
-                      {
-                        x: sign,
-                        y: dat,
-                        type: 'bar'
-                      }
-                    ];
-                    var layout = {
-                      title: 'Результат',
-                      // bgcolorsrc: 'rgb(238, 238, 238)',
-                      // xaxis: {
-                      //   title: 'deviation from the Bragg angle',
-                      //   titlefont: {
-                      //     family: 'Courier New, monospace',
-                      //     size: 18,
-                      //     color: '#7f7f7f'
-                      //   }
-                      // },
-                      // yaxis: {
-                      //   title: '|R|',
-                      //   titlefont: {
-                      //     family: 'Courier New, monospace',
-                      //     size: 18,
-                      //     color: '#7f7f7f'
-                      //   }
-                      // }
-                    };
+                      var sign = [];
+                      var dat = [];
+                      $('#myDiv{{akey.id}}').children().each(function(i) {
+                          sign.push($(this).attr('name'));
+                          dat.push($(this).val());
+                      });
 
-                    Plotly.newPlot('myDiv{{akey.id}}', data,layout);
+                    var data = [
+                        {
+                          x: sign,
+                          y: dat,
+                          type: 'bar'
+                        }
+                      ];
+                      var layout = {
+                        title: 'Результат',
+                      };
+
+                      Plotly.newPlot('myDiv{{akey.id}}', data,layout);
+                    }
+                    load_result(); // This will run on page load
+                    setInterval(function(){
+                        load_result() // this will run after every 5 seconds
+                    }, 1000);
+                    
                   </script>
                 {%endif%}
                 <!-- {%if question.types.text == "number"%}
