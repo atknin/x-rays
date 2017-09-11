@@ -104,7 +104,7 @@ def questions_results(request):
     if request.is_ajax():
         # bot_inform.sent_to_atknin_bot('ds', 'v') # проинформируем в telegramm bot
         try:
-            bot_inform.sent_to_atknin_bot(str(argv['results']), 'v') # проинформируем в telegramm bot
+            bot_inform.sent_to_atknin_bot(str(argv['results'][0]), 'v') # проинформируем в telegramm bot
             return JsonResponse(argv['results'],safe=False)
         except Exception as e:
             bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
