@@ -63,6 +63,15 @@
                     {%endfor%}
                   </div>
                   <script type="text/javascript">
+                    function request_method(data_dict,url) {
+                        $.ajaxSetup({data: {
+                          csrfmiddlewaretoken: '{{ csrf_token }}'
+                        }});
+
+                        $.post(url, data_dict ,function(data) {
+                          return data
+                        });
+                      }
                     function load_result(time) {
                       var sign = [];
                       var dat = [];
@@ -86,13 +95,11 @@
                     }
 
                     load_result(); // This will run on page load
-
+                    console.log()
                     setInterval(function(){
                         // location.reload();
-                        $.get("/inform/questions/results/", function(data, status){
-                            console.log(status,data)
-                        });
-                        // load_result() // this will run after every 1 seconds
+                        var neee = request_method(0,"/inform/questions/results/");
+                        console.log(neee);
                     }, 10000);
 
                   </script>
