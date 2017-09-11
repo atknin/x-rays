@@ -13,6 +13,8 @@ from inform.smsc_api import *
 import datetime
 # Create your views here.
 import general.bot_inform as bot_inform
+from django.core import serializers
+
 def index(request):
     if request.is_ajax():
         out_data = {}
@@ -102,7 +104,7 @@ def questions_results(request):
     if request.is_ajax():
         # bot_inform.sent_to_atknin_bot('ds', 'v') # проинформируем в telegramm bot
         try:
-            return JsonResponse(argv['total_answers'])
+            return JsonResponse(serializers.serialize('json', argv),safe=False)
         except Exception as e:
             bot_inform.sent_to_atknin_bot(str(e), 'v') # проинформируем в telegramm bot
     else:
