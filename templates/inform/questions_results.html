@@ -63,12 +63,6 @@
                     {%endfor%}
                   </div>
                   <script type="text/javascript">
-                    function request(url) {
-                      $.get(url, function(data, status){
-                          return data;
-                      });
-                    }
-
                     function load_result(time) {
                       var sign = [];
                       var dat = [];
@@ -95,24 +89,15 @@
 
                     setInterval(function(){
                         // location.reload();
-                        console.log(request('/inform/questions/results/'))
+                        $.get(url, function(data, status){
+                            console.log(status,data)
+                        });
                         // load_result() // this will run after every 1 seconds
                     }, 10000);
 
                   </script>
                 {%endif%}
-                <!-- {%if question.types.text == "number"%}
-                <div class="col-5">
-                  <input type="number" class="form-control" id="" name = "voprosnum_{{question.id}}">
-                </div>
-                {%else%}
-                    {%for variant in question.choose.all%}
-                      <label class="form-check-label">
-                       <input class="form-check-input" type="radio" name="vopros_{{question.id}}" value="otvet_{{variant.id}}">
-                     {{variant.text}}
-                     </label>
-                    {%endfor%}
-                {%endif%} -->
+                
               </fieldset>
             </blockquote>
           </div>
