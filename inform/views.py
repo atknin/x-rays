@@ -100,7 +100,7 @@ def questions_results(request):
 
     # bot_inform.sent_to_atknin_bot(str(argv['results']), 'v') # проинформируем в telegramm bot
     if request.is_ajax():
-        bot_inform.sent_to_atknin_bot('ds', 'v') # проинформируем в telegramm bot
+        # bot_inform.sent_to_atknin_bot('ds', 'v') # проинформируем в telegramm bot
         return JsonResponse(argv)
     else:
         return render(
